@@ -30,9 +30,9 @@ done
 directories="bspwm rofi nvim polybar kitty"
 for directory in $directories; do
   echo "Moving any existing dotfiles from ~ to $olddir/config"
-  mv ~/$dir ~/dotfiles_old/config
+  mv ~/.config/$directory ~/dotfiles_old/config
   echo "Creating symlink to $dir in .config"
-  ln -s $dir/$directory ~/.config/$directory
+  ln -s $dir/config/$directory ~/.config/$directory
 done
 
 # add bspwm configuration
