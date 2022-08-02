@@ -5,7 +5,7 @@
 
 # Variables
 dir=~/dotfiles # dotfiles directory
-olddir=~/dotfiles_old # old dotfiles backup directory
+olddir=~/Documents/dotfiles_old # old dotfiles backup directory
 files="bashrc vimrc vim zshrc xinitrc Xresources"  # list of files/folders to symlink in homedir
 
 # create dotfiles_old in homedir
@@ -21,32 +21,19 @@ echo "...done"
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks 
 for file in $files; do
     echo "Moving any existing dotfiles from ~ to $olddir"
-    mv ~/.$file ~/dotfiles_old/
+    mv ~/.$file $olddir/
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file ~/.$file
 done
+echo "...done"
 
 # symlink files and directories to ~/.config
 directories="bspwm rofi nvim polybar kitty"
 for directory in $directories; do
   echo "Moving any existing dotfiles from ~ to $olddir/config"
-  mv ~/.config/$directory ~/dotfiles_old/config
+  mv ~/.config/$directory $olddir/config
   echo "Creating symlink to $dir in .config"
   ln -s $dir/config/$directory ~/.config/$directory
 done
-
-# add bspwm configuration
-
-
-# add neovim configuration
-
-
-# add rofi config
-
-
-# add polybar config
-
-
-# kitty config
-
+echo "...done"
 
