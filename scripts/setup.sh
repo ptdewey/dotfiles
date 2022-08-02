@@ -28,7 +28,7 @@ done
 echo "...done"
 
 # symlink files and directories to ~/.config
-directories="bspwm rofi nvim polybar kitty"
+directories="bspwm rofi polybar kitty"
 for directory in $directories; do
   echo "Moving any existing dotfiles from ~ to $olddir/config"
   mv ~/.config/$directory $olddir/config
@@ -36,4 +36,11 @@ for directory in $directories; do
   ln -s $dir/config/$directory ~/.config/$directory
 done
 echo "...done"
+
+# special case for neovim custom folder
+custom=~/.config/nvim/lua/custom
+if [ -f "$custom" ]; then
+  mv ~/.config/nvim/lua/custom $olddir
+fi
+ln -s $dir/config/nvim/custom ~/.config/nvim/lua/custom
 
