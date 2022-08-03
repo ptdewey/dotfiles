@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 cinit
 
@@ -10,17 +10,14 @@ read usr_input
 
 if [ $usr_input -eq 1 ] ; then
     cd ~/Documents/python
-fi
 
-if [ $usr_input -eq 2 ] ; then
+elif [ $usr_input -eq 2 ] ; then
     cd ~/Documents/school/CMDA3605
-fi
 
-if [ $usr_input -eq 3 ] ; then
+elif [ $usr_input -eq 3 ] ; then
     cd ~/Documents/school/CMDA3634
-fi
 
-if [ $usr_input -eq 2 ] ; then
+elif [ $usr_input -eq 2 ] ; then
     cd ~/Documents/school/CMDA3654
 fi
 
