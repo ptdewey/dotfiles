@@ -5,15 +5,17 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 unsetopt beep
 bindkey -e
-# End of lines configured by zsh-newuser-install
+
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/patrick/.zshrc'
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
 
 # Change the look of the prompt
 PS1="%n %~ %"
@@ -26,11 +28,11 @@ PS1="%n %~ %"
 # To add support for TTYs this line can be optionally added.
 source ~/.cache/wal/colors-tty.sh
 
-autoload -Uz compinit
-compinit
-# End of lines added by compinstall
-source ~/repos/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/repos/zsh-autosuggestions/zsh-autosuggestions.zsh
+if [ -d ~/repos ]; then
+  source ~/repos/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  source ~/repos/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
+
 source ~/repos/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -39,13 +41,20 @@ source ~/repos/powerlevel10k/powerlevel10k.zsh-theme
 # Set vim to default editor
 export EDITOR=nvim
 
+export PATH="$PATH:./"
 # deal with conda (and zsh) clear issue
-export PATH="/home/patrick/anaconda3/bin:/home/patrick/anaconda3/condabin:$PATH:./"
+if [ -d ~/anaconda3 ]; then
+  export PATH="/home/patrick/anaconda3/bin:/home/patrick/anaconda3/condabin:$PATH"
+fi
 # add julia to path 
-export PATH="$PATH:/home/patrick/.local/bin/julia-1.7.3/bin"
+if [ -d ~/.local/bin/julia-1.7.3/bin ]; then
+  export PATH="$PATH:/home/patrick/.local/bin/julia-1.7.3/bin"
+fi
 
 export TERMINFO=/usr/share/terminfo
 
 # Fetch aliases
-source ~/dotfiles/scripts/aliases.sh
+if [ -f ~/dotfiles/scripts/aliases.sh ]; then
+  source ~/dotfiles/scripts/aliases.sh
+fi
 

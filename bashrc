@@ -112,5 +112,7 @@ if ! shopt -oq posix; then
 fi
 
 # fetch aliases
-source ~/Documents/scripts/aliases.sh
+if [ -f ~/dotfiles/scripts/aliases.sh ]; then
+  source ~/dotfiles/scripts/aliases.sh
+fi
 
