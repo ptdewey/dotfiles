@@ -38,9 +38,8 @@ done
 echo "...done"
 
 # special case for neovim custom folder
-custom=~/.config/nvim/lua/custom
-if [ -f "$custom" ]; then
+if [ -d ~/.config/nvim/lua/custom ]; then
   mv ~/.config/nvim/lua/custom $olddir
 fi
-ln -s $dir/config/nvim/custom ~/.config/nvim/lua/
+ln -s $dir/config/nvim/custom ~/.config/nvim/lua
 
