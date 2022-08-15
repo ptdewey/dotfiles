@@ -18,7 +18,7 @@ for file in $files; do
 done
 
 # directories to back up
-directories="scripts"
+directories="scripts config/nvim"
 for directory in $directories; do
     echo "Creating copy of $directory in $bak..."
     cp -r $directory $bak
