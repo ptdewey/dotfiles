@@ -27,4 +27,4 @@ fi
 
 # conda activate
 
-jupyter notebook
+jupyter lab
