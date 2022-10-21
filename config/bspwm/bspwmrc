@@ -5,7 +5,7 @@
 ###########################
 
 # Set workspaces to monitors
-bspc monitor -d 1 2 3 4 5 6
+bspc monitor -d 1 2 3 4 5 6 7 8
 
 
 # Hotkeys

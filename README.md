@@ -16,6 +16,7 @@ My essential configuration files and scripts
 - change default shell
 - clone repos and install essential programs
 - change shell script permissions (execute)
+- create separate repo for fonts and clone in install script
 
 ## Current Issues
 No known issues at this time
