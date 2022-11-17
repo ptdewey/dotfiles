@@ -8,4 +8,7 @@ setxkbmap -option caps:escape
 
 xset r rate 100 50 
 
+system76-power profile battery
+
 xrdb ~/.Xresources
+
