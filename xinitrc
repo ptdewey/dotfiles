@@ -2,6 +2,7 @@
 wal -R
 
 xset +fp /home/patrick/.fonts
+xset +fp /home/patrick/.local/share/fonts
 xset fp rehash
 
 setxkbmap -option caps:escape

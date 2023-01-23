@@ -33,6 +33,7 @@ alias s="git status"
 alias ga="git add"
 alias gc="git commit -m"
 alias gd="git diff"
+alias gs="git switch"
 
 # Docker
 # TODO
@@ -47,6 +48,9 @@ alias gd="git diff"
 # alias kdf="kubectl delete -f"
 # alias kpf="kubectl port-forward"
 
+# C
+# TODO
+
 # Directories
 alias conf="cd ~/.config"
 alias dn="cd ~/Downloads"
@@ -55,7 +59,8 @@ alias proj="cd ~/Documents/projects"
 alias sch="cd ~/Documents/school"
 alias c34="cd ~/Documents/school/cmda3634/cmda3634"
 alias c34m="cd ~/Documents/school/cmda3634/cmda3634_materials"
-alias c54="cd ~/Documents/school/cmda3654"
-alias c05="cd ~/Documents/school/cmda3605"
-alias s04="cd ~/Documents/school/stat4204"
+alias c54="cd ~/Documents/school/cmda4654"
+alias c06="cd ~/Documents/school/cmda3606"
+alias s44="cd ~/Documents/school/stat4444"
+alias m34="cd ~/Documents/school/math2534"
 
