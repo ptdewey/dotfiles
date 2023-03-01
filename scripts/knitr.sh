@@ -15,3 +15,4 @@ echo "library(rmarkdown); rmarkdown::render('"${1}"', 'pdf_document')" >> $temps
 
 cat $tempscript
 Rscript $tempscript
+

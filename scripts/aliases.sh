@@ -27,13 +27,14 @@ alias cod="conda deactivate"
 # latex
 alias ltc="latexmk -pvc --silent"
 alias ltclean="latexmk -c"
+# alias see="evince"
 
 # Git
-alias s="git status"
+alias gs="git status"
 alias ga="git add"
 alias gc="git commit -m"
 alias gd="git diff"
-alias gs="git switch"
+alias gb="git switch"
 
 # Docker
 # TODO
@@ -57,8 +58,9 @@ alias dn="cd ~/Downloads"
 alias doc="cd ~/Documents"
 alias proj="cd ~/Documents/projects"
 alias sch="cd ~/Documents/school"
-alias c34="cd ~/Documents/school/cmda3634/cmda3634"
-alias c34m="cd ~/Documents/school/cmda3634/cmda3634_materials"
+alias c34="cd ~/Documents/school/cmda3634/"
+alias s23="cd ~/Documents/school/cmda3634/s2023"
+alias c34m="cd ~/Documents/school/cmda3634/s2023/cmda3634_materials"
 alias c54="cd ~/Documents/school/cmda4654"
 alias c06="cd ~/Documents/school/cmda3606"
 alias s44="cd ~/Documents/school/stat4444"

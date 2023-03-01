@@ -1,9 +1,9 @@
 local M = {}
 
 M.general = {
-  n = {
-    [";"] = { ":", "colon"},
-  }
+    n = {
+        [";"] = { ":", "colon"},
+    }
 }
 
 return M

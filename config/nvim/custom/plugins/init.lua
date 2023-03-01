@@ -6,13 +6,12 @@ return  {
             require("todo-comments").setup()
         end
     },
-    -- require("nvim-web-devicons").set_icon {
-    --     cu = {
-    --         icon = "cuda", -- nvidia logo
-    --         color= "#76B900", -- green
-    --         cterm_color = "65", -- ???
-    --         name = "Cuda"
-    --     }
-    -- }
+    -- ["danilka4/ts_r"] = {
+    --     config = function()
+    --         local ts_r = require("ts_r")
+    --         vim.keymap.set('n', '<leader>r', function() ts_r.open_term() end)
+    --         vim.keymap.set('n', '<leader>q', function() ts_r.close_term() end)
+    --     end
+    -- },
 }
 

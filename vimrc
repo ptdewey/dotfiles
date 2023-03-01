@@ -33,7 +33,7 @@ Plug 'roxma/nvim-yarp'
 Plug 'gaalcaras/ncm-R'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} 
-Plug 'akinsho/bufferline.nvim'
+" Plug 'akinsho/bufferline.nvim'
 "Plug 'jiangmiao/auto-pairs'
 Plug 'preservim/tagbar'
 Plug 'jupyter-vim/jupyter-vim'
@@ -46,7 +46,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 call plug#end()
 
 " draw colorscheme from pywal
-colorscheme wal
+"colorscheme wal
 
 " Better searching
 set incsearch
@@ -123,7 +123,7 @@ nmap <leader>h :bprevious<CR>
 nmap <leader>bq :bp <BAR> bd #<CR>
 
 "" buferline settings
-" set termguicolors
-lua << EOF
-require("bufferline").setup{}
-EOF
+"termguicolors
+" lua << EOF
+" require("bufferline").setup{}
+" EOF
