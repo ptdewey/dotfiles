@@ -1,20 +1,22 @@
 local M = {}
 
-local set = vim.opt
-set.tabstop = 4
-set.softtabstop = 4
-set.shiftwidth = 4
-set.expandtab = true
-set.smartindent = true
+-- require('lspconfig').r_language_server.setup{}
+local opt = vim.opt
+opt.tabstop = 4
+opt.softtabstop = 4
+opt.shiftwidth = 4
+opt.expandtab = true
+opt.smartindent = true
+
+-- require'lspconfig'.r_language_server.setup{}
 
 M.ui = {
-    theme = "rosepine",
+    theme = "decay",
 }
 
-M.plugins = {
-    user = require "custom.plugins"
-}
+M.plugins = require("custom.plugins")
 
-M.mappings = require "custom.mappings"
+
+M.mappings = require("custom.mappings")
 
 return M
