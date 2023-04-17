@@ -16,6 +16,7 @@ alias cinit="source ~/dotfiles/scripts/conda-starter.sh"
 alias jn="source ~/dotfiles/scripts/jupyter-starter.sh"
 alias jl="source ~/dotfiles/scripts/jupyter-lab-starter.sh"
 alias knitr="source ~/dotfiles/scripts/knitr.sh"
+alias knitr_html="source ~/dotfiles/scripts/knitr_html.sh"
 source ~/dotfiles/scripts/ssh.sh
 source ~/dotfiles/scripts/wal-fill.sh
 

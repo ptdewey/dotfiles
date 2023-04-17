@@ -11,7 +11,7 @@ opt.smartindent = true
 -- require'lspconfig'.r_language_server.setup{}
 
 M.ui = {
-    theme = "decay",
+    theme = "everforest",
 }
 
 M.plugins = require("custom.plugins")
