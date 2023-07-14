@@ -30,16 +30,16 @@ echo "...done"
 # symlink files and directories to ~/.config
 directories="bspwm rofi polybar kitty"
 for directory in $directories; do
-  echo "Moving any existing dotfiles from ~ to $olddir/config"
-  mv ~/.config/$directory $olddir/config
-  echo "Creating symlink to $dir in .config"
-  ln -s $dir/config/$directory ~/.config/
+    echo "Moving any existing dotfiles from ~ to $olddir/config"
+    mv ~/.config/$directory $olddir/config
+    echo "Creating symlink to $dir in .config"
+    ln -s $dir/config/$directory ~/.config/
 done
 echo "...done"
 
 # special case for neovim custom folder
 if [ -d ~/.config/nvim/lua/custom ]; then
-  mv ~/.config/nvim/lua/custom $olddir
+    mv ~/.config/nvim/lua/custom $olddir
 fi
 ln -s $dir/config/nvim/custom ~/.config/nvim/lua
 

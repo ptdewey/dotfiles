@@ -1,10 +1,12 @@
+---@type MappingsTable
 local M = {}
 
 M.general = {
-    n = {
-        [";"] = { ":", "colon"},
-        -- ["<leader-i>"] = {"li_<Esc>r", "insert one character"},
-    }
+  n = {
+    [";"] = { ":", "enter command mode", opts = { nowait = true } },
+  },
 }
+
+-- more keybinds!
 
 return M

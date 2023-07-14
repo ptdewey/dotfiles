@@ -1,6 +1,6 @@
+---@type ChadrcConfig
 local M = {}
 
--- require('lspconfig').r_language_server.setup{}
 local opt = vim.opt
 opt.tabstop = 4
 opt.softtabstop = 4
@@ -8,15 +8,20 @@ opt.shiftwidth = 4
 opt.expandtab = true
 opt.smartindent = true
 
--- require'lspconfig'.r_language_server.setup{}
+-- Path to overriding theme and highlights files
+local highlights = require "custom.highlights"
 
 M.ui = {
     theme = "everforest",
+    -- theme_toggle = { "onedark", "one_light" },
+
+    hl_override = highlights.override,
+    hl_add = highlights.add,
 }
 
-M.plugins = require("custom.plugins")
+M.plugins = "custom.plugins"
 
-
-M.mappings = require("custom.mappings")
+-- check core.mappings for table structure
+M.mappings = require "custom.mappings"
 
 return M

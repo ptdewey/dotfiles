@@ -11,5 +11,7 @@ xset r rate 100 50
 
 system76-power profile battery
 
+xrandr --dpi 192
+
 xrdb ~/.Xresources
 
