@@ -1,0 +1,39 @@
+{
+    // vim configuration settings
+    "vim.leader": "<space>",
+    "vim.useSystemClipboard": true,
+
+    // normal mode keybinds
+    "vim.normalModeKeyBindingsNonRecursive": [
+        // <leader> + / comments line
+        {
+            "before": ["<leader>", "/"],
+            "commands": ["editor.action.commentLine"]
+        },
+        // go to next tab
+        {
+            "before": ["<tab>"],
+            "commands": ["workbench.action.nextEditorInGroup"]
+        },
+        // go to prev tab
+        {
+            "before": ["<S-tab>"],
+            "commands": ["workbench.action.previousEditorInGroup"]
+        },
+        // remap ; to :
+        {
+            "before": [";"],
+            "after": [":"]
+        }
+    ],
+
+    // visual mode keybinds
+    "vim.visualModeKeyBindingsNonRecursive": [
+        // <leader> + / comments line
+        {
+            "before": ["<leader>", "/"],
+            "commands": ["editor.action.commentLine"]
+        }
+    ],
+    "window.customMenuBarAltFocus": false
+}
