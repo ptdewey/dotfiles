@@ -8,6 +8,7 @@ local plugins = {
         -- discord presence 
         "andweeb/presence.nvim",
         auto_update = true,
+        lazy = false,
     },
 
     {
@@ -18,6 +19,15 @@ local plugins = {
             vim.keymap.set('n', '<leader>r', function() ts_r.open_term() end)
             vim.keymap.set('n', '<leader>q', function() ts_r.close_term() end)
         end,
+    },
+
+    {
+        -- TODO higlighting
+        "folke/todo-comments.nvim",
+        opts = {
+            -- options
+        },
+        lazy = false,
     },
 
     -- Override plugin definition options
