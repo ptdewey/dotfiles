@@ -10,6 +10,7 @@ local servers = {
     "pylsp",
     "dockerls",
     "docker_compose_language_service",
+    -- "java_language_server",
 }
 
 for _, lsp in ipairs(servers) do

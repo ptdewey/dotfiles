@@ -40,6 +40,7 @@ M.mason = {
         "r-languageserver",
         "dockerfile-language-server",
         "docker-compose-language-service",
+        -- "java-language-server",
     },
 }
 
