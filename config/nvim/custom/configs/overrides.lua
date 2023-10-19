@@ -16,6 +16,7 @@ M.treesitter = {
         "cpp",
         "r",
         "dockerfile",
+        "java",
     },
     indent = {
         enable = true,
@@ -40,6 +41,7 @@ M.mason = {
         "r-languageserver",
         "dockerfile-language-server",
         "docker-compose-language-service",
+        -- "jdtls",
         -- "java-language-server",
     },
 }

@@ -18,7 +18,12 @@ local plugins = {
             local ts_r = require("ts_r")
             vim.keymap.set('n', '<leader>r', function() ts_r.open_term() end)
             vim.keymap.set('n', '<leader>q', function() ts_r.close_term() end)
+            vim.keymap.set('n', '<leader>l', function() ts_r.send_line() end)
+            vim.keymap.set('n', '<leader>c', function() ts_r.send_chunk() end)
+            vim.keymap.set('n', '<leader>a', function() ts_r.send_all() end)
+            vim.keymap.set('v', '<leader>s', function() ts_r.send_selection() end)
         end,
+        lazy = false,
     },
 
     {
@@ -29,6 +34,11 @@ local plugins = {
         },
         lazy = false,
     },
+
+    -- {
+    --     -- Java language server
+    --     "mfussenegger/nvim-jdtls",
+    -- },
 
     -- Override plugin definition options
 
@@ -52,7 +62,7 @@ local plugins = {
     -- override plugin configs
     {
         "williamboman/mason.nvim",
-        opts = overrides.mason
+        opts = overrides.mason,
     },
 
     {

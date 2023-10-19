@@ -10,6 +10,7 @@ local servers = {
     "pylsp",
     "dockerls",
     "docker_compose_language_service",
+    -- "jdtls",
     -- "java_language_server",
 }
 
@@ -19,6 +20,7 @@ for _, lsp in ipairs(servers) do
         capabilities = capabilities,
     }
 end
+
 
 lspconfig.r_language_server.setup{debug = true}
 

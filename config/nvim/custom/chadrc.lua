@@ -12,7 +12,7 @@ opt.smartindent = true
 local highlights = require "custom.highlights"
 
 M.ui = {
-    theme = "everforest",
+    theme = "gruvbox",
     -- theme_toggle = { "onedark", "one_light" },
 
     hl_override = highlights.override,

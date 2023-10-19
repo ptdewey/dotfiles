@@ -28,8 +28,10 @@ super + alt + Escape
 #
 
 # quit/restart bspwm
-super + shift + {q, r} 
-	bspc {quit, wm -r} 
+super + shift + r
+    bspc wm -r
+# super + shift + {q, r} 
+# 	bspc {quit, wm -r} 
 
 # close/kill window
 super + {_,shift + }q
