@@ -1,5 +1,7 @@
 #!/bin/bash
 
+local dots="$HOME/dotfiles/scripts"
+
 # general
 alias c="clear"
 alias ll="ls -lF"
@@ -12,13 +14,12 @@ alias vi="nvim"
 alias vim="nvim"
 
 # scripts
-alias cinit="source ~/dotfiles/scripts/conda-starter.sh"
-alias jn="source ~/dotfiles/scripts/jupyter-starter.sh"
-alias jl="source ~/dotfiles/scripts/jupyter-lab-starter.sh"
-alias knitr="source ~/dotfiles/scripts/knitr.sh"
-alias knitr_html="source ~/dotfiles/scripts/knitr_html.sh"
-source ~/dotfiles/scripts/ssh.sh
-source ~/dotfiles/scripts/wal-fill.sh
+alias cinit="source $dots/conda-starter.sh"
+alias knitr="source $dots/knitr.sh"
+alias knitr_html="source $dots/knitr_html.sh"
+source "$dots/ssh.sh"
+source "$dots/wal-fill.sh"
+source "$dots/time-tracking.sh"
 
 # python
 alias p="python"
