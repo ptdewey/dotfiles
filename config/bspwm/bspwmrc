@@ -22,6 +22,25 @@ bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
 
+# other settings
+
+# set key repeat delay (ms), repate rate (reps/s)
+xset r rate 500 40 
+
+# set screen scaling
+xrandr --dpi 192
+
+# load config from Xresources
+xrdb ~/.Xresources
+
+# add additional font locations
+xset +fp /home/patrick/.fonts
+xset +fp /home/patrick/.local/share/fonts
+xset fp rehash
+
+# set battery profile on startup 
+system76-power profile battery
+
 
 ###### Autostart apps ######
 
@@ -43,3 +62,4 @@ powertop --auto-tune
 
 # Fix cursor
 xsetroot -cursor_name left_ptr &
+

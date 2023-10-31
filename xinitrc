@@ -7,7 +7,7 @@ xset fp rehash
 
 setxkbmap -option caps:escape
 
-xset r rate 100 50 
+xset r rate 500 40 
 
 system76-power profile battery
 
