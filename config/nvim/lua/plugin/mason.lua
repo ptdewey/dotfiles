@@ -1,10 +1,5 @@
--- [[ Configure LSP ]]
---  This function gets run when an LSP connects to a particular buffer.
+-- Configure LSP
 local on_attach = function(_, bufnr)
-    -- NOTE: Remember that lua is a real programming language, and as such it is possible
-    -- to define small helper and utility functions so you don't have to repeat yourself
-    -- many times.
-    --
     -- In this case, we create a function that lets us more easily define mappings specific
     -- for LSP related items. It sets the mode, buffer and description for us each time.
     local nmap = function(keys, func, desc)
@@ -59,7 +54,7 @@ require('mason-lspconfig').setup()
 local servers = {
     clangd = {},
     -- gopls = {},
-    pyright = {},
+    -- pyright = {},
     -- rust_analyzer = {},
     -- tsserver = {},
     -- html = { filetypes = { 'html', 'twig', 'hbs'} },

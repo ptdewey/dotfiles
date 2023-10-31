@@ -33,7 +33,7 @@ local options = {
     -- better completion
     completeopt = "menuone,noselect",
 
-    -- break indent (TODO: figure out what this is)
+    -- break indent
     breakindent = true,
 
     -- aesthetics
@@ -44,6 +44,17 @@ local options = {
 
 -- set theme
 vim.cmd([[colorscheme gruvbox-material]])
+
+-- highlight on yank
+local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+vim.api.nvim_create_autocmd('TextYankPost', {
+    callback = function()
+        vim.highlight.on_yank()
+    end,
+    group = highlight_group,
+    pattern = '*',
+})
+
 
 for k, v in pairs(options) do
     vim.opt[k] = v
