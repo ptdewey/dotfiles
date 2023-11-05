@@ -19,7 +19,7 @@ set mouse=a
 set encoding=UTF-8
 
 " draw colorscheme from pywal
-colorscheme wal
+" colorscheme wal
 
 " Better searching
 set incsearch

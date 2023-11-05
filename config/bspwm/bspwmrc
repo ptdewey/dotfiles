@@ -50,7 +50,7 @@ system76-power profile battery
 wal -R &
 
 # Panel
-~/.config/polybar/blocks/launch.sh &
+~/.config/polybar/pibar-v3/launch.sh &
 
 # Picom
 picom -b &
