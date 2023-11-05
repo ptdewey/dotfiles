@@ -20,6 +20,12 @@ M.general = {
     { "n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true } },
     { "n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true } },
 
+    -- recenter cursor upon page navigation
+    { "n", "<C-b>", "<C-b>zz", desc = "Move up a page" },
+    { "n", "<C-f>", "<C-f>zz", desc = "Move down a page" },
+    { "n", "<C-u>", "<C-u>zz", desc = "Move up a half page" },
+    { "n", "<C-d>", "<C-d>zz", desc = "Move down a half page" },
+
     -- misc
     { "t", "<Esc>", "<C-\\><C-n>", nowait = true, desc = "Exit terminal insert mode" },
     { {"n", "v"}, "<Space>", "<Nop>", silent = true, desc = "Unbind space"},

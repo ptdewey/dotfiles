@@ -15,9 +15,6 @@ require('lazy').setup({
     'tpope/vim-fugitive',
     'tpope/vim-rhubarb',
 
-    -- Detect tabstop and shiftwidth automatically
-    -- 'tpope/vim-sleuth',
-
     {
         -- LSP Configuration & Plugins
         'neovim/nvim-lspconfig',
@@ -27,7 +24,6 @@ require('lazy').setup({
             'williamboman/mason-lspconfig.nvim',
 
             -- Useful status updates for LSP
-            -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
             { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
 
             -- Additional lua configuration, makes nvim stuff amazing!

@@ -1,6 +1,7 @@
 -- Custom options
 local options = {
     number = true,
+    rnu = true,
     autoindent = true,
     so = 5,
     splitright = true,
@@ -38,7 +39,9 @@ local options = {
 
     -- aesthetics
     termguicolors = true,
-    signcolumn = "number", -- alterntive: "auto, number"
+    -- TODO: highlight numbers instead of showing git signs?
+    -- different colors for different mods (green: new, red: deletes, blue: changes?)
+    signcolumn = "no", -- alterntive: "auto, number, yes"
     background = "dark", -- alternative: "light"
 }
 
