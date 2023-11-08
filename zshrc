@@ -46,6 +46,7 @@ export PATH="$PATH:./"
 if [ -d ~/anaconda3 ]; then
   export PATH="/home/patrick/anaconda3/bin:/home/patrick/anaconda3/condabin:$PATH"
 fi
+
 # add julia to path 
 if [ -d ~/.local/bin/julia-1.7.3/bin ]; then
   export PATH="$PATH:/home/patrick/.local/bin/julia-1.7.3/bin"

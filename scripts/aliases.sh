@@ -4,8 +4,9 @@ local dots="$HOME/dotfiles/scripts"
 
 # general
 alias c="clear"
+alias ls="lsd"
 alias ll="ls -lF"
-alias la="ls -aF"
+alias la="ls -a"
 alias l="ls -F"
 
 # vim
