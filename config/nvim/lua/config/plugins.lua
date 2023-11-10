@@ -50,14 +50,6 @@ require('lazy').setup({
     -- Useful plugin to show you pending keybinds.
     { 'folke/which-key.nvim', opts = {} },
 
-    {
-        -- Theme inspired by Atom
-        'navarasu/onedark.nvim',
-        priority = 1000,
-        config = function()
-            vim.cmd.colorscheme 'onedark'
-        end,
-    },
 
     {
         -- Set lualine as statusline
@@ -65,7 +57,7 @@ require('lazy').setup({
         -- See `:help lualine.txt`
         opts = {
             options = {
-                icons_enabled = false,
+                icons_enabled = true,
                 theme = 'auto',
                 component_separators = '|',
                 section_separators = '',
@@ -120,15 +112,8 @@ require('lazy').setup({
         lazy = false,
     },
 
-    -- TODO: maybe remove this?
-    {
-        "echasnovski/mini.bufremove",
-        config = function()
-            require("mini.bufremove").setup()
-        end,
-    },
-
     -- TODO: move to new file
+    -- FIX: issues with glow executable being deleted
     -- {
     --     "ellisonleao/glow.nvim",
     --     cmd = "Glow",

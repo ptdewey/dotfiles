@@ -1,4 +1,4 @@
--- 
+-- fast comment
 return {
     'numToStr/Comment.nvim',
     lazy = false,
@@ -6,7 +6,8 @@ return {
         require("Comment").setup()
     end,
     opts = {},
-    -- remap keys
+
+    -- keybinds
     vim.keymap.set("n", "<leader>/", "gcc", {
         desc = "toggle comment",
         remap = true,

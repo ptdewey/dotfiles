@@ -13,6 +13,15 @@ local theme = {
         priority = 1000,
         config = true,
     },
+
+    {
+        -- Theme inspired by Atom
+        'navarasu/onedark.nvim',
+        priority = 1000,
+        config = function()
+            vim.cmd.colorscheme 'onedark'
+        end,
+    },
 }
 
 return theme
