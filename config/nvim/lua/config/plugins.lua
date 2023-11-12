@@ -79,7 +79,8 @@ require('lazy').setup({
         -- Highlight, edit, and navigate code
         'nvim-treesitter/nvim-treesitter',
         dependencies = {
-            'nvim-treesitter/nvim-treesitter-textobjects',
+            -- TODO: figure out if this is necessary, it seems to slow things down
+            -- 'nvim-treesitter/nvim-treesitter-textobjects',
         },
         build = ':TSUpdate',
     },
