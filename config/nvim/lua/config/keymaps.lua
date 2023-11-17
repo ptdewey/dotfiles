@@ -26,6 +26,18 @@ M.general = {
     { "n", "<C-u>", "<C-u>zz", desc = "Move up a half page" },
     { "n", "<C-d>", "<C-d>zz", desc = "Move down a half page" },
 
+    -- recenter cursor on search
+    { "n", "n", "nzz", desc = "Recenter on search" },
+    { "n", "N", "Nzz", desc = "Recenter on search" },
+    { "n", "*", "*zz", desc = "Recenter on search" },
+    { "n", "#", "#zz", desc = "Recenter on search" },
+    { "n", "g*", "g*zz", desc = "Recenter on search" },
+    { "n", "g#", "g#zz", desc = "Recenter on search" },
+
+    -- allow moving of highlighted blocks
+    { "v", "J", ":m '>+1<CR>gv=gv", desc = "Move highlighted block down 1 line" },
+    { "v", "K", ":m '<-2<CR>gv=gv", desc = "Move highlighted block up 1 line" },
+
     -- misc
     { "t", "<Esc>", "<C-\\><C-n>", nowait = true, desc = "Exit terminal insert mode" },
     { {"n", "v"}, "<Space>", "<Nop>", silent = true, desc = "Unbind space"},

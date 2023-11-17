@@ -44,6 +44,8 @@ require('lazy').setup({
 
             -- Adds a number of user-friendly snippets
             'rafamadriz/friendly-snippets',
+
+            'hrsh7th/cmp-buffer',
         },
     },
 
@@ -107,10 +109,16 @@ require('lazy').setup({
 
 
     -- bufferline
+    -- TODO: maybe move to file
     {
         "akinsho/bufferline.nvim",
         dependencies = "nvim-tree/nvim-web-devicons",
         lazy = false,
+    },
+
+    -- vimbegood
+    {
+        "ThePrimeagen/vim-be-good"
     },
 
     -- TODO: move to new file

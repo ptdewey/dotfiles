@@ -41,7 +41,7 @@ local options = {
     termguicolors = true,
     -- TODO: highlight numbers instead of showing git signs?
     -- different colors for different mods (green: new, red: deletes, blue: changes?)
-    signcolumn = "no", -- alterntive: "auto, number, yes"
+    signcolumn = "auto", -- alterntive: "auto, number, yes"
     background = "dark", -- alternative: "light"
 }
 

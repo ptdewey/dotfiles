@@ -2,12 +2,19 @@
 
 local dots="$HOME/dotfiles/scripts"
 
+
 # general
 alias c="clear"
 alias ls="lsd"
 alias ll="ls -lF"
 alias la="ls -a"
 alias l="ls -F"
+
+# better cd
+alias sd='cd ./$(fd . --type d | fzf)'
+alias sdh='cd $(fd . ~/ --type d | fzf)'
+alias vd='vim $(fd . ~/ --type f | fzf)'
+alias vdh='vim $(fd . ~/ | fzf)'
 
 # vim
 alias v="nvim"
@@ -67,16 +74,16 @@ alias dnames=dnames-fn
 alias drmid=drmid-fn
 
 # Kubernetes 
-alias k="kubectl"
-alias kg="kubectl get"
-alias kgpo="kubectl get pods"
-alias kgsvc="kubectl get svc"
-alias kgcm="kubectl get configmaps"
-alias ka="kubectl apply"
-alias kaf="kubectl apply -f"
-alias krm="kubectl delete"
-alias krmf="kubectl delete -f"
-alias kpf="kubectl port-forward"
+# alias k="kubectl"
+# alias kg="kubectl get"
+# alias kgpo="kubectl get pods"
+# alias kgsvc="kubectl get svc"
+# alias kgcm="kubectl get configmaps"
+# alias ka="kubectl apply"
+# alias kaf="kubectl apply -f"
+# alias krm="kubectl delete"
+# alias krmf="kubectl delete -f"
+# alias kpf="kubectl port-forward"
 
 # Directories
 alias conf="cd ~/.config"
@@ -84,11 +91,12 @@ alias dn="cd ~/Downloads"
 alias doc="cd ~/Documents"
 alias proj="cd ~/Documents/projects"
 alias sch="cd ~/Documents/school"
-alias c34="cd ~/Documents/school/cmda3634/"
-alias s23="cd ~/Documents/school/cmda3634/s2023"
-alias c34m="cd ~/Documents/school/cmda3634/s2023/cmda3634_materials"
-alias s34="cd ~/Documents/school/stat4534"
-alias c14="cd ~/Documents/school/cs3114"
+# alias c34="cd ~/Documents/school/cmda3634/"
+alias c34='cd $(fd . ~/Documents/school/cmda3634 --type d | fzf)'
+# alias s34="cd ~/Documents/school/stat4534"
+alias s34='cd $(fd . ~/Documents/school/stat4534 --type d | fzf)'
+# alias c14="cd ~/Documents/school/cs3114"
+alias c14='cd $(fd . ~/Documents/school/cs3114 --type d | fzf)'
 alias cap="cd ~/Documents/school/capstone"
 alias cu="cd ~/Documents/school/cmda4634"
 alias notes="cd ~/Documents/notes"

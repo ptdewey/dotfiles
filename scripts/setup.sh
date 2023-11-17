@@ -3,10 +3,13 @@
 # setup.sh
 # This script creates symlinks from the home directory to any desired dotfiles in ~/dotfiles
 
-# Variables
-dir=~/dotfiles # dotfiles directory
-olddir=~/Documents/dotfiles_old # old dotfiles backup directory
-files="bashrc vimrc vim zshrc xinitrc Xresources"  # list of files/folders to symlink in homedir
+## Variables
+# dotfiles directory
+dir=~/dotfiles
+# old dotfiles backup directory
+olddir=~/Documents/dotfiles_old
+# list of files/folders to symlink in homedir
+files="bashrc vimrc vim zshrc xinitrc Xresources ignore"
 
 # create dotfiles_old in homedir
 echo "Creating $olddir for backup of any existing dotfiles in ~"
@@ -36,10 +39,4 @@ for directory in $directories; do
     ln -s $dir/config/$directory ~/.config/
 done
 echo "...done"
-
-# special case for neovim custom folder
-if [ -d ~/.config/nvim/lua/custom ]; then
-    mv ~/.config/nvim/lua/custom $olddir
-fi
-ln -s $dir/config/nvim/custom ~/.config/nvim/lua
 

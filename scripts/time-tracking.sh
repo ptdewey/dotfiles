@@ -23,7 +23,8 @@ start_task() {
 # Function to stop a task with fuzzy matching
 stop_task() {
     local match_key="$1"
-    python "$SCRIPT_DIR/time_tracking.py" --stop "$match_key"
+    local end_time="$2"
+    python "$SCRIPT_DIR/time_tracking.py" --stop "$match_key" --end-time "$end_time"
 }
 
 # list currently open tasks
@@ -31,7 +32,13 @@ list_tasks() {
     python "$SCRIPT_DIR/time_tracking.py" --list
 }
 
+# list today's finished tasks
+list_todays_tasks() {
+    python "$SCRIPT_DIR/time_tracking.py" --list-today
+}
+
 alias bt="start_task"
 alias st="stop_task"
 alias lt="list_tasks"
+alias ltt="list_todays_tasks"
 

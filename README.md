@@ -11,7 +11,7 @@ My essential configuration files and scripts
 - zsh
 - bspwm
 - sxhkd
-- neovim 0.7.x+
+- neovim 0.9.x+
 - rofi
 - picom
 - polybar
