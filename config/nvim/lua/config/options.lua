@@ -47,6 +47,7 @@ local options = {
 
 -- set theme
 vim.cmd([[colorscheme gruvbox-material]])
+-- vim.cmd([[colorscheme biscuit]])
 
 -- highlight on yank
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })

@@ -58,4 +58,3 @@ export TERMINFO=/usr/share/terminfo
 if [ -f ~/dotfiles/scripts/aliases.sh ]; then
   source ~/dotfiles/scripts/aliases.sh
 fi
-

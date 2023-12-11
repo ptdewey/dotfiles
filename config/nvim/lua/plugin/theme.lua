@@ -21,6 +21,13 @@ local theme = {
         config = true,
     },
 
+    -- biscuit
+    {
+        "Biscuit-Colorscheme/nvim",
+        priority = 1000,
+        config = true,
+    },
+
     -- {
     --     -- Theme inspired by Atom
     --     'navarasu/onedark.nvim',

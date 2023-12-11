@@ -5,7 +5,8 @@ local dots="$HOME/dotfiles/scripts"
 
 # general
 alias c="clear"
-alias ls="lsd"
+# alias ls="lsd"
+alias ls="ls"
 alias ll="ls -lF"
 alias la="ls -a"
 alias l="ls -F"

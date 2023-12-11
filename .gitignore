@@ -1,3 +1,5 @@
 # directories
 .git
+.env
+.cache
 scripts/ssh.sh
