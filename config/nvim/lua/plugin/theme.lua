@@ -28,6 +28,13 @@ local theme = {
         config = true,
     },
 
+    -- everforest
+    {
+        "neanias/everforest-nvim",
+        priority = 1000,
+        -- config = true,
+    },
+
     -- {
     --     -- Theme inspired by Atom
     --     'navarasu/onedark.nvim',
