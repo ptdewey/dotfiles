@@ -1,6 +1,12 @@
 #!/bin/bash
 
-local dots="$HOME/dotfiles/scripts"
+dots="$HOME/dotfiles/scripts"
+
+source_if_exists() {
+  if [ -f "$1" ]; then
+    source "$1"
+  fi
+}
 
 
 # general
@@ -11,24 +17,24 @@ alias ll="ls -lF"
 alias la="ls -a"
 alias l="ls -F"
 
+# vim
+alias vim="nvim"
+alias v="vim"
+alias vi="vim"
+
 # better cd
 alias sd='cd ./$(fd . --type d | fzf)'
 alias sdh='cd $(fd . ~/ --type d | fzf)'
 alias vd='vim $(fd . ~/ --type f | fzf)'
 alias vdh='vim $(fd . ~/ | fzf)'
 
-# vim
-alias v="nvim"
-alias vi="nvim"
-alias vim="nvim"
-
 # scripts
-alias cinit="source $dots/conda-starter.sh"
 alias knitr="source $dots/knitr.sh"
-alias knitr_html="source $dots/knitr_html.sh"
-source "$dots/ssh.sh"
-source "$dots/wal-fill.sh"
-source "$dots/time-tracking.sh"
+alias knitr-html="source $dots/knitr-html.sh"
+source_if_exists "$dots/ssh.sh"
+source_if_exists "$dots/server-aliases.sh"
+source_if_exists "$dots/wal-fill.sh"
+source_if_exists "$dots/time-tracking.sh"
 
 # python
 alias p="python"
@@ -92,12 +98,4 @@ alias dn="cd ~/Downloads"
 alias doc="cd ~/Documents"
 alias proj="cd ~/Documents/projects"
 alias sch="cd ~/Documents/school"
-# alias c34="cd ~/Documents/school/cmda3634/"
-alias c34='cd $(fd . ~/Documents/school/cmda3634 --type d | fzf)'
-# alias s34="cd ~/Documents/school/stat4534"
-alias s34='cd $(fd . ~/Documents/school/stat4534 --type d | fzf)'
-# alias c14="cd ~/Documents/school/cs3114"
-alias c14='cd $(fd . ~/Documents/school/cs3114 --type d | fzf)'
-alias cap="cd ~/Documents/school/capstone"
-alias cu="cd ~/Documents/school/cmda4634"
 alias notes="cd ~/Documents/notes"

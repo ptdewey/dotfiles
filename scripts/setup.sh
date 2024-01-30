@@ -9,7 +9,21 @@ dir=~/dotfiles
 # old dotfiles backup directory
 olddir=~/Documents/dotfiles_old
 # list of files/folders to symlink in homedir
-files="bashrc vimrc vim zshrc xinitrc Xresources ignore"
+
+# Ask if user is on server machine or not
+# (only copies necessary server config)
+echo "Is this a server machine? (y/n)"
+read -r confirmation
+if [[ "$confirmation" == "y" || "$confirmation" == "Y" ]]; then
+    echo "Running in server configuration mode..."
+    files="bashrc vimrc zshrc ignore"
+    directories="nvim"
+else
+    echo "Running in laptop/desktop configuration mode..."
+    files="bashrc vimrc zshrc xinitrc Xresources ignore"
+    directories="bspwm rofi polybar kitty nvim"
+fi
+
 
 # create dotfiles_old in homedir
 echo "Creating $olddir for backup of any existing dotfiles in ~"
@@ -31,7 +45,6 @@ done
 echo "...done"
 
 # symlink files and directories to ~/.config
-directories="bspwm rofi polybar kitty"
 for directory in $directories; do
     echo "Moving any existing dotfiles from ~ to $olddir/config"
     mv ~/.config/$directory $olddir/config

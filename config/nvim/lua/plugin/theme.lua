@@ -14,13 +14,6 @@ local theme = {
         config = true,
     },
 
-    -- pywal
-    {
-        "AlphaTechnolog/pywal.nvim",
-        priority = 1000,
-        config = true,
-    },
-
     -- biscuit
     {
         "Biscuit-Colorscheme/nvim",
