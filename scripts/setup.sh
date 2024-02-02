@@ -22,6 +22,7 @@ else
     echo "Running in laptop/desktop configuration mode..."
     files="bashrc vimrc zshrc xinitrc Xresources ignore"
     directories="bspwm rofi polybar kitty nvim"
+    # TODO: vscode files - directory structure is different so probably create folders if non-existent
 fi
 
 

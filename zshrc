@@ -52,6 +52,11 @@ if [ -d ~/.local/bin/julia-1.7.3/bin ]; then
   export PATH="$PATH:/home/patrick/.local/bin/julia-1.7.3/bin"
 fi
 
+# add .local/bin to path
+if [ -d "$HOME/.local/bin" ]; then
+    export PATH="$HOME/.local/bin:$PATH"
+fi
+
 export TERMINFO=/usr/share/terminfo
 
 # Fetch aliases

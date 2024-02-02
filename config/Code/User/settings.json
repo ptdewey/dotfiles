@@ -35,5 +35,6 @@
             "commands": ["editor.action.commentLine"]
         }
     ],
-    "window.customMenuBarAltFocus": false
+    "window.customMenuBarAltFocus": false,
+    "workbench.colorTheme": "Gruvbox Material Dark"
 }
