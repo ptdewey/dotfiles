@@ -6,7 +6,7 @@
 
 if [[ ! -r $1 ]]; then
     echo -e "\n File does not exist \n"
-    exit
+    return
 fi
 
 # create temporary rscript
