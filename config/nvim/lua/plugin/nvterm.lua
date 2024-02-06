@@ -1,6 +1,7 @@
 -- terminal window plugin
 return {
     "ptdewey/nvterm",
+    lazy = true,
     config = function ()
         require("nvterm").setup()
     end,
