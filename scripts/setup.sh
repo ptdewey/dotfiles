@@ -17,12 +17,11 @@ read -r confirmation
 if [[ "$confirmation" == "y" || "$confirmation" == "Y" ]]; then
     echo "Running in server configuration mode..."
     files="bashrc vimrc zshrc ignore"
-    directories="nvim"
+    directories="nvim fonts"
 else
     echo "Running in laptop/desktop configuration mode..."
     files="bashrc vimrc zshrc xinitrc Xresources ignore"
-    directories="bspwm rofi polybar kitty nvim"
-    # TODO: vscode files - directory structure is different so probably create folders if non-existent
+    directories="bspwm rofi polybar kitty nvim fonts"
 fi
 
 
