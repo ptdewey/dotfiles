@@ -15,7 +15,6 @@ alias ls="lsd"
 alias ll="ls -lF"
 alias la="ls -a"
 alias l="ls -F"
-alias rm="mv ~/.trash"
 
 # vim
 alias vim="nvim"

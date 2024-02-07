@@ -17,8 +17,8 @@ M.general = {
     { "n", "<C-k>", "<C-w>k", remap = true, desc = "move to upper window" },
 
     -- move down visual lines
-    { "n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true } },
-    { "n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true } },
+    { { "n", "v" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true } },
+    { { "n", "v" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true } },
 
     -- recenter cursor upon page navigation
     { "n", "<C-b>", "<C-b>zz", desc = "Move up a page" },
