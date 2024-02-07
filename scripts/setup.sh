@@ -17,11 +17,13 @@ read -r confirmation
 if [[ "$confirmation" == "y" || "$confirmation" == "Y" ]]; then
     echo "Running in server configuration mode..."
     files="bashrc vimrc zshrc ignore"
-    directories="nvim fonts"
+    config_directories="nvim"
+    directories="fonts Templates"
 else
     echo "Running in laptop/desktop configuration mode..."
     files="bashrc vimrc zshrc xinitrc Xresources ignore"
-    directories="bspwm rofi polybar kitty nvim fonts"
+    config_directories="bspwm rofi polybar kitty nvim"
+    directories="fonts Templates"
 fi
 
 
@@ -44,12 +46,20 @@ for file in $files; do
 done
 echo "...done"
 
-# symlink files and directories to ~/.config
-for directory in $directories; do
+# symlink configuration files and directories to ~/.config
+for directory in $config_directories; do
     echo "Moving any existing dotfiles from ~ to $olddir/config"
     mv ~/.config/$directory $olddir/config
     echo "Creating symlink to $dir in .config"
     ln -s $dir/config/$directory ~/.config/
+done
+
+# symlink files and directories to ~/
+for directory in $directories; do
+    echo "Moving any existing dotfiles from ~ to $olddir/"
+    mv ~/$directory $olddir/
+    echo "Creating symlink to $dir in ~/"
+    ln -s $dir/config/$directory ~/
 done
 echo "...done"
 

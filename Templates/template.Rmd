@@ -1,0 +1,15 @@
+---
+title: "TEMPLATE"
+author: "AUTHOR"
+date: Sys.Date()
+---
+
+```{r setup, include=FALSE}
+# Setup and libraries
+```
+
+## HEADER
+
+```{r}
+# example
+```

@@ -15,6 +15,7 @@ alias ls="lsd"
 alias ll="ls -lF"
 alias la="ls -a"
 alias l="ls -F"
+alias rm="mv ~/.trash"
 
 # vim
 alias vim="nvim"
@@ -28,13 +29,16 @@ alias vd='vim $(fd . ~/ --type f | fzf)'
 alias vdh='vim $(fd . ~/ | fzf)'
 
 # scripts
-alias knitr="source $dots/knitr.sh"
-alias knitr-html="source $dots/knitr-html.sh"
-alias note="$dots/make-note.sh"
 source_if_exists "$dots/ssh.sh"
 source_if_exists "$dots/server-aliases.sh"
 source_if_exists "$dots/wal-fill.sh"
 source_if_exists "$dots/time-tracking.sh"
+source_if_exists "$dots/create-from-template.sh"
+alias knitr="source $dots/knitr.sh"
+alias knitr-html="source $dots/knitr-html.sh"
+alias note="$dots/make-note.sh"
+alias tplnew="create_file_template"
+alias tpladd="add_template"
 
 # python
 alias p="python"
