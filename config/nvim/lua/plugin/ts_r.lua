@@ -1,6 +1,11 @@
 -- send r code to r term
 return {
     "danilka4/ts_r",
-    lazy = true,
-    -- TODO: keybinds
+
+    ft = { "r", "rmd" },
+
+    config = function()
+        -- something here
+        -- TODO: keybinds
+    end,
 }

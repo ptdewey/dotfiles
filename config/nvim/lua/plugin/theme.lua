@@ -4,31 +4,28 @@ local theme = {
     {
         "ellisonleao/gruvbox.nvim",
         priority = 1000,
-        config = true,
+        config = function()
+            vim.cmd.colorscheme 'gruvbox-material'
+        end,
     },
 
     -- gruvbox material
     {
         "sainnhe/gruvbox-material",
         priority = 1000,
-        config = true,
+        config = function() 
+            vim.cmd.colorscheme 'gruvbox-material'
+        end,
     },
 
     -- everforest
     {
         "neanias/everforest-nvim",
         priority = 1000,
-        -- config = true,
+        config = function()
+            vim.cmd.colorscheme 'everforest'
+        end,
     },
-
-    -- {
-    --     -- Theme inspired by Atom
-    --     'navarasu/onedark.nvim',
-    --     priority = 1000,
-    --     config = function()
-    --         vim.cmd.colorscheme 'onedark'
-    --     end,
-    -- },
 }
 
 return theme

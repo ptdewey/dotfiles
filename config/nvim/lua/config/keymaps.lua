@@ -39,15 +39,18 @@ M.general = {
     { "v", "K", ":m '<-2<CR>gv=gv", desc = "Move highlighted block up 1 line" },
 
     -- misc
-    { "t", "<Esc>", "<C-\\><C-n>", nowait = true, desc = "Exit terminal insert mode" },
-    { {"n", "v"}, "<Space>", "<Nop>", silent = true, desc = "Unbind space"},
-    { "n", "<Esc><Esc>", ":noh<Cr>", desc = "Clear search highlight on double escape"},
+    { "t", "<Esc>", "<C-\\><C-n>", nowait = true, { desc = "Exit terminal insert mode" }  },
+    { {"n", "v"}, "<Space>", "<Nop>", silent = true, { desc = "Unbind space" } },
+    { "n", "<Esc><Esc>", ":noh<Cr>", { desc = "Clear search highlight on double escape"} } ,
 
     -- diagnostics
-    { "n", "[d", vim.diagnostic.goto_prev, desc = "Go to previous diagnostic message" },
-    { "n", "]d", vim.diagnostic.goto_next, desc = "Go to next diagnostic message" },
-    { "n", "<leader>e", vim.diagnostic.open_float, desc = "Open floating diagnostic msg" },
-    { "n", "<leader>q", vim.diagnostic.setloclist, desc = "Open diagnostics List" },
+    { "n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" }  },
+    { "n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" } },
+    { "n", "<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnostic msg" }  },
+    { "n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics List" } },
+
+    -- LSP settings
+    { "n", "gd", function() vim.lsp.buf.definition() end, { desc = "LSP jump to definition" } },
 }
 
 

@@ -1,17 +1,22 @@
 -- knit r files
 return {
     "ptdewey/knitr-nvim",
-    lazy = true,
+
+    -- branch = "dev",
+    -- branch = "main",
+
+    -- load for correct file types only
+    ft = { "rmd", "r" },
+
     dependencies = {
         "nvim-lua/plenary.nvim",
     },
+
     config = function()
         require("knitr")
+        -- Map to F6/F7
+        vim.keymap.set("n", "<F6>", ":KnitRpdf<CR>", { noremap = true })
+        vim.keymap.set("n", "<F7>", ":KnitRhtml<CR>", { noremap = true })
     end,
-    -- branch = "main",
-    -- branch = "dev",
-
-    -- Map to F6
-    vim.keymap.set("n", "<F6>", ":KnitRpdf<CR>", { noremap = true }),
 }
 

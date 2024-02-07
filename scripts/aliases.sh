@@ -11,8 +11,7 @@ source_if_exists() {
 
 # general
 alias c="clear"
-# alias ls="lsd"
-alias ls="ls"
+alias ls="lsd"
 alias ll="ls -lF"
 alias la="ls -a"
 alias l="ls -F"
@@ -31,6 +30,7 @@ alias vdh='vim $(fd . ~/ | fzf)'
 # scripts
 alias knitr="source $dots/knitr.sh"
 alias knitr-html="source $dots/knitr-html.sh"
+alias note="$dots/make-note.sh"
 source_if_exists "$dots/ssh.sh"
 source_if_exists "$dots/server-aliases.sh"
 source_if_exists "$dots/wal-fill.sh"
