@@ -5,7 +5,6 @@ return {
     ft = { "r", "rmd" },
 
     config = function()
-        -- something here
         -- TODO: keybinds
     end,
 }

@@ -46,8 +46,6 @@ local options = {
 }
 
 -- set theme
--- vim.cmd([[colorscheme gruvbox-material]])
--- vim.cmd([[colorscheme biscuit]])
 vim.cmd([[colorscheme everforest]])
 
 -- highlight on yank

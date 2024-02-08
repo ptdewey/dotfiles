@@ -51,8 +51,20 @@ M.general = {
 
     -- LSP settings
     { "n", "gd", function() vim.lsp.buf.definition() end, { desc = "LSP jump to definition" } },
-}
 
+    -- Toggle Netrw
+    {
+        "n", "<C-n>",
+        function()
+            if vim.bo.filetype == 'netrw' then
+                vim.cmd('bd')
+            else
+                vim.cmd('Explore')
+            end
+        end,
+        desc = { "Toggle netrw" }
+    },
+}
 
 -- Loop through the general_keymaps and set them
 for _, table in pairs(M) do
