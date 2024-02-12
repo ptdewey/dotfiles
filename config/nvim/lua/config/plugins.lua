@@ -69,22 +69,8 @@ require('lazy').setup({
     },
 
     {
-        -- Add indentation guides even on blank lines
-        'lukas-reineke/indent-blankline.nvim',
-        -- Enable `lukas-reineke/indent-blankline.nvim`
-        -- See `:help ibl`
-        main = 'ibl',
-        opts = {},
-    },
-
-
-    {
         -- Highlight, edit, and navigate code
         'nvim-treesitter/nvim-treesitter',
-        dependencies = {
-            -- TODO: figure out if this is necessary, it seems to slow things down
-            -- 'nvim-treesitter/nvim-treesitter-textobjects',
-        },
         build = ':TSUpdate',
     },
 

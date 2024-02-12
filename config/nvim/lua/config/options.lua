@@ -46,7 +46,8 @@ local options = {
 }
 
 -- set theme
-vim.cmd([[colorscheme everforest]])
+vim.cmd([[colorscheme gruvbox]])
+-- vim.cmd([[colorscheme everforest]])
 
 -- highlight on yank
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
