@@ -28,12 +28,12 @@ PS1="%n %~ %"
 # To add support for TTYs this line can be optionally added.
 source ~/.cache/wal/colors-tty.sh
 
-if [ -d ~/repos ]; then
-  source ~/repos/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-  source ~/repos/zsh-autosuggestions/zsh-autosuggestions.zsh
+if [ -d ~/.repos ]; then
+  source ~/.repos/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  source ~/.repos/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 
-source ~/repos/powerlevel10k/powerlevel10k.zsh-theme
+source ~/.repos/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -58,6 +58,10 @@ if [ -d "$HOME/.local/bin" ]; then
 fi
 
 export TERMINFO=/usr/share/terminfo
+
+if [ -d "$HOME/.cargo" ]; then
+    source "$HOME/.cargo/env"
+fi
 
 # Fetch aliases
 if [ -f ~/dotfiles/scripts/aliases.sh ]; then

@@ -1,11 +1,12 @@
--- ~/.config/nvim/lua/snippets/init.lua
 local function load_snippets()
     local snippet_files = {
         "lua",
         "tex",
         "r",
         "rmd",
-        "go"
+        "go",
+        "c",
+        "cuda"
     }
 
     for _, file in ipairs(snippet_files) do

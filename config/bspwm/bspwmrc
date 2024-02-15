@@ -11,7 +11,6 @@ bspc monitor eDP-1 -d 1 2 3 4 5 6 7 8
 
 # Hotkeys
 pgrep -x sxhkd > /dev/null || sxhkd -c ~/.config/bspwm/sxhkdrc & 
-#sxhkd -c ~/.config/bspwm/sxhkdrc &
 setxkbmap -option caps:escape
 
 # bspwm settings

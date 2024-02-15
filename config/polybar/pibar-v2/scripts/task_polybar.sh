@@ -6,9 +6,9 @@ active_task=`task rc.gc=no rc.indent.report=4 rc.verbose= rc.report.next.columns
 echo "$most_urgent_id" > /tmp/tw_polybar_id
 
 if [[ -n "$active_task" ]]; then
-		echo " $active_task"
+		echo "$active_task"
 else	
-	echo " No current task"
+	echo "No current task"
 fi
 
 

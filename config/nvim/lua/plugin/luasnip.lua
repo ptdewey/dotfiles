@@ -5,9 +5,11 @@ return {
     ls.setup({
         load_ft_func =
             -- load snippets defined for other languages
+            -- TODO: fix this
             require("luasnip.extras.filetype_functions").extend_load_ft({
                 markdown = { "c", "cuda" },
                 rmd = { "r", "tex" },
+                cuda = { "c" },
             })
     }),
 
