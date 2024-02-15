@@ -1,7 +1,7 @@
 ---
 title: "TEMPLATE"
 author: "AUTHOR"
-date: `r Sys.Date()`
+date: "`r Sys.Date()`"
 ---
 
 ```{r setup, include=FALSE}

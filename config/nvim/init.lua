@@ -6,4 +6,5 @@ vim.g.maplocalleader = " "
 require "config.plugins"
 require "config.keymaps"
 require "config.options"
+require "autocmds"
 

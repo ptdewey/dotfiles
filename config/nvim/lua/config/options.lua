@@ -46,7 +46,8 @@ local options = {
 }
 
 -- set theme
-vim.cmd([[colorscheme gruvbox]])
+-- vim.cmd([[colorscheme gruvbox]])
+vim.cmd([[colorscheme gruvbox-material]])
 -- vim.cmd([[colorscheme everforest]])
 
 -- highlight on yank
@@ -58,7 +59,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     group = highlight_group,
     pattern = '*',
 })
-
 
 for k, v in pairs(options) do
     vim.opt[k] = v
