@@ -116,11 +116,17 @@ if [ -f ~/dotfiles/scripts/aliases.sh ]; then
   source ~/dotfiles/scripts/aliases.sh
 fi
 
+# add go to path
+if [ -d "/usr/local/go/bin" ]; then
+    export PATH=$PATH:/usr/local/go/bin
+fi
+
 # add .local/bin to path
 if [ -d "$HOME/.local/bin" ]; then
     export PATH="$HOME/.local/bin:$PATH"
 fi
 
+# add cargo to path
 if [ -d "$HOME/.cargo" ]; then
     . "$HOME/.cargo/env"
 fi
