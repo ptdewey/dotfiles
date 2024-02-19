@@ -8,7 +8,7 @@
 *crates*
 *eclipse*
 *fontawesome*
-*repos*
+*.repos*
 *.git*
 Downloads/*/
 *frc-scouting-db/output/
@@ -18,3 +18,4 @@ Downloads/*/
 *NVIDIA Nsight*
 *Downloads
 *Music
+*qmk_firmware*

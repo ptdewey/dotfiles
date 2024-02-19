@@ -5,7 +5,12 @@ return {
     lazy = true,
 
     config = function ()
-        require("nvterm").setup()
+        require("nvterm").setup({
+            behavior = {
+                -- go into term-insert mode upon opening terminal
+                auto_insert = true,
+            },
+        })
     end,
 
     -- terminal toggle bind

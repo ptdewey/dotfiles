@@ -15,13 +15,14 @@ cmp.setup {
             luasnip.lsp_expand(args.body)
         end,
     },
+    preselect = cmp.PreselectMode.None,
     mapping = cmp.mapping.preset.insert {
         ['<C-n>'] = cmp.mapping.select_next_item(),
         ['<C-p>'] = cmp.mapping.select_prev_item(),
         ['<C-d>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-y>'] = cmp.mapping.complete {},
-        ['<C-e'] = cmp.mapping.abort(),
+        ['<C-e>'] = cmp.mapping.abort(),
         ['<C-h>'] = cmp.mapping.confirm({ select = true }),
         -- ['<S-CR>'] = cmp.mapping.confirm {
         --     behavior = cmp.ConfirmBehavior.Replace,
