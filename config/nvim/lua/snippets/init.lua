@@ -6,7 +6,8 @@ local function load_snippets()
         "rmd",
         "go",
         "c",
-        "cuda"
+        "cuda",
+        "md",
     }
 
     for _, file in ipairs(snippet_files) do
