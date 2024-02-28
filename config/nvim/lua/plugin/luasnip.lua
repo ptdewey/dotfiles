@@ -14,15 +14,15 @@ return {
     }),
 
     -- keymaps for navigating editable regions
-    -- jump next
-    vim.keymap.set({ "i", "s" }, "<C-k>", function ()
+    -- jump down
+    vim.keymap.set({ "i", "s" }, "<C-j>", function ()
         if ls.expand_or_jumpable() then
             ls.expand_or_jump()
         end
     end, { silent = true }),
 
-    -- jump prev
-    vim.keymap.set({ "i", "s" }, "<C-j>", function ()
+    -- jump up
+    vim.keymap.set({ "i", "s" }, "<C-k>", function ()
         if ls.jumpable(-1) then
             ls.jump(-1)
         end

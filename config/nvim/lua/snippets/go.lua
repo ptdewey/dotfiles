@@ -1,6 +1,4 @@
 local ls = require "luasnip"
-
-
 local s = ls.s
 local i = ls.insert_node
 local t = ls.text_node
@@ -130,6 +128,9 @@ local function go_result_type(info)
             return handlers[node:type()](node, info)
         end
     end
+
+    -- no return type case
+    return { t("") }
 end
 
 local go_ret_vals = function(args)
@@ -146,17 +147,23 @@ end
 -- Go snipets
 ls.add_snippets("go", {
     -- function
-    s("func", fmt("func {}({}) {} {{\n\t{}\n}}", { i(1), i(2), i(3), i(4) })),
-
-    -- error check
-    s("if err", fmt("if {} != nil {{\n\treturn {}\n{}}}",
-        { i(1, "err"), d(2, go_ret_vals, { 1 }), i(0) })),
+    s("func", fmt("func {}({}) {}{{\n\t{}\n}}", { i(1), i(2), i(3), i(4) })),
 
     -- print statement
     s("print", fmt("fmt.Println(\"{}\")", { i(1) })),
 
+    -- struct typedef
+    s("typ", fmt("type {} struct {{\n\t{}\n}}{}", { i(1), i(2), i(0) })),
+
+    -- error check
+    s("if err", fmt("if {} != nil {{\n\treturn {}\n}}\n{}",
+        { i(1, "err"), d(2, go_ret_vals, { 1 }), i(0) })),
+    -- non-dynamic version
+    -- s("if err", fmt("if err != nil {{\n\treturn err\n}}\n{}",
+    --     { i(0) })),
+
     s(
-        "err",
+        "efi",
         fmta(
             [[
                 <val>, <err> := <f>(<args>)

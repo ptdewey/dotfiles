@@ -41,6 +41,10 @@ source ~/.repos/powerlevel10k/powerlevel10k.zsh-theme
 # Set vim to default editor
 export EDITOR=nvim
 
+# Keybinds (for ergo keyboard)
+bindkey -s "^[Om" "-"
+bindkey -s "^[Ok" "+"
+
 export PATH="$PATH:./"
 # deal with conda (and zsh) clear issue
 if [ -d ~/anaconda3 ]; then
@@ -61,6 +65,11 @@ export TERMINFO=/usr/share/terminfo
 
 if [ -d "$HOME/.cargo" ]; then
     source "$HOME/.cargo/env"
+fi
+
+# add go to path
+if [ -d "/usr/local/go/bin" ]; then
+    export PATH=$PATH:/usr/local/go/bin
 fi
 
 # Fetch aliases
