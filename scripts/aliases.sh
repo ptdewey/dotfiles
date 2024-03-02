@@ -55,9 +55,9 @@ alias ga="git add"
 function dex-fn {
 	docker exec -it $1 ${2:-bash}
 }
-alias dc="docker compose"
-alias dcu="docker compose up -d"
-alias dcd="docker compose down"
+alias dc="docker-compose"
+alias dcu="docker-compose up -d"
+alias dcd="docker-compose down"
 alias dex=dex-fn
 
 # Directories

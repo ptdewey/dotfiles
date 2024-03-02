@@ -16,6 +16,7 @@ local ts_utils = require "nvim-treesitter.ts_utils"
 
 local get_node_text = vim.treesitter.get_node_text
 
+-- Define transforms from function return type to return value
 local transforms = {
     int = function(_, _)
         return t "0"
@@ -43,7 +44,7 @@ local transforms = {
 
     -- Struct types, non-pointer case
     [function(text)
-        return string.find(text, "*", 1, true) ~= nil
+        return string.find(text, "*", 1, true)
     end] = function(_, _)
             return t "nil"
         end,
