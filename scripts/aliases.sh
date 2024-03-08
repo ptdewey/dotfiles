@@ -10,7 +10,9 @@ source_if_exists() {
 
 # general
 alias c="clear"
-alias ls="lsd"
+if [[ -f "$HOME/.cargo/bin/lsd" ]]; then
+    alias ls="lsd"
+fi
 alias ll="ls -lF"
 alias la="ls -a"
 alias l="ls -F"
@@ -25,8 +27,8 @@ alias vi="vim"
 # better cd
 alias sd='cd ./$(fd . --type d | fzf)'
 alias sdh='cd $(fd . ~/ --type d | fzf)'
-alias vd='vim $(fd . ~/ --type f | fzf)'
-alias vdh='vim $(fd . ~/ | fzf)'
+alias vd='vim $(fd . --type f | fzf)'
+alias vdh='vim $(fd . ~/ --type f | fzf)'
 
 # scripts
 source_if_exists "$dots/ssh.sh"
@@ -47,9 +49,9 @@ alias ltc="latexmk -pvc --silent"
 alias ltclean="latexmk -c"
 
 # git
-alias gs="git status"
-alias gd="git diff"
 alias ga="git add"
+alias gd="git diff"
+alias gs="git status"
 
 # Docker
 function dex-fn {
