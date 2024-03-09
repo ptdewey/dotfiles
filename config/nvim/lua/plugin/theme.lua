@@ -26,6 +26,15 @@ local theme = {
             vim.cmd.colorscheme 'everforest'
         end,
     },
+
+    -- miasma
+    {
+        "xero/miasma.nvim",
+        priority = 1000,
+        config = function()
+            vim.cmd.colorscheme 'miasma'
+        end,
+    },
 }
 
 return theme

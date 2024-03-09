@@ -3,3 +3,4 @@
 .env
 .cache
 scripts/ssh.sh
+*.uuid

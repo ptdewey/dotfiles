@@ -25,6 +25,9 @@ alias v="vim"
 alias vi="vim"
 
 # better cd
+if [[ -f "/usr/bin/fdfind" ]]; then
+    alias fd="fdfind"
+fi
 alias sd='cd ./$(fd . --type d | fzf)'
 alias sdh='cd $(fd . ~/ --type d | fzf)'
 alias vd='vim $(fd . --type f | fzf)'

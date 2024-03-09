@@ -12,8 +12,7 @@ super + b
 
 # Nautilus
 super + n
-    nemo
-	# nautilus
+	nautilus
 
 # Run menu
 super + r
