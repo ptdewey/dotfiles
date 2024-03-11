@@ -47,8 +47,8 @@ local options = {
 
 -- set theme
 -- vim.cmd([[colorscheme gruvbox]])
--- vim.cmd([[colorscheme gruvbox-material]])
-vim.cmd([[colorscheme miasma]])
+vim.cmd([[colorscheme gruvbox-material]])
+-- vim.cmd([[colorscheme miasma]])
 -- vim.cmd([[colorscheme everforest]])
 
 -- highlight on yank

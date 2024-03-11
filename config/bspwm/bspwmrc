@@ -5,8 +5,8 @@
 ###########################
 
 # Set workspaces to monitors
-bspc monitor eDP-1 -d 1 2 3 4 5 6 7 8
-# bspc monitor -d 1 2 3 4 5 6 7 8
+# bspc monitor eDP-1 -d 1 2 3 4 5 6 7 8
+bspc monitor -d 1 2 3 4 5 6 7 8
 
 
 # Hotkeys
@@ -39,7 +39,7 @@ xset +fp /home/patrick/.local/share/fonts
 xset fp rehash
 
 # set battery profile on startup 
-system76-power profile battery
+# system76-power profile battery
 
 
 ###### Autostart apps ######
@@ -50,7 +50,7 @@ system76-power profile battery
 wal -R &
 
 # Panel
-~/.config/polybar/pibar-v2/launch.sh &
+$SHELL ~/.config/polybar/pibar-v2/launch.sh &
 
 # Picom
 picom -b &
@@ -59,6 +59,7 @@ picom -b &
 dunst &
 
 # Powertop
+# TODO: this needs to run with sudo, use polkit or systemd service
 powertop --auto-tune
 
 # Fix cursor

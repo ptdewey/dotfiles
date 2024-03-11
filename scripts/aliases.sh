@@ -1,7 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 dots="$HOME/dotfiles/scripts"
 
+# custom sourcing function
 source_if_exists() {
   if [ -f "$1" ]; then
     source "$1"
@@ -10,7 +11,7 @@ source_if_exists() {
 
 # general
 alias c="clear"
-if [[ -f "$HOME/.cargo/bin/lsd" ]]; then
+if [ -z "${lsd}" ]; then
     alias ls="lsd"
 fi
 alias ll="ls -lF"

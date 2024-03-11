@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Replace with your script's directory
 SCRIPT_DIR="$HOME/Documents/projects/timetracking"

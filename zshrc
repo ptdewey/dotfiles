@@ -19,9 +19,9 @@ source ~/.repos/powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Load zsh plugins
-if [ -d ~/.repos ]; then
-    source ~/.repos/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if [ -d ~/.repos/zsh-autosuggestions ]; then
     source ~/.repos/zsh-autosuggestions/zsh-autosuggestions.zsh
+    source ~/.repos/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
     source ~/.repos/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 fi
 
