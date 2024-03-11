@@ -4,9 +4,9 @@ dots="$HOME/dotfiles/scripts"
 
 # custom sourcing function
 source_if_exists() {
-  if [ -f "$1" ]; then
-    source "$1"
-  fi
+    if [ -f "$1" ]; then
+        source "$1"
+    fi
 }
 
 # general
@@ -25,10 +25,11 @@ alias vim="nvim"
 alias v="vim"
 alias vi="vim"
 
-# better cd
-if [[ -f "/usr/bin/fdfind" ]]; then
+# Alias fdfind (ubuntu package) to fd
+if [ -f "/usr/bin/fdfind" ]; then
     alias fd="fdfind"
 fi
+# better cd
 alias sd='cd ./$(fd . --type d | fzf)'
 alias sdh='cd $(fd . ~/ --type d | fzf)'
 alias vd='vim $(fd . --type f | fzf)'
@@ -56,15 +57,30 @@ alias ltclean="latexmk -c"
 alias ga="git add"
 alias gd="git diff"
 alias gs="git status"
+alias ci="git commit -m"
+
+# pdf viewing
+pdfe() { 
+    if [ $# -eq 0 ]; then
+        echo "Error: No arguments provided. Please specify a file to open with evince."
+        return 1
+    fi
+    evince "$@" & disown
+}
+
+pdfz() { 
+    if [ $# -eq 0 ]; then
+        echo "Error: No arguments provided. Please specify a file to open with zathura."
+        return 1
+    fi
+    zathura "$@" & disown
+}
 
 # Docker
-function dex-fn {
-	docker exec -it $1 ${2:-bash}
-}
+dex() { docker exec -it $1 ${2:-bash}; }
 alias dc="docker-compose"
 alias dcu="docker-compose up -d"
 alias dcd="docker-compose down"
-alias dex=dex-fn
 
 # Directories
 alias dn="cd ~/Downloads"
@@ -72,3 +88,4 @@ alias doc="cd ~/Documents"
 alias proj="cd ~/Documents/projects"
 alias sch="cd ~/Documents/school"
 alias notes="cd ~/Documents/notes"
+

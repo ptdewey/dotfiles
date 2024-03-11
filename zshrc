@@ -34,13 +34,18 @@ bindkey -e
 # Change the look of the prompt
 PS1="%n %~ %"
 
-
 # Set vim to default editor
 export EDITOR=nvim
 
 # Keybinds (for ergo keyboard)
 bindkey -s "^[Om" "-"
 bindkey -s "^[Ok" "+"
+
+# Unbind autocomplete behavior from l/r arrow keys
+bindkey '\e[D' backward-char
+bindkey '\eOD' backward-char
+bindkey '\e[C' forward-char
+bindkey '\eOC' forward-char
 
 export PATH="$PATH:./"
 # deal with conda (and zsh) clear issue
