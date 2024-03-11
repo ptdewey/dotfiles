@@ -19,3 +19,5 @@ Downloads/*/
 *Downloads
 *Music
 *qmk_firmware*
+*nixpkgs*
+!*.config/home-manager

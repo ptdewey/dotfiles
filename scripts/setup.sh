@@ -59,7 +59,7 @@ for directory in $directories; do
     echo "Moving any existing dotfiles from ~ to $olddir/"
     mv ~/$directory $olddir/
     echo "Creating symlink to $dir in ~/"
-    ln -s $dir/config/$directory ~/$directory
+    ln -s $dir/$directory ~/$directory
 done
 echo "...done"
 
