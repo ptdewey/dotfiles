@@ -1,5 +1,5 @@
 set number
-"set nu rnu
+set nu rnu
 set showcmd
 set tabstop=4
 set softtabstop=4
@@ -17,9 +17,6 @@ set splitbelow
 set mouse=a
 
 set encoding=UTF-8
-
-" draw colorscheme from pywal
-" colorscheme wal
 
 " Better searching
 set incsearch
@@ -53,8 +50,6 @@ vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 
 " buffer keybinds
-nmap <leader>T :enew<CR>
-nmap <leader>l :bnext<CR>
-nmap <leader>h :bprevious<CR>
-nmap <leader>bq :bp <BAR> bd #<CR>
+nmap <Tab> :bnext<CR>
+nmap <S-Tab> :bprevious<CR>
 

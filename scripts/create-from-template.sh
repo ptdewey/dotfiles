@@ -3,7 +3,7 @@
 # Easily create new files from templates
 
 # Set equal to directory containing template files
-templates_dir="$HOME/Templates"
+templates_dir="$HOME/dotfiles/templates"
 
 # Create new file of specified name and type from template
 create_file_template() {

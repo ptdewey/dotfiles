@@ -1,7 +1,6 @@
 configuration {
 	modi: "window,run,ssh,drun";
 	show-icons: true;
-	icon-theme: "Patrick-Hybrid-Icons";
 	fake-transparency: false;
 	hide-scrollbar: true;
 	bw: 0;

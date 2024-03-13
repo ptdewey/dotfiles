@@ -17,12 +17,6 @@ My essential configuration files and scripts
 - polybar
 - kitty
 - pywal
-
-## Screenshots
-
-![](assets/5_001.png)
-
-![](assets/4_001.png)
-
-![](assets/1_002.png)
-
+- fzf
+- ripgrep
+- fd
