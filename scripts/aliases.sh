@@ -11,8 +11,8 @@ source_if_exists() {
 
 # general
 alias c="clear"
-if [ -z "${lsd}" ]; then
-    alias ls="lsd"
+if command -v lsd >/dev/null 2>&1; then
+    alias ls='lsd'
 fi
 alias ll="ls -lF"
 alias la="ls -a"
@@ -26,7 +26,8 @@ alias v="vim"
 alias vi="vim"
 
 # Alias fdfind (ubuntu package) to fd
-if [ -f "/usr/bin/fdfind" ]; then
+# if [ -f "/usr/bin/fdfind" ]; then
+if command -v fdfind >/dev/null 2>&1; then
     alias fd="fdfind"
 fi
 # better cd
