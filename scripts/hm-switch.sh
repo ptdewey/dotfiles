@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# rebuild home manager from home.nix and flake.nix
 
 # exit immediately on failure
 set -e
@@ -12,9 +13,10 @@ pushd ~/dotfiles/config/home-manager
 # shows your changes
 git diff -U0 *.nix
 
+# Stage git files
 git add home.nix flake.nix flake.lock
 
-echo "Home-Manager Rebuilding..."
+echo "Rebuilding home-manager..."
 
 # rebuild, output simplified errors, log trackebacks
 home-manager switch --flake . &>hm-switch.log ||
@@ -28,4 +30,3 @@ git commit -am "Home Manager: $current"
 
 # switch back to previous directory
 popd
-

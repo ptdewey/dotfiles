@@ -13,10 +13,10 @@ fi
 # To add support for TTYs this line can be optionally added.
 source ~/.cache/wal/colors-tty.sh
 
-source ~/.repos/powerlevel10k/powerlevel10k.zsh-theme 
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+if [ -d ~/.repos/powerlevel10k ]; then
+    source ~/.repos/powerlevel10k/powerlevel10k.zsh-theme 
+    [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+fi
 
 # Load zsh plugins
 if [ -d ~/.repos/zsh-autosuggestions ]; then

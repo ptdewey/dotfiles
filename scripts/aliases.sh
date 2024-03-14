@@ -26,10 +26,11 @@ alias v="vim"
 alias vi="vim"
 
 # Alias fdfind (ubuntu package) to fd
-# if [ -f "/usr/bin/fdfind" ]; then
+# TODO: maybe remove since I'm using nix for fd now
 if command -v fdfind >/dev/null 2>&1; then
     alias fd="fdfind"
 fi
+
 # better cd
 alias sd='cd ./$(fd . --type d | fzf)'
 alias sdh='cd $(fd . ~/ --type d | fzf)'
@@ -42,8 +43,10 @@ source_if_exists "$dots/server-aliases.sh"
 source_if_exists "$dots/wal-fill.sh"
 source_if_exists "$dots/time-tracking.sh"
 source_if_exists "$dots/create-from-template.sh"
-alias knitr="source $dots/knitr.sh"
+alias knitr="source_if_exists $dots/knitr.sh"
 alias note="$dots/make-note.sh"
+alias hm-switch="$SHELL $dots/hm-switch.sh"
+alias hm-update="$SHELL $dots/hm-update.sh"
 alias tplnew="create_file_template"
 alias tpladd="add_template"
 

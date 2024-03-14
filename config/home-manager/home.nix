@@ -11,15 +11,22 @@
 
     # Install nix packages into environment
     home.packages = with pkgs; [
+        bspwm
         csvlens
+        dunst
         fd
         feh
         fzf
         glow
         lsd
         neovim
+        polybar
+        picom
         pywal
         ripgrep
+        rofi
+        rustup
+        sxhkd
         tokei
     ];
 
