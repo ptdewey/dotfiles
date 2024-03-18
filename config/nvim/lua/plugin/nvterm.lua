@@ -2,8 +2,10 @@
 return {
     "ptdewey/nvterm",
 
+    -- only load when requested
     lazy = true,
 
+    -- plugin setup
     config = function ()
         require("nvterm").setup({
             behavior = {
@@ -15,7 +17,7 @@ return {
 
     -- terminal toggle bind
     vim.keymap.set(
-        {"n", "t"},
+        { "n", "t" },
         "<A-h>",
         function ()
             require("nvterm.terminal").toggle "horizontal"

@@ -22,7 +22,6 @@ local on_attach = function(_, bufnr)
 
     -- See `:help K` for why this keymap
     nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-    -- TODO: rebind this probably (I remapped it to navigation)
     nmap('<leader>k', vim.lsp.buf.signature_help, 'Signature Documentation')
 
     -- Lesser used LSP functionality

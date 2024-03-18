@@ -1,10 +1,10 @@
 -- undo tree
 return {
-    'mbbill/undotree',
+    {
+        'mbbill/undotree',
 
-    lazy = false,
+        event = "VeryLazy",
 
-    config = function()
         vim.keymap.set("n", "<leader>ut", ":UndotreeToggle<CR>")
-    end,
+    }
 }

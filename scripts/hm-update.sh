@@ -12,7 +12,7 @@ git add home.nix flake.nix flake.lock
 echo "Updating home-manager packages..."
 
 # rebuild, output simplified errors, log trackebacks
-nix flake update &>hm-update.log ||
+nix flake update 2>&1 | tee hm-update.log ||
     (cat hm-update.log | grep --color error && false)
 
 # TODO: print out updated packages
