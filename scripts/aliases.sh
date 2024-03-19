@@ -54,7 +54,8 @@ alias tpladd="add_template"
 alias p="python"
 
 # latex
-alias ltc="latexmk -pvc --silent"
+alias ltc="latexmk -pdf"
+alias ltcl="latexmk -pvc --silent"
 alias ltclean="latexmk -c"
 
 # git
@@ -81,10 +82,11 @@ pdfz() {
 }
 
 # Docker
-dex() { docker exec -it $1 ${2:-bash}; }
+alias dps="docker ps"
 alias dc="docker-compose"
 alias dcu="docker-compose up -d"
 alias dcd="docker-compose down"
+dex() { docker exec -it $1 ${2:-bash}; }
 
 # Directories
 alias dn="cd ~/Downloads"

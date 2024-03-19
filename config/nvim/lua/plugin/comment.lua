@@ -2,17 +2,10 @@
 return {
     {
         'numToStr/Comment.nvim',
-
-        events = "VeryLazy",
-
-        opts = {},
-
-        -- run plugin setup
+        event = "VeryLazy",
         config = function()
             require("Comment").setup()
         end,
-
-        -- set keybinds
         vim.keymap.set("n", "<leader>/", "gcc", {
             desc = "toggle comment",
             remap = true,

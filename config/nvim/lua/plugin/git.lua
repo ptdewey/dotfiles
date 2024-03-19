@@ -3,11 +3,13 @@ return {
     -- git integration
     {
         'tpope/vim-fugitive',
+        event = "VeryLazy",
     },
 
     -- github integration
     {
         'tpope/vim-rhubarb',
+        event = "VeryLazy",
     },
 
     -- add git signs to gutter
