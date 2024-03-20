@@ -23,8 +23,8 @@ return {
 
         config = function()
             require("knitr").setup()
+            vim.keymap.set("n", "<F6>", ":KnitRpdf<CR>", { noremap = true })
         end,
 
-        vim.keymap.set("n", "<F6>", ":KnitRpdf<CR>", { noremap = true })
     },
 }

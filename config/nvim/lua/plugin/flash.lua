@@ -26,5 +26,10 @@ return {
                 require("flash").toggle()
             end, desc = "Toggle Flash Search" },
         },
+
+        -- disable prompt
+        prompt = {
+            enabled = false,
+        }
     },
 }
