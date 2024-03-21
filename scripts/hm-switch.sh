@@ -26,7 +26,7 @@ home-manager switch --flake . &>hm-switch.log ||
 current=$(home-manager generations | head -n 1)
 
 # commit all changes with the generation metadata
-git commit -am "Home Manager: $current"
+# git commit -am "Home Manager: $current"
 
 # switch back to previous directory
 popd

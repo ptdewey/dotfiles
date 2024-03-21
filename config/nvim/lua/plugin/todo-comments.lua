@@ -5,7 +5,9 @@ return {
     lazy = false,
 
     config = function()
-        require("todo-comments").setup()
+        require("todo-comments").setup({
+            signs = false,
+        })
         -- navigation
         vim.keymap.set("n", "]t", function()
           require("todo-comments").jump_next()

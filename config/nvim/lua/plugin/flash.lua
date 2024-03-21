@@ -27,9 +27,11 @@ return {
             end, desc = "Toggle Flash Search" },
         },
 
-        -- disable prompt
-        prompt = {
-            enabled = false,
+        opts = {
+            -- disable prompt
+            prompt = {
+                enabled = false,
+            }
         }
     },
 }

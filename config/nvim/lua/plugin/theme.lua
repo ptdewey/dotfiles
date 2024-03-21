@@ -18,16 +18,10 @@ local theme = {
         priority = 1000,
     },
 
-    -- miasma
+    -- darkearth
     {
-        "xero/miasma.nvim",
+        "ptdewey/DarkEarth-nvim",
         priority = 1000,
-    },
-
-    -- rose pien
-    { 
-        "rose-pine/neovim",
-        name = "rose-pine"
     },
 }
 
