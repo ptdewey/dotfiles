@@ -23,6 +23,12 @@ local theme = {
         "xero/miasma.nvim",
         priority = 1000,
     },
+
+    -- rose pien
+    { 
+        "rose-pine/neovim",
+        name = "rose-pine"
+    },
 }
 
 return theme

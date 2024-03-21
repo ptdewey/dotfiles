@@ -6,6 +6,7 @@ return {
         options = {
             icons_enabled = false,
             theme = 'auto',
+            -- theme = 'pywal-nvim',
             component_separators = '|',
             section_separators = '',
         },
