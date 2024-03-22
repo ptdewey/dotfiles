@@ -40,7 +40,6 @@ M.general = {
 
     -- misc
     { "t", "<Esc>", "<C-\\><C-n>", nowait = true, { desc = "Exit terminal insert mode" }  },
-    { {"n", "v"}, "<Space>", "<Nop>", silent = true, { desc = "Unbind space" } },
     { "n", "<leader>n", ":noh<Cr>", { desc = "Clear search highlight on double escape"} } ,
 
     -- diagnostics

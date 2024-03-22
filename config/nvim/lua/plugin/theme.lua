@@ -20,7 +20,7 @@ local theme = {
 
     -- darkearth
     {
-        "ptdewey/DarkEarth-nvim",
+        "ptdewey/darkearth-nvim",
         priority = 1000,
     },
 }
