@@ -55,10 +55,10 @@ M.general = {
     {
         "n", "<C-n>",
         function()
-            if vim.bo.filetype == 'netrw' then
-                vim.cmd('bd')
+            if vim.bo.filetype == "netrw" then
+                vim.cmd("bd")
             else
-                vim.cmd('Explore')
+                vim.cmd("Explore")
             end
         end,
         desc = { "Toggle netrw" }

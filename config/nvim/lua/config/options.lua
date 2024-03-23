@@ -45,22 +45,25 @@ local options = {
     background = "dark", -- alternative: "light"
 }
 
--- set theme
--- vim.cmd([[colorscheme gruvbox]])
+-- custom variables
+local vars = {
+    -- netrw settings
+    netrw_banner = 0,
+    netrw_bufsettings = "noma nomod nu nobl nowrap ro",
+    -- netrw_list_hide = [[\(^|\s\s\)\zs\.\S\+]], -- TODO: this doesnt seem to work right
+    netrw_hide = 1,
+}
+
+-- theme options
 -- vim.cmd([[colorscheme gruvbox-material]])
 vim.cmd([[colorscheme darkearth]])
--- vim.cmd([[colorscheme everforest]])
 
--- highlight on yank
-local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
-vim.api.nvim_create_autocmd('TextYankPost', {
-    callback = function()
-        vim.highlight.on_yank()
-    end,
-    group = highlight_group,
-    pattern = '*',
-})
-
+-- apply options
 for k, v in pairs(options) do
     vim.opt[k] = v
+end
+
+-- set variables
+for k, v in pairs(vars) do
+    vim.g[k] = v
 end

@@ -1,11 +1,5 @@
 -- theme plugins (set theme in options.lua)
 local theme = {
-    -- gruvbox light/dark
-    {
-        "ellisonleao/gruvbox.nvim",
-        priority = 1000,
-    },
-
     -- gruvbox material
     {
         "sainnhe/gruvbox-material",
@@ -21,6 +15,7 @@ local theme = {
     -- darkearth
     {
         "ptdewey/darkearth-nvim",
+        -- dir = "~/Documents/projects/darkearth-nvim",
         priority = 1000,
     },
 }
