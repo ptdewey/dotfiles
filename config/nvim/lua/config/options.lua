@@ -37,6 +37,10 @@ local options = {
     -- break indent
     breakindent = true,
 
+    -- dictionary file
+    spelllang = "en_us",
+    spellfile = vim.fn.expand("$HOME/.config/nvim/spell/en.utf-8.add"),
+
     -- aesthetics
     termguicolors = true,
     -- TODO: highlight numbers instead of showing git signs?
@@ -53,6 +57,7 @@ local vars = {
     -- netrw_list_hide = [[\(^|\s\s\)\zs\.\S\+]], -- TODO: this doesnt seem to work right
     netrw_hide = 1,
 }
+
 
 -- theme options
 -- vim.cmd([[colorscheme gruvbox-material]])

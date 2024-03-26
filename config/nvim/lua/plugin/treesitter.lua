@@ -2,6 +2,7 @@
 local M = {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
+    priority = 999,
 }
 
 -- Defer Treesitter setup after first render to improve startup time of 'nvim {filename}'
