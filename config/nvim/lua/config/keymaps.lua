@@ -11,10 +11,10 @@ M.general = {
     { "n", "<S-tab>", ":bprev <CR>", remap = true, desc = "shift tab to switch buffers" },
 
     -- window movement
-    { "n", "<C-h>", "<C-w>h", remap = true, desc = "move to left window" },
-    { "n", "<C-l>", "<C-w>l", remap = true, desc = "move to right window" },
-    { "n", "<C-j>", "<C-w>j", remap = true, desc = "move to lower window" },
-    { "n", "<C-k>", "<C-w>k", remap = true, desc = "move to upper window" },
+    { "n", "<A-h>", "<C-w>h", remap = true, desc = "move to left window" },
+    { "n", "<A-l>", "<C-w>l", remap = true, desc = "move to right window" },
+    { "n", "<A-j>", "<C-w>j", remap = true, desc = "move to lower window" },
+    { "n", "<A-k>", "<C-w>k", remap = true, desc = "move to upper window" },
 
     -- move down visual lines
     { { "n", "v" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true } },

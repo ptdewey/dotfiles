@@ -22,7 +22,7 @@ fi
 if [ -d ~/.repos/zsh-autosuggestions ]; then
     source ~/.repos/zsh-autosuggestions/zsh-autosuggestions.zsh
     source ~/.repos/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-    source ~/.repos/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+    # source ~/.repos/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 fi
 
 HISTFILE=~/.histfile

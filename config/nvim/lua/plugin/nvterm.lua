@@ -18,7 +18,7 @@ return {
     -- terminal toggle bind
     vim.keymap.set(
         { "n", "t" },
-        "<A-h>",
+        "<A-m>",
         function ()
             require("nvterm.terminal").toggle "horizontal"
         end
