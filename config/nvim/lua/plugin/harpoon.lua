@@ -21,7 +21,6 @@ return {
                 harpoon:list():append()
             end, { desc = '[H]arpoon [A]dd Mark' })
 
-            -- vim.keymap.set("n", "<leader>ht", function()
             vim.keymap.set("n", "<C-e>", function()
                 harpoon.ui:toggle_quick_menu(harpoon:list())
             end, { desc = "[H]arpoon [T]oggle menu" })
