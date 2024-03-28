@@ -13,11 +13,12 @@ return {
                 settings = {
                     save_on_toggle = true,
                     sync_on_ui_close = true,
-                }
+                },
+                -- BufLeave = HarpoonPartialConfigItem:BufLeave()
             })
 
             -- keymaps
-            vim.keymap.set("n", "<C-a>", function()
+            vim.keymap.set("n", "<leader>a", function()
                 harpoon:list():append()
             end, { desc = '[H]arpoon [A]dd Mark' })
 

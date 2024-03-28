@@ -1,6 +1,7 @@
--- Nice statusline
+-- statusline plugins
 return {
     {
+        -- nice statusline
         "nvim-lualine/lualine.nvim",
 
         opts = {
@@ -10,30 +11,37 @@ return {
                 component_separators = '|',
                 section_separators = '',
             },
+            -- winbar = {
+            --     lualine_a = { "buffers" },
+            --     lualine_z = { "hostname" },
+            -- },
             sections = {
-                -- center section
                 lualine_b = {
-                    { "harpoon2", },
+                    {
+                        "harpoon2",
+                        padding = { left = 1, right = 0 },
+                        indicators = { "h", "j", "k", "l" },
+                        active_indicators = { "H", "J", "K", "L" },
+                    },
                 },
                 lualine_c = {
                     {
                         "filename",
-                        padding = 0,
+                        padding = 1,
                     },
                 },
-                lualine_x = {},
-                lualine_y = {
-                    "diagnostics", "diff", "branch", "filetype",
-                },
+                lualine_x = { "diagnostics", "diff" },
+                lualine_y = { "branch" },
             },
         },
     },
 
+    -- harpoon status plugin
     {
         "letieu/harpoon-lualine",
         dependencies = {
             "ThePrimeagen/harpoon",
-            branch = "harpoon2"
-        }
+            branch = "harpoon2",
+        },
     }
 }
