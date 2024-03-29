@@ -16,12 +16,12 @@ echo "Is this a server machine? (y/n)"
 read -r confirmation
 if [[ "$confirmation" == "y" || "$confirmation" == "Y" ]]; then
     echo "Running in server configuration mode..."
-    files="bashrc vimrc zshrc ignore tmux.conf fonts"
+    files="bashrc vimrc zshrc ignore tmux.conf"
     config_directories="nvim"
     directories="Templates"
 else
     echo "Running in laptop/desktop configuration mode..."
-    files="bashrc vimrc zshrc xinitrc Xresources ignore tmux.conf lintr Rprofile fonts"
+    files="bashrc vimrc zshrc xinitrc Xresources ignore tmux.conf lintr Rprofile"
     config_directories="bspwm rofi polybar kitty nvim"
     directories="Templates"
 fi
@@ -61,5 +61,11 @@ for directory in $directories; do
     echo "Creating symlink to $dir in ~/"
     ln -s $dir/$directory ~/$directory
 done
+
+# special case for symlinking fonts
+echo "Creating symlink to $dir/fonts in ~/.local/share/fonts"
+mkdir -p ~/.local/share/fonts
+ln -s $dir/fonts ~/.local/share/fonts/custom
+
 echo "...done"
 
