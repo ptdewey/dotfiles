@@ -42,7 +42,7 @@ xset fp rehash
 # system76-power profile battery
 
 # mouse settings
-xinput --set-prop 11 320 0
+xinput --set-prop 11 321 0
 
 
 ###### Autostart apps ######
