@@ -7,7 +7,7 @@ return {
             -- load snippets defined for other languages
             -- TODO: fix this
             require("luasnip.extras.filetype_functions").extend_load_ft({
-                markdown = { "c", "cuda" },
+                markdown = { "c", "cuda", "tex" },
                 rmd = { "r", "tex" },
                 cuda = { "c" },
             })

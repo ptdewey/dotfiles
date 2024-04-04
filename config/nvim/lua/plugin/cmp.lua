@@ -13,6 +13,10 @@ return {
         'rafamadriz/friendly-snippets',
 
         'hrsh7th/cmp-buffer',
+
+
+        -- completion source from dictionary
+        'octaltree/cmp-look',
     },
 
     -- configure plugin
@@ -78,6 +82,15 @@ return {
                 { name = "nvim_lua" },
                 { name = "path" },
                 { name = "buffer" },
+                {
+                    name = "look",
+                    keyword_length = 2,
+                    option = {
+                        convert_case = true,
+                        loud = true,
+                        --dict = '/usr/share/dict/words',
+                    },
+                },
             },
         }
 
@@ -87,6 +100,6 @@ return {
                 { name = 'buffer' }
             }
         })
-
     end
+
 }

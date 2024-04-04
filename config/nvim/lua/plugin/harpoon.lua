@@ -19,7 +19,7 @@ return {
 
             -- keymaps
             vim.keymap.set("n", "<leader>a", function()
-                harpoon:list():append()
+                harpoon:list():add()
             end, { desc = '[H]arpoon [A]dd Mark' })
 
             vim.keymap.set("n", "<C-e>", function()
