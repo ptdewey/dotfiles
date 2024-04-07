@@ -60,8 +60,7 @@ local vars = {
 
 
 -- theme options
--- vim.cmd([[colorscheme gruvbox-material]])
-vim.cmd([[colorscheme darkearth]])
+vim.cmd.colorscheme("darkearth")
 
 -- apply options
 for k, v in pairs(options) do

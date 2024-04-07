@@ -11,8 +11,8 @@ return {
             require("yankbank").setup({
                 sep = "------",
                 max_entries = 10,
-                num_behavior = "prefix",
-                -- num_behavior = "jump",
+                -- num_behavior = "prefix",
+                num_behavior = "jump",
                 keymaps = {
                     -- navigation_next = "h",
                     -- navigation_prev = "l",
@@ -21,6 +21,7 @@ return {
             vim.keymap.set("n", "<leader>p", "<cmd>YankBank<CR>",
                 { noremap = true })
         end,
+
     },
 }
 
