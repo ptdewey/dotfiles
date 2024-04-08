@@ -94,12 +94,13 @@ return {
             },
         }
 
-        cmp.setup.cmdline({ '/', '?' }, {
-            mapping = cmp.mapping.preset.cmdline(),
-            sources = {
-                { name = 'buffer' }
-            }
-        })
+        -- NOTE: commented out to fix that annoying autocomplete issue
+        -- cmp.setup.cmdline({ '/', '?' }, {
+        --     mapping = cmp.mapping.preset.cmdline(),
+        --     sources = {
+        --         { name = 'buffer' }
+        --     }
+        -- })
     end
 
 }

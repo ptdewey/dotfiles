@@ -3,6 +3,7 @@ return {
     {
         -- nice statusline
         "nvim-lualine/lualine.nvim",
+        -- dir = "~/Documents/projects/fix/harpoon-lualine",
 
         opts = {
             options = {
@@ -22,6 +23,7 @@ return {
                         padding = { left = 1, right = 0 },
                         indicators = { "h", "j", "k", "l" },
                         active_indicators = { "H", "J", "K", "L" },
+                        no_harpoon = "Harpoon not loaded",
                     },
                 },
                 lualine_c = {
@@ -31,7 +33,9 @@ return {
                     },
                 },
                 lualine_x = { "diagnostics", "diff" },
+                -- lualine_y = { "filetype" },
                 lualine_y = { "branch" },
+                -- lualine_z = { "filetype" },
             },
         },
     },

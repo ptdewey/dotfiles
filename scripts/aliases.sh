@@ -26,7 +26,6 @@ alias v="vim"
 alias vi="vim"
 
 # Alias fdfind (ubuntu package) to fd
-# TODO: maybe remove since I'm using nix for fd now
 if command -v fdfind >/dev/null 2>&1; then
     alias fd="fdfind"
 fi
@@ -34,9 +33,10 @@ fi
 # better cd
 alias sd='cd ./$(fd . --type d | fzf)'
 alias sdh='cd $(fd . ~/ --type d | fzf)'
+alias s='cd $(fd . ~/ --type d | fzf)'
 alias vd='vim $(fd . --type f | fzf)'
 alias vdh='vim $(fd . ~/ --type f | fzf)'
-
+alias vh='vim $(fd . ~/ --type f | fzf)'
 # scripts
 source_if_exists "$dots/ssh.sh"
 source_if_exists "$dots/server-aliases.sh"
