@@ -27,7 +27,15 @@ return {
             end, desc = "Toggle Flash Search" },
         },
 
+
         opts = {
+            modes = {
+                -- disable flash on search
+                search = {
+                    enabled = false,
+                },
+            },
+
             -- disable prompt
             prompt = {
                 enabled = false,

@@ -19,17 +19,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     pattern = '*',
 })
 
--- remove search highlight on instert or moving cursor
--- TODO: add back highlight on n/N search
-vim.api.nvim_create_autocmd({"InsertEnter", "CursorMoved"}, {
-    callback = function()
-        local function s()
-            return vim.cmd("nohlsearch")
-        end
-        return vim.schedule(s)
-    end
-})
-
 -- close empty buffer on buffer switch
 vim.api.nvim_create_autocmd("BufLeave", {
     callback = function()
@@ -42,3 +31,10 @@ vim.api.nvim_create_autocmd("BufLeave", {
         end
     end
 })
+
+-- remove trailing whitespace upon save
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+    pattern = { "*" },
+    command = [[%s/\s\+$//e]],
+})
+
