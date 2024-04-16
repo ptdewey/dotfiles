@@ -56,6 +56,7 @@ local vars = {
     netrw_bufsettings = "noma nomod nu nobl nowrap ro",
     -- netrw_list_hide = [[\(^|\s\s\)\zs\.\S\+]], -- TODO: this doesnt seem to work right
     netrw_hide = 1,
+    have_nerd_font = true,
 }
 
 

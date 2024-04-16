@@ -93,5 +93,14 @@ alias dn="cd ~/Downloads"
 alias doc="cd ~/Documents"
 alias proj="cd ~/Documents/projects"
 alias sch="cd ~/Documents/school"
-alias notes="cd ~/Documents/notes"
+# alias notes="cd ~/Documents/notes"
+alias notes='cd $(fd . ~/Documents/notes --type d | fzf)'
 
+# TODO: make this actually work well with autocompletion
+# mdn() {
+#     if [ $# -eq 0 ]; then
+#         echo "Invalid argument for 'mv ~/Downloads/{arg} ./'"
+#         return 1
+#     fi
+#     mv ~/Downloads/$1 ./
+# }
