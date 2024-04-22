@@ -37,6 +37,7 @@ alias s='cd $(fd . ~/ --type d | fzf)'
 alias vd='vim $(fd . --type f | fzf)'
 alias vdh='vim $(fd . ~/ --type f | fzf)'
 alias vh='vim $(fd . ~/ --type f | fzf)'
+
 # scripts
 source_if_exists "$dots/ssh.sh"
 source_if_exists "$dots/server-aliases.sh"
@@ -49,6 +50,7 @@ alias hm-switch="$SHELL $dots/hm-switch.sh"
 alias hm-update="$SHELL $dots/hm-update.sh"
 alias tplnew="create_file_template"
 alias tpladd="add_template"
+alias cht="$dots/chtfzf.sh"
 
 # python
 alias p="python"
@@ -65,7 +67,7 @@ alias gs="git status"
 alias ci="git commit -m"
 
 # pdf viewing
-pdfe() { 
+pdfe() {
     if [ $# -eq 0 ]; then
         echo "Error: No arguments provided. Please specify a file to open with evince."
         return 1
@@ -73,7 +75,7 @@ pdfe() {
     evince "$@" & disown
 }
 
-pdfz() { 
+pdfz() {
     if [ $# -eq 0 ]; then
         echo "Error: No arguments provided. Please specify a file to open with zathura."
         return 1
