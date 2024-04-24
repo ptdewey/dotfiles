@@ -127,6 +127,6 @@ if [ -d "$HOME/.local/bin" ]; then
 fi
 
 # add cargo to path
-if [ -d "$HOME/.cargo" ]; then
-    . "$HOME/.cargo/env"
+if [ -f "$HOME/.cargo/env" ]; then
+    source "$HOME/.cargo/env"
 fi

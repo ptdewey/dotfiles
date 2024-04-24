@@ -14,7 +14,7 @@ fi
 source ~/.cache/wal/colors-tty.sh
 
 if [ -d ~/.repos/powerlevel10k ]; then
-    source ~/.repos/powerlevel10k/powerlevel10k.zsh-theme 
+    source ~/.repos/powerlevel10k/powerlevel10k.zsh-theme
     [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 fi
 
@@ -53,7 +53,7 @@ if [ -d "$HOME/anaconda3" ]; then
     export PATH="/home/patrick/anaconda3/bin:/home/patrick/anaconda3/condabin:$PATH"
 fi
 
-# add julia to path 
+# add julia to path
 if [ -d "$HOME/.local/bin/julia-1.7.3/bin" ]; then
     export PATH="$PATH:/home/patrick/.local/bin/julia-1.7.3/bin"
 fi
@@ -65,7 +65,7 @@ fi
 
 export TERMINFO=/usr/share/terminfo
 
-if [ -d "$HOME/.cargo" ]; then
+if [ -f "$HOME/.cargo/env" ]; then
     source "$HOME/.cargo/env"
 fi
 

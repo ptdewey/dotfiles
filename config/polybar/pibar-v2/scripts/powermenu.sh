@@ -8,7 +8,7 @@
 dir="~/.config/polybar/pibar-v2/scripts/rofi"
 uptime=$(uptime -p | sed -e 's/up //g')
 
-rofi_command="rofi -theme $dir/powermenu.rasi"
+rofi_command="rofi -theme $dir/powermenu.rasi -dpi .9"
 
 # Options
 shutdown="Shutdown"
