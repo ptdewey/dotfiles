@@ -111,22 +111,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# fetch aliases
-if [ -f ~/dotfiles/scripts/aliases.sh ]; then
-  source ~/dotfiles/scripts/aliases.sh
-fi
 
-# add go to path
-if [ -d "/usr/local/go/bin" ]; then
-    export PATH=$PATH:/usr/local/go/bin
-fi
-
-# add .local/bin to path
-if [ -d "$HOME/.local/bin" ]; then
-    export PATH="$HOME/.local/bin:$PATH"
-fi
-
-# add cargo to path
-if [ -f "$HOME/.cargo/env" ]; then
-    source "$HOME/.cargo/env"
+# Fetch path additions and aliases
+# rc.sh is shared with zshrc
+if [ -f "$HOME/dotfiles/scripts/rc.sh" ]; then
+    source "$HOME/dotfiles/scripts/rc.sh"
 fi

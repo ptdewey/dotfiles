@@ -47,34 +47,10 @@ bindkey '\eOD' backward-char
 bindkey '\e[C' forward-char
 bindkey '\eOC' forward-char
 
-export PATH="$PATH:./"
-# deal with conda (and zsh) clear issue
-if [ -d "$HOME/anaconda3" ]; then
-    export PATH="/home/patrick/anaconda3/bin:/home/patrick/anaconda3/condabin:$PATH"
-fi
-
-# add julia to path
-if [ -d "$HOME/.local/bin/julia-1.7.3/bin" ]; then
-    export PATH="$PATH:/home/patrick/.local/bin/julia-1.7.3/bin"
-fi
-
-# add .local/bin to path
-if [ -d "$HOME/.local/bin" ]; then
-    export PATH="$HOME/.local/bin:$PATH"
-fi
-
 export TERMINFO=/usr/share/terminfo
 
-if [ -f "$HOME/.cargo/env" ]; then
-    source "$HOME/.cargo/env"
-fi
-
-# add go to path
-if [ -d "/usr/local/go/bin" ]; then
-    export PATH=$PATH:/usr/local/go/bin
-fi
-
-# Fetch aliases
-if [ -f "$HOME/dotfiles/scripts/aliases.sh" ]; then
-    source "$HOME/dotfiles/scripts/aliases.sh"
+# Fetch path additions and aliases
+# rc.sh is shared with bashrc
+if [ -f "$HOME/dotfiles/scripts/rc.sh" ]; then
+    source "$HOME/dotfiles/scripts/rc.sh"
 fi

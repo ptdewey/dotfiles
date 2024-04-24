@@ -18,12 +18,12 @@ if [[ "$confirmation" == "y" || "$confirmation" == "Y" ]]; then
     echo "Running in server configuration mode..."
     files="bashrc vimrc zshrc ignore tmux.conf"
     config_directories="nvim"
-    directories="Templates"
+    directories="templates"
 else
     echo "Running in laptop/desktop configuration mode..."
     files="bashrc vimrc zshrc xinitrc Xresources ignore tmux.conf lintr Rprofile"
-    config_directories="bspwm rofi polybar kitty nvim"
-    directories="Templates"
+    config_directories="bspwm rofi polybar kitty nvim zathura wezterm"
+    directories="templates"
 fi
 
 
@@ -37,7 +37,7 @@ echo "Changing to the $dir directory"
 cd $dir
 echo "...done"
 
-# move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks 
+# move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks
 for file in $files; do
     echo "Moving any existing dotfiles from ~ to $olddir"
     mv ~/.$file $olddir/
