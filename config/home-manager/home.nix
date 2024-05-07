@@ -18,25 +18,27 @@
 
     # Install nix packages into environment
     home.packages = with pkgs; [
-        # bspwm
         csvlens
-        # dunst
         fd
-        # feh
         foliate
         fzf
         glow
         lsd
+        ripgrep
+        rustup
+        stylua
+        tokei
         # neovim
+
+        ## window manager config
+        # bspwm
+        # dunst
+        # feh
         # polybar
         # picom
         # pywal
-        ripgrep
-        rofi
-        rustup
-        # stylua
+        # rofi
         # sxhkd
-        tokei
     ];
 
     # Manage dotfiles

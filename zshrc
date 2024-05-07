@@ -47,6 +47,13 @@ bindkey '\eOD' backward-char
 bindkey '\e[C' forward-char
 bindkey '\eOC' forward-char
 
+autoload -U compinit; compinit
+zstyle ':completion:*' file-sort modification
+zstyle ':completion:*' completer _extensions _complete _approximate
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/.zcompcache"
+# zstyle ':completion:*' file-sort modification
+
 export TERMINFO=/usr/share/terminfo
 
 # Fetch path additions and aliases
