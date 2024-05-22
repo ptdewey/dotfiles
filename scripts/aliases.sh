@@ -13,6 +13,8 @@ source_if_exists() {
 alias c="clear"
 if command -v lsd >/dev/null 2>&1; then
     alias ls='lsd'
+else;
+    alias ls="ls --color"
 fi
 alias ll="ls -lF"
 alias la="ls -a"
@@ -98,11 +100,3 @@ alias sch="cd ~/Documents/school"
 # alias notes="cd ~/Documents/notes"
 alias notes='cd $(fd . ~/Documents/notes --type d | fzf)'
 
-# TODO: make this actually work well with autocompletion
-# mdn() {
-#     if [ $# -eq 0 ]; then
-#         echo "Invalid argument for 'mv ~/Downloads/{arg} ./'"
-#         return 1
-#     fi
-#     mv ~/Downloads/$1 ./
-# }

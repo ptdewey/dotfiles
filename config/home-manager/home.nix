@@ -22,21 +22,28 @@
         fd
         foliate
         fzf
-        glow
-        lsd
+        # lsd
         ripgrep
-        rustup
-        stylua
         tokei
-        # neovim
+        rustup
+
+        neovim
+        tree-sitter
+
+        feh
+        pywal
+
+        stylua
+        luajitPackages.luarocks
+        go
+        glow
+        nodejs
 
         ## window manager config
         # bspwm
         # dunst
-        # feh
         # polybar
         # picom
-        # pywal
         # rofi
         # sxhkd
     ];
