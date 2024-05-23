@@ -9,6 +9,9 @@ local options = {
     showcmd = true,
     mouse = "a",
 
+    -- system specific things
+    fileformats="unix,dos",
+
     -- tabs
     softtabstop = 4,
     shiftwidth = 4,

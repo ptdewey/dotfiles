@@ -9,35 +9,40 @@
     home.username = "patrick";
     home.homeDirectory = "/home/patrick";
 
-    # gtk.enable = true;
-    # gtk.cursorTheme.package = pkgs.bibata-cursors;
-    # gtk.cursorTheme.name = "Bibata-Modern-Ice";
-    #
-    # gtk.theme.package = pkgs.adw-gtk3;
-    # gtk.theme.name = "adw-gtk3";
+    # gtk = {
+    #     enable = true;
+    #     theme.package = pkgs.adw-gtk3;
+    #     theme.name = "adw-gtk3";
+    # };
 
     # Install nix packages into environment
     home.packages = with pkgs; [
+        ## misc command line utils
         csvlens
         fd
         foliate
         fzf
-        # lsd
         ripgrep
         tokei
-        rustup
+        # lsd
 
+        ## neovim stuff
         neovim
         tree-sitter
 
+        ## wallpaper and aesthetics utils
         feh
         pywal
+        # libadwaita
+        # adwaita-qt
 
+        ## languages and related utils
         stylua
         luajitPackages.luarocks
         go
         glow
         nodejs
+        rustup
 
         ## window manager config
         # bspwm
@@ -58,5 +63,6 @@
     # Manage environment variables
     home.sessionVariables = {
         EDITOR = "nvim";
+        # QT_STYLE_OVERRIDE = "adwaita-dark";
     };
 }

@@ -9,9 +9,9 @@ fi
 # &   # Run the process in the background.
 # ( ) # Hide shell job control messages.
 # Not supported in the "fish" shell.
-(cat ~/.cache/wal/sequences &)
+# (cat ~/.cache/wal/sequences &)
 # To add support for TTYs this line can be optionally added.
-source ~/.cache/wal/colors-tty.sh
+# source ~/.cache/wal/colors-tty.sh
 
 if [ -d ~/.repos/powerlevel10k ]; then
     source ~/.repos/powerlevel10k/powerlevel10k.zsh-theme
@@ -64,3 +64,4 @@ if [ -f "$HOME/dotfiles/scripts/rc.sh" ]; then
 fi
 
 if [ -e /home/patrick/.nix-profile/etc/profile.d/nix.sh ]; then . /home/patrick/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+

@@ -13,7 +13,7 @@ source_if_exists() {
 alias c="clear"
 if command -v lsd >/dev/null 2>&1; then
     alias ls='lsd'
-else;
+else
     alias ls="ls --color"
 fi
 alias ll="ls -lF"

@@ -2,6 +2,11 @@
 # This is a file meant to be shared between my bashrc and zshrc configurations
 # it aggregates path extensions and imports aliases
 
+# set custom color scheme
+if [ -f "$HOME/dotfiles/scripts/base16-darkearth.sh" ]; then
+    source "$HOME/dotfiles/scripts/base16-darkearth.sh"
+fi
+
 # add ./ to path
 export PATH="$PATH:./"
 
@@ -31,6 +36,11 @@ fi
 # add go to path
 if [ -d "/usr/local/go/bin" ]; then
     export PATH=$PATH:/usr/local/go/bin
+fi
+
+# nix home-manager session variables
+if [ -f "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" ]; then
+    source "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
 fi
 
 # Fetch aliases
