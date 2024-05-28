@@ -43,6 +43,14 @@ if [ -f "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" ]; then
     source "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
 fi
 
+if [ -f "$HOME/.nix-profile/bin/nix" ]; then
+    export NIX_BUILD_CORES=8
+fi
+
+if command -v "direnv" &> /dev/null; then
+    eval "$(direnv hook `ps -p \$\$ -o 'comm='`)"
+fi
+
 # Fetch aliases
 if [ -f "$HOME/dotfiles/scripts/aliases.sh" ]; then
     source "$HOME/dotfiles/scripts/aliases.sh"

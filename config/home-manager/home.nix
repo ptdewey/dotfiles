@@ -15,6 +15,15 @@
     #     theme.name = "adw-gtk3";
     # };
 
+    programs = {
+        direnv = {
+            enable = true;
+            enableBashIntegration = true;
+            enableZshIntegration = true;
+            nix-direnv.enable = true;
+        };
+    };
+
     # Install nix packages into environment
     home.packages = with pkgs; [
         ## misc command line utils
@@ -24,6 +33,7 @@
         fzf
         ripgrep
         tokei
+        shellcheck-minimal
         # lsd
 
         ## neovim stuff

@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 dots="$HOME/dotfiles/scripts"
+shell=$(ps -p $$ -o 'comm=')
 
 # custom sourcing function
 source_if_exists() {
@@ -48,8 +49,8 @@ source_if_exists "$dots/time-tracking.sh"
 source_if_exists "$dots/create-from-template.sh"
 alias knitr="$dots/knitr.sh"
 alias note="$dots/make-note.sh"
-alias hm-switch="$SHELL $dots/hm-switch.sh"
-alias hm-update="$SHELL $dots/hm-update.sh"
+alias hm-switch="$shell $dots/hm-switch.sh"
+alias hm-update="$shell $dots/hm-update.sh"
 alias tplnew="create_file_template"
 alias tpladd="add_template"
 alias cht="$dots/chtfzf.sh"
@@ -67,6 +68,8 @@ alias ga="git add"
 alias gd="git diff"
 alias gs="git status"
 alias ci="git commit -m"
+alias gp="git push"
+alias gcl="git clone"
 
 # pdf viewing
 pdfe() {
@@ -85,12 +88,20 @@ pdfz() {
     zathura "$@" & disown
 }
 
-# Docker
+# docker
 alias dps="docker ps"
 alias dc="docker-compose"
 alias dcu="docker-compose up -d"
 alias dcd="docker-compose down"
-dex() { docker exec -it $1 ${2:-bash}; }
+dex() { docker exec -it "$1" "${2:-bash}"; }
+
+# nix
+alias nd="nix develop"
+alias ncg="nix-collect-garbage"
+
+# direnv
+alias dea="direnv allow"
+alias ded="direnv disallow"
 
 # Directories
 alias dn="cd ~/Downloads"
