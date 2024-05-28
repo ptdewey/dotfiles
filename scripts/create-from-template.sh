@@ -23,7 +23,7 @@ create_file_template() {
 
     # Get the directory of the script
     script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-    
+
     # Check if the templates directory exists
     if [ ! -d "$templates_dir" ]; then
         echo "Templates directory not found: $templates_dir"
@@ -32,6 +32,7 @@ create_file_template() {
 
     # Check if the template file exists
     template_file="$templates_dir/template.$filetype"
+    # TODO: custom case for nix vs nix flake (non-template first name of file)
     if [ ! -f "$template_file" ]; then
         echo "Template file not found: $template_file"
         return 1
@@ -59,7 +60,7 @@ add_template() {
     fi
 
     target_file="$1"
-    
+
     # Check if the templates directory exists
     if [ ! -d "$templates_dir" ]; then
         echo "Templates directory not found: $templates_dir"
