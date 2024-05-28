@@ -5,12 +5,11 @@
       nixpkgs.url = "github:NixOS/nixpkgs";
   };
 
-  outputs = { self, nixpkgs }:
-  let
-    system = builtins.currentSystem;
+  outputs = { self, nixpkgs }: let
+    system = "x86_64-linux";
     pkgs = import nixpkgs { inherit system; };
   in {
-    devShells = {
+    devShells.x86_64-linux = {
       default = pkgs.mkShell {
         packages = with pkgs; [
           neovim
