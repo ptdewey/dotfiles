@@ -36,7 +36,7 @@ fi
 # better cd
 alias sd='cd ./$(fd . --type d | fzf)'
 alias sdh='cd $(fd . ~/ --type d | fzf)'
-alias s='cd $(fd . ~/ --type d | fzf)'
+# alias s='cd $(fd . ~/ --type d | fzf)'
 alias vd='vim $(fd . --type f | fzf)'
 alias vdh='vim $(fd . ~/ --type f | fzf)'
 alias vh='vim $(fd . ~/ --type f | fzf)'
@@ -100,8 +100,9 @@ alias nd="nix develop"
 alias ncg="nix-collect-garbage"
 
 # direnv
-alias dea="direnv allow"
-alias ded="direnv disallow"
+alias da="direnv allow"
+alias dda="direnv disallow"
+alias ndr="nix-direnv-reload"
 
 # Directories
 alias dn="cd ~/Downloads"

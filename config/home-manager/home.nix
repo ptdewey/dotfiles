@@ -34,6 +34,7 @@
         ripgrep
         tokei
         shellcheck-minimal
+        jq
         # lsd
 
         ## neovim stuff

@@ -5,11 +5,24 @@
       nixpkgs.url = "github:NixOS/nixpkgs";
   };
 
-  outputs = { self, nixpkgs }: let
-    system = "x86_64-linux";
-    pkgs = import nixpkgs { inherit system; };
+  outputs = { nixpkgs, ... }: let
+    forAllSystems = function:
+      nixpkgs.lib.genAttrs [
+        "x86_64-linux"
+        "aarch64-linux"
+      ] (system:
+      ## comment for custom nixpkgs config
+        function nixpkgs.legacyPackages.${system}
+      );
+      ## uncomment for custom nixpkgs config
+      #   function (import nixpkgs {
+      #   inherit system;
+      #   config.allowUnfree = true;
+      #   overlays = [ ];
+      # }));
+
   in {
-    devShells.x86_64-linux = {
+    devShells = forAllSystems(pkgs: {
       default = pkgs.mkShell {
         packages = with pkgs; [
           neovim
@@ -19,6 +32,6 @@
           export EDITOR="nvim"
         '';
       };
-    };
+    });
   };
 }
