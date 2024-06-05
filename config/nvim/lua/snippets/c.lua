@@ -13,4 +13,8 @@ ls.add_snippets("c", {
 
     -- if statement
     s("if", fmt("({}) {{\n}}", { i(1) })),
+
+    -- main function
+    s("main", fmt("int main(int argc, char** argv) {{\n\t{}\n\treturn 0;\n}}\n{}",
+        { i(1), i(0) }))
 })

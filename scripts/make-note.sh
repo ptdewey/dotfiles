@@ -17,7 +17,7 @@ else
     echo "Created file '$notefile'."
 
     # Capitalize dirname if in 'uppercase' list
-    uppercase="cs cmda hw"
+    uppercase="cs cmda hw ccam"
     for str in $uppercase; do
         # Check if dir should be capitalized
         if [ "$(echo $dir | cut -c-${#str})" == "$str" ]; then
