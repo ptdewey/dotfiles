@@ -4,17 +4,17 @@ local M = {}
 
 -- general keybindings
 M.general = {
-    { "n", ";", ":", remap = true, desc = "semicolon to colon in normal mode" },
+    { "n", ";", ":", noremap = true, desc = "semicolon to colon in normal mode" },
 
     -- buffer switching
-    { "n", "<tab>", ":bnext <CR>", remap = true, desc = "tab to switch buffers" },
-    { "n", "<S-tab>", ":bprev <CR>", remap = true, desc = "shift tab to switch buffers" },
+    { "n", "<tab>", ":bnext <CR>", noremap = true, desc = "tab to switch buffers" },
+    { "n", "<S-tab>", ":bprev <CR>", noremap = true, desc = "shift tab to switch buffers" },
 
     -- window movement
-    { "n", "<A-h>", "<C-w>h", remap = true, desc = "move to left window" },
-    { "n", "<A-l>", "<C-w>l", remap = true, desc = "move to right window" },
-    { "n", "<A-j>", "<C-w>j", remap = true, desc = "move to lower window" },
-    { "n", "<A-k>", "<C-w>k", remap = true, desc = "move to upper window" },
+    { "n", "<A-h>", "<C-w>h", noremap = true, desc = "move to left window" },
+    { "n", "<A-l>", "<C-w>l", noremap = true, desc = "move to right window" },
+    { "n", "<A-j>", "<C-w>j", noremap = true, desc = "move to lower window" },
+    { "n", "<A-k>", "<C-w>k", noremap = true, desc = "move to upper window" },
 
     -- move down visual lines
     { { "n", "v" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true } },

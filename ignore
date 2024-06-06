@@ -20,5 +20,9 @@ Downloads/*/
 *Music
 *qmk_firmware*
 *nixpkgs*
+*/.nix-profile*
+*/.nix-*
+*/.cache/*
+*.network
 
 !*/home-manager/*

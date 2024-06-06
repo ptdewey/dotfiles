@@ -34,8 +34,8 @@ if command -v fdfind >/dev/null 2>&1; then
 fi
 
 # better cd
-alias sd='cd ./$(fd . --type d | fzf)'
-alias sdh='cd $(fd . ~/ --type d | fzf)'
+alias sd='cd ./$(fd -L . --type d | fzf)'
+alias sdh='cd $(fd -L . ~/ --type d | fzf)'
 # alias s='cd $(fd . ~/ --type d | fzf)'
 alias vd='vim $(fd . --type f | fzf)'
 alias vdh='vim $(fd . ~/ --type f | fzf)'
