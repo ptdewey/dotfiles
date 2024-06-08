@@ -63,5 +63,3 @@ if [ -f "$HOME/dotfiles/scripts/rc.sh" ]; then
     source "$HOME/dotfiles/scripts/rc.sh"
 fi
 
-if [ -e /home/patrick/.nix-profile/etc/profile.d/nix.sh ]; then . /home/patrick/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-
