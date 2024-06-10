@@ -50,6 +50,7 @@
         ## languages and related utils
         stylua
         luajitPackages.luarocks
+        luajitPackages.jsregexp
         go
         glow
         nodejs

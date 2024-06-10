@@ -6,7 +6,7 @@ return {
         config = function()
             -- require("pendulum").setup()
             require("pendulum").setup({
-                log_file = vim.fn.expand("$HOME/Documents/pendulum-log.csv"),
+                log_file = vim.fn.expand("$HOME/projects/pendulum-log.csv"),
                 timeout_len = 180,
                 timer_len = 120,
             })

@@ -10,6 +10,9 @@ fi
 # add ./ to path
 export PATH="$PATH:./"
 
+# add dotfiles/scripts to path
+# export PATH="$PATH:$HOME/dotfiles/scripts"
+
 # deal with conda (and zsh) clear issue
 if [ -d "$HOME/anaconda3" ]; then
     export PATH="/home/patrick/anaconda3/bin:/home/patrick/anaconda3/condabin:$PATH"
@@ -43,13 +46,15 @@ if [ -f "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" ]; then
     source "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
 fi
 
+# add nix binaries to path
+if [ -e "$HOME/.nix-profile/bin" ]; then
+    export PATH=$PATH:"$HOME/.nix-profile/bin"
+    export NIX_BUILD_CORES=8
+fi
+
 # nix daemon
 if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
   . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
-fi
-
-if [ -f "$HOME/.nix-profile/bin/nix" ]; then
-    export NIX_BUILD_CORES=8
 fi
 
 if command -v "direnv" &> /dev/null; then
@@ -60,3 +65,9 @@ fi
 if [ -f "$HOME/dotfiles/scripts/aliases.sh" ]; then
     source "$HOME/dotfiles/scripts/aliases.sh"
 fi
+
+# machine specific aliases
+if [ -f "$HOME/.aliases.sh" ]; then
+    source "$HOME/.aliases.sh"
+fi
+

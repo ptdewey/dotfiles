@@ -107,8 +107,17 @@ alias ndr="nix-direnv-reload"
 # Directories
 alias dn="cd ~/Downloads"
 alias doc="cd ~/Documents"
-alias proj="cd ~/Documents/projects"
-alias sch="cd ~/Documents/school"
+alias proj="cd ~/projects"
+alias sch="cd ~/school"
 # alias notes="cd ~/Documents/notes"
-alias notes='cd $(fd . ~/Documents/notes --type d | fzf)'
+alias notes='cd $(fd . ~/notes --type d | fzf)'
 
+tmux_sessionizer() {
+    "$HOME/dotfiles/scripts/tmux-sessionizer.sh"
+}
+# map tmux sessionizer to ctrl+f
+if [ "$shell" = "bash" ]; then
+    bind -x '"\C-f":tmux_sessionizer\n'
+elif [ "$shell" = "zsh" ]; then
+    bindkey -s ^f 'tmux_sessionizer\n'
+fi
