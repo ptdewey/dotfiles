@@ -112,12 +112,12 @@ alias sch="cd ~/school"
 # alias notes="cd ~/Documents/notes"
 alias notes='cd $(fd . ~/notes --type d | fzf)'
 
-tmux_sessionizer() {
+tmux-sessionizer() {
     "$HOME/dotfiles/scripts/tmux-sessionizer.sh"
 }
 # map tmux sessionizer to ctrl+f
 if [ "$shell" = "bash" ]; then
-    bind -x '"\C-f":tmux_sessionizer\n'
+    bind -x '"\C-f":tmux-sessionizer\n'
 elif [ "$shell" = "zsh" ]; then
-    bindkey -s ^f 'tmux_sessionizer\n'
+    bindkey -s ^f 'tmux-sessionizer\n'
 fi

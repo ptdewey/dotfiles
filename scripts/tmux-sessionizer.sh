@@ -3,10 +3,9 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    # TODO: allow fd instead of find
-
+    # use fd instead of find if it exists
     if command -v fd >/dev/null 2>&1; then
-        selected=$(fd -L . ~/work ~/projects ~/notes ~/ --type d -d 1 | fzf)
+        selected=$(fd -L . ~/work ~/projects ~/notes ~/ --type d --max-depth 1 | fzf)
     else
         selected=$(find ~/work ~/projects ~/notes ~/ -mindepth 1 -maxdepth 1 -type d | fzf)
     fi
