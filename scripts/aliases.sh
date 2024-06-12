@@ -53,7 +53,6 @@ alias hm-switch="$shell $dots/hm-switch.sh"
 alias hm-update="$shell $dots/hm-update.sh"
 alias tplnew="create_file_template"
 alias tpladd="add_template"
-alias cht="$dots/chtfzf.sh"
 
 # python
 alias p="python"
@@ -65,7 +64,7 @@ alias ltclean="latexmk -c"
 
 # git
 alias ga="git add"
-alias gd="git diff"
+alias gd="git diff -U0"
 alias gs="git status"
 alias ci="git commit -m"
 alias gp="git push"
@@ -87,6 +86,9 @@ pdfz() {
     fi
     zathura "$@" & disown
 }
+
+# TODO: pandoc conversions
+# pandoc -o output.docx -f markdown -t docx input.md
 
 # docker
 alias dps="docker ps"

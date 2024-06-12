@@ -35,6 +35,7 @@
         tokei
         shellcheck-minimal
         jq
+        pandoc
         # lsd
 
         ## neovim stuff
