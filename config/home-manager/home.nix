@@ -30,6 +30,7 @@
         csvlens
         fd
         foliate
+        fx
         fzf
         ripgrep
         tokei
