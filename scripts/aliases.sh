@@ -95,7 +95,10 @@ alias dps="docker ps"
 alias dc="docker-compose"
 alias dcu="docker-compose up -d"
 alias dcd="docker-compose down"
-dex() { docker exec -it "$1" "${2:-bash}"; }
+
+dex() {
+    docker exec -it "$1" "${2:-bash}"
+}
 
 # nix
 alias nd="nix develop"
@@ -117,6 +120,7 @@ alias notes='cd $(fd . ~/notes --type d | fzf)'
 tmux-sessionizer() {
     "$HOME/dotfiles/scripts/tmux-sessionizer.sh"
 }
+
 # map tmux sessionizer to ctrl+f
 if [ "$shell" = "bash" ]; then
     bind -x '"\C-f":tmux-sessionizer\n'
