@@ -10,10 +10,16 @@ dir="$HOME/dotfiles"
 olddir="$HOME/Documents/dotfiles_old"
 # list of files/folders to symlink in homedir
 
-# Ask if user is on server machine or not
+# Ask if user is on server machine or not (if cli arg not provided)
 # (only copies necessary server config)
-echo "Is this a server machine? (y/n)"
-read -r confirmation
+if [ -n "$1" ]; then
+    confirmation="$1";
+else
+    echo "Is this a server machine? (y/n)"
+    read -r confirmation
+fi
+
+# TODO: make files and directory linking better, possibly with stow
 if [[ "$confirmation" == "y" || "$confirmation" == "Y" ]]; then
     echo "Running in server configuration mode..."
     files="bashrc vimrc zshrc ignore tmux.conf"
@@ -22,7 +28,7 @@ if [[ "$confirmation" == "y" || "$confirmation" == "Y" ]]; then
 else
     echo "Running in laptop/desktop configuration mode..."
     files="bashrc vimrc zshrc xinitrc Xresources ignore tmux.conf lintr Rprofile"
-    config_directories="bspwm rofi polybar kitty nvim zathura wezterm"
+    config_directories="bspwm rofi polybar kitty nvim zathura wezterm tmux"
     directories="templates"
 fi
 

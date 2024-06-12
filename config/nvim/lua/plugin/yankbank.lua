@@ -1,7 +1,7 @@
 -- yank history popup window plugin
 return {
     {
-        -- dir = "~/Documents/projects/yankbank-nvim",
+        -- dir = "~/projects/yankbank-nvim",
         "ptdewey/yankbank-nvim",
         branch = "main",
 
@@ -13,6 +13,7 @@ return {
                 max_entries = 10,
                 -- num_behavior = "prefix",
                 num_behavior = "jump",
+                focus_gain_poll = true,
                 keymaps = {
                     -- navigation_next = "h",
                     -- navigation_prev = "l",
