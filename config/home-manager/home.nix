@@ -53,6 +53,7 @@
         stylua
         luajitPackages.luarocks
         luajitPackages.jsregexp
+        luajitPackages.lgi
         go
         glow
         nodejs
