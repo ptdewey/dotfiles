@@ -6,4 +6,6 @@ configuration {
 	bw: 0;
 	terminal: "kitty";
 }
-@import "~/.cache/wal/colors-rofi-dark"
+// @import "~/.cache/wal/colors-rofi-dark"
+// @theme "gruvbox-dark"
+@theme "/nix/store/d78mpq4jd290zrahpss3kfzq4kwhvwgh-rofi-1.7.5/share/rofi/themes/gruvbox-dark-soft.rasi"

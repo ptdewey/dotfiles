@@ -2,7 +2,7 @@
 
 # run
 # curl "https://raw.githubusercontent.com/ptdewey/dotfiles/main/scripts/install.sh" >> install.sh
-# chmod +x install.sh && sudo ./install.sh
+# chmod +x install.sh && ./install.sh
 
 # install git
 if ! command -v git &> /dev/null; then
@@ -29,11 +29,15 @@ popd
 echo "Dotfiles setup complete."
 
 # install nix
+# TODO: this part doesnt work correctly, cant be run as script
 sudo sh <(curl -L https://nixos.org/nix/install) --daemon
 if ! command -v nix &> /dev/null; then
     echo "Installing Nix..."
-    sudo sh <(curl -L https://nixos.org/nix/install) --daemon
+    sh <(curl -L https://nixos.org/nix/install) --daemon --yes
     echo "Nix installation complete. You may need to restart your shell or system."
+    if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+      . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+    fi
 else
     echo "Nix is already installed."
 fi
@@ -41,7 +45,7 @@ fi
 # install home manager
 if ! command -v home-manager &> /dev/null; then
     echo "Installing Home Manager..."
-    nix-channel --add https://github.com/nix-community/home-manager/archive/release-22.11.tar.gz home-manager
+    nix-channel --add https://github.com/nix-community/home-manager/archive/release-24.05.tar.gz home-manager
     nix-channel --update
     nix-shell '<home-manager>' -A install
     echo "Home Manager installation complete."
@@ -54,7 +58,12 @@ echo "Installing home-manager nix packages..."
 . "$HOME/dotfiles/scripts/hm-switch.sh"
 echo "Done installing home manager packages."
 
-# TODO: figure out bspwm/sxhkd/polybar/rofi/dunst installation
+
+# install zsh extensions
+pushd "$HOME/.local/share"
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+git clone https://github.com/zsh-users/zsh-autosuggestions.git
+popd
 
 # create desktop entry for bspwm (important if installing from nix)
 sudo bash -c 'cat > /usr/share/xsessions/bspwm.desktop <<EOF
@@ -64,5 +73,8 @@ Comment=Binary space partitioning window manager
 Exec=bspwm
 Type=Application
 EOF'
+
+# install terminal and any other graphical packages nix can't handle
+sudo apt install kitty
 
 # TODO: any other installation/setup tasks (other packages)

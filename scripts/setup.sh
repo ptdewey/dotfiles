@@ -23,12 +23,12 @@ fi
 if [[ "$confirmation" == "y" || "$confirmation" == "Y" ]]; then
     echo "Running in server configuration mode..."
     files="bashrc vimrc zshrc ignore tmux.conf"
-    config_directories="nvim"
+    config_directories="nvim nixpkgs nix tmux"
     directories="templates"
 else
     echo "Running in laptop/desktop configuration mode..."
     files="bashrc vimrc zshrc xinitrc Xresources ignore tmux.conf lintr Rprofile"
-    config_directories="bspwm rofi polybar kitty nvim zathura wezterm tmux"
+    config_directories="bspwm rofi polybar kitty nvim zathura wezterm tmux nix nixpkgs"
     directories="templates"
 fi
 

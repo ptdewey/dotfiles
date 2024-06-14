@@ -1,9 +1,12 @@
 { config, pkgs, ... }:
 
+# let
+#   nixgl = import <nixgl> { };
+# in
 {
     # Enable home-manager and channel version
     programs.home-manager.enable = true;
-    home.stateVersion = "23.11";
+    home.stateVersion = "24.11";
 
     # Set username and home directory
     home.username = "patrick";
@@ -37,19 +40,22 @@
         shellcheck-minimal
         jq
         pandoc
+        neofetch
+        htop
+        tmux
         # lsd
 
         ## neovim stuff
         neovim
+        xclip
         tree-sitter
 
-        ## wallpaper and aesthetics utils
-        feh
-        pywal
-        # libadwaita
-        # adwaita-qt
+        ## shell stuff
+        zsh
 
         ## languages and related utils
+        gcc
+        libgcc
         stylua
         luajitPackages.luarocks
         luajitPackages.jsregexp
@@ -59,13 +65,23 @@
         nodejs
         rustup
 
+        ## wallpaper and aesthetics utils
+        feh
+        pywal
+
         ## window manager config
-        # bspwm
-        # dunst
-        # polybar
-        # picom
-        # rofi
-        # sxhkd
+        bspwm
+        dunst
+        polybar
+        picom
+        rofi
+        sxhkd
+
+        # nixgl.wezterm
+
+        ## other gui applications
+        # kitty
+        # wezterm
     ];
 
     # Manage dotfiles
@@ -78,6 +94,5 @@
     # Manage environment variables
     home.sessionVariables = {
         EDITOR = "nvim";
-        # QT_STYLE_OVERRIDE = "adwaita-dark";
     };
 }

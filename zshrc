@@ -19,9 +19,9 @@ if [ -d ~/.repos/powerlevel10k ]; then
 fi
 
 # Load zsh plugins
-if [ -d ~/.repos/zsh-autosuggestions ]; then
-    source ~/.repos/zsh-autosuggestions/zsh-autosuggestions.zsh
-    source ~/.repos/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if [ -d "$HOME/.local/share/zsh-autosuggestions" ]; then
+    source "$HOME/.local/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+    source "$HOME/.local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
     # source ~/.repos/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 fi
 
