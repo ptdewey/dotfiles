@@ -123,7 +123,7 @@ tmux-sessionizer() {
 
 # map tmux sessionizer to ctrl+f
 if [ "$shell" = "bash" ]; then
-    bind -x '"\C-f":tmux-sessionizer\n'
+    bind -x '"\C-f":tmux-sessionizer'
 elif [ "$shell" = "zsh" ]; then
     bindkey -s ^f 'tmux-sessionizer\n'
 fi

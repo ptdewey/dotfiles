@@ -10,7 +10,7 @@ return {
         config = function()
             require("yankbank").setup({
                 sep = "------",
-                max_entries = 10,
+                max_entries = 9,
                 -- num_behavior = "prefix",
                 num_behavior = "jump",
                 focus_gain_poll = true,
