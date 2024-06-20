@@ -57,6 +57,8 @@
         go
         glow
         nodejs
+        nodePackages.prettier
+        prettierd
         yarn
         rustup
 

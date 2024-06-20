@@ -69,6 +69,15 @@ alias gs="git status"
 alias ci="git commit -m"
 alias gp="git push"
 alias gcl="git clone"
+gsw() {
+    git switch "$@"
+}
+gb() {
+    git branch "$@"
+}
+gch() {
+    git checkout "$@"
+}
 
 # pdf viewing
 pdfe() {
