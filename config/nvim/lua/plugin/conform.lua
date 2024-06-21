@@ -9,6 +9,7 @@ return {
                     typescript = { { "prettierd", "prettier" } },
                     typescriptreact = { { "prettierd", "prettier" } },
                     javascriptreact = { { "prettierd", "prettier" } },
+                    -- go = { "gofmt" },
                     ["_"] = { "trim_whitespace" },
                 },
                 format_on_save = {

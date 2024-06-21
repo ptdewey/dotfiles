@@ -54,14 +54,6 @@ alias hm-update="$shell $dots/hm-update.sh"
 alias tplnew="create_file_template"
 alias tpladd="add_template"
 
-# python
-alias p="python"
-
-# latex
-alias ltc="latexmk -pdf"
-alias ltcl="latexmk -pvc --silent"
-alias ltclean="latexmk -c"
-
 # git
 alias ga="git add"
 alias gd="git diff -U0"
@@ -69,15 +61,23 @@ alias gs="git status"
 alias ci="git commit -m"
 alias gp="git push"
 alias gcl="git clone"
-gsw() {
-    git switch "$@"
-}
-gb() {
-    git branch "$@"
-}
-gch() {
-    git checkout "$@"
-}
+gsw() { git switch "$@"; }
+gb() { git branch "$@"; }
+gch() { git checkout "$@"; }
+
+# python
+alias p="python"
+alias pipi="pip install"
+
+# latex
+alias ltc="latexmk -pdf"
+alias ltcl="latexmk -pvc --silent"
+alias ltclean="latexmk -c"
+
+# go
+gor() { go run "$@"; }
+gom() { go mod "$@"; }
+gob() { go build "$@"; }
 
 # pdf viewing
 pdfe() {
@@ -105,12 +105,11 @@ alias dc="docker-compose"
 alias dcu="docker-compose up -d"
 alias dcd="docker-compose down"
 
-dex() {
-    docker exec -it "$1" "${2:-bash}"
-}
+dex() { docker exec -it "$1" "${2:-bash}"; }
 
 # nix
 alias nd="nix develop"
+alias ndi="nix develop --impure"
 alias ncg="nix-collect-garbage"
 
 # direnv
