@@ -13,10 +13,10 @@ fi
 # To add support for TTYs this line can be optionally added.
 # source ~/.cache/wal/colors-tty.sh
 
-if [ -d ~/.repos/powerlevel10k ]; then
-    source ~/.repos/powerlevel10k/powerlevel10k.zsh-theme
-    [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-fi
+# if [ -d "$HOME/.local/share/powerlevel10k" ]; then
+#     source "$HOME/.local/share/powerlevel10k/powerlevel10k.zsh-theme"
+#     [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# fi
 
 # Load zsh plugins
 if [ -d "$HOME/.local/share/zsh-autosuggestions" ]; then
