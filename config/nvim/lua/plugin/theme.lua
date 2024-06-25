@@ -15,7 +15,7 @@ local theme = {
     -- darkearth
     {
         "ptdewey/darkearth-nvim",
-        -- dir = "~/Documents/projects/darkearth-nvim",
+        -- dir = "~/projects/darkearth-nvim",
         priority = 1000,
     },
 }
