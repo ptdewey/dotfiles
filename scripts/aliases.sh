@@ -63,7 +63,7 @@ alias gp="git push"
 alias gcl="git clone"
 alias gsw="git switch"
 alias gb="gb"
-alias gch="gch"
+alias gch="git checkout"
 alias gw="git worktree"
 
 # python
