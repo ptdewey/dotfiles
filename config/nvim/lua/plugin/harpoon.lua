@@ -28,18 +28,22 @@ return {
 
             vim.keymap.set("n", "<C-h>", function()
                 harpoon:list():select(1)
+                vim.cmd("normal! zz")
             end, { desc = "[H]arpoon [h]jkl nav" })
 
             vim.keymap.set("n", "<C-j>", function()
                 harpoon:list():select(2)
+                vim.cmd("normal! zz")
             end, { desc = "[H]arpoon h[j]kl nav" })
 
             vim.keymap.set("n", "<C-k>", function()
                 harpoon:list():select(3)
+                vim.cmd("normal! zz")
             end, { desc = "[H]arpoon hj[k]l nav" })
 
             vim.keymap.set("n", "<C-l>", function()
                 harpoon:list():select(4)
+                vim.cmd("normal! zz")
             end, { desc = "[H]arpoon hjk[l] nav" })
         end,
     }

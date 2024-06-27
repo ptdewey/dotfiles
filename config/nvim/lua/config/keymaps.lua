@@ -50,7 +50,10 @@ vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open float
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics List" })
 
 -- LSP settings
-vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, { desc = "LSP jump to definition" })
+vim.keymap.set("n", "gd", function()
+    vim.lsp.buf.definition()
+    vim.cmd("normal! zz")
+end, { desc = "LSP jump to definition" })
 
 -- Toggle Netrw
 vim.keymap.set(
@@ -66,7 +69,7 @@ vim.keymap.set(
 )
 
 -- Make current file executable
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Make current file executable" })
+vim.keymap.set("n", "<leader>x", "<cmd>silent !chmod +x %<CR>", { desc = "Make current file executable" })
 
 -- Tmux sessionizer
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww ~/dotfiles/scripts/tmux-sessionizer.sh<CR>", { desc = "Open tmux sessionizer" })

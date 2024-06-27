@@ -61,9 +61,10 @@ alias gs="git status"
 alias ci="git commit -m"
 alias gp="git push"
 alias gcl="git clone"
-gsw() { git switch "$@"; }
-gb() { git branch "$@"; }
-gch() { git checkout "$@"; }
+alias gsw="git switch"
+alias gb="gb"
+alias gch="gch"
+alias gw="git worktree"
 
 # python
 alias p="python"
@@ -75,9 +76,9 @@ alias ltcl="latexmk -pvc --silent"
 alias ltclean="latexmk -c"
 
 # go
-gor() { go run "$@"; }
-gom() { go mod "$@"; }
-gob() { go build "$@"; }
+alias gor="go run"
+alias gom="go mod"
+alias gob="go build"
 
 # pdf viewing
 pdfe() {
