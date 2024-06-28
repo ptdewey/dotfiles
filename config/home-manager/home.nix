@@ -37,7 +37,7 @@
         neofetch
         htop
         tmux
-        # lsd
+        lsd
 
         ## neovim stuff
         neovim
