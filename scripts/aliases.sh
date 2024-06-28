@@ -36,7 +36,6 @@ fi
 # better cd
 alias sd='cd ./$(fd -L . --type d | fzf)'
 alias sdh='cd $(fd -L . ~/ --type d | fzf)'
-# alias s='cd $(fd . ~/ --type d | fzf)'
 alias vd='vim $(fd . --type f | fzf)'
 alias vdh='vim $(fd . ~/ --type f | fzf)'
 alias vh='vim $(fd . ~/ --type f | fzf)'
@@ -62,7 +61,7 @@ alias ci="git commit -m"
 alias gp="git push"
 alias gcl="git clone"
 alias gsw="git switch"
-alias gb="gb"
+alias gb="git branch"
 alias gch="git checkout"
 alias gw="git worktree"
 

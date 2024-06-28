@@ -3,7 +3,7 @@ local wezterm = require("wezterm")
 
 -- This will hold the configuration.
 local config = {
-    force_reverse_video_cursor = true,
+    -- force_reverse_video_cursor = true,
 
     -- font settings
     font = wezterm.font("IosevkaPatrick Nerd Font"),
@@ -27,7 +27,9 @@ local config = {
     -- webgpu_power_preference = "HighPerformance",
 
     -- window_decorations = "RESIZE",
-    window_decorations = "TITLE|RESIZE",
+    window_decorations = "INTEGRATED_BUTTONS|RESIZE",
+    window_close_confirmation = "NeverPrompt",
+    use_fancy_tab_bar = false,
 }
 
 config.set_environment_variables = {}
@@ -39,23 +41,17 @@ config.colors = {
 
 -- window padding
 config.window_padding = {
-    left = 2,
-    right = 2,
+    left = 4,
+    right = 4,
     top = 0,
     bottom = 0,
 }
-
--- The filled in variant of the < symbol
-local SOLID_LEFT_ARROW = wezterm.nerdfonts.pl_right_hard_divider
-
--- The filled in variant of the > symbol
-local SOLID_RIGHT_ARROW = wezterm.nerdfonts.pl_left_hard_divider
 
 -- This function returns the suggested title for a tab.
 -- It prefers the title that was set via `tab:set_title()`
 -- or `wezterm cli set-tab-title`, but falls back to the
 -- title of the active pane in that tab.
-function tab_title(tab_info)
+local function tab_title(tab_info)
     local title = tab_info.tab_title
     -- if the tab title is explicitly set, take that
     if title and #title > 0 then
@@ -67,40 +63,33 @@ function tab_title(tab_info)
 end
 
 wezterm.on(
-  'format-tab-title',
-  function(tab, tabs, panes, config, hover, max_width)
-    local edge_background = 'black'
-    local background = 'black'
-    local foreground = '#808080'
+    'format-tab-title',
+    function(tab, tabs, panes, config, hover, max_width)
+        local background = 'transparent'
+        local foreground = '#808080'
 
-    if tab.is_active then
-      background = '#2b2042'
-      foreground = '#c0c0c0'
-    elseif hover then
-      background = '#3b3052'
-      foreground = '#909090'
+        if tab.is_active then
+            background = 'transparent'
+            foreground = '#c0c0c0'
+        elseif hover then
+            foreground = '#909090'
+        end
+
+        local title = tab_title(tab)
+        title = wezterm.truncate_right(title, max_width - 2)
+
+        return {
+            { Background = { Color = background } },
+            { Foreground = { Color = foreground } },
+            { Text = " " },
+            { Background = { Color = background } },
+            { Foreground = { Color = foreground } },
+            { Text = title },
+            { Background = { Color = background } },
+            { Foreground = { Color = foreground } },
+            { Text = " " },
+        }
     end
-
-    local edge_foreground = background
-
-    local title = tab_title(tab)
-
-    -- ensure that the titles fit in the available space,
-    -- and that we have room for the edges.
-    title = wezterm.truncate_right(title, max_width - 2)
-
-    return {
-      { Background = { Color = edge_background } },
-      { Foreground = { Color = edge_foreground } },
-      { Text = SOLID_LEFT_ARROW },
-      { Background = { Color = background } },
-      { Foreground = { Color = foreground } },
-      { Text = title },
-      { Background = { Color = edge_background } },
-      { Foreground = { Color = edge_foreground } },
-      { Text = SOLID_RIGHT_ARROW },
-    }
-  end
 )
 
 -- os specific configurations
