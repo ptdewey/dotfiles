@@ -1,13 +1,13 @@
 #define BG #24211e
-#define FG #f5f5f5
-#define BL #675642
-#define WH #d0d0d0
-#define R #ac4142
-#define G #90a959
-#define Y #f4bf75
-#define B #6a9fb5
-#define M #aa759f
-#define C #75b5aa
+#define FG #d7c484
+#define BL #736659
+#define WH #d7c584
+#define R #b3664d
+#define G #77824a
+#define Y #c9a654
+#define B #5f865f
+#define M #b36b42
+#define C #bb7842
 
 st.font: RobotoMono:size=12
 st.borderpx: 25
@@ -49,6 +49,7 @@ st.borderpx: 25
 *.color7:       WH
 *.color15:      WH
 
-Xcursor.size: 32
-rofi.dpi: 192
-*.dpi: 192
+! Xcursor.size: 32
+! rofi.dpi: 192
+*.dpi: 128
+Xft.dpi: 128

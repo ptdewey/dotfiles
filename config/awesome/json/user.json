@@ -10,9 +10,8 @@
 	"passwd": "",
 	"reboot": "systemctl reboot",
 	"sessionlock": false,
-	"shotdir": "~/Pictures/screenshots",
+	"shotdir": "~/Pictures/Screenshots",
 	"shutdown": "systemctl poweroff",
 	"terminal": "kitty",
-	"wallpaper": "~/Pictures/wallpapers/vinland-saga-scenery.jpg"
+	"wallpaper": "~/dotfiles/config/awesome/color/darkearth/darkearth.png"
 }
-

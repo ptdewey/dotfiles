@@ -91,6 +91,18 @@
         ## awesomewm stuff
         roboto
         maim
+        brightnessctl
+        noto-fonts
+        noto-fonts-cjk-sans
+        noto-fonts-cjk-serif
+        noto-fonts-lgc-plus
+        noto-fonts-color-emoji
+        papirus-icon-theme
+        cbatticon
+        cinnamon.nemo
+        blueman
+        xdg-user-dirs
+        xsettingsd
     ];
 
     # Manage dotfiles

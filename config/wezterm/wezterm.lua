@@ -7,7 +7,8 @@ local config = {
 
     -- font settings
     font = wezterm.font("IosevkaPatrick Nerd Font"),
-    font_size = 13.0,
+    font_size = 12.0,
+    -- dpi = 144,
 
     -- hide tab bar
     hide_tab_bar_if_only_one_tab = true,
@@ -27,7 +28,7 @@ local config = {
     -- webgpu_power_preference = "HighPerformance",
 
     -- window_decorations = "RESIZE",
-    window_decorations = "INTEGRATED_BUTTONS|RESIZE",
+    -- window_decorations = "INTEGRATED_BUTTONS|RESIZE",
     window_close_confirmation = "NeverPrompt",
     adjust_window_size_when_changing_font_size = false,
     use_fancy_tab_bar = false,
@@ -42,9 +43,9 @@ config.colors = {
 
 -- window padding
 config.window_padding = {
-    left = 4,
-    right = 4,
-    top = 0,
+    left = 5,
+    right = 5,
+    top = 5,
     bottom = 0,
 }
 
