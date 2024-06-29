@@ -1,0 +1,18 @@
+{
+	"batt": "BAT0",
+	"browser": "firefox",
+	"color": "darkearth",
+	"file_manager": "nemo",
+	"font": "IosevkaPatrick Nerd Font 16",
+	"fontalt": "IosevkaPatrick 16",
+	"fonticon": "Material Icons 16",
+	"mod": "Mod4",
+	"passwd": "",
+	"reboot": "systemctl reboot",
+	"sessionlock": false,
+	"shotdir": "~/Pictures/screenshots",
+	"shutdown": "systemctl poweroff",
+	"terminal": "kitty",
+	"wallpaper": "~/Pictures/wallpapers/vinland-saga-scenery.jpg"
+}
+

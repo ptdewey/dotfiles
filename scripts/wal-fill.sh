@@ -7,5 +7,5 @@ wal-fill() {
 }
 
 feh-fill() {
-    feh --bg-fill "$(< "${HOME}/.cache/wal/wal")"
+    feh --bg-fill "$@"
 }

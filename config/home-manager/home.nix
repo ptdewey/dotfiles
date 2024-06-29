@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 # let
-#   nixgl = import <nixgl> { };
+  # nixgl = import <nixgl> { };
 # in
 {
     # Enable home-manager and channel version
@@ -23,6 +23,9 @@
 
     # Install nix packages into environment
     home.packages = with pkgs; [
+        ## nix extras
+        nix-prefetch-git
+
         ## misc command line utils
         csvlens
         fd
@@ -42,18 +45,22 @@
         ## neovim stuff
         neovim
         xclip
-        tree-sitter
+        # tree-sitter
 
         ## shell stuff
         zsh
 
         ## languages and related utils
-        gcc
-        libgcc
+        # gcc
+        # libgcc
         stylua
-        luajitPackages.luarocks
-        luajitPackages.jsregexp
-        luajitPackages.lgi
+        # luaPackages.luarocks
+        # luaPackages.jsregexp
+        # lua52Packages.lgi
+        # luajit
+        # luajitPackages.luarocks
+        # luajitPackages.jsregexp
+        # luajitPackages.lgi
         go
         glow
         nodejs
@@ -67,6 +74,7 @@
         pywal
 
         ## window manager config
+        # awesome
         bspwm
         dunst
         polybar
@@ -79,6 +87,10 @@
         ## other gui applications
         # kitty
         # wezterm
+
+        ## awesomewm stuff
+        roboto
+        maim
     ];
 
     # Manage dotfiles

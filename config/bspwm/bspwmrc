@@ -65,6 +65,7 @@ dunst &
 # Powertop
 # TODO: this needs to run with sudo, use polkit or systemd service
 # powertop --auto-tune
+feh --bg-fill "$HOME/Pictures/wallpapers/ayanami.jpg" &
 
 # Fix cursor
 xsetroot -cursor_name left_ptr &
