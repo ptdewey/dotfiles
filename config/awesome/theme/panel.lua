@@ -119,8 +119,6 @@ local clock = wibox.widget {
 screen.connect_signal("request::desktop_decoration", function(s)
 
 	-- Taglist
-    -- TODO: show other workplace tags
-
 	s.taglist = awful.widget.taglist {
 		screen = s,
 		filter = awful.widget.taglist.filter.all,
@@ -165,7 +163,6 @@ screen.connect_signal("request::desktop_decoration", function(s)
 	}
 
 	-- Tasklist
-
 	s.tasklist = awful.widget.tasklist {
 		screen = s,
 		filter = awful.widget.tasklist.filter.currenttags,
@@ -199,7 +196,6 @@ screen.connect_signal("request::desktop_decoration", function(s)
 	}
 
     -- Layouts
-
     s.layouts = awful.widget.layoutbox {
         screen  = s,
         buttons = {

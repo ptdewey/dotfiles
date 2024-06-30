@@ -44,6 +44,5 @@ screen.connect_signal("request::desktop_decoration", function(s)
     	})
 	end)
 
-    -- TODO: add more widgets if necessary, but more messes up the workspace viewer widget
     awful.tag({ "1", "2", "3", "4", "5", "6" }, s, awful.layout.layouts[1])
 end)

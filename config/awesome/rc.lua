@@ -28,11 +28,11 @@
 -- Errors
 
 require("naughty").connect_signal("request::display_error", function(message, startup)
-    require("naughty").notification {
-        urgency = "critical",
-        title   = "Error"..(startup and " during startup!" or "!"),
-        message = message
-    }
+	require("naughty").notification({
+		urgency = "critical",
+		title = "Error" .. (startup and " during startup!" or "!"),
+		message = message,
+	})
 end)
 
 -- User
@@ -57,7 +57,7 @@ local autostart = {
 	"picom",
 	"xsettingsd",
 	"nm-applet",
-	"/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1"
+	"/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1",
 }
 
 for _, command in ipairs(autostart) do

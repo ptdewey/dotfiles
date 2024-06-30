@@ -55,9 +55,9 @@ theme.tasklist_bg_minimize = color.bg
 
 theme.taglist_bg_focus    = color.bgmid
 theme.taglist_bg_urgent   = color.bgmid
-
 theme.taglist_fg_focus    = color.fg
 theme.taglist_fg_urgent   = color.red
+theme.taglist_fg_empty    = color.black
 
 -- Snap
 

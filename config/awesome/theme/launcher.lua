@@ -9,7 +9,7 @@ local appicons = "/usr/share/icons/" .. beautiful.icons .. "/64x64/apps/"
 -- Widgets
 
 local launcherbox = wibox {
-	width = dpi(345),
+	width = dpi(395),
 	height = dpi(470),
 	ontop = true,
 	visible = false
@@ -95,7 +95,7 @@ launcherbox:setup {
 							end,
 					widget = live(wibox.container.background, { bg = "bgmid" })
 				},
-				forced_width = dpi(300),
+				forced_width = dpi(350),
 				layout = wibox.layout.align.vertical
 			},
 			spacing = dpi(10),
