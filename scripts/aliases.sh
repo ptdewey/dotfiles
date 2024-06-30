@@ -34,8 +34,8 @@ if command -v fdfind >/dev/null 2>&1; then
 fi
 
 # better cd
-alias sd='cd ./$(fd -L . --type d | fzf)'
-alias sdh='cd $(fd -L . ~/ --type d | fzf)'
+sd() { cd ./$(fd -L . --type d | fzf); }
+sdh() { cd $(fd -L . ~/ --type d | fzf); }
 alias vd='vim $(fd . --type f | fzf)'
 alias vdh='vim $(fd . ~/ --type f | fzf)'
 alias vh='vim $(fd . ~/ --type f | fzf)'
@@ -132,6 +132,9 @@ tmux-sessionizer() {
 # map tmux sessionizer to ctrl+f
 if [ "$shell" = "bash" ]; then
     bind -x '"\C-f":tmux-sessionizer'
+    bind -x '"\C-e":sd'
 elif [ "$shell" = "zsh" ]; then
     bindkey -s ^f 'tmux-sessionizer\n'
+    bindkey -s ^e 'sd\n'
 fi
+
