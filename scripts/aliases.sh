@@ -74,11 +74,6 @@ alias ltc="latexmk -pdf"
 alias ltcl="latexmk -pvc --silent"
 alias ltclean="latexmk -c"
 
-# go
-alias gor="go run"
-alias gom="go mod"
-alias gob="go build"
-
 # pdf viewing
 pdfe() {
     if [ $# -eq 0 ]; then
@@ -129,12 +124,14 @@ tmux-sessionizer() {
     "$HOME/dotfiles/scripts/tmux-sessionizer.sh"
 }
 
-# map tmux sessionizer to ctrl+f
+# keymaps
 if [ "$shell" = "bash" ]; then
     bind -x '"\C-f":tmux-sessionizer'
     bind -x '"\C-e":sd'
+    bind -x '"\C-E":sdh'
 elif [ "$shell" = "zsh" ]; then
     bindkey -s ^f 'tmux-sessionizer\n'
     bindkey -s ^e 'sd\n'
+    bindkey -s ^E 'sdh\n'
 fi
 
