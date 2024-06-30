@@ -72,7 +72,7 @@ end)
 -- Battery
 
 local batterypercent = wibox.widget {
-	text = "N/A",
+	text = "Power",
 	widget = wibox.widget.textbox
 }
 
@@ -119,10 +119,11 @@ local clock = wibox.widget {
 screen.connect_signal("request::desktop_decoration", function(s)
 
 	-- Taglist
+    -- TODO: show other workplace tags
 
 	s.taglist = awful.widget.taglist {
 		screen = s,
-		filter = awful.widget.taglist.filter.selected,
+		filter = awful.widget.taglist.filter.all,
 		style = {
 			shape = function(cr, width, height)
 						gears.shape.rounded_rect(cr, width, height, dpi(10))
@@ -131,7 +132,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
 		widget_template = {
 			{
 				{
-					wibox.widget.textbox("Workspace "),
+					-- wibox.widget.textbox("Workspace "),
 					{
 						id = "text_role",
 						widget = wibox.widget.textbox
@@ -151,8 +152,8 @@ screen.connect_signal("request::desktop_decoration", function(s)
 			end
 		},
 		buttons = {
-			awful.button({ }, 1, function()
-				awesome.emit_signal("widget::preview")
+			awful.button({ }, 1, function(t)
+                awful.tag.viewonly(t)
 			end),
 			awful.button({ }, 4, function(t)
 				awful.tag.viewnext(t.screen)
@@ -220,7 +221,6 @@ screen.connect_signal("request::desktop_decoration", function(s)
 	})
 
     -- Panel
-
     s.wibar = awful.wibar {
 		position = "bottom",
 		height = dpi(40),

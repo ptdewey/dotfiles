@@ -114,7 +114,7 @@ naughty.connect_signal("request::display", function(n)
 					widget = wibox.container.constraint
 				},
 				layout = wibox.layout.align.vertical
-			},	
+			},
 			id = "background_role",
 			widget = naughty.container.background
 		}

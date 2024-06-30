@@ -94,9 +94,9 @@ function button(widget)
 	elseif widget.type == "image" then
 		img = wibox.widget.imagebox(widget.image)
 	else
-		img = live(wibox.widget.imagebox, { image = "calla" })
+		img = live(wibox.widget.imagebox, { image = "plant" })
 	end
-	
+
 
 	if widget.size then
 		width = widget.size
@@ -123,7 +123,7 @@ function button(widget)
 		},
 		forced_width = width,
 		forced_height = height,
-		buttons = { 
+		buttons = {
 			awful.button({}, 1, widget.run)},
 		shape = function(cr, width, height)
 					gears.shape.rounded_rect(cr, width, height, dpi(10))

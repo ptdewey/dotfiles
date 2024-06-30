@@ -33,7 +33,7 @@ local characters_entered = 0
 
 local titleicon = wibox.widget {
 	{
-		live(wibox.widget.imagebox, { image = "calla" }),
+		live(wibox.widget.imagebox, { image = "plant" }),
 		forced_height = dpi(30),
 		margins = dpi(5),
 		widget = wibox.container.margin

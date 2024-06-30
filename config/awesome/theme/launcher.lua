@@ -25,41 +25,41 @@ local entries = wibox.widget {
 }
 
 local settings = button {
-	run = function() 
-		awesome.emit_signal("widget::launcher") 
-		awesome.emit_signal("widget::config") 
+	run = function()
+		awesome.emit_signal("widget::launcher")
+		awesome.emit_signal("widget::config")
 	end
 }
 
 local shutdown = button {
-	type = "text", 
-	image = "", 
-	run = function() 
+	type = "text",
+	image = "",
+	run = function()
 		awful.spawn.with_shell(user.shutdown)
 	end
 }
 
 local reboot = button {
-	type = "text", 
-	image = "", 
-	run = function() 
+	type = "text",
+	image = "",
+	run = function()
 		awful.spawn.with_shell(user.reboot)
 	end
 }
 
 local exit = button {
-	type = "text", 
-	image = "", 
-	run = function() 
+	type = "text",
+	image = "",
+	run = function()
 		awesome.emit_signal("widget::launcher")
 		awesome.quit()
 	end
 }
 
 local lock = button {
-	type = "text", 
-	image = "", 
-	run = function() 
+	type = "text",
+	image = "",
+	run = function()
 		awesome.emit_signal("widget::launcher")
 		awesome.emit_signal("widget::lockscreen")
 	end
@@ -148,11 +148,11 @@ local function gen()
 				icon = appicons .. name .. ".svg"
 				local function exists(file)
 					local file=io.open(file, "r")
-					if file ~= nil then 
-						io.close(file) 
-						return true 
-					else 
-						return false 
+					if file ~= nil then
+						io.close(file)
+						return true
+					else
+						return false
 					end
 				end
 				if exists(icon) then
@@ -176,7 +176,7 @@ local function filter(cmd)
 
 	filtered = {}
 	regfiltered = {}
-	
+
 	-- Filter entries
 
 	for _, entry in ipairs(unfiltered) do
@@ -197,7 +197,7 @@ local function filter(cmd)
 	for i = 1, #regfiltered do
 		filtered[#filtered+1] = regfiltered[i]
 	end
-	
+
 	-- Clear entries
 
 	entries:reset()
@@ -281,11 +281,11 @@ local function open()
 	awful.prompt.run {
 		prompt = markup({ text = "Launch " }),
 		textbox = prompt,
-		done_callback = function() 
-			launcherbox.visible = false 
+		done_callback = function()
+			launcherbox.visible = false
 		end,
 		changed_callback = function(cmd)
-			if move == false then	
+			if move == false then
 				filter(cmd)
 			else
 				move = false
@@ -311,9 +311,9 @@ end
 
 awesome.connect_signal("widget::launcher", function()
 	awesome.emit_signal("widget::preview:hide")
-	
+
 	launcherbox.visible = not launcherbox.visible
-	
+
 	if launcherbox.visible then
 		open()
 	else
@@ -336,7 +336,7 @@ awesome.connect_signal("widget::launcher", function()
 			launcherbox,
 			{
 				margins = {
-					bottom = dpi(72),
+					bottom = dpi(56),
 					left = dpi(16),
 				},
 				parent = awful.screen.focused()

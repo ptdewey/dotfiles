@@ -20,7 +20,7 @@ local function createpreview(t, s, geometry)
             }
 
 			if not pcall(function() imagebox.image = gears.surface.load(c.icon) end) then
-				imagebox.image = beautiful.calla
+				imagebox.image = beautiful.plant
 			end
 
             local clientbox = wibox.widget({

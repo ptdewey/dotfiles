@@ -85,7 +85,19 @@ awful.keyboard.append_global_keybindings({
     ),
 
     -- move window between screens
-    awful.key( { mod, "Shift" }, "o", awful.client.movetoscreen),
+    awful.key({ mod, "Shift" }, "o", awful.client.movetoscreen),
+
+    -- move focus screen by direction
+    awful.key({ mod }, "Left", function()
+            awful.screen.focus_bydirection("left")
+        end,
+        { description = "focus left screen", group = "client" }
+    ),
+    awful.key({ mod }, "Right", function()
+            awful.screen.focus_bydirection("right")
+        end,
+        { description = "focus right screen", group = "client" }
+    ),
 
     -- resize by direction
     -- TODO: yoru config has example of this functionality

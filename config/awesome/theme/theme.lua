@@ -46,8 +46,8 @@ theme.titlebar_fg_urgent   = color.red
 
 -- Tasklist
 
-theme.tasklist_bg_normal   = color.bgmid
-theme.tasklist_bg_focus    = color.fg .. "20"
+theme.tasklist_bg_normal   = color.fg .. "20"
+theme.tasklist_bg_focus    = color.bgmid
 theme.tasklist_bg_urgent   = color.bgmid
 theme.tasklist_bg_minimize = color.bg
 
@@ -70,7 +70,7 @@ theme.snapper_gap = dpi(16)
 -- Misc
 
 theme.useless_gap           = dpi(5)
-theme.border_width          = dpi(0)
+theme.border_width          = dpi(1)
 theme.bg_systray    	    = color.bgmid
 theme.systray_icon_spacing  = dpi(5)
 theme.notification_spacing  = dpi(16)
@@ -89,7 +89,7 @@ theme.layout_tile	   = gears.color.recolor_image(iconpath .. "tile.png", color.f
 
 -- Theme icon
 
-theme.calla = gears.color.recolor_image(iconpath .. "calla.png", color.fg)
+theme.plant = gears.color.recolor_image(iconpath .. "plant.png", color.fg)
 
 -- Icon theme
 

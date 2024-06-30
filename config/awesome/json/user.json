@@ -12,6 +12,6 @@
 	"sessionlock": false,
 	"shotdir": "~/Pictures/Screenshots",
 	"shutdown": "systemctl poweroff",
-	"terminal": "kitty",
+	"terminal": "wezterm",
 	"wallpaper": "~/dotfiles/config/awesome/color/darkearth/darkearth.png"
 }
