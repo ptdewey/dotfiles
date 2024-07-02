@@ -50,6 +50,15 @@ return {
             { desc = '[S]earch [H]elp' })
         vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string,
             { desc = '[S]earch current [W]ord' })
+        vim.keymap.set('n', '<leader>ss', function()
+            require('telescope.builtin').grep_string {
+                shorten_path = true,
+                word_match = "-w",
+                only_sort_text = true,
+                search = ''
+            }
+        end,
+            { desc = "[S]earch [S]tring" })
         vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep,
             { desc = '[S]earch by [G]rep' })
         vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics,

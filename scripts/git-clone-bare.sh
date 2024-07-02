@@ -6,6 +6,7 @@ git-clone-bare() {
         return
     fi
 
+    # append .git to baseneame call to get rid of extension
     dir=$([ -z "${2}" ] && basename "${1}" || echo "${2}")
     git clone "${1}" "${dir}"
     cd "${dir}" || return
