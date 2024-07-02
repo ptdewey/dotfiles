@@ -9,7 +9,7 @@
 *eclipse*
 *fontawesome*
 *.repos*
-*.git*
+.git
 Downloads/*/
 *frc-scouting-db/output/
 *node_modules*

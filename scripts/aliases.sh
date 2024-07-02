@@ -46,6 +46,7 @@ source_if_exists "$dots/server-aliases.sh"
 source_if_exists "$dots/wal-fill.sh"
 source_if_exists "$dots/time-tracking.sh"
 source_if_exists "$dots/create-from-template.sh"
+source_if_exists "$dots/git-clone-bare.sh"
 alias knitr="$dots/knitr.sh"
 alias note="$dots/make-note.sh"
 alias hm-switch="$shell $dots/hm-switch.sh"
@@ -59,7 +60,8 @@ alias gd="git diff -U0"
 alias gs="git status"
 alias ci="git commit -m"
 alias gp="git push"
-alias gcl="git clone"
+# alias gcl="git clone"
+alias gcl="git-clone-bare"
 alias gsw="git switch"
 alias gb="git branch"
 alias gch="git checkout"
@@ -128,10 +130,10 @@ tmux-sessionizer() {
 if [ "$shell" = "bash" ]; then
     bind -x '"\C-f":tmux-sessionizer'
     bind -x '"\C-e":sd'
-    bind -x '"\C-E":sdh'
+    # bind -x '"\C-e":sdh'
 elif [ "$shell" = "zsh" ]; then
     bindkey -s ^f 'tmux-sessionizer\n'
     bindkey -s ^e 'sd\n'
-    bindkey -s ^E 'sdh\n'
+    # bindkey -s ^E 'sdh\n'
 fi
 
