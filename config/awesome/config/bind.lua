@@ -151,13 +151,13 @@ awful.keyboard.append_global_keybindings({
 	-- Screenshot
 
 	awful.key(
-		{ mod }, "s", function()
+		{ mod }, "\\", function()
 			awesome.emit_signal("util::screenshot", { args = "-u", time = "0" })
 		end,
         { description = "full screen", group = "screenshot" }
 	),
 	awful.key(
-		{ mod, "Control" }, "s", function()
+		{ mod, "Control" }, "\\", function()
 			awesome.emit_signal("util::screenshot", { args = "-u", time = "5" })
 		end,
         { description = "full screen delay", group = "screenshot" }

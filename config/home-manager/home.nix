@@ -87,6 +87,8 @@
         ## other gui applications
         # kitty
         # wezterm
+        discord
+        spotify
 
         ## awesomewm stuff
         roboto
