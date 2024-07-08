@@ -4,8 +4,8 @@
 vim.keymap.set("n", ";", ":", { noremap = true, desc = "semicolon to colon in normal mode" })
 
 -- buffer switching
-vim.keymap.set("n", "<tab>", ":bnext <CR>", { noremap = true, desc = "tab to switch buffers" })
-vim.keymap.set("n", "<S-tab>", ":bprev <CR>", { noremap = true, desc = "shift tab to switch buffers" })
+vim.keymap.set("n", "<tab>", ":bnext <CR>zz", { noremap = true, desc = "tab to switch buffers" })
+vim.keymap.set("n", "<S-tab>", ":bprev <CR>zz", { noremap = true, desc = "shift tab to switch buffers" })
 
 -- window movement
 vim.keymap.set("n", "<A-h>", "<C-w>h", { noremap = true, desc = "move to left window" })
