@@ -2,19 +2,25 @@
 return {
     -- git integration
     {
-        'tpope/vim-fugitive',
+        "tpope/vim-fugitive",
         event = "VeryLazy",
+        config = function()
+            vim.keymap.set("n", "<leader>gd", "<cmd>Gdiff<CR>", { silent = true, desc = "View Git diff" })
+            vim.keymap.set("n", "<leader>gs", "<cmd>Gs<CR>", { silent = true, desc = "View Git status" })
+            vim.keymap.set("n", "<leader>gl", "<cmd>Gclog<CR>", { silent = true, desc = "View Git commit log" })
+            vim.keymap.set("n", "<leader>gb", "<cmd>GBrowse<CR>", { silent = true, desc = "View Current Repository in Browser"})
+        end,
     },
 
     -- github integration
     {
-        'tpope/vim-rhubarb',
+        "tpope/vim-rhubarb",
         event = "VeryLazy",
     },
 
     -- add git signs to gutter
     {
-        'lewis6991/gitsigns.nvim',
+        "lewis6991/gitsigns.nvim",
 
         opts = {
             -- See `:help gitsigns.txt`
