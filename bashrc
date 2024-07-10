@@ -52,11 +52,11 @@ fi
 if [ -f "$HOME/dotfiles/scripts/git-prompt.sh" ]; then
     source "$HOME/dotfiles/scripts/git-prompt.sh"
     GIT_PS1_SHOWDIRTYSTATE=true
-    GIT_PS1_SHOWCOLORHINTS=true
     GIT_PS1_SHOWCONFLICTSTATE="yes"
     GIT_PS1_SHOWSTASHSTATE=true
     # GIT_PS1_SHOWUPSTREAM="auto"
 
+    # GIT_PS1_SHOWCOLORHINTS=true
     if [ "$color_prompt" = yes ]; then
         # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\[\033[01;35m\]$(__git_ps1 " (%s)")\[\033[00m\] > '
         PS1='${debian_chroot:+($debian_chroot)}\[\033[00m\]\[\033[01;34m\]\w\[\033[00m\]\[\033[00;32m\]$(__git_ps1 " (%s)")\[\033[00m\] > '
