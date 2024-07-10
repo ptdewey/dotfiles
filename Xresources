@@ -51,5 +51,5 @@ st.borderpx: 25
 
 ! Xcursor.size: 32
 ! rofi.dpi: 192
-*.dpi: 128
-Xft.dpi: 128
+*.dpi: 96
+Xft.dpi: 96

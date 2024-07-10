@@ -35,6 +35,17 @@ bindkey -e
 # PS1="%n %~ %"
 PS1='%F{green}%n@%m%f:%F{white}%F{blue}%~%f$ '
 
+if [ -f "$HOME/dotfiles/scripts/git-prompt.sh" ]; then
+    source "$HOME/dotfiles/scripts/git-prompt.sh"
+    GIT_PS1_SHOWDIRTYSTATE=true
+    GIT_PS1_SHOWCONFLICTSTATE="yes"
+    GIT_PS1_SHOWSTASHSTATE=true
+    setopt PROMPT_SUBST;
+    # GIT_PS1_SHOWCOLORHINTS=true
+    # PS1='%F{green}%n@%m%f:%F{white}%F{blue}%~%f$(__git_ps1 " (%s)") %f> '
+    PS1='%F{green}%n@%m%f:%F{white}%F{blue}%~%f%F{magenta}$(__git_ps1 " (%s)") %f> ' # without color hints
+fi
+
 # Set vim to default editor
 export EDITOR=nvim
 
