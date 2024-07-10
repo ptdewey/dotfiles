@@ -43,7 +43,8 @@ if [ -f "$HOME/dotfiles/scripts/git-prompt.sh" ]; then
     setopt PROMPT_SUBST;
     # GIT_PS1_SHOWCOLORHINTS=true
     # PS1='%F{green}%n@%m%f:%F{white}%F{blue}%~%f$(__git_ps1 " (%s)") %f> '
-    PS1='%F{green}%n@%m%f:%F{white}%F{blue}%~%f%F{magenta}$(__git_ps1 " (%s)") %f> ' # without color hints
+    # PS1='%F{green}%n@%m%f:%F{white}%F{blue}%~%f%F{magenta}$(__git_ps1 " (%s)") %f> ' # without color hints
+    PS1='%F{blue}%~%f%F{green}$(__git_ps1 " (%s)") %f> ' # without color hints and without user@host
 fi
 
 # Set vim to default editor
