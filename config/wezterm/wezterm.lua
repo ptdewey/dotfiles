@@ -7,8 +7,9 @@ local config = {
 
     -- font settings
     font = wezterm.font("IosevkaPatrick"),
-    font_size = 13.0,
-    -- dpi = 144,
+    -- font_size = 13.0,
+    font_size = 18.0,
+    dpi = 144,
 
     -- set rendering device
     -- enable_wayland = true,
