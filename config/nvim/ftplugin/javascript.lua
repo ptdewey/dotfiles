@@ -1,5 +1,3 @@
--- ftplugin/javascript.lua
-
 -- javascript filetype specific options
 local options = {
     tabstop = 2,

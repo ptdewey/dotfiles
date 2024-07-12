@@ -1,5 +1,3 @@
--- ftplugin/typescript.lua
-
 -- typescript filetype specific options
 local options = {
     tabstop = 2,

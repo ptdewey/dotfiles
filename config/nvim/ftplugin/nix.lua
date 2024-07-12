@@ -1,5 +1,3 @@
--- ftplugin/nix.lua
-
 -- nix filetype specific options
 local options = {
     tabstop = 2,

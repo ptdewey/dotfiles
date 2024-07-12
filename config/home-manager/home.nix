@@ -66,7 +66,6 @@
         nodejs
         nodePackages.prettier
         prettierd
-        yarn
         rustup
 
         ## wallpaper and aesthetics utils

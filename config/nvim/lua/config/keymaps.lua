@@ -19,8 +19,8 @@ vim.keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, si
 
 -- recenter cursor upon page navigation
 vim.keymap.set("n", "<C-b>", "<C-b>zz", { desc = "Move up a page" })
-vim.keymap.set("n", "<C-f>", "<C-f>zz", { desc = "Move down a page" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Move up a half page" })
+vim.keymap.set("n", "<C-f>", "<C-f>zz", { desc = "Move down a page" })
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Move down a half page" })
 vim.keymap.set("n", "J", "mzJ`z", { desc = "Stay in place on line merging" })
 
@@ -56,10 +56,12 @@ end, { desc = "LSP jump to definition" })
 -- Surround without surround
 vim.keymap.set("x", "'", [[:s/\%V\(.*\)\%V/'\1'/ <CR>]], { desc = "Surround selection with '" })
 vim.keymap.set("x", '"', [[:s/\%V\(.*\)\%V/"\1"/ <CR>]], { desc = 'Surround selection with "' })
-vim.keymap.set("x", "<leader>(", [[:s/\%V\(.*\)\%V/(\1)/ <CR>]], { desc = "Surround selection with ()" })
-vim.keymap.set("x", "<leader>{", [[:s/\%V\(.*\)\%V/{\1}/ <CR>]], { desc = "Surround selection with {}" })
-vim.keymap.set("x", "<leader>[", [[:s/\%V\(.*\)\%V/[\1]/ <CR>]], { desc = "Surround selection with []" })
-vim.keymap.set("x", "<leader><", [[:s/\%V\(.*\)\%V/<\1>/ <CR>]], { desc = "Surround selection with <>" })
+vim.keymap.set("x", "<leader>s'", [[:s/\%V\(.*\)\%V/'\1'/ <CR>]], { desc = "[S]urround selection with '" })
+vim.keymap.set("x", '<leader>s"', [[:s/\%V\(.*\)\%V/"\1"/ <CR>]], { desc = '[S]urround selection with "' })
+vim.keymap.set("x", "<leader>s(", [[:s/\%V\(.*\)\%V/(\1)/ <CR>]], { desc = "[S]urround selection with ()" })
+vim.keymap.set("x", "<leader>s{", [[:s/\%V\(.*\)\%V/{\1}/ <CR>]], { desc = "[S]urround selection with {}" })
+vim.keymap.set("x", "<leader>s[", [[:s/\%V\(.*\)\%V/[\1]/ <CR>]], { desc = "[S]urround selection with []" })
+vim.keymap.set("x", "<leader>s<", [[:s/\%V\(.*\)\%V/<\1>/ <CR>]], { desc = "[S]urround selection with <>" })
 vim.keymap.set("n", '<leader>s"', [[:s/\<<C-r><C-w>\>/"<C-r><C-w>\"/ <CR>]], { desc = '[S]urround word with "' })
 vim.keymap.set("n", "<leader>s'", [[:s/\<<C-r><C-w>\>/'<C-r><C-w>\'/ <CR>]], { desc = "[S]urround word with '" })
 vim.keymap.set("n", "<leader>s(", [[:s/\<<C-r><C-w>\>/(<C-r><C-w>)/ <CR>]], { desc = "[S]urround word with ()" })
@@ -91,7 +93,7 @@ vim.keymap.set("n", "<leader>n",
 )
 
 -- Make current file executable
-vim.keymap.set("n", "<leader>x", "<cmd>silent !chmod +x %<CR>", { desc = "Make current file executable" })
+-- vim.keymap.set("n", "<leader>x", "<cmd>silent !chmod +x %<CR>", { desc = "Make current file executable" })
 
 -- Tmux sessionizer
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww ~/dotfiles/scripts/tmux-sessionizer.sh<CR>", { desc = "Open tmux sessionizer" })
