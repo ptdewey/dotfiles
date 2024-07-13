@@ -1,29 +1,4 @@
---[[ 
---	TODO:
---	User defined tags
---	Define cropped wallpaper in theme init?
---  Better multihead support
---  Import theme (Xresources?)
---  Add Xresources live reloading
---  Create Gtk theme from color json
---  Create deb package (others?)
---]]
-
---[[
---	Known Bugs:
---1	Location of lockscreen promptbox depends on focused screen at startup,
---	doesn't appear if laptop screen focused
---2	Systray opens/closes for both screens, one is redundant
---3	Awful.wallpaper uses wrong dimensions when new screen is connected
---4 (Untested) Lockscreen appears to not add background widgets to
---	new screen when connected
---5	Launcher fg when typing does not update after live reload
---6	Sometimes live reloading will prevent interaction with floating
---	windows as they can only be moved (or when switching tags?)
---
---	Unknown Bugs:
---	Many
---]]
+local gears = require("gears")
 
 -- Errors
 
@@ -67,3 +42,14 @@ end
 -- Theme Init
 
 awesome.emit_signal("live::reload")
+
+collectgarbage("setpause", 110)
+collectgarbage("setstepmul", 1000)
+gears.timer({
+    timeout = 5,
+    autostart = true,
+    call_now = true,
+    callback = function()
+        collectgarbage("collect")
+    end,
+})

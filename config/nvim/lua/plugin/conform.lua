@@ -9,7 +9,7 @@ return {
                     typescript = { { "prettierd", "prettier" } },
                     typescriptreact = { { "prettierd", "prettier" } },
                     javascriptreact = { { "prettierd", "prettier" } },
-                    -- go = { "gofmt" },
+                    go = { "gofmt" },
                     python = { "blue", "isort" },
                     ["_"] = { "trim_whitespace" },
                 },
