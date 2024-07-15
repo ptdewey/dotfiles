@@ -163,6 +163,9 @@ ls.add_snippets("go", {
     -- s("if err", fmt("if err != nil {{\n\treturn err\n}}\n{}",
     --     { i(0) })),
 
+    s("err", fmt("{} := {}\nif {} != nil {{\n\treturn {}\n}}\n{}",
+        { i(2, "err"), i(1), rep(2), d(3, go_ret_vals, { 2 }), i(0)})),
+
     s(
         "efi",
         fmta(

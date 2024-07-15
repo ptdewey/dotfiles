@@ -10,6 +10,7 @@ return {
                     typescriptreact = { { "prettierd", "prettier" } },
                     javascriptreact = { { "prettierd", "prettier" } },
                     go = { "gofmt" },
+                    rust = { "rustfmt" },
                     python = { "blue", "isort" },
                     ["_"] = { "trim_whitespace" },
                 },

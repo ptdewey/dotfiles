@@ -27,7 +27,6 @@ return {
             end, desc = "Toggle Flash Search" },
         },
 
-
         opts = {
             modes = {
                 -- disable flash on search

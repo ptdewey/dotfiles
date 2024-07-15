@@ -1,5 +1,5 @@
 -- theme plugins (set theme in options.lua)
-local theme = {
+return {
     -- gruvbox material
     {
         "sainnhe/gruvbox-material",
@@ -18,6 +18,24 @@ local theme = {
         -- dir = "~/projects/darkearth-nvim",
         priority = 1000,
     },
-}
 
-return theme
+    -- highlight color codes
+    {
+        "brenoprata10/nvim-highlight-colors",
+        config = function()
+            require("nvim-highlight-colors").setup({})
+        end
+    },
+
+    -- for designing colorschemes
+    {
+        "rktjmp/lush.nvim",
+        cmd = "Lushify",
+    },
+
+    -- for building with lush
+    {
+        "rktjmp/shipwright.nvim",
+        cmd = "Shipwright",
+    },
+}

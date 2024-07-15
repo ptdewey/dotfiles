@@ -66,6 +66,7 @@
         nodejs
         nodePackages.prettier
         prettierd
+        openssl
         rustup
 
         ## wallpaper and aesthetics utils
