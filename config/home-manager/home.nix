@@ -1,8 +1,5 @@
 { config, pkgs, ... }:
 
-# let
-  # nixgl = import <nixgl> { };
-# in
 {
     # Enable home-manager and channel version
     programs.home-manager.enable = true;
@@ -59,7 +56,7 @@
         # lua52Packages.lgi
         # luajit
         # luajitPackages.luarocks
-        # luajitPackages.jsregexp
+        luajitPackages.jsregexp
         # luajitPackages.lgi
         go
         glow
