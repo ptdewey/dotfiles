@@ -34,8 +34,14 @@ if command -v fdfind >/dev/null 2>&1; then
 fi
 
 # better cd
-sd() { cd ./$(fd -L . --type d | fzf); }
-sdh() { cd $(fd -L . ~/ --type d | fzf); }
+sd() { cd ./$(fd -L . --type d | fzf --preview='tree -LF 2 {}'); }
+sdh() { cd $(fd -L . ~/ --type d | fzf --preview='tree -LF 2 {}'); }
+gcd() {
+  local dir
+  dir=$(fd -t d -H -d 2 -E ".git" -E "*/.*" --exec bash -c "if [ -d {}/.git ]; then echo {}; fi" | fzf --preview="tree -LF 2 {}")
+  [ -n "$dir" ] && cd "$dir"
+}
+
 alias vd='vim $(fd . --type f | fzf)'
 alias vdh='vim $(fd . ~/ --type f | fzf)'
 alias vh='vim $(fd . ~/ --type f | fzf)'
@@ -128,12 +134,12 @@ tmux-sessionizer() {
 
 # keymaps
 if [ "$shell" = "bash" ]; then
-    bind -x '"\C-f":tmux-sessionizer'
-    bind -x '"\C-e":sd'
-    # bind -x '"\C-e":sdh'
+    bind -x '"\C-f":tmux-sessionizer \n'
+    bind -x '"\C-e":sd \n'
+    bind -x '"\C-g":gcd \n'
 elif [ "$shell" = "zsh" ]; then
     bindkey -s ^f 'tmux-sessionizer\n'
     bindkey -s ^e 'sd\n'
-    # bindkey -s ^E 'sdh\n'
+    bindkey -s ^g 'gcd\n'
 fi
 
