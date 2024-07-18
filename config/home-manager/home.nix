@@ -38,6 +38,7 @@
         htop
         tmux
         lsd
+        plantuml
 
         ## neovim stuff
         neovim

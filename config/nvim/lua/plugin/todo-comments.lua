@@ -18,5 +18,10 @@ return {
             require("todo-comments").jump_prev()
             vim.cmd("normal! zz")
         end, { desc = "Previous todo comment" })
+
+        -- telescope popup
+        vim.keymap.set("n", "<leader>tt", function()
+            vim.cmd("TodoTelescope")
+        end, { desc = "[T]odo [T]elescope" })
     end,
 }
