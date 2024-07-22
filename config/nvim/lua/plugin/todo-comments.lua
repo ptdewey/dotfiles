@@ -22,6 +22,10 @@ return {
         -- telescope popup
         vim.keymap.set("n", "<leader>tt", function()
             vim.cmd("TodoTelescope")
+            -- start in normal mode (requires very small delay before sending esc command)
+            vim.defer_fn(function()
+                vim.cmd("stopinsert")
+            end, .01)
         end, { desc = "[T]odo [T]elescope" })
     end,
 }
