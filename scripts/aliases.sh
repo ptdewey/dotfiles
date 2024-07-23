@@ -41,6 +41,23 @@ gcd() {
   dir=$(fd -t d -H -d 2 -E ".git" -E "*/.*" --exec bash -c "if [ -d {}/.git ]; then echo {}; fi" | fzf --preview="tree -LF 2 {}")
   [ -n "$dir" ] && cd "$dir"
 }
+gm() {
+    branch=$(basename "$(git rev-parse --show-toplevel)")
+    toplevel=$(git rev-parse --show-toplevel)
+    if pushd "${toplevel}/../${1}"; then
+        if git merge "${branch}"; then
+            git push
+        else
+            echo "Merge failed"
+            popd
+            return 1
+        fi
+        popd
+    else
+        echo "Failed to change directory to ${toplevel}/../${1}"
+        return 1
+    fi
+}
 
 alias vd='vim $(fd . --type f | fzf)'
 alias vdh='vim $(fd . ~/ --type f | fzf)'

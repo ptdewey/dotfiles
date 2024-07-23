@@ -60,6 +60,35 @@ local function compile_plantuml(open_output)
     }):start()
 end
 
+local function compile_all_plantuml()
+    local current_file = vim.fn.expand("%:p")
+    local current_dir = vim.fn.fnamemodify(current_file, ":h")
+    local puml_files = vim.fn.globpath(current_dir, "*.puml", false, true)
+
+    if vim.tbl_isempty(puml_files) then
+        print("No .puml files found in the directory.")
+        return
+    end
+
+    for _, filepath in ipairs(puml_files) do
+        local relpath = vim.fn.fnamemodify(filepath, ":.")
+        local output_path = filepath:gsub("%.puml$", ".png")
+        local err_output = {}
+
+        display_messages({ "Compiling PlantUML diagram for " .. relpath .. "..." })
+        require("plenary.job"):new({
+            command = "plantuml",
+            args = { filepath },
+            on_stderr = function(_, data)
+                table.insert(err_output, data)
+            end,
+            on_exit = function(_, return_val)
+                handle_job_output(output_path, err_output, return_val)
+            end,
+        }):start()
+    end
+end
+
 local function open_plantuml_output()
     local filename = vim.fn.expand("%:t")
     if not filename:match("%.puml$") then
@@ -83,6 +112,26 @@ local function open_plantuml_output()
     end
 end
 
+local function open_all_plantuml_output()
+    local current_file = vim.fn.expand("%:p")
+    local current_dir = vim.fn.fnamemodify(current_file, ":h")
+    local png_files = vim.fn.globpath(current_dir, "*.png", false, true)
+
+    if vim.tbl_isempty(png_files) then
+        print("No .png files found in the directory.")
+        return
+    end
+
+    local err_output = {}
+    require("plenary.job"):new({
+        command = "feh",
+        args = png_files,
+        on_stderr = function(_, data)
+            table.insert(err_output, data)
+        end,
+    }):start()
+end
+
 local function setup()
     if vim.fn.exists(":PlantumlCompile") > 0 then
         return
@@ -94,21 +143,36 @@ local function setup()
             desc = "Compile current open plantuml file into a diagram",
             nargs = "?",
     })
-    vim.api.nvim_create_user_command("PlantumlView", function()
-        open_plantuml_output()
-    end, {
-        desc = "Open the compiled PlantUML diagram if it exists",
-    })
+    vim.api.nvim_create_user_command("PlantumlCompileAll", compile_all_plantuml,
+        { desc = "Compile all .puml files in the current directory into diagrams", }
+    )
+
+    vim.api.nvim_create_user_command("PlantumlView", open_plantuml_output,
+        { desc = "Open the compiled PlantUML diagram if it exists" })
+    vim.api.nvim_create_user_command("PlantumlViewAll", open_all_plantuml_output,
+        { desc = "Open all .png files in the current directory" })
 
     vim.keymap.set("n", "<leader>cc", function()
         vim.cmd("PlantumlCompile")
     end, { desc = "[C]ompile [c]urrent PlantUML file" })
+
+    vim.keymap.set("n", "<leader>cd", function()
+        vim.cmd("PlantumlCompileAll")
+    end, { desc = "[C]ompile all PlantUML files in [d]irectory" })
+
     vim.keymap.set("n", "<leader>co", function()
         vim.cmd("PlantumlCompile true")
     end, { desc = "[C]ompile and current PlantUML file and [o]pen output" })
+
     vim.keymap.set("n", "<leader>cv", function()
         vim.cmd("PlantumlView")
     end, { desc = "[V]iew [c]urrent PlantUML file output" })
+
+    vim.keymap.set("n", "<leader>cb", function()
+        vim.cmd("PlantumlViewAll")
+    end, { desc = "View all PlantUML file outputs" })
 end
+
+
 
 setup()
