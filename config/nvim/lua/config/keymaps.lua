@@ -38,7 +38,7 @@ vim.keymap.set("x", "K", ":m '<-2<CR>gv=gv", { desc = "Move highlighted block up
 
 -- misc
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { nowait = true, desc = "Exit terminal insert mode" })
-vim.keymap.set({"n", "x"}, "<Space>", "<Nop>", { silent = true })
+-- vim.keymap.set({"n", "x"}, "<Space>", "<Nop>", { silent = true })
 vim.keymap.set("n", "<Esc>", ":noh<Cr>", { desc = "Clear search highlight on escape", silent = true } )
 
 -- diagnostics
@@ -54,20 +54,22 @@ vim.keymap.set("n", "gd", function()
 end, { desc = "LSP jump to definition" })
 
 -- Surround without surround
-vim.keymap.set("x", "'", [[:s/\%V\(.*\)\%V/'\1'/ <CR>]], { desc = "Surround selection with '" })
-vim.keymap.set("x", '"', [[:s/\%V\(.*\)\%V/"\1"/ <CR>]], { desc = 'Surround selection with "' })
-vim.keymap.set("x", "<leader>s'", [[:s/\%V\(.*\)\%V/'\1'/ <CR>]], { desc = "[S]urround selection with '" })
-vim.keymap.set("x", '<leader>s"', [[:s/\%V\(.*\)\%V/"\1"/ <CR>]], { desc = '[S]urround selection with "' })
+vim.keymap.set("x", "'", [[:s/\%V\(.*\)\%V/'\1'/ <CR>]], { desc = "Surround selection with ''" })
+vim.keymap.set("x", '"', [[:s/\%V\(.*\)\%V/"\1"/ <CR>]], { desc = 'Surround selection with ""' })
+vim.keymap.set("x", "<leader>s'", [[:s/\%V\(.*\)\%V/'\1'/ <CR>]], { desc = "[S]urround selection with ''" })
+vim.keymap.set("x", '<leader>s"', [[:s/\%V\(.*\)\%V/"\1"/ <CR>]], { desc = '[S]urround selection with ""' })
 vim.keymap.set("x", "<leader>s(", [[:s/\%V\(.*\)\%V/(\1)/ <CR>]], { desc = "[S]urround selection with ()" })
 vim.keymap.set("x", "<leader>s{", [[:s/\%V\(.*\)\%V/{\1}/ <CR>]], { desc = "[S]urround selection with {}" })
 vim.keymap.set("x", "<leader>s[", [[:s/\%V\(.*\)\%V/[\1]/ <CR>]], { desc = "[S]urround selection with []" })
 vim.keymap.set("x", "<leader>s<", [[:s/\%V\(.*\)\%V/<\1>/ <CR>]], { desc = "[S]urround selection with <>" })
-vim.keymap.set("n", '<leader>s"', [[:s/\<<C-r><C-w>\>/"<C-r><C-w>\"/ <CR>]], { desc = '[S]urround word with "' })
-vim.keymap.set("n", "<leader>s'", [[:s/\<<C-r><C-w>\>/'<C-r><C-w>\'/ <CR>]], { desc = "[S]urround word with '" })
+vim.keymap.set("x", "<leader>s`", [[:s/\%V\(.*\)\%V/`\1`/ <CR>]], { desc = "[S]urround selection with ``" })
+vim.keymap.set("n", '<leader>s"', [[:s/\<<C-r><C-w>\>/"<C-r><C-w>\"/ <CR>]], { desc = '[S]urround word with ""' })
+vim.keymap.set("n", "<leader>s'", [[:s/\<<C-r><C-w>\>/'<C-r><C-w>\'/ <CR>]], { desc = "[S]urround word with ''" })
 vim.keymap.set("n", "<leader>s(", [[:s/\<<C-r><C-w>\>/(<C-r><C-w>)/ <CR>]], { desc = "[S]urround word with ()" })
 vim.keymap.set("n", "<leader>s[", [[:s/\<<C-r><C-w>\>/[<C-r><C-w>]/ <CR>]], { desc = "[S]urround word with []" })
 vim.keymap.set("n", "<leader>s{", [[:s/\<<C-r><C-w>\>/{<C-r><C-w>}/ <CR>]], { desc = "[S]urround word with {}" })
 vim.keymap.set("n", "<leader>s<", [[:s/\<<C-r><C-w>\>/<<C-r><C-w>>/ <CR>]], { desc = "[S]urround word with <>" })
+vim.keymap.set("n", "<leader>s`", [[:s/\<<C-r><C-w>\>/`<C-r><C-w>`/ <CR>]], { desc = "[S]urround word with ``" })
 
 -- Toggle Netrw
 vim.keymap.set(
@@ -93,7 +95,8 @@ vim.keymap.set("n", "<leader>n",
 )
 
 -- Make current file executable
--- vim.keymap.set("n", "<leader>x", "<cmd>silent !chmod +x %<CR>", { desc = "Make current file executable" })
+vim.keymap.set("n", "<leader>xx", "<cmd>silent !chmod +x %<CR>", { desc = "Make current file executable" })
+vim.keymap.set("n", "<leader>x-", "<cmd>silent !chmod -x %<CR>", { desc = "Remove current file executable flag" })
 
 -- Tmux sessionizer
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww ~/dotfiles/scripts/tmux-sessionizer.sh<CR>", { desc = "Open tmux sessionizer" })
