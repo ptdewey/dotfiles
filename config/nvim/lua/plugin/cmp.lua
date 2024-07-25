@@ -10,7 +10,7 @@ return {
         "hrsh7th/cmp-nvim-lsp",
 
         -- Adds a number of user-friendly snippets
-        "rafamadriz/friendly-snippets",
+        -- "rafamadriz/friendly-snippets",
 
         -- Buffer source
         "hrsh7th/cmp-buffer",
@@ -85,29 +85,20 @@ return {
             },
 
             sources = {
-                { name = "luasnip" },
-                { name = "nvim_lua" },
-                { name = "nvim_lsp" },
+                { name = "luasnip", priority = 15 },
+                { name = "nvim_lua", priority = 11 },
+                { name = "nvim_lsp", priority = 10 },
+                { name = "path", priority = 10 },
+                { name = "buffer", priority = 5 },
                 -- { name = "treesitter" },
-                { name = "path" },
-                { name = "buffer" },
-                {
-                    name = "look",
-                    keyword_length = 2,
-                    option = {
-                        convert_case = true,
-                        loud = true,
-                        --dict = "/usr/share/dict/words",
-                    },
-                },
             },
 
             formatting = {
                 format = function(entry, vim_item)
                     vim_item.menu = ({
-                        buffer = "[buf]",
-                        nvim_lsp = "[lsp]",
                         luasnip = "[snip]",
+                        nvim_lsp = "[lsp]",
+                        buffer = "[buf]",
                         nvim_lua = "[api]",
                         path = "[path]",
                         look = "[dict]",
@@ -116,5 +107,34 @@ return {
                 end
             },
         }
+
+        local function toggle_source(source)
+            local sources = cmp.get_config().sources
+            if not sources then return end
+            for i = #sources, 1, -1 do
+                if sources[i].name == source.name then
+                    table.remove(sources, i)
+                    return
+                end
+            end
+            table.insert(sources, source)
+        end
+
+        -- enable dictionary completion source upon toggle
+        vim.keymap.set("n", "<leader>ts", function()
+            toggle_source(
+                {
+                    name = "look",
+                    keyword_length = 3,
+                    priority = 1,
+                    max_item_count = 15,
+                    option = {
+                        convert_case = true,
+                        loud = true,
+                        --dict = "/usr/share/dict/words",
+                    },
+                }
+            )
+        end, { desc = "[T]oggle dictionary completion [s]ource" })
     end
 }
