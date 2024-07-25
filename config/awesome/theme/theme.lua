@@ -2,12 +2,29 @@ local gears = require("gears")
 local dpi = require("beautiful").xresources.apply_dpi
 local iconpath = require("gears").filesystem.get_configuration_dir() .. "theme/icons/"
 
-local r = assert(io.open(".config/awesome/color/" .. user.color .. "/" .. user.color .. ".json", "r"))
-local table = r:read("*all")
-r:close()
-local color = require("json"):decode(table)
+local color = {
+    bg = "#24211e",
+    bgalt = "#221f1c",
+    bgmid = "#675642",
+    black = "#736659",
+    blue = "#5f865f",
+    compoffset = "-25",
+    compopacity = ".5",
+    compradius = "25",
+    cyan = "#bb7842",
+    fg = "#d7c484",
+    green = "#77824a",
+    gtk = "Yaru-sage-dark",
+    icons = "Yaru-sage-dark",
+    magenta = "#b36b42",
+    red = "#b3664d",
+    wall = "color/darkearth/darkearth.png",
+    white = "#d7c584",
+    yellow = "#c9a654"
+}
 
 local theme = {}
+
 
 theme.bg	  = color.bg
 theme.bgmid	  = color.bgmid

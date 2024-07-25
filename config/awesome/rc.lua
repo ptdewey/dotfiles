@@ -12,11 +12,23 @@ end)
 
 -- User
 
-local r = assert(io.open(".config/awesome/json/user.json", "r"))
-local table = r:read("*all")
-r:close()
-
-user = require("json"):decode(table)
+user = {
+	batt = "BAT0",
+	browser = "firefox",
+	color = "darkearth",
+	file_manager = "nemo",
+	font = "IosevkaPatrick Nerd Font 16",
+	fontalt = "IosevkaPatrick 16",
+	fonticon = "Material Icons 16",
+	mod = "Mod4",
+	passwd = "",
+	reboot = "systemctl reboot",
+	sessionlock = false,
+	shotdir = "~/Pictures/Screenshots",
+	shutdown = "systemctl poweroff",
+	terminal = "wezterm",
+	wallpaper = "~/dotfiles/config/awesome/color/darkearth/darkearth.png"
+}
 
 -- Config
 

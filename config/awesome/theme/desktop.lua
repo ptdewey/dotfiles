@@ -1,15 +1,7 @@
---[[
---  background on icon hover ?
---  macos-like behavior ?
---  multi selecting ?
---  multi screen ?
---]]
-
 local awful = require("awful")
 local wibox = require("wibox")
 local awful = require("awful")
 local gears = require("gears")
-local json = require("json")
 local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
 local appicons = "/usr/share/icons/Papirus/64x64/"
@@ -116,10 +108,6 @@ local function save()
 			}
 		}
 	end
-
-	local w = assert(io.open(".config/awesome/json/desktop.json", "w"))
-	w:write(json:encode_pretty(layout, nil, { pretty = true, indent = "	", align_keys = false, array_newline = true }))
-	w:close()
 end
 
 local function gridindexat(y, x)
@@ -286,16 +274,6 @@ local function createicon(icon, label, exec)
 end
 
 local function load()
-	local layoutfile = gears.filesystem.get_configuration_dir() .. 'json/desktop.json'
-	if not gears.filesystem.file_readable(layoutfile) then
-		local entries = gen()
-		for _, entry in ipairs(entries) do
-			grid:add(createicon(entry.icon, entry.label, entry.exec))
-		end
-		save()
-		return
-	end
-
 	local awmmenu = {
 		{ "Config", user.config },
 		{ "Restart", awesome.restart }
@@ -350,10 +328,15 @@ local function load()
 		end)
 	}
 
-	local r = assert(io.open(".config/awesome/json/desktop.json", "r"))
-	local table = r:read("*all")
-	r:close()
-	local layout = json:decode(table)
+    local layout = {
+		col = 1,
+		row = 1,
+		widget = {
+			exec = "nemo Desktop/'Website'",
+			icon = "/usr/share/icons/Papirus/64x64/places/folder.svg",
+			label = "Website"
+		}
+    }
 
 	for _, entry in ipairs(layout) do
 		grid:add_widget_at(createicon(entry.widget.icon, entry.widget.label, entry.widget.exec), entry.row, entry.col)

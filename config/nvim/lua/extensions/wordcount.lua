@@ -1,4 +1,3 @@
--- wordcount.lua
 local M = {}
 
 function M.get_visual_selection()

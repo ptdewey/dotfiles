@@ -25,10 +25,26 @@ local settings = copytable(user)
 local color
 
 local function genColor()
-	local r = assert(io.open(".config/awesome/color/" .. settings.color .. "/" .. settings.color .. ".json", "r"))
-	local t = r:read("*all")
-	r:close()
-	color = require("json"):decode(t)
+    color = {
+        bg = "#24211e",
+        bgalt = "#221f1c",
+        bgmid = "#675642",
+        black = "#736659",
+        blue = "#5f865f",
+        compoffset = "-25",
+        compopacity = ".5",
+        compradius = "25",
+        cyan = "#bb7842",
+        fg = "#d7c484",
+        green = "#77824a",
+        gtk = "Yaru-sage-dark",
+        icons = "Yaru-sage-dark",
+        magenta = "#b36b42",
+        red = "#b3664d",
+        wall = "color/darkearth/darkearth.png",
+        white = "#d7c584",
+        yellow = "#c9a654"
+    }
 end
 
 genColor()
@@ -366,9 +382,6 @@ local function doTheme()
 			path:make_directory()
 			sourcepath:copy(targetpath, Gio.FileCopyFlags.NONE, nil, nil, nil, nil)
 			color.wall = targetpath:get_path():gsub(require("gears").filesystem.get_configuration_dir(), "")
-			local w = assert(io.open(".config/awesome/color/" .. name .. "/" .. name .. ".json", "w"))
-		w:write(require("json"):encode_pretty(color, nil, { pretty = true, indent = "	", align_keys = false, array_newline = true }))
-		w:close()
 
 			table.insert(items, name)
 			model:append({name})
@@ -491,15 +504,6 @@ function app:on_startup()
 				break
 			end
 		end
-
-		local w = assert(io.open(".config/awesome/json/user.json", "w"))
-		w:write(require("json"):encode_pretty(settings, nil, { pretty = true, indent = "	", align_keys = false, array_newline = true }))
-		w:close()
-		user = copytable(settings)
-
-		local w = assert(io.open(".config/awesome/color/" .. settings.color .. "/" .. settings.color .. ".json", "w"))
-		w:write(require("json"):encode_pretty(color, nil, { pretty = true, indent = "	", align_keys = false, array_newline = true }))
-		w:close()
 
 		awesome.emit_signal("color::change", color)
 
