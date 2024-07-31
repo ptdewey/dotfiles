@@ -10,12 +10,12 @@ return {
     },
     {
         -- nice statusline
-        "nvim-lualine/lualine.nvim",
+        -- "nvim-lualine/lualine.nvim",
+        "ptdewey/lualine.nvim",
         dependencies =  {
             "letieu/harpoon-lualine",
             -- "nvim-tree/nvim-web-devicons",
         },
-
         opts = {
             options = {
                 icons_enabled = false,
@@ -41,30 +41,11 @@ return {
                     },
                 },
                 lualine_c = {
-                    { "filename", padding = 1, },
+                    { "filename", path = 5, padding = 1, },
                 },
                 lualine_x = { "diagnostics", "diff" },
-                -- lualine_y = { "filetype" },
                 lualine_y = { "branch" },
-                -- lualine_z = { "filetype" },
             },
-
-            -- bufferline replacement
-            -- winbar = {
-            --     lualine_c = {
-            --         {
-            --             "buffers",
-            --             buffers_color = {
-            --                 active = "lualine_b_normal",
-            --                 inactive = "lualine_c_normal",
-            --             },
-            --             symbols = {
-            --                 alternate_file = "",
-            --             },
-            --         },
-            --     },
-            --     lualine_y = { "hostname"},
-            -- },
         },
     },
 }
