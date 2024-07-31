@@ -71,19 +71,4 @@ return {
                 { desc = '[S]earch [R]esume' })
         end
     },
-    {
-        "nvim-telescope/telescope-cheat.nvim",
-        dependencies = {
-            "kkharji/sqlite.lua",
-            "nvim-telescope/telescope.nvim"
-        },
-        config = function()
-            local cheat_dbdir = vim.fn.stdpath "data" .. "/databases"
-            if not vim.loop.fs_stat(cheat_dbdir) then
-                vim.loop.fs_mkdir(cheat_dbdir, 493)
-            end
-            require("telescope").load_extension("cheat")
-        end,
-
-    },
 }
