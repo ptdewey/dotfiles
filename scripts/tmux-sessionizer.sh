@@ -5,9 +5,9 @@ if [[ $# -eq 1 ]]; then
 else
     # use fd instead of find if it exists
     if command -v fd >/dev/null 2>&1; then
-        selected=$(fd -L . ~/work ~/projects ~/notes ~/ --type d --max-depth 1 | fzf)
+        selected=$(fd -L . ~/work ~/projects ~/notes ~/ --type d --max-depth 1 | fzf --preview='tree -LF 2 {}')
     else
-        selected=$(find ~/work ~/projects ~/notes ~/ -mindepth 1 -maxdepth 1 -type d | fzf)
+        selected=$(find ~/work ~/projects ~/notes ~/ -mindepth 1 -maxdepth 1 -type d | fzf --preview='tree -LF 2 {}')
     fi
 fi
 

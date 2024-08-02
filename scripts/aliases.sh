@@ -152,11 +152,11 @@ tmux-sessionizer() {
 # keymaps
 if [ "$shell" = "bash" ]; then
     bind -x '"\C-f":tmux-sessionizer \n'
-    bind -x '"\C-e":sd \n'
-    bind -x '"\C-g":gcd \n'
+    bind -x '"\C-g":sd \n'
+    # bind -x '"\C-g":gcd \n'
 elif [ "$shell" = "zsh" ]; then
     bindkey -s ^f 'tmux-sessionizer\n'
-    bindkey -s ^e 'sd\n'
-    bindkey -s ^g 'gcd\n'
+    bindkey -s ^g 'sd\n'
+    # bindkey -s ^g 'gcd\n'
 fi
 
