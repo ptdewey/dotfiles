@@ -1,0 +1,4 @@
+# linguist overrides
+scripts/git-prompt.sh linguist-vendored
+p10k.zsh linguist-generated
+config/nvim/syntax/plantuml.vim linguist-vendored
