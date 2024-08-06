@@ -7,6 +7,11 @@ return {
     config = function()
         require("todo-comments").setup({
             signs = false,
+            keywords = {
+                DOCS = {
+                    alt = { "DOC", "DOCUMENT" }
+                },
+            }
         })
         -- navigation
         vim.keymap.set("n", "]t", function()

@@ -6,7 +6,6 @@ return {
         branch = "main",
         -- branch = "dev",
         config = function()
-            -- require("pendulum").setup()
             require("pendulum").setup({
                 log_file = vim.fn.expand("$HOME/projects/pendulum-log.csv"),
                 timeout_len = 180,
