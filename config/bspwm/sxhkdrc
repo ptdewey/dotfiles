@@ -3,7 +3,7 @@
 #
 
 # Terminal
-super + Return 
+super + Return
 	kitty
 
 # Firefox
@@ -30,8 +30,8 @@ super + alt + Escape
 # quit/restart bspwm
 super + shift + r
     bspc wm -r
-# super + shift + {q, r} 
-# 	bspc {quit, wm -r} 
+super + shift + q
+	bspc quit
 
 # close/kill window
 super + {_,shift + }q
@@ -134,7 +134,7 @@ XF86AudioRaiseVolume
 # lower volume
 XF86AudioLowerVolume
     pactl set-sink-volume 0 -5%
-	# amixer -D pipewire sset Master 1%- 
+	# amixer -D pipewire sset Master 1%-
 
 # mute
 XF86AudioMute

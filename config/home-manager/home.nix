@@ -43,7 +43,7 @@
         ## neovim stuff
         neovim
         xclip
-        # tree-sitter
+        tree-sitter
 
         ## shell stuff
         zsh
@@ -77,7 +77,7 @@
         dunst
         polybar
         picom
-        rofi
+        # rofi
         sxhkd
 
         # nixgl.wezterm
@@ -85,8 +85,8 @@
         ## other gui applications
         # kitty
         # wezterm
-        discord
-        spotify
+        # discord
+        # spotify
 
         ## awesomewm stuff
         roboto

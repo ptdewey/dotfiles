@@ -33,7 +33,7 @@ bindkey -e
 
 # Change the look of the prompt
 # PS1="%n %~ %"
-PS1='%F{green}%n@%m%f:%F{white}%F{blue}%~%f$ '
+PS1=' %F{green}%n@%m%f:%F{white}%F{blue}%~%f$ '
 
 if [ -f "$HOME/dotfiles/scripts/git-prompt.sh" ]; then
     source "$HOME/dotfiles/scripts/git-prompt.sh"
@@ -44,7 +44,7 @@ if [ -f "$HOME/dotfiles/scripts/git-prompt.sh" ]; then
     # GIT_PS1_SHOWCOLORHINTS=true
     # PS1='%F{green}%n@%m%f:%F{white}%F{blue}%~%f$(__git_ps1 " (%s)") %f> '
     # PS1='%F{green}%n@%m%f:%F{white}%F{blue}%~%f%F{magenta}$(__git_ps1 " (%s)") %f> ' # without color hints
-    PS1='%F{blue}%~%f%F{green}$(__git_ps1 " (%s)") %f> ' # without color hints and without user@host
+    PS1=' %F{blue}%~%f%F{green}$(__git_ps1 " (%s)") %f> ' # without color hints and without user@host
 fi
 
 # Set vim to default editor

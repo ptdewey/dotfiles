@@ -15,6 +15,7 @@ git-clone-bare() {
     cd "${dir}" || return
     git config remote.origin.url "${1}"
     git config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*'
+    git fetch
 
     ## Option 2: leave an empty directory with detached HEAD
     # git clone "${1}" "${dir}"
