@@ -1,5 +1,6 @@
 local function load_snippets()
     local snippet_files = {
+        "all",
         "lua",
         "tex",
         "r",
