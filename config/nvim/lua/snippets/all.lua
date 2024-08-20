@@ -8,6 +8,9 @@ local rep = extras.rep
 
 local function split_commentstring()
     local commentstring = vim.bo.commentstring
+    if not commentstring or commentstring == "" then
+        return "", ""
+    end
     local prefix, suffix = commentstring:match("^(.-)%%s(.-)$")
 
     if not prefix:match("%s$") then
