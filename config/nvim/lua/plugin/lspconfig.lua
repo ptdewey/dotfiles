@@ -1,6 +1,10 @@
 -- language server configuration plugin
 return {
     {
+        "folke/neodev.nvim",
+        ft = "lua",
+    },
+    {
         -- LSP Configuration & Plugins
         'neovim/nvim-lspconfig',
         dependencies = {
@@ -12,7 +16,7 @@ return {
             { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
 
             -- Additional lua configuration, makes nvim stuff amazing!
-            'folke/neodev.nvim',
+            -- 'folke/neodev.nvim',
         },
         vim.diagnostic.config({
             -- update_in_insert = true,

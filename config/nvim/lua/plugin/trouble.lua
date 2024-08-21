@@ -1,17 +1,18 @@
 return {
     {
         "folke/trouble.nvim",
-        event = "VeryLazy",
+        keys = {
+            { "<leader>to", desc = "[T]rouble T[o]ggle" },
+            { "<leader>td", desc = "[T]rouble [D]iagnostics" },
+            { "<leader>tb", desc = "[T]rouble [B]uffer Diagnostics" },
+        },
+
         config = function()
             require("trouble").setup({})
 
             vim.keymap.set("n", "<leader>to", function()
                 require("trouble").toggle()
             end, { desc = "[T]rouble T[o]ggle" })
-
-            -- vim.keymap.set("n", "<leader>to", function()
-            --     require("trouble").toggle("todo")
-            -- end, { desc = "[T]rouble T[o]do" })
 
             vim.keymap.set("n", "<leader>td", function()
                 require("trouble").toggle("diagnostics")

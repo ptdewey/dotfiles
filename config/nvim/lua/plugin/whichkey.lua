@@ -2,16 +2,16 @@
 return {
     'folke/which-key.nvim',
 
-    event = "VeryLazy",
-
-    opts = {
-        icons = {
-            rules = false,
-        },
-    },
+    keys = { "<leader>" },
 
     -- plugin configuration
     config = function ()
+        require("which-key").setup({
+            icons = {
+                rules = false,
+            },
+        })
+
         require('which-key').add({
             { "<leader>c", group = "[C]ode" },
             { "<leader>c_", hidden = true },

@@ -1,16 +1,16 @@
 -- theme plugins (set theme in options.lua)
 return {
     -- gruvbox material
-    {
-        "sainnhe/gruvbox-material",
-        priority = 1000,
-    },
+    -- {
+    --     "sainnhe/gruvbox-material",
+    --     priority = 1000,
+    -- },
 
     -- everforest
-    {
-        "neanias/everforest-nvim",
-        priority = 1000,
-    },
+    -- {
+    --     "neanias/everforest-nvim",
+    --     priority = 1000,
+    -- },
 
     -- darkearth
     {
@@ -22,6 +22,7 @@ return {
     -- highlight color codes
     {
         "brenoprata10/nvim-highlight-colors",
+        event = "VeryLazy",
         config = function()
             require("nvim-highlight-colors").setup({})
         end

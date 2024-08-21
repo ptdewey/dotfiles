@@ -5,7 +5,10 @@ return {
         "ptdewey/yankbank-nvim",
         branch = "main",
 
-        event = "VeryLazy",
+        -- load on keypress
+        keys = {
+            { "<leader>p", desc = "Open YankBank" },
+        },
 
         config = function()
             require("yankbank").setup({
@@ -15,14 +18,14 @@ return {
                 num_behavior = "jump",
                 focus_gain_poll = true,
                 keymaps = {
-                    -- navigation_next = "h",
-                    -- navigation_prev = "l",
+                    navigation_next = "h",
+                    navigation_prev = "l",
                 },
             })
 
             -- set popup keymap
             vim.keymap.set("n", "<leader>p", "<cmd>YankBank<CR>",
-                { noremap = true })
+                { noremap = true, desc = "Open YankBank" })
         end,
     },
 }

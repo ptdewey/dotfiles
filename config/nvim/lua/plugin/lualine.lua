@@ -3,6 +3,8 @@ return {
     -- harpoon status plugin
     {
         "letieu/harpoon-lualine",
+        -- event = "VeryLazy",
+        lazy = true,
         dependencies = {
             "ThePrimeagen/harpoon",
             branch = "harpoon2",

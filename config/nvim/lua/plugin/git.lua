@@ -3,24 +3,28 @@ return {
     -- git integration
     {
         "tpope/vim-fugitive",
-        event = "VeryLazy",
-        config = function()
-            vim.keymap.set("n", "<leader>gd", "<cmd>Gdiff<CR>", { silent = true, desc = "View Git diff" })
-            vim.keymap.set("n", "<leader>gs", "<cmd>Gs<CR>", { silent = true, desc = "View Git status" })
-            vim.keymap.set("n", "<leader>gl", "<cmd>Gclog<CR>", { silent = true, desc = "View Git commit log" })
-            vim.keymap.set("n", "<leader>gb", "<cmd>GBrowse<CR>", { silent = true, desc = "View Current Repository in Browser"})
-        end,
+        keys = {
+            { "<leader>gd", "<cmd>Gdiff<CR>", silent = true, desc = "View Git diff" },
+            { "<leader>gs", "<cmd>Gs<CR>", silent = true, desc = "View Git status" },
+            { "<leader>gl", "<cmd>Gclog<CR>", silent = true, desc = "View Git commit log" },
+            { "<leader>gb", "<cmd>GBrowse<CR>", silent = true, desc = "View Current Repository in Browser" },
+        },
+        dependencies = {
+            -- also load vim-rhubarb when lazy loading
+            "tpope/vim-rhubarb",
+        },
     },
 
     -- github integration
     {
         "tpope/vim-rhubarb",
-        event = "VeryLazy",
+        lazy = true,
     },
 
     -- add git signs to gutter
     {
         "lewis6991/gitsigns.nvim",
+        event = "VeryLazy",
 
         opts = {
             -- See `:help gitsigns.txt`

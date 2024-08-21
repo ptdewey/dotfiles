@@ -3,6 +3,8 @@ return {
     {
         "nvim-telescope/telescope.nvim",
         branch = "0.1.x",
+
+        lazy = true,
         dependencies = {
             'nvim-lua/plenary.nvim',
             {
@@ -12,6 +14,21 @@ return {
                     return vim.fn.executable 'make' == 1
                 end,
             },
+        },
+
+        -- load on keybinds
+        keys = {
+            { "<leader>?", desc = '[?] Find recently opened files' },
+            { "<leader>b", desc = 'Search [B]uffers' },
+            { "<leader>sb", desc = 'Fuzzily [S]earch in current [B]uffer' },
+            { "<leader>gf", desc = 'Search [G]it [F]iles' },
+            { "<leader>ff", desc = '[F]ind [F]iles' },
+            { "<leader>sh", desc = '[S]earch [H]elp' },
+            { "<leader>sw", desc = '[S]earch current [W]ord' },
+            { "<leader>ss", desc = '[S]earch [S]tring' },
+            { "<leader>sg", desc = '[S]earch by [G]rep' },
+            { "<leader>sd", desc = '[S]earch [D]iagnostics' },
+            { "<leader>sr", desc = '[S]earch [R]esume' },
         },
 
         -- plugin configuration

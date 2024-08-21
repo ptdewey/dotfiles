@@ -1,3 +1,4 @@
+-- TODO: load based on filetypes instead of all at once
 local function load_snippets()
     local snippet_files = {
         "all",

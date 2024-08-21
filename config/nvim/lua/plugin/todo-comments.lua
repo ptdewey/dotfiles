@@ -1,8 +1,7 @@
 -- todo and other tag highlights
 return {
     "folke/todo-comments.nvim",
-
-    lazy = false,
+    event = "VeryLazy",
 
     config = function()
         require("todo-comments").setup({

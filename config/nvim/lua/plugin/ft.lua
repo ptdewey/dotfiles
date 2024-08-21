@@ -46,28 +46,4 @@ return {
             -- vim.keymap.set("n", "<F7>", ":LatexCompileLive<CR>", { noremap = true })
         end,
     },
-
-    -- http client
-    {
-        "mistweaverco/kulala.nvim",
-        ft = "http",
-        config = function()
-            require("kulala").setup({
-                icons = {
-                    inlay = {
-                        loading = "...",
-                        done = ""
-                    },
-                    lualine = "",
-                },
-                additional_curl_options = {},
-            })
-        end,
-        -- NOTE: Potential plugin improvements
-        -- - return status code instead of icon (or in addition to)
-        -- - text coloring for icons? (hlgroups)
-        -- - output in temporary buffer
-        --   - toggle keybind (close 'ui' window)
-        -- - option for split direction
-    }
 }
