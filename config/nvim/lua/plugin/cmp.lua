@@ -24,6 +24,9 @@ return {
 
         -- completion source from dictionary
         "octaltree/cmp-look",
+
+        -- nvim lua api
+        "folke/lazydev.nvim",
     },
 
     -- configure plugin
@@ -101,6 +104,7 @@ return {
                         nvim_lsp = "[lsp]",
                         buffer = "[buf]",
                         nvim_lua = "[api]",
+                        lazydev = "[lazy]",
                         path = "[path]",
                         look = "[dict]",
                     })[entry.source.name]
