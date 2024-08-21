@@ -13,4 +13,17 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- load plugins outlined in 'plugin' directory with lazy
-require('lazy').setup({ { import = "plugin" } }, {})
+require('lazy').setup({ { import = "plugin" } }, {
+    ui = { border = "rounded" },
+    performance = {
+        rtp = {
+            disabled_plugins = {
+                "gzip",
+                "tarPlugin",
+                "tohtml",
+                "zipPlugin",
+                "tutor",
+            },
+        },
+    },
+})

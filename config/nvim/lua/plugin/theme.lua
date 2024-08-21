@@ -1,5 +1,12 @@
 -- theme plugins (set theme in options.lua)
 return {
+    -- darkearth
+    {
+        "ptdewey/darkearth-nvim",
+        -- dir = "~/projects/darkearth-nvim",
+        priority = 1000,
+    },
+
     -- gruvbox material
     -- {
     --     "sainnhe/gruvbox-material",
@@ -12,17 +19,10 @@ return {
     --     priority = 1000,
     -- },
 
-    -- darkearth
-    {
-        "ptdewey/darkearth-nvim",
-        -- dir = "~/projects/darkearth-nvim",
-        priority = 1000,
-    },
-
     -- highlight color codes
     {
         "brenoprata10/nvim-highlight-colors",
-        event = "VeryLazy",
+        event = { "BufReadPost", "BufNewFile" },
         config = function()
             require("nvim-highlight-colors").setup({})
         end

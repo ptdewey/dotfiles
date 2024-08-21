@@ -14,6 +14,7 @@ return {
         -- nice statusline
         -- "nvim-lualine/lualine.nvim",
         "ptdewey/lualine.nvim",
+        event = "VeryLazy",
         dependencies =  {
             "letieu/harpoon-lualine",
             -- "nvim-tree/nvim-web-devicons",

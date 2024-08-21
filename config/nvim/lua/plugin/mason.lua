@@ -1,8 +1,11 @@
 -- lsp management
 return {
     {
+        -- install and manage lsp installations
         "williamboman/mason.nvim",
-        event = "VeryLazy",
+        event = { "BufReadPost", "BufNewFile" },
+
+        cmd = { "Mason" },
         dependencies = {
             "williamboman/mason-lspconfig.nvim",
         },
@@ -15,7 +18,7 @@ return {
                 vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, { desc = "Hover Documentation" })
                 vim.keymap.set("n", "<leader>k", function()vim.lsp.buf.signature_help() end, { desc = "Signature Documentation" })
 
-                vim.keymap.set("i", "<C-k>", function()vim.lsp.buf.signature_help() end,
+                vim.keymap.set("i", "<C-k>", function() vim.lsp.buf.signature_help() end,
                     { desc = "LSP: Signature Documentation" })
 
                 -- Lesser used LSP functionality
@@ -39,7 +42,6 @@ return {
 
             -- language servers to automatically install
             local servers = {
-                clangd = {},
                 gopls = {},
                 lua_ls = {
                     Lua = {
@@ -73,7 +75,8 @@ return {
         end,
     },
     {
+        -- link mason and lspconfig
         "williamboman/mason-lspconfig.nvim",
-        event = "VeryLazy",
+        lazy = true,
     }
 }

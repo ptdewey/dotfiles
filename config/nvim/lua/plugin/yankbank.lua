@@ -1,9 +1,15 @@
 -- yank history popup window plugin
 return {
     {
-        -- dir = "~/projects/yankbank-nvim",
-        "ptdewey/yankbank-nvim",
-        branch = "main",
+
+        dir = "~/projects/yankbank-nvim.git/feature-4-persistence",
+        -- dir = "~/projects/testing/yankbank-nvim",
+        -- "ptdewey/yankbank-nvim",
+        -- branch = "main",
+
+        dependencies = {
+            "kkharji/sqlite.lua",
+        },
 
         -- load on keypress
         keys = {
@@ -21,6 +27,7 @@ return {
                     navigation_next = "h",
                     navigation_prev = "l",
                 },
+                persist_type = "sqlite",
             })
 
             -- set popup keymap
