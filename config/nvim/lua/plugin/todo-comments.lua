@@ -2,6 +2,9 @@
 return {
     "folke/todo-comments.nvim",
     event = "VeryLazy",
+    dependencies = {
+        "nvim-telescope/telescope.nvim",
+    },
 
     config = function()
         require("todo-comments").setup({

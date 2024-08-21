@@ -2,9 +2,8 @@
 return {
     {
 
-        dir = "~/projects/yankbank-nvim.git/feature-4-persistence",
-        -- dir = "~/projects/testing/yankbank-nvim",
-        -- "ptdewey/yankbank-nvim",
+        -- dir = "~/projects/yankbank-nvim.git/feature-4-persistence",
+        "ptdewey/yankbank-nvim",
         -- branch = "main",
 
         dependencies = {
@@ -24,10 +23,10 @@ return {
                 num_behavior = "jump",
                 focus_gain_poll = true,
                 keymaps = {
-                    navigation_next = "h",
-                    navigation_prev = "l",
+                    -- navigation_next = "h",
+                    -- navigation_prev = "l",
                 },
-                persist_type = "sqlite",
+                -- persist_type = "sqlite",
             })
 
             -- set popup keymap
