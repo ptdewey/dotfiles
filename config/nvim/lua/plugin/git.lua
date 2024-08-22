@@ -24,7 +24,7 @@ return {
     -- add git signs to gutter
     {
         "lewis6991/gitsigns.nvim",
-        event = "VeryLazy",
+        event = { "BufReadPost" },
 
         opts = {
             -- See `:help gitsigns.txt`
