@@ -5,7 +5,6 @@ local extras = require("luasnip.extras")
 local fmt = require("luasnip.extras.fmt").fmt
 local rep = extras.rep
 
-
 local function split_commentstring()
     local commentstring = vim.bo.commentstring
     if not commentstring or commentstring == "" then
@@ -46,7 +45,6 @@ ls.add_snippets("all", {
     -- bug comment
     s("bug", fmt("{}BUG: {}{}{}", { prefix, i(1), suffix, i(0) })),
     s("BUG", fmt("{}BUG: {}{}{}", { prefix, i(1), suffix, i(0) })),
-
 
     -- note comment
     s("note", fmt("{}NOTE: {}{}{}", { prefix, i(1), suffix, i(0) })),

@@ -1,4 +1,4 @@
-local wezterm = require('wezterm')
+local wezterm = require("wezterm")
 
 local M = {}
 
@@ -17,13 +17,12 @@ function M.apply_to_config(config)
         {
             key = "p",
             mods = "CTRL|SHIFT",
-            action = wezterm.action.SpawnCommandInNewTab {
+            action = wezterm.action.SpawnCommandInNewTab({
                 args = { "powershell.exe" },
                 domain = { DomainName = "local" },
-            },
+            }),
         },
     }
-
 end
 
 return M

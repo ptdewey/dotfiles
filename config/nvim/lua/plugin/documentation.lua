@@ -12,7 +12,7 @@ return {
                 end,
                 desc = "[D]ocumentation [G]enerate",
                 silent = true,
-                noremap = true
+                noremap = true,
             },
         },
         config = function()

@@ -23,7 +23,7 @@ return {
                 -- disable prompt
                 prompt = {
                     enabled = false,
-                }
+                },
             })
 
             -- keymaps
@@ -33,7 +33,7 @@ return {
             vim.keymap.set({ "n", "x", "o" }, "S", function()
                 require("flash").treesitter()
             end)
-            vim.keymap.set( "o", "r", function()
+            vim.keymap.set("o", "r", function()
                 require("flash").remote()
             end)
             vim.keymap.set({ "o", "x" }, "R", function()

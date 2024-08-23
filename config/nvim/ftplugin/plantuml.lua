@@ -3,7 +3,7 @@
 local function display_messages(messages)
     vim.schedule(function()
         local concatenated_messages = table.concat(messages, "\n")
-        vim.api.nvim_echo({{concatenated_messages, "None"}}, true, {})
+        vim.api.nvim_echo({ { concatenated_messages, "None" } }, true, {})
     end)
 end
 
@@ -39,25 +39,29 @@ local function compile_plantuml(open_output)
 
     display_messages({ "Compiling PlantUML diagram for " .. relpath .. "..." })
     -- TODO: turn this job code into a custom callable function somewhere since it is also used for the R and latex versions.
-    require("plenary.job"):new({
-        command = "plantuml",
-        args = { filepath },
-        on_stderr = function(_, data)
-            table.insert(err_output, data)
-        end,
-        on_exit = function(_, return_val)
-            handle_job_output(output_relpath, err_output, return_val)
-            if open_output and return_val == 0 then
-                require("plenary.job"):new({
-                    command = "feh",
-                    args = { output_path },
-                    on_stderr = function(_, data)
-                        table.insert(err_output, data)
-                    end,
-                }):start()
-            end
-        end,
-    }):start()
+    require("plenary.job")
+        :new({
+            command = "plantuml",
+            args = { filepath },
+            on_stderr = function(_, data)
+                table.insert(err_output, data)
+            end,
+            on_exit = function(_, return_val)
+                handle_job_output(output_relpath, err_output, return_val)
+                if open_output and return_val == 0 then
+                    require("plenary.job")
+                        :new({
+                            command = "feh",
+                            args = { output_path },
+                            on_stderr = function(_, data)
+                                table.insert(err_output, data)
+                            end,
+                        })
+                        :start()
+                end
+            end,
+        })
+        :start()
 end
 
 local function compile_all_plantuml()
@@ -76,16 +80,18 @@ local function compile_all_plantuml()
         local err_output = {}
 
         display_messages({ "Compiling PlantUML diagram for " .. relpath .. "..." })
-        require("plenary.job"):new({
-            command = "plantuml",
-            args = { filepath },
-            on_stderr = function(_, data)
-                table.insert(err_output, data)
-            end,
-            on_exit = function(_, return_val)
-                handle_job_output(output_path, err_output, return_val)
-            end,
-        }):start()
+        require("plenary.job")
+            :new({
+                command = "plantuml",
+                args = { filepath },
+                on_stderr = function(_, data)
+                    table.insert(err_output, data)
+                end,
+                on_exit = function(_, return_val)
+                    handle_job_output(output_path, err_output, return_val)
+                end,
+            })
+            :start()
     end
 end
 
@@ -100,13 +106,15 @@ local function open_plantuml_output()
     local output_path = filepath:gsub("%.puml$", ".png")
 
     if vim.fn.filereadable(output_path) == 1 then
-        require("plenary.job"):new({
-            command = "feh",
-            args = { output_path },
-            on_stderr = function(_, data)
-                print("Error opening file: " .. data)
-            end,
-        }):start()
+        require("plenary.job")
+            :new({
+                command = "feh",
+                args = { output_path },
+                on_stderr = function(_, data)
+                    print("Error opening file: " .. data)
+                end,
+            })
+            :start()
     else
         print("Output file does not exist.")
     end
@@ -123,13 +131,15 @@ local function open_all_plantuml_output()
     end
 
     local err_output = {}
-    require("plenary.job"):new({
-        command = "feh",
-        args = png_files,
-        on_stderr = function(_, data)
-            table.insert(err_output, data)
-        end,
-    }):start()
+    require("plenary.job")
+        :new({
+            command = "feh",
+            args = png_files,
+            on_stderr = function(_, data)
+                table.insert(err_output, data)
+            end,
+        })
+        :start()
 end
 
 local function setup()
@@ -140,17 +150,25 @@ local function setup()
     vim.api.nvim_create_user_command("PlantumlCompile", function(opts)
         compile_plantuml(opts.args)
     end, {
-            desc = "Compile current open plantuml file into a diagram",
-            nargs = "?",
+        desc = "Compile current open plantuml file into a diagram",
+        nargs = "?",
     })
-    vim.api.nvim_create_user_command("PlantumlCompileAll", compile_all_plantuml,
-        { desc = "Compile all .puml files in the current directory into diagrams", }
+    vim.api.nvim_create_user_command(
+        "PlantumlCompileAll",
+        compile_all_plantuml,
+        { desc = "Compile all .puml files in the current directory into diagrams" }
     )
 
-    vim.api.nvim_create_user_command("PlantumlView", open_plantuml_output,
-        { desc = "Open the compiled PlantUML diagram if it exists" })
-    vim.api.nvim_create_user_command("PlantumlViewAll", open_all_plantuml_output,
-        { desc = "Open all .png files in the current directory" })
+    vim.api.nvim_create_user_command(
+        "PlantumlView",
+        open_plantuml_output,
+        { desc = "Open the compiled PlantUML diagram if it exists" }
+    )
+    vim.api.nvim_create_user_command(
+        "PlantumlViewAll",
+        open_all_plantuml_output,
+        { desc = "Open all .png files in the current directory" }
+    )
 
     vim.keymap.set("n", "<leader>cc", function()
         vim.cmd("PlantumlCompile")
@@ -172,7 +190,5 @@ local function setup()
         vim.cmd("PlantumlViewAll")
     end, { desc = "View all PlantUML file outputs" })
 end
-
-
 
 setup()

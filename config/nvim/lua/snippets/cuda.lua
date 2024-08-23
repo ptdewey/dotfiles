@@ -7,8 +7,12 @@ local rep = extras.rep
 
 -- CUDA snippets
 ls.add_snippets("cuda", {
-    s("global", fmt("__global__ void {}(int N) {{\n\t" ..
-        "int n = threadIdx.x + blockIdx.x * blockDim.x;\n}}",
-        { i(1) })),
+    s(
+        "global",
+        fmt(
+            "__global__ void {}(int N) {{\n\t"
+                .. "int n = threadIdx.x + blockIdx.x * blockDim.x;\n}}",
+            { i(1) }
+        )
+    ),
 })
-

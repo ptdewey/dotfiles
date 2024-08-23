@@ -7,8 +7,10 @@ local rep = extras.rep
 
 ls.add_snippets("rust", {
     -- TODO: smart type for 'let out: type = '
-    s("test", fmt("#[test]\nfn test_{}() {{\n\tlet out = {}({});\n}}{}",
-        { i(1), rep(1), i(2), i(0) })),
+    s(
+        "test",
+        fmt("#[test]\nfn test_{}() {{\n\tlet out = {}({});\n}}{}", { i(1), rep(1), i(2), i(0) })
+    ),
 
     s("cfg", fmt("#[cfg(test)]\nmod test {{\n\t{}\n}}{}", { i(1), i(0) })),
 

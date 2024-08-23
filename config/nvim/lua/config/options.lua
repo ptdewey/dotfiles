@@ -10,7 +10,7 @@ local options = {
     mouse = "a",
 
     -- system specific things
-    fileformats="unix,dos",
+    fileformats = "unix,dos",
 
     -- tabs
     softtabstop = 4,
@@ -61,7 +61,6 @@ local vars = {
     netrw_hide = 1,
     have_nerd_font = true,
 }
-
 
 -- theme options
 vim.cmd.colorscheme("darkearth")

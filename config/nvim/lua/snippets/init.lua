@@ -10,11 +10,11 @@ local function load_snippets()
         "c",
         "cuda",
         "markdown",
-        "rust"
+        "rust",
     }
 
     for _, file in ipairs(snippet_files) do
-        require('snippets.' .. file)
+        require("snippets." .. file)
     end
 end
 

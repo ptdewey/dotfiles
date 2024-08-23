@@ -21,12 +21,20 @@ return {
             })
 
             -- terminal toggle bind for horizontal terminal
-            vim.keymap.set({ "n", "t" }, "<A-m>", "<cmd>ToggleTerm direction=horizontal<CR>",
-                { desc = "Toggle horizontal terminal" })
+            vim.keymap.set(
+                { "n", "t" },
+                "<A-m>",
+                "<cmd>ToggleTerm direction=horizontal<CR>",
+                { desc = "Toggle horizontal terminal" }
+            )
 
             -- terminal toggle bind for floating terminal
-            vim.keymap.set({ "n", "t" }, "<A-n>", "<cmd>ToggleTerm direction=float<CR>",
-                { desc = "Toggle floating terminal" })
+            vim.keymap.set(
+                { "n", "t" },
+                "<A-n>",
+                "<cmd>ToggleTerm direction=float<CR>",
+                { desc = "Toggle floating terminal" }
+            )
         end,
     },
 }

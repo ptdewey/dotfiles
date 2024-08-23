@@ -14,5 +14,5 @@ vim.api.nvim_create_autocmd("FileType", {
     pattern = "plantuml",
     callback = function()
         vim.opt_local.commentstring = "' %s"
-    end
+    end,
 })

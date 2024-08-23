@@ -5,54 +5,57 @@ local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
 
 ruled.client.connect_signal("request::rules", function()
+    -- New clients
 
-	-- New clients
-
-    ruled.client.append_rule {
-        id         = "global",
-        rule       = { },
+    ruled.client.append_rule({
+        id = "global",
+        rule = {},
         properties = {
-            focus     = awful.client.focus.filter,
-            raise     = true,
-            screen    = awful.screen.preferred,
-			placement = awful.placement.no_offscreen
-		}
-    }
+            focus = awful.client.focus.filter,
+            raise = true,
+            screen = awful.screen.preferred,
+            placement = awful.placement.no_offscreen,
+        },
+    })
 
     -- Floating clients
 
-    ruled.client.append_rule {
-        id       = "floating",
+    ruled.client.append_rule({
+        id = "floating",
         rule_any = {
             instance = { "copyq", "pinentry" },
-            class    = {
-                "Arandr", "Gcolor3", "Blueberry.py", "SimpleScreenRecorder", "Usbimager", "Yad"
+            class = {
+                "Arandr",
+                "Gcolor3",
+                "Blueberry.py",
+                "SimpleScreenRecorder",
+                "Usbimager",
+                "Yad",
             },
-            name    = {
-                "Event Tester",  -- xev
+            name = {
+                "Event Tester", -- xev
             },
         },
-        properties = { floating = true }
-    }
+        properties = { floating = true },
+    })
 
     -- Titlebars
 
-    ruled.client.append_rule {
-        id         = "titlebars",
-        rule_any   = { type = { "normal", "dialog" } },
-        properties = { titlebars_enabled = false }
+    ruled.client.append_rule({
+        id = "titlebars",
+        rule_any = { type = { "normal", "dialog" } },
+        properties = { titlebars_enabled = false },
         -- properties = { titlebars_enabled = true }
-    }
+    })
 
-	-- Settings App
+    -- Settings App
 
-    ruled.client.append_rule {
-        id         = "settings",
-        rule_any   = { class = { "Settings" } },
+    ruled.client.append_rule({
+        id = "settings",
+        rule_any = { class = { "Settings" } },
         properties = {
-			floating = true,
-			placement = awful.placement.no_offscreen+awful.placement.centered
-		}
-    }
-
+            floating = true,
+            placement = awful.placement.no_offscreen + awful.placement.centered,
+        },
+    })
 end)

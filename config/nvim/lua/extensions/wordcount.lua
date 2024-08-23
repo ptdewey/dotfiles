@@ -11,7 +11,7 @@ function M.get_visual_selection()
     else
         lines[n_lines] = string.sub(lines[n_lines], 1, s_end[3])
     end
-    return table.concat(lines, '\n')
+    return table.concat(lines, "\n")
 end
 
 function M.count_words_visual_selection()
@@ -22,11 +22,16 @@ function M.count_words_visual_selection()
 end
 
 vim.api.nvim_create_user_command(
-    'CountWordsInSelection',
+    "CountWordsInSelection",
     M.count_words_visual_selection,
     { nargs = 0 }
 )
 
-vim.api.nvim_set_keymap('v', '<leader>wc', ':<C-u>CountWordsInSelection<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap(
+    "v",
+    "<leader>wc",
+    ":<C-u>CountWordsInSelection<CR>",
+    { noremap = true, silent = true }
+)
 
 return M

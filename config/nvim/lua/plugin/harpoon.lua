@@ -4,13 +4,17 @@ return {
         "ThePrimeagen/harpoon",
         branch = "harpoon2",
         dependencies = {
-            "nvim-lua/plenary.nvim"
+            "nvim-lua/plenary.nvim",
         },
         event = "VeryLazy",
 
         keys = {
             { "<leader>a", desc = "[H]arpoon [A]dd Mark" },
-            { "<C-e>" }, { "<C-h>" }, { "<C-j>" }, { "<C-k>" }, { "<C-e>" },
+            { "<C-e>" },
+            { "<C-h>" },
+            { "<C-j>" },
+            { "<C-k>" },
+            { "<C-e>" },
         },
 
         config = function()
@@ -26,7 +30,7 @@ return {
             -- keymaps
             vim.keymap.set("n", "<leader>a", function()
                 harpoon:list():add()
-            end, { desc = '[H]arpoon [A]dd Mark' })
+            end, { desc = "[H]arpoon [A]dd Mark" })
 
             vim.keymap.set("n", "<C-e>", function()
                 harpoon.ui:toggle_quick_menu(harpoon:list())
@@ -52,5 +56,5 @@ return {
                 vim.cmd("normal! zz")
             end, { desc = "[H]arpoon hjk[l] nav" })
         end,
-    }
+    },
 }

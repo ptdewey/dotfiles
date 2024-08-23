@@ -25,7 +25,7 @@ return {
         event = { "BufReadPost", "BufNewFile" },
         config = function()
             require("nvim-highlight-colors").setup({})
-        end
+        end,
     },
 
     -- for designing colorschemes

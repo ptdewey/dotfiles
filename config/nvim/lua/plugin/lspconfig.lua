@@ -2,12 +2,12 @@
 return {
     {
         -- lsp setup
-        'neovim/nvim-lspconfig',
+        "neovim/nvim-lspconfig",
         event = { "BufReadPost", "BufNewFile" },
 
         dependencies = {
-            'williamboman/mason.nvim',
-            'williamboman/mason-lspconfig.nvim',
+            "williamboman/mason.nvim",
+            "williamboman/mason-lspconfig.nvim",
         },
 
         vim.diagnostic.config({
@@ -32,16 +32,16 @@ return {
                     { path = "luvit-meta/library", words = { "vim%.uv" } },
                 },
             })
-        end
+        end,
     },
     {
         -- useful status updates for LSP
-        'j-hui/fidget.nvim',
+        "j-hui/fidget.nvim",
         event = "LspAttach",
-        tag = 'legacy',
+        tag = "legacy",
         config = function()
             require("fidget").setup({})
-        end
+        end,
     },
     {
         -- floating signature help

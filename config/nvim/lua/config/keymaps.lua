@@ -5,7 +5,12 @@ vim.keymap.set("n", ";", ":", { noremap = true, desc = "semicolon to colon in no
 
 -- buffer switching
 vim.keymap.set("n", "<tab>", ":bnext <CR>zz", { noremap = true, desc = "tab to switch buffers" })
-vim.keymap.set("n", "<S-tab>", ":bprev <CR>zz", { noremap = true, desc = "shift tab to switch buffers" })
+vim.keymap.set(
+    "n",
+    "<S-tab>",
+    ":bprev <CR>zz",
+    { noremap = true, desc = "shift tab to switch buffers" }
+)
 
 -- window movement
 vim.keymap.set("n", "<A-h>", "<C-w>h", { noremap = true, desc = "move to left window" })
@@ -39,12 +44,22 @@ vim.keymap.set("x", "K", ":m '<-2<CR>gv=gv", { desc = "Move highlighted block up
 -- misc
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { nowait = true, desc = "Exit terminal insert mode" })
 -- vim.keymap.set({"n", "x"}, "<Space>", "<Nop>", { silent = true })
-vim.keymap.set("n", "<Esc>", ":noh<Cr>", { desc = "Clear search highlight on escape", silent = true } )
+vim.keymap.set(
+    "n",
+    "<Esc>",
+    ":noh<Cr>",
+    { desc = "Clear search highlight on escape", silent = true }
+)
 
 -- diagnostics
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
-vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnostic msg" })
+vim.keymap.set(
+    "n",
+    "<leader>e",
+    vim.diagnostic.open_float,
+    { desc = "Open floating diagnostic msg" }
+)
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics List" })
 
 -- LSP settings
@@ -56,48 +71,125 @@ end, { desc = "LSP jump to definition" })
 -- Surround without surround
 vim.keymap.set("x", "'", [[:s/\%V\(.*\)\%V/'\1'/ <CR>]], { desc = "Surround selection with ''" })
 vim.keymap.set("x", '"', [[:s/\%V\(.*\)\%V/"\1"/ <CR>]], { desc = 'Surround selection with ""' })
-vim.keymap.set("x", "<leader>s'", [[:s/\%V\(.*\)\%V/'\1'/ <CR>]], { desc = "[S]urround selection with ''" })
-vim.keymap.set("x", '<leader>s"', [[:s/\%V\(.*\)\%V/"\1"/ <CR>]], { desc = '[S]urround selection with ""' })
-vim.keymap.set("x", "<leader>s(", [[:s/\%V\(.*\)\%V/(\1)/ <CR>]], { desc = "[S]urround selection with ()" })
-vim.keymap.set("x", "<leader>s{", [[:s/\%V\(.*\)\%V/{\1}/ <CR>]], { desc = "[S]urround selection with {}" })
-vim.keymap.set("x", "<leader>s[", [[:s/\%V\(.*\)\%V/[\1]/ <CR>]], { desc = "[S]urround selection with []" })
-vim.keymap.set("x", "<leader>s<", [[:s/\%V\(.*\)\%V/<\1>/ <CR>]], { desc = "[S]urround selection with <>" })
-vim.keymap.set("x", "<leader>s`", [[:s/\%V\(.*\)\%V/`\1`/ <CR>]], { desc = "[S]urround selection with ``" })
-vim.keymap.set("n", '<leader>s"', [[:s/\<<C-r><C-w>\>/"<C-r><C-w>\"/ <CR>]], { desc = '[S]urround word with ""' })
-vim.keymap.set("n", "<leader>s'", [[:s/\<<C-r><C-w>\>/'<C-r><C-w>\'/ <CR>]], { desc = "[S]urround word with ''" })
-vim.keymap.set("n", "<leader>s(", [[:s/\<<C-r><C-w>\>/(<C-r><C-w>)/ <CR>]], { desc = "[S]urround word with ()" })
-vim.keymap.set("n", "<leader>s[", [[:s/\<<C-r><C-w>\>/[<C-r><C-w>]/ <CR>]], { desc = "[S]urround word with []" })
-vim.keymap.set("n", "<leader>s{", [[:s/\<<C-r><C-w>\>/{<C-r><C-w>}/ <CR>]], { desc = "[S]urround word with {}" })
-vim.keymap.set("n", "<leader>s<", [[:s/\<<C-r><C-w>\>/<<C-r><C-w>>/ <CR>]], { desc = "[S]urround word with <>" })
-vim.keymap.set("n", "<leader>s`", [[:s/\<<C-r><C-w>\>/`<C-r><C-w>`/ <CR>]], { desc = "[S]urround word with ``" })
+vim.keymap.set(
+    "x",
+    "<leader>s'",
+    [[:s/\%V\(.*\)\%V/'\1'/ <CR>]],
+    { desc = "[S]urround selection with ''" }
+)
+vim.keymap.set(
+    "x",
+    '<leader>s"',
+    [[:s/\%V\(.*\)\%V/"\1"/ <CR>]],
+    { desc = '[S]urround selection with ""' }
+)
+vim.keymap.set(
+    "x",
+    "<leader>s(",
+    [[:s/\%V\(.*\)\%V/(\1)/ <CR>]],
+    { desc = "[S]urround selection with ()" }
+)
+vim.keymap.set(
+    "x",
+    "<leader>s{",
+    [[:s/\%V\(.*\)\%V/{\1}/ <CR>]],
+    { desc = "[S]urround selection with {}" }
+)
+vim.keymap.set(
+    "x",
+    "<leader>s[",
+    [[:s/\%V\(.*\)\%V/[\1]/ <CR>]],
+    { desc = "[S]urround selection with []" }
+)
+vim.keymap.set(
+    "x",
+    "<leader>s<",
+    [[:s/\%V\(.*\)\%V/<\1>/ <CR>]],
+    { desc = "[S]urround selection with <>" }
+)
+vim.keymap.set(
+    "x",
+    "<leader>s`",
+    [[:s/\%V\(.*\)\%V/`\1`/ <CR>]],
+    { desc = "[S]urround selection with ``" }
+)
+vim.keymap.set(
+    "n",
+    '<leader>s"',
+    [[:s/\<<C-r><C-w>\>/"<C-r><C-w>\"/ <CR>]],
+    { desc = '[S]urround word with ""' }
+)
+vim.keymap.set(
+    "n",
+    "<leader>s'",
+    [[:s/\<<C-r><C-w>\>/'<C-r><C-w>\'/ <CR>]],
+    { desc = "[S]urround word with ''" }
+)
+vim.keymap.set(
+    "n",
+    "<leader>s(",
+    [[:s/\<<C-r><C-w>\>/(<C-r><C-w>)/ <CR>]],
+    { desc = "[S]urround word with ()" }
+)
+vim.keymap.set(
+    "n",
+    "<leader>s[",
+    [[:s/\<<C-r><C-w>\>/[<C-r><C-w>]/ <CR>]],
+    { desc = "[S]urround word with []" }
+)
+vim.keymap.set(
+    "n",
+    "<leader>s{",
+    [[:s/\<<C-r><C-w>\>/{<C-r><C-w>}/ <CR>]],
+    { desc = "[S]urround word with {}" }
+)
+vim.keymap.set(
+    "n",
+    "<leader>s<",
+    [[:s/\<<C-r><C-w>\>/<<C-r><C-w>>/ <CR>]],
+    { desc = "[S]urround word with <>" }
+)
+vim.keymap.set(
+    "n",
+    "<leader>s`",
+    [[:s/\<<C-r><C-w>\>/`<C-r><C-w>`/ <CR>]],
+    { desc = "[S]urround word with ``" }
+)
 
 -- Toggle Netrw
-vim.keymap.set(
-    "n", "<C-n>",
-    function()
-        if vim.bo.filetype == "netrw" then
-            vim.cmd("bd")
-        else
-            vim.cmd("Explore")
-        end
-    end,
-    { desc = "Toggle netrw" }
-)
-vim.keymap.set("n", "<leader>n",
-    function()
-        if vim.bo.filetype == "netrw" then
-            vim.cmd("bd")
-        else
-            vim.cmd("10Lex")
-        end
-    end,
-    { desc = "Open file-tree netrw" }
-)
+vim.keymap.set("n", "<C-n>", function()
+    if vim.bo.filetype == "netrw" then
+        vim.cmd("bd")
+    else
+        vim.cmd("Explore")
+    end
+end, { desc = "Toggle netrw" })
+vim.keymap.set("n", "<leader>n", function()
+    if vim.bo.filetype == "netrw" then
+        vim.cmd("bd")
+    else
+        vim.cmd("10Lex")
+    end
+end, { desc = "Open file-tree netrw" })
 
 -- Make current file executable
-vim.keymap.set("n", "<leader>xx", "<cmd>silent !chmod +x %<CR>", { desc = "Make current file executable" })
-vim.keymap.set("n", "<leader>x-", "<cmd>silent !chmod -x %<CR>", { desc = "Remove current file executable flag" })
+vim.keymap.set(
+    "n",
+    "<leader>xx",
+    "<cmd>silent !chmod +x %<CR>",
+    { desc = "Make current file executable" }
+)
+vim.keymap.set(
+    "n",
+    "<leader>x-",
+    "<cmd>silent !chmod -x %<CR>",
+    { desc = "Remove current file executable flag" }
+)
 
 -- Tmux sessionizer
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww ~/dotfiles/scripts/tmux-sessionizer.sh<CR>", { desc = "Open tmux sessionizer" })
-
+vim.keymap.set(
+    "n",
+    "<C-f>",
+    "<cmd>silent !tmux neww ~/dotfiles/scripts/tmux-sessionizer.sh<CR>",
+    { desc = "Open tmux sessionizer" }
+)

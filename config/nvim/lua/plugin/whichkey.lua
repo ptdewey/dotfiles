@@ -1,18 +1,18 @@
 -- Useful plugin to show you pending keybinds.
 return {
-    'folke/which-key.nvim',
+    "folke/which-key.nvim",
 
     keys = { "<leader>" },
 
     -- plugin configuration
-    config = function ()
+    config = function()
         require("which-key").setup({
             icons = {
                 rules = false,
             },
         })
 
-        require('which-key').add({
+        require("which-key").add({
             { "<leader>c", group = "[C]ode" },
             { "<leader>c_", hidden = true },
             { "<leader>d", group = "[D]ocument" },

@@ -39,7 +39,7 @@ local config = {
         right = 5,
         top = 10,
         bottom = 0,
-    }
+    },
 }
 
 -- This function returns the suggested title for a tab.
@@ -57,38 +57,35 @@ local function tab_title(tab_info)
     return tab_info.active_pane.title
 end
 
-wezterm.on(
-    'format-tab-title',
-    function(tab, tabs, panes, config, hover, max_width)
-        local background = 'transparent'
-        local foreground = '#808080'
+wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
+    local background = "transparent"
+    local foreground = "#808080"
 
-        if tab.is_active then
-            background = 'transparent'
-            foreground = '#c0c0c0'
-        elseif hover then
-            foreground = '#909090'
-        end
-
-        local title = tab_title(tab)
-        title = wezterm.truncate_right(title, max_width - 2)
-
-        return {
-            { Background = { Color = background } },
-            { Foreground = { Color = foreground } },
-            { Text = " " },
-            { Background = { Color = background } },
-            { Foreground = { Color = foreground } },
-            { Text = title },
-            { Background = { Color = background } },
-            { Foreground = { Color = foreground } },
-            { Text = " " },
-        }
+    if tab.is_active then
+        background = "transparent"
+        foreground = "#c0c0c0"
+    elseif hover then
+        foreground = "#909090"
     end
-)
+
+    local title = tab_title(tab)
+    title = wezterm.truncate_right(title, max_width - 2)
+
+    return {
+        { Background = { Color = background } },
+        { Foreground = { Color = foreground } },
+        { Text = " " },
+        { Background = { Color = background } },
+        { Foreground = { Color = foreground } },
+        { Text = title },
+        { Background = { Color = background } },
+        { Foreground = { Color = foreground } },
+        { Text = " " },
+    }
+end)
 
 -- os specific configurations
-if package.config:sub(1,1) == "\\" then
+if package.config:sub(1, 1) == "\\" then
     -- windows
     local windows = require("windows")
     windows.apply_to_config(config)

@@ -15,16 +15,16 @@ return {
         -- "nvim-lualine/lualine.nvim",
         "ptdewey/lualine.nvim",
         event = "VeryLazy",
-        dependencies =  {
+        dependencies = {
             "letieu/harpoon-lualine",
             -- "nvim-tree/nvim-web-devicons",
         },
         opts = {
             options = {
                 icons_enabled = false,
-                theme = 'auto',
-                component_separators = '|',
-                section_separators = '',
+                theme = "auto",
+                component_separators = "|",
+                section_separators = "",
                 disabled_filetypes = {
                     statusline = {
                         "undotree",
@@ -44,7 +44,7 @@ return {
                     },
                 },
                 lualine_c = {
-                    { "filename", path = 5, padding = 1, },
+                    { "filename", path = 5, padding = 1 },
                 },
                 lualine_x = { "diagnostics", "diff" },
                 lualine_y = { "branch" },

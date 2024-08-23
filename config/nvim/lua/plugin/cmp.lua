@@ -25,36 +25,41 @@ return {
         },
 
         -- configure plugin
-        config = function ()
+        config = function()
             local cmp = require("cmp")
             local luasnip = require("luasnip")
 
             local has_words_before = function()
                 unpack = unpack or table.unpack
                 local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-                return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+                return col ~= 0
+                    and vim.api
+                            .nvim_buf_get_lines(0, line - 1, line, true)[1]
+                            :sub(col, col)
+                            :match("%s")
+                        == nil
             end
-            cmp.setup {
+            cmp.setup({
                 view = {
                     entries = {
-                        name = 'custom',
-                        selection_order = 'near_cursor',
+                        name = "custom",
+                        selection_order = "near_cursor",
                         follow_cursor = true,
                     },
                 },
-                luasnip.config.setup {},
+                luasnip.config.setup({}),
                 snippet = {
                     expand = function(args)
                         luasnip.lsp_expand(args.body)
                     end,
                 },
                 preselect = cmp.PreselectMode.None,
-                mapping = cmp.mapping.preset.insert {
+                mapping = cmp.mapping.preset.insert({
                     ["<C-n>"] = cmp.mapping.select_next_item(),
                     ["<C-p>"] = cmp.mapping.select_prev_item(),
                     ["<C-d>"] = cmp.mapping.scroll_docs(-4),
                     ["<C-f>"] = cmp.mapping.scroll_docs(4),
-                    ["<C-y>"] = cmp.mapping.complete {},
+                    ["<C-y>"] = cmp.mapping.complete({}),
                     ["<C-e>"] = cmp.mapping.abort(),
                     ["<C-h>"] = cmp.mapping.confirm({ select = true }),
                     ["<Tab>"] = cmp.mapping(function(fallback)
@@ -77,7 +82,7 @@ return {
                             fallback()
                         end
                     end, { "i", "s" }),
-                },
+                }),
 
                 sources = {
                     { name = "luasnip", priority = 15 },
@@ -98,13 +103,15 @@ return {
                             look = "[dict]",
                         })[entry.source.name]
                         return vim_item
-                    end
+                    end,
                 },
-            }
+            })
 
             local function toggle_source(source)
                 local sources = cmp.get_config().sources
-                if not sources then return end
+                if not sources then
+                    return
+                end
                 for i = #sources, 1, -1 do
                     if sources[i].name == source.name then
                         table.remove(sources, i)
@@ -116,20 +123,18 @@ return {
 
             -- enable dictionary completion source upon toggle
             vim.keymap.set("n", "<leader>ts", function()
-                toggle_source(
-                    {
-                        name = "look",
-                        keyword_length = 3,
-                        priority = 1,
-                        max_item_count = 15,
-                        option = {
-                            convert_case = true,
-                            loud = true,
-                            --dict = "/usr/share/dict/words",
-                        },
-                    }
-                )
+                toggle_source({
+                    name = "look",
+                    keyword_length = 3,
+                    priority = 1,
+                    max_item_count = 15,
+                    option = {
+                        convert_case = true,
+                        loud = true,
+                        --dict = "/usr/share/dict/words",
+                    },
+                })
             end, { desc = "[T]oggle dictionary completion [s]ource" })
-        end
+        end,
     },
 }

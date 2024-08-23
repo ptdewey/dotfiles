@@ -5,9 +5,9 @@ return {
         event = "BufWritePre",
 
         config = function()
-            require("conform").setup {
+            require("conform").setup({
                 formatters_by_ft = {
-                    -- lua = { "stylua" },
+                    lua = { "stylua" },
                     javascript = { "prettierd" },
                     typescript = { "prettierd" },
                     javascriptreact = { "prettierd" },
@@ -23,7 +23,16 @@ return {
                     -- lsp_format = "fallback",
                     -- async = true,
                 },
-            }
+                formatters = {
+                    stylua = {
+                        -- adjust stylua to use custom config file
+                        append_args = {
+                            "--config-path",
+                            vim.fn.expand("$HOME/dotfiles/stylua.toml"),
+                        },
+                    },
+                },
+            })
         end,
     },
 }

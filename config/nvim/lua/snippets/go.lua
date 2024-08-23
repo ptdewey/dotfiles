@@ -1,4 +1,4 @@
-local ls = require "luasnip"
+local ls = require("luasnip")
 local s = ls.s
 local i = ls.insert_node
 local t = ls.text_node
@@ -11,43 +11,43 @@ local rep = require("luasnip.extras").rep
 
 local fmt = require("luasnip.extras.fmt").fmt
 
-local ts_locals = require "nvim-treesitter.locals"
-local ts_utils = require "nvim-treesitter.ts_utils"
+local ts_locals = require("nvim-treesitter.locals")
+local ts_utils = require("nvim-treesitter.ts_utils")
 
 local get_node_text = vim.treesitter.get_node_text
 
 -- Define transforms from function return type to return value
 local transforms = {
     int = function(_, _)
-        return t "0"
+        return t("0")
     end,
 
     bool = function(_, _)
-        return t "false"
+        return t("false")
     end,
 
     string = function(_, _)
-        return t [[""]]
+        return t([[""]])
     end,
 
     error = function(_, _)
-        return t "err"
+        return t("err")
     end,
 
     -- Types with a "*" mean they are pointers, so return nil
     [function(text)
-        return not string.find(text, "*", 1, true) and
-            string.upper(string.sub(text, 1, 1)) == string.sub(text, 1, 1)
+        return not string.find(text, "*", 1, true)
+            and string.upper(string.sub(text, 1, 1)) == string.sub(text, 1, 1)
     end] = function(_, _)
-            return t "nil"
-        end,
+        return t("nil")
+    end,
 
     -- Struct types, non-pointer case
     [function(text)
         return string.find(text, "*", 1, true)
     end] = function(_, _)
-            return t "nil"
-        end,
+        return t("nil")
+    end,
 }
 
 local transform = function(text, info)
@@ -78,7 +78,7 @@ local handlers = {
             local type_node = matching_node:field("type")[1]
             table.insert(result, transform(get_node_text(type_node, 0), info))
             if idx ~= count - 1 then
-                table.insert(result, t { ", " })
+                table.insert(result, t({ ", " }))
             end
         end
 
@@ -110,8 +110,8 @@ local function go_result_type(info)
     end
 
     if not function_node then
-        print "Not inside of a function"
-        return t ""
+        print("Not inside of a function")
+        return t("")
     end
 
     local query = vim.treesitter.query.parse(
@@ -137,13 +137,12 @@ end
 local go_ret_vals = function(args)
     return sn(
         nil,
-        go_result_type {
+        go_result_type({
             index = 0,
             err_name = args[1][1],
-        }
+        })
     )
 end
-
 
 -- Go snipets
 ls.add_snippets("go", {
@@ -151,20 +150,27 @@ ls.add_snippets("go", {
     s("func", fmt("func {}({}) {}{{\n\t{}\n}}", { i(1), i(2), i(3), i(4) })),
 
     -- print statement
-    s("print", fmt("fmt.Println(\"{}\")", { i(1) })),
+    s("print", fmt('fmt.Println("{}")', { i(1) })),
 
     -- struct typedef
     s("typ", fmt("type {} struct {{\n\t{}\n}}{}", { i(1), i(2), i(0) })),
 
     -- error check
-    s("if err", fmt("if {} != nil {{\n\treturn {}\n}}\n{}",
-        { i(1, "err"), d(2, go_ret_vals, { 1 }), i(0) })),
+    s(
+        "if err",
+        fmt("if {} != nil {{\n\treturn {}\n}}\n{}", { i(1, "err"), d(2, go_ret_vals, { 1 }), i(0) })
+    ),
     -- non-dynamic version
     -- s("if err", fmt("if err != nil {{\n\treturn err\n}}\n{}",
     --     { i(0) })),
 
-    s("err", fmt("{} := {}\nif {} != nil {{\n\treturn {}\n}}\n{}",
-        { i(2, "err"), i(1), rep(2), d(3, go_ret_vals, { 2 }), i(0)})),
+    s(
+        "err",
+        fmt(
+            "{} := {}\nif {} != nil {{\n\treturn {}\n}}\n{}",
+            { i(2, "err"), i(1), rep(2), d(3, go_ret_vals, { 2 }), i(0) }
+        )
+    ),
 
     s(
         "efi",
@@ -188,4 +194,3 @@ ls.add_snippets("go", {
         )
     ),
 })
-

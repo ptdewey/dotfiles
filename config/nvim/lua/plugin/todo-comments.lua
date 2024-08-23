@@ -11,9 +11,9 @@ return {
             signs = false,
             keywords = {
                 DOCS = {
-                    alt = { "DOC", "DOCUMENT" }
+                    alt = { "DOC", "DOCUMENT" },
                 },
-            }
+            },
         })
         -- navigation
         vim.keymap.set("n", "]t", function()
@@ -32,7 +32,7 @@ return {
             -- start in normal mode (requires very small delay before sending esc command)
             vim.defer_fn(function()
                 vim.cmd("stopinsert")
-            end, .01)
+            end, 0.01)
         end, { desc = "[T]odo [T]elescope" })
     end,
 }
