@@ -11,10 +11,18 @@ return {
         require("todo-comments").setup({
             signs = false,
             keywords = {
-                DOCS = {
-                    alt = { "DOC", "DOCUMENT" },
+                DOC = {
+                    alt = { "DOCS", "DOCUMENT", "DOCUMENTATION" },
+                },
+                REFACTOR = {
+                    color = "warning",
+                    alt = { "REFAC" },
+                },
+                CHANGE = {
+                    color = "warning",
                 },
             },
+            -- TODO: change colors to better work with darkearth (or change darkearth)
         })
         -- navigation
         vim.keymap.set("n", "]t", function()
