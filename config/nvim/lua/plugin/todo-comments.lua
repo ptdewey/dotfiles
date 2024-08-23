@@ -1,7 +1,8 @@
 -- todo and other tag highlights
 return {
     "folke/todo-comments.nvim",
-    event = "VeryLazy",
+    event = { "BufReadPost", "BufNewFile" },
+    keys = { "<leader>tt", desc = "[T]odo [T]elescope" },
     dependencies = {
         "nvim-telescope/telescope.nvim",
     },

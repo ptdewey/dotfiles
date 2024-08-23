@@ -6,14 +6,13 @@ return {
         dependencies = {
             "nvim-lua/plenary.nvim",
         },
-        event = "VeryLazy",
 
         keys = {
             { "<leader>a", desc = "[H]arpoon [A]dd Mark" },
-            { "<C-e>" },
             { "<C-h>" },
             { "<C-j>" },
             { "<C-k>" },
+            { "<C-l>" },
             { "<C-e>" },
         },
 
@@ -24,7 +23,6 @@ return {
                     save_on_toggle = true,
                     sync_on_ui_close = true,
                 },
-                -- BufLeave = HarpoonPartialConfigItem:BufLeave()
             })
 
             -- keymaps
