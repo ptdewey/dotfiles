@@ -81,11 +81,7 @@
         # rofi
         sxhkd
 
-        # nixgl.wezterm
-
         ## other gui applications
-        # kitty
-        # wezterm
         # discord
         # spotify
 

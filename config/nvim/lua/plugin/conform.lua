@@ -1,8 +1,8 @@
 return {
     {
-        "stevearc/conform.nvim",
+        'stevearc/conform.nvim',
 
-        event = "BufWritePre",
+        event = 'BufWritePre',
 
         config = function()
             require("conform").setup({
@@ -19,7 +19,7 @@ return {
                 },
                 format_on_save = {
                     timeout_ms = 500,
-                    lsp_format = "never",
+                    lsp_format = 'never',
                     -- lsp_format = "fallback",
                     -- async = true,
                 },

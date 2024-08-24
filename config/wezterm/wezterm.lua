@@ -40,6 +40,12 @@ local config = {
         top = 10,
         bottom = 0,
     },
+
+    tiling_desktop_environments = {
+        "X11 bspwm",
+        "X11 i3",
+        "X11 awesome",
+    },
 }
 
 -- This function returns the suggested title for a tab.

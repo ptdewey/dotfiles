@@ -5,13 +5,13 @@ xset +fp /home/patrick/.fonts
 xset +fp /home/patrick/.local/share/fonts
 xset fp rehash
 
-setxkbmap -option caps:escape
+setxkbmap -option "caps:escape"
 
-xset r rate 500 40 
+xset r rate 500 40
 
 system76-power profile battery
 
-xrandr --dpi 192
+xrandr --dpi 96
 
 xrdb ~/.Xresources
 

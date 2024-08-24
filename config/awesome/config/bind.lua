@@ -1,4 +1,5 @@
 local awful = require("awful")
+local gears = require("gears")
 local mod = user.mod
 
 -- Mouse
@@ -22,7 +23,8 @@ end)
 
 -- Keys
 
-awful.keyboard.append_global_keybindings({
+-- awful.keyboard.append_global_keybindings({
+globalkeys = gears.table.join(
 
     -- Awesome
 
@@ -142,8 +144,8 @@ awful.keyboard.append_global_keybindings({
     -- Tag
 
     awful.key({
-        modifiers = { mod },
-        keygroup = "numrow",
+        modifiers   = { mod },
+        keygroup    = "numrow",
         description = "only view tag",
         group = "tag",
         on_press = function(index)
@@ -182,10 +184,11 @@ awful.keyboard.append_global_keybindings({
                 end
             end
         end,
-    }),
-})
+    })
+)
 
-client.connect_signal("request::default_keybindings", function()
+-- client.connect_signal("request::default_keybindings", function()
+clientkeys = gears.table.join(
     awful.keyboard.append_client_keybindings({
 
         -- Client
@@ -211,4 +214,4 @@ client.connect_signal("request::default_keybindings", function()
             c:kill()
         end, { description = "close", group = "client" }),
     })
-end)
+)

@@ -120,6 +120,10 @@ pdfz() {
 # pandoc -o output.docx -f markdown -t docx input.md
 
 # docker
+if command -v podman >/dev/null 2>&1; then
+    alias docker="podman"
+    alias docker-compose="podman-compose"
+fi
 alias dps="docker ps"
 alias dc="docker-compose"
 alias dcu="docker-compose up -d"

@@ -78,3 +78,8 @@ EOF'
 sudo apt install kitty
 
 # TODO: any other installation/setup tasks (other packages)
+# - wezterm (requires ppa)
+# - lua(jit?)
+# - awesomewm (and any dependencies)
+# - latex
+# - python
