@@ -1,10 +1,9 @@
 -- yank history popup window plugin
 return {
     {
-
-        -- dir = "~/projects/yankbank-nvim.git/feature-4-persistence",
+        -- dir = "~/projects/yankbank-nvim.git/main",
         "ptdewey/yankbank-nvim",
-        -- branch = "main",
+        branch = "main",
 
         dependencies = {
             "kkharji/sqlite.lua",
@@ -12,8 +11,19 @@ return {
 
         -- load on keypress
         keys = {
+            { "y" },
+            { "Y" },
+            { "D" },
+            { "d" },
+            { "x" },
+            { "v" },
+            { "V" },
             { "<leader>p", desc = "Open YankBank" },
         },
+
+        cmd = { "YankBank" },
+
+        event = { "FocusGained" },
 
         config = function()
             require("yankbank").setup({
@@ -22,11 +32,9 @@ return {
                 -- num_behavior = "prefix",
                 num_behavior = "jump",
                 focus_gain_poll = true,
-                keymaps = {
-                    -- navigation_next = "h",
-                    -- navigation_prev = "l",
-                },
-                -- persist_type = "sqlite",
+                keymaps = {},
+                persist_type = "sqlite",
+                debug = true,
             })
 
             -- set popup keymap

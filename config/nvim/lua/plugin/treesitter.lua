@@ -26,7 +26,8 @@ vim.defer_fn(function()
             },
         },
     })
-    local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+    local parser_config =
+        require("nvim-treesitter.parsers").get_parser_configs()
     parser_config.plantuml = {
         install_info = {
             -- url = "https://github.com/ptdewey/tree-sitter-plantuml.git",

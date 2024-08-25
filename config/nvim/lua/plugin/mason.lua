@@ -13,7 +13,12 @@ return {
         config = function()
             -- Configure LSP
             local on_attach = function(_, bufnr)
-                vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "[R]e[n]ame" })
+                vim.keymap.set(
+                    "n",
+                    "<leader>rn",
+                    vim.lsp.buf.rename,
+                    { desc = "[R]e[n]ame" }
+                )
                 vim.keymap.set(
                     "n",
                     "<leader>ca",
@@ -55,9 +60,14 @@ return {
                 end, { desc = "[W]orkspace [L]ist Folders" })
 
                 -- Create a command `:Format` local to the LSP buffer
-                vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
-                    vim.lsp.buf.format()
-                end, { desc = "Format current buffer with LSP" })
+                vim.api.nvim_buf_create_user_command(
+                    bufnr,
+                    "Format",
+                    function(_)
+                        vim.lsp.buf.format()
+                    end,
+                    { desc = "Format current buffer with LSP" }
+                )
             end
 
             -- mason-lspconfig requires that these setup functions are called in this order
@@ -78,7 +88,8 @@ return {
 
             -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
             local capabilities = vim.lsp.protocol.make_client_capabilities()
-            capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+            capabilities =
+                require("cmp_nvim_lsp").default_capabilities(capabilities)
 
             -- Ensure the servers above are installed
             local mason_lspconfig = require("mason-lspconfig")

@@ -59,6 +59,7 @@
         # luajitPackages.luarocks
         luajitPackages.jsregexp
         luajitPackages.luacheck
+        # lua52Packages.luacheck
         # luajitPackages.lgi
         go
         glow
