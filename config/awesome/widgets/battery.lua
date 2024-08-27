@@ -25,7 +25,7 @@ local function update_battery()
 end
 
 gears.timer({
-    timeout = 15,
+    timeout = 20,
     autostart = true,
     callback = update_battery,
 })

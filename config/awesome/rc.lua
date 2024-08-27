@@ -14,12 +14,17 @@ local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
+
 local hotkeys_popup = require("awful.hotkeys_popup")
 require("awful.hotkeys_popup.keys")
 
 -- Load Debian menu entries
 local debian = require("debian.menu")
 local has_fdo, freedesktop = pcall(require, "freedesktop")
+
+-- load custom modules
+require("config.theme")
+require("config.autostart")
 
 -- {{{ Error handling
 if awesome.startup_errors then
@@ -30,14 +35,8 @@ if awesome.startup_errors then
     })
 end
 
-beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
-
 -- load custom battery widget
 local battery = require("widgets.battery")
-
--- set font and wallpaper
-beautiful.font = user.font
-awful.spawn.with_shell("feh --bg-fill " .. user.wallpaper)
 
 do
     local in_error = false
@@ -58,10 +57,6 @@ end
 -- }}}
 
 -- {{{ Variable definitions
-
-terminal = user.terminal
-editor = user.editor
-editor_cmd = terminal .. " -e " .. editor
 
 awful.layout.layouts = {
     awful.layout.suit.spiral.dwindle,
@@ -395,11 +390,6 @@ for i = 1, 9 do
         )
     )
 end
-
-local batterypercent = wibox.widget({
-    text = "Power",
-    widget = wibox.widget.textbox,
-})
 
 -- Client keybindings
 clientkeys = gears.table.join(

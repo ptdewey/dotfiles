@@ -39,6 +39,7 @@
         tmux
         lsd
         plantuml
+        zathura
 
         ## neovim stuff
         neovim
@@ -49,22 +50,12 @@
         zsh
 
         ## languages and related utils
-        # gcc
-        # libgcc
         stylua
-        # luaPackages.luarocks
-        # luaPackages.jsregexp
-        # lua52Packages.lgi
-        # luajit
-        # luajitPackages.luarocks
         luajitPackages.jsregexp
         luajitPackages.luacheck
-        # lua52Packages.luacheck
-        # luajitPackages.lgi
         go
         glow
         nodejs
-        nodePackages.prettier
         prettierd
         openssl
         rustup
@@ -97,7 +88,7 @@
         noto-fonts-color-emoji
         papirus-icon-theme
         cbatticon
-        cinnamon.nemo
+        # cinnamon.nemo
         blueman
         xdg-user-dirs
         xsettingsd

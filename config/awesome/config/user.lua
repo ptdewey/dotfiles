@@ -12,7 +12,7 @@ local M = {
     shotdir = "~/Pictures/screenshots",
     shutdown = "systemctl poweroff",
     terminal = "kitty",
-    wallpaper = "~/Pictures/wallpapers/gruvbox15.png",
+    wallpaper = "~/Pictures/wallpapers/WITCH_HUT_BG_1.png",
 }
 
 return M
