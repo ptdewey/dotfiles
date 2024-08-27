@@ -2,8 +2,9 @@
 return {
     {
         -- dir = "~/projects/yankbank-nvim.git/main",
+        -- dir = "~/projects/yankbank-nvim.git/feat-lua-api",
         "ptdewey/yankbank-nvim",
-        branch = "main",
+        -- branch = "main",
 
         dependencies = {
             "kkharji/sqlite.lua",
