@@ -4,6 +4,8 @@ local gears = require("gears")
 local awful = require("awful")
 awful.screen.set_auto_dpi_enabled(true)
 
+user = require("config.user")
+
 require("awful.autofocus")
 -- Widget and layout library
 local wibox = require("wibox")
@@ -28,23 +30,13 @@ if awesome.startup_errors then
     })
 end
 
-local user = {
-    batt = "BAT1",
-    browser = "firefox",
-    file_manager = "nautilus",
-    font = "IosevkaPatrick Nerd Font 16",
-    fontalt = "IosevkaPatrick 16",
-    fonticon = "Material Icons 16",
-    mod = "Mod1",
-    passwd = "",
-    reboot = "systemctl reboot",
-    sessionlock = false,
-    shotdir = "~/Pictures/screenshots",
-    shutdown = "systemctl poweroff",
-    terminal = "kitty",
-    wallpaper = "~/Pictures/wallpapers/gruvbox15.png",
-}
+beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
+-- load custom battery widget
+local battery = require("widgets.battery")
+
+-- set font and wallpaper
+beautiful.font = user.font
 awful.spawn.with_shell("feh --bg-fill " .. user.wallpaper)
 
 do
@@ -66,10 +58,9 @@ end
 -- }}}
 
 -- {{{ Variable definitions
-beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
-terminal = "kitty"
-editor = os.getenv("EDITOR") or "nvim"
+terminal = user.terminal
+editor = user.editor
 editor_cmd = terminal .. " -e " .. editor
 
 awful.layout.layouts = {
@@ -230,11 +221,13 @@ awful.screen.connect_for_each_screen(function(s)
             s.mytaglist,
             s.mypromptbox,
         },
-        s.mytasklist, -- Middle widget
-        { -- Right widgets
+        -- Middle widget
+        s.mytasklist,
+        -- Right widgets
+        {
             layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
             wibox.widget.systray(),
+            battery,
             mytextclock,
             s.mylayoutbox,
         },
@@ -403,6 +396,11 @@ for i = 1, 9 do
     )
 end
 
+local batterypercent = wibox.widget({
+    text = "Power",
+    widget = wibox.widget.textbox,
+})
+
 -- Client keybindings
 clientkeys = gears.table.join(
     awful.key({ mod }, "c", function(c)
@@ -532,6 +530,8 @@ client.connect_signal("request::titlebars", function(c)
         layout = wibox.layout.align.horizontal,
     })
 end)
+
+-- Battery
 
 client.connect_signal("mouse::enter", function(c)
     c:emit_signal("request::activate", "mouse_enter", { raise = false })
