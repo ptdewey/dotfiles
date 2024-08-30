@@ -19,8 +19,8 @@ return {
                 },
                 format_on_save = {
                     timeout_ms = 500,
-                    lsp_format = "never",
-                    -- lsp_format = "fallback",
+                    -- lsp_format = "never",
+                    lsp_format = "fallback",
                     -- async = true,
                 },
                 formatters = {
