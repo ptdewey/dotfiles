@@ -59,8 +59,8 @@ end
 -- {{{ Variable definitions
 
 awful.layout.layouts = {
-    awful.layout.suit.spiral.dwindle,
     awful.layout.suit.tile,
+    awful.layout.suit.spiral.dwindle,
     awful.layout.suit.floating,
 }
 -- }}}
@@ -469,6 +469,12 @@ awful.rules.rules = {
         rule_any = { type = { "normal", "dialog" } },
         properties = { titlebars_enabled = false },
     },
+    {
+        rule_property = {
+            class = { "firefox" },
+            properties = { opacity = 1, maximized = false, floating = false },
+        },
+    },
 }
 -- }}}
 
@@ -521,7 +527,12 @@ client.connect_signal("request::titlebars", function(c)
     })
 end)
 
--- Battery
+-- added to fix tiled windows being added to left
+client.connect_signal("manage", function(c)
+    if not awesome.startup then
+        awful.client.setslave(c)
+    end
+end)
 
 client.connect_signal("mouse::enter", function(c)
     c:emit_signal("request::activate", "mouse_enter", { raise = false })

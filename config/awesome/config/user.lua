@@ -11,7 +11,8 @@ local M = {
     sessionlock = false,
     shotdir = "~/Pictures/screenshots",
     shutdown = "systemctl poweroff",
-    terminal = "kitty",
+    -- terminal = "kitty",
+    terminal = "wezterm",
     wallpaper = "~/Pictures/wallpapers/WITCH_HUT_BG_1.png",
 }
 

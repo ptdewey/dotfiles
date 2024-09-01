@@ -8,11 +8,11 @@ local config = {
     -- font settings
     font = wezterm.font("IosevkaPatrick"),
     -- font_size = 13.0,
-    font_size = 18.0,
-    dpi = 144,
+    font_size = 17,
+    -- dpi = 144, -- commenting this out fixes the weird tiling wm scaling issue
 
     -- set rendering device
-    -- enable_wayland = true,
+    enable_wayland = true,
     front_end = "OpenGL",
     -- front_end = "WebGpu",
     -- webgpu_power_preference = "HighPerformance",
@@ -35,9 +35,9 @@ local config = {
 
     -- window padding
     window_padding = {
-        left = 5,
-        right = 5,
-        top = 10,
+        left = 0,
+        right = 0,
+        top = 1,
         bottom = 0,
     },
 
@@ -63,32 +63,35 @@ local function tab_title(tab_info)
     return tab_info.active_pane.title
 end
 
-wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
-    local background = "transparent"
-    local foreground = "#808080"
+wezterm.on(
+    "format-tab-title",
+    function(tab, tabs, panes, config, hover, max_width)
+        local background = "transparent"
+        local foreground = "#808080"
 
-    if tab.is_active then
-        background = "transparent"
-        foreground = "#c0c0c0"
-    elseif hover then
-        foreground = "#909090"
+        if tab.is_active then
+            background = "transparent"
+            foreground = "#c0c0c0"
+        elseif hover then
+            foreground = "#909090"
+        end
+
+        local title = tab_title(tab)
+        title = wezterm.truncate_right(title, max_width - 2)
+
+        return {
+            { Background = { Color = background } },
+            { Foreground = { Color = foreground } },
+            { Text = " " },
+            { Background = { Color = background } },
+            { Foreground = { Color = foreground } },
+            { Text = title },
+            { Background = { Color = background } },
+            { Foreground = { Color = foreground } },
+            { Text = " " },
+        }
     end
-
-    local title = tab_title(tab)
-    title = wezterm.truncate_right(title, max_width - 2)
-
-    return {
-        { Background = { Color = background } },
-        { Foreground = { Color = foreground } },
-        { Text = " " },
-        { Background = { Color = background } },
-        { Foreground = { Color = foreground } },
-        { Text = title },
-        { Background = { Color = background } },
-        { Foreground = { Color = foreground } },
-        { Text = " " },
-    }
-end)
+)
 
 -- os specific configurations
 if package.config:sub(1, 1) == "\\" then
