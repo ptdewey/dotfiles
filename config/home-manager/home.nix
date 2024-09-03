@@ -47,7 +47,7 @@
         tree-sitter
 
         ## shell stuff
-        zsh
+        # zsh
 
         ## languages and related utils
         stylua
@@ -59,6 +59,7 @@
         prettierd
         openssl
         rustup
+        quarto
 
         ## wallpaper and aesthetics utils
         feh
@@ -87,11 +88,13 @@
         noto-fonts-lgc-plus
         noto-fonts-color-emoji
         papirus-icon-theme
-        cbatticon
+        # cbatticon
         # cinnamon.nemo
-        blueman
-        xdg-user-dirs
-        xsettingsd
+        # blueman
+        # xdg-user-dirs
+        # xsettingsd
+
+        tidal-hifi
     ];
 
     # Manage dotfiles

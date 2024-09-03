@@ -12,7 +12,7 @@ return {
                     typescript = { "prettierd" },
                     javascriptreact = { "prettierd" },
                     typescriptreact = { "prettierd" },
-                    go = { "gofmt" },
+                    go = { "gofmt", "goimports" },
                     rust = { "rustfmt" },
                     python = { "blue", "isort" },
                     ["_"] = { "trim_whitespace" },

@@ -1,10 +1,10 @@
 vim.filetype.add({
     extension = {
-        ["puml"] = "plantuml",
-        ["pu"] = "plantuml",
-        ["plantuml"] = "plantuml",
-        ["wsd"] = "plantuml",
-        ["iuml"] = "plantuml",
+        puml = "plantuml",
+        pu = "plantuml",
+        plantuml = "plantuml",
+        wsd = "plantuml",
+        iuml = "plantuml",
     },
     filename = {},
     pattern = {},
