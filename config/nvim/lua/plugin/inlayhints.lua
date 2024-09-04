@@ -14,6 +14,9 @@ return {
                         hint = {
                             enable = true, -- necessary
                         },
+                        -- workspace = { checkThirdParty = false },
+                        telemetry = { enable = false },
+                        globals = { "vim" },
                     },
                 },
             })

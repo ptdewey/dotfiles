@@ -88,6 +88,7 @@ return {
                     { name = "luasnip", priority = 15 },
                     { name = "nvim_lua", priority = 11 },
                     { name = "nvim_lsp", priority = 10 },
+                    -- { name = "lazydev", priority = 11 },
                     { name = "path", priority = 10 },
                     { name = "buffer", priority = 5 },
                 },
@@ -99,6 +100,7 @@ return {
                             nvim_lsp = "[lsp]",
                             buffer = "[buf]",
                             nvim_lua = "[api]",
+                            -- lazydev = "[lazy]",
                             path = "[path]",
                             look = "[dict]",
                         })[entry.source.name]
