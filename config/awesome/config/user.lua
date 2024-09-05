@@ -13,7 +13,8 @@ local M = {
     shutdown = "systemctl poweroff",
     -- terminal = "kitty",
     terminal = "wezterm",
-    wallpaper = "~/Pictures/wallpapers/WITCH_HUT_BG_1.png",
+    -- wallpaper = "~/Pictures/wallpapers/WITCH_HUT_BG_1.png",
+    wallpaper = "~/Pictures/wallpapers/solar-system.jpg",
 }
 
 return M

@@ -3,8 +3,8 @@ return {
     {
         -- dir = "~/projects/pendulum-nvim.git/main",
         "ptdewey/pendulum-nvim",
-        branch = "main",
-        -- branch = "dev",
+        -- branch = "main",
+        branch = "dev",
         config = function()
             require("pendulum").setup({
                 log_file = vim.fn.expand("$HOME/projects/pendulum-log.csv"),
