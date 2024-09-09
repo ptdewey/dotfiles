@@ -70,4 +70,3 @@ fi
 if [ -f "$HOME/.aliases.sh" ]; then
     source "$HOME/.aliases.sh"
 fi
-

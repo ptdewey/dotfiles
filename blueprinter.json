@@ -1,0 +1,6 @@
+{
+    "template-sources": [
+        "~/dotfiles/templates",
+        "/home/patrick/projects/blueprinter/templates"
+    ]
+}

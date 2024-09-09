@@ -60,6 +60,7 @@
         openssl
         rustup
         quarto
+        python312Packages.jupytext
 
         ## wallpaper and aesthetics utils
         feh

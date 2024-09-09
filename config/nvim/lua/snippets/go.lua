@@ -37,7 +37,8 @@ local transforms = {
     -- Types with a "*" mean they are pointers, so return nil
     [function(text)
         return not string.find(text, "*", 1, true)
-            and string.upper(string.sub(text, 1, 1)) == string.sub(text, 1, 1)
+            and string.upper(string.sub(text, 1, 1))
+                == string.sub(text, 1, 1)
     end] = function(_, _)
         return t("nil")
     end,
@@ -158,7 +159,10 @@ ls.add_snippets("go", {
     -- error check
     s(
         "if err",
-        fmt("if {} != nil {{\n\treturn {}\n}}\n{}", { i(1, "err"), d(2, go_ret_vals, { 1 }), i(0) })
+        fmt(
+            "if {} != nil {{\n\treturn {}\n}}\n{}",
+            { i(1, "err"), d(2, go_ret_vals, { 1 }), i(0) }
+        )
     ),
     -- non-dynamic version
     -- s("if err", fmt("if err != nil {{\n\treturn err\n}}\n{}",
@@ -167,10 +171,18 @@ ls.add_snippets("go", {
     s(
         "err",
         fmt(
-            "{} := {}\nif {} != nil {{\n\treturn {}\n}}\n{}",
-            { i(2, "err"), i(1), rep(2), d(3, go_ret_vals, { 2 }), i(0) }
+            "if {} != nil {{\n\treturn {}\n}}\n{}",
+            { i(1, "err"), d(2, go_ret_vals, { 1 }), i(0) }
         )
     ),
+
+    -- s(
+    --     "err",
+    --     fmt(
+    --         "{} := {}\nif {} != nil {{\n\treturn {}\n}}\n{}",
+    --         { i(2, "err"), i(1), rep(2), d(3, go_ret_vals, { 2 }), i(0) }
+    --     )
+    -- ),
 
     s(
         "efi",

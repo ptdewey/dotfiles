@@ -1,17 +1,15 @@
 {
   description = "Dev Shells Flake";
-
   inputs = {
-      nixpkgs.url = "github:NixOS/nixpkgs";
+      nixpkgs.url = "github:NixOS/nixpkgs-unstable";
   };
-
   outputs = { nixpkgs, ... }: let
     forAllSystems = function:
       nixpkgs.lib.genAttrs [
         "x86_64-linux"
         "aarch64-linux"
       ] (system:
-      ## comment for custom nixpkgs config
+        ## comment for custom nixpkgs config
         function nixpkgs.legacyPackages.${system}
       );
       ## uncomment for custom nixpkgs config
@@ -25,11 +23,11 @@
     devShells = forAllSystems(pkgs: {
       default = pkgs.mkShell {
         packages = with pkgs; [
-          neovim
+          # neovim
         ];
 
         shellHook = ''
-          export EDITOR="nvim"
+          # export EDITOR="nvim"
         '';
       };
     });
