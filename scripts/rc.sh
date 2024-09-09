@@ -41,6 +41,11 @@ if [ -d "/usr/local/go/bin" ]; then
     export PATH=$PATH:/usr/local/go/bin
 fi
 
+# add packages installed with go
+if [ -d "$HOME/go/bin" ]; then
+    export PATH="$PATH:${HOME}/go/bin"
+fi
+
 # nix home-manager session variables
 if [ -f "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" ]; then
     source "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"

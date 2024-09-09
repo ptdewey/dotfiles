@@ -12,8 +12,8 @@ return {
 
         -- load on keypress
         keys = {
-            { "y" },
-            { "Y" },
+            "y",
+            { "Y", "y$" }, -- redefine Y behavior to y$ to avoid breaking lazy
             { "D" },
             { "d" },
             { "x" },

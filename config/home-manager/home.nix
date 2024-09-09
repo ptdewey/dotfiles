@@ -3,7 +3,7 @@
 {
     # Enable home-manager and channel version
     programs.home-manager.enable = true;
-    home.stateVersion = "24.11";
+    home.stateVersion = "24.05";
 
     # Set username and home directory
     home.username = "patrick";
