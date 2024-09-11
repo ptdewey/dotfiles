@@ -40,6 +40,7 @@
         lsd
         plantuml
         zathura
+        hugo
 
         ## neovim stuff
         neovim
@@ -61,6 +62,8 @@
         rustup
         quarto
         python312Packages.jupytext
+        # nodePackages.autoprefixer
+        # nodePackages.postcss-cli
 
         ## wallpaper and aesthetics utils
         feh
@@ -80,15 +83,15 @@
         # spotify
 
         ## awesomewm stuff
-        roboto
-        maim
+        # roboto
+        # maim
         brightnessctl
-        noto-fonts
-        noto-fonts-cjk-sans
-        noto-fonts-cjk-serif
-        noto-fonts-lgc-plus
-        noto-fonts-color-emoji
-        papirus-icon-theme
+        # noto-fonts
+        # noto-fonts-cjk-sans
+        # noto-fonts-cjk-serif
+        # noto-fonts-lgc-plus
+        # noto-fonts-color-emoji
+        # papirus-icon-theme
         # cbatticon
         # cinnamon.nemo
         # blueman
