@@ -1,5 +1,26 @@
 -- plantuml file specific options
 
+-- set up plantuml language server
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "plantuml",
+    callback = function(args)
+        -- set up lsp configuration
+        local config = {
+            name = "plantuml_lsp",
+            cmd = {
+                "/home/patrick/projects/plantuml-lsp.git/dev/plantuml_lsp",
+                "--stdlib-path=/home/patrick/projects/plantuml-stdlib",
+            },
+            root_dir = vim.fs.root(args.buf, ".git")
+                or vim.fs.dirname(vim.api.nvim_buf_get_name(args.buf)),
+            autostart = true,
+        }
+
+        -- start lsp client
+        vim.lsp.start(config)
+    end,
+})
+
 local function display_messages(messages)
     vim.schedule(function()
         local concatenated_messages = table.concat(messages, "\n")
@@ -12,7 +33,10 @@ local function handle_job_output(filepath, err, return_val)
     if return_val == 0 then
         table.insert(messages, "Successfully compiled " .. filepath)
     else
-        table.insert(messages, "Compilation failed with exit code: " .. return_val)
+        table.insert(
+            messages,
+            "Compilation failed with exit code: " .. return_val
+        )
         if err and #err > 0 then
             table.insert(messages, "Error Trace:")
             for _, line in ipairs(err) do
@@ -79,7 +103,9 @@ local function compile_all_plantuml()
         local output_path = filepath:gsub("%.puml$", ".png")
         local err_output = {}
 
-        display_messages({ "Compiling PlantUML diagram for " .. relpath .. "..." })
+        display_messages({
+            "Compiling PlantUML diagram for " .. relpath .. "...",
+        })
         require("plenary.job")
             :new({
                 command = "plantuml",
@@ -156,7 +182,9 @@ local function setup()
     vim.api.nvim_create_user_command(
         "PlantumlCompileAll",
         compile_all_plantuml,
-        { desc = "Compile all .puml files in the current directory into diagrams" }
+        {
+            desc = "Compile all .puml files in the current directory into diagrams",
+        }
     )
 
     vim.api.nvim_create_user_command(

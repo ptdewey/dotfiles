@@ -1,0 +1,18 @@
+/* darkearth color palette */
+
+:root {
+    --dark-brown: #24211E;
+    --green: #77824A;
+    --dark-green: #444A2B;
+    --tan: #D7C484;
+    --orange: #BB7844;
+    --dark-orange: #B36B42;
+    --teal: #5F865F;
+    --yellow: #C9A654;
+    --red: #B3664D;
+
+    --text: var(--tan);
+    --fg: var(--tan);
+    --bg: var(--dark-brown);
+    --header-bg: var(--green);
+}

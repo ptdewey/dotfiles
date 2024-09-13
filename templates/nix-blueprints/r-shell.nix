@@ -13,8 +13,15 @@
       default = pkgs.mkShell {
         packages = with pkgs; [
           R
-          rPackages.rmarkdown
-          rPackages.ggplot2
+          (with pkgs.rPackages; [
+              data_table
+              dplyr
+              ggplot2
+              jsonlite
+              tidyverse
+              wesanderson
+            ]
+          )
         ];
       };
     });

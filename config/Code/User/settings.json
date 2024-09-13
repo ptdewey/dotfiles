@@ -36,5 +36,7 @@
         }
     ],
     "window.customMenuBarAltFocus": false,
-    "workbench.colorTheme": "Gruvbox Material Dark"
+    "workbench.colorTheme": "Gruvbox Material Dark",
+    "window.menuBarVisibility": "toggle",
+    "security.workspace.trust.untrustedFiles": "open"
 }
