@@ -14,7 +14,8 @@ local M = {
     -- terminal = "kitty",
     terminal = "wezterm",
     -- wallpaper = "~/Pictures/wallpapers/WITCH_HUT_BG_1.png",
-    wallpaper = "~/Pictures/wallpapers/solar-system.jpg",
+    -- wallpaper = "~/Pictures/wallpapers/solar-system.jpg",
+    wallpaper = "~/Pictures/wallpapers/JapaneseFish.png",
 }
 
 return M

@@ -66,6 +66,14 @@ if command -v "direnv" &> /dev/null; then
     eval "$(direnv hook `ps -p \$\$ -o 'comm='`)"
 fi
 
+# REFACTOR: remove this once blueprinter is easier to install
+if [ -f "$HOME/projects/blueprinter/blueprinter" ]; then
+    if [ ! -f "$HOME/.local/bin/blueprinter" ]; then
+        mkdir -p "$HOME/.local/bin"
+        ln -s "$HOME/projects/blueprinter/blueprinter" "$HOME/.local/bin/blueprinter"
+    fi
+fi
+
 # Fetch aliases
 if [ -f "$HOME/dotfiles/scripts/aliases.sh" ]; then
     source "$HOME/dotfiles/scripts/aliases.sh"

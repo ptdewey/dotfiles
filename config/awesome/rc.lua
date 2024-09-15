@@ -112,7 +112,7 @@ menubar.utils.terminal = terminal
 mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
-mytextclock = wibox.widget.textclock()
+mytextclock = wibox.widget.textclock(" %a %b %d, %I:%M%P ")
 
 local taglist_buttons = gears.table.join(
     awful.button({}, 1, function(t)
@@ -166,10 +166,10 @@ local function set_wallpaper(s)
     end
 end
 
-screen.connect_signal("property::geometry", set_wallpaper)
+-- screen.connect_signal("property::geometry", set_wallpaper)
 
 awful.screen.connect_for_each_screen(function(s)
-    set_wallpaper(s)
+    -- set_wallpaper(s)
 
     awful.tag(
         { "1", "2", "3", "4", "5", "6", "7", "8", "9" },
@@ -544,4 +544,14 @@ end)
 client.connect_signal("unfocus", function(c)
     c.border_color = beautiful.border_normal
 end)
+
+-- free memory
+collectgarbage("setpause", 160)
+collectgarbage("setstepmul", 400)
+
+gears.timer.start_new(10, function()
+    collectgarbage("step", 20000)
+    return true
+end)
+
 -- }}}
