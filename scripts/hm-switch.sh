@@ -7,8 +7,7 @@ set -e
 # set working directory
 pushd ~/dotfiles/config/home-manager
 
-# autoformat nix files
-# alejandra . >/dev/null
+./scripts/fetch-blueprinter-rev.sh
 
 # shows your changes
 git diff -U0 *.nix
