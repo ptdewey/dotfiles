@@ -2,7 +2,7 @@
 return {
     "folke/which-key.nvim",
 
-    keys = { "<leader>" },
+    event = "VeryLazy",
 
     -- plugin configuration
     config = function()

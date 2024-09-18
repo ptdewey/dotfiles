@@ -1,6 +1,6 @@
 local M = {
     batt = "BAT1",
-    browser = "firefox",
+    browser = "firefox-esr",
     editor = "nvim",
     file_manager = "nautilus",
     font = "IosevkaPatrick Nerd Font 14",

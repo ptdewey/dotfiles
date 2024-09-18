@@ -1,6 +1,6 @@
 { pkgs }:
 
-pkgs.stdenv.mkDerivation rec {
+pkgs.buildGoModule rec {
   pname = "blueprinter";
   version = "latest";
 
@@ -11,21 +11,5 @@ pkgs.stdenv.mkDerivation rec {
     sha256 = "0sk34gbf6f6va2xnvl766v5m7khjgi7fx0s6css7drrw0dj9li8k";
   };
 
-  nativeBuildInputs = [ pkgs.go ];
-  buildInputs = [ pkgs.go ];
-
-  buildPhase = ''
-    export HOME=$(pwd)
-    export GOPATH=$HOME/go
-    mkdir -p $GOPATH
-    mkdir -p $out
-    cd $src
-    go build -o $out/blueprinter
-  '';
-
-  installPhase = ''
-    export HOME=$(pwd)
-    mkdir -p $out/bin
-    mv $out/blueprinter $out/bin/
-  '';
+  vendorHash = null;
 }

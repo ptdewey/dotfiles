@@ -16,7 +16,7 @@ SHA256=$(echo "$PREFETCH_OUTPUT" | jq -r .sha256)
 cat <<EOF > $REV_FILE
 { pkgs }:
 
-pkgs.stdenv.mkDerivation rec {
+pkgs.buildGoModule rec {
   pname = "$REPO_NAME";
   version = "latest";
 
@@ -27,23 +27,7 @@ pkgs.stdenv.mkDerivation rec {
     sha256 = "$SHA256";
   };
 
-  nativeBuildInputs = [ pkgs.go ];
-  buildInputs = [ pkgs.go ];
-
-  buildPhase = ''
-    export HOME=\$(pwd)
-    export GOPATH=\$HOME/go
-    mkdir -p \$GOPATH
-    mkdir -p \$out
-    cd \$src
-    go build -o \$out/blueprinter
-  '';
-
-  installPhase = ''
-    export HOME=\$(pwd)
-    mkdir -p \$out/bin
-    mv \$out/blueprinter \$out/bin/
-  '';
+  vendorHash = null;
 }
 EOF
 

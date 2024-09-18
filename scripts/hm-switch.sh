@@ -7,7 +7,7 @@ set -e
 # set working directory
 pushd ~/dotfiles/config/home-manager
 
-./scripts/fetch-blueprinter-rev.sh
+./scripts/fetch-blueprinter-rev.sh &> hm-switch.log
 
 # shows your changes
 git diff -U0 *.nix
@@ -18,7 +18,7 @@ git add home.nix flake.nix flake.lock
 echo "Rebuilding home-manager..."
 
 # rebuild, output simplified errors, log trackebacks
-home-manager switch --flake . &>hm-switch.log ||
+home-manager switch --flake . &>>hm-switch.log ||
     (cat hm-switch.log | grep --color error && false)
 
 # get current home manager generation metadata

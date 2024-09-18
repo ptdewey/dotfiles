@@ -8,8 +8,8 @@ beautiful.init(gears.filesystem.get_themes_dir() .. "zenburn/theme.lua")
 
 -- set font and wallpaper
 beautiful.font = user.font
-beautiful.useless_gap = 5
-beautiful.gap_single_client = true
+beautiful.useless_gap = 1
+beautiful.gap_single_client = false
 beautiful.awesome_icon = "/home/patrick/.config/awesome/assets/plant.png"
 
 awful.spawn.with_shell("feh --bg-fill " .. user.wallpaper)
