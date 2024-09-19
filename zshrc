@@ -26,8 +26,8 @@ if [ -d "$HOME/.local/share/zsh-autosuggestions" ]; then
 fi
 
 HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=50000
+SAVEHIST=50000
 unsetopt beep
 bindkey -e
 

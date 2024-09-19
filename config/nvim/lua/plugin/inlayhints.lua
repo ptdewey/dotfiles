@@ -8,6 +8,8 @@ return {
                 commands = { enable = true },
                 autocmd = { enable = true },
             })
+
+            -- lua_ls
             require("lspconfig").lua_ls.setup({
                 settings = {
                     Lua = {
@@ -20,19 +22,25 @@ return {
                     },
                 },
             })
+
+            -- gopls
             require("lspconfig").gopls.setup({
                 settings = {
-                    hints = {
-                        rangeVariableTypes = true,
-                        parameterNames = true,
-                        constantValues = true,
-                        assignVariableTypes = true,
-                        compositeLiteralFields = true,
-                        compositeLiteralTypes = true,
-                        functionTypeParameters = true,
+                    gopls = {
+                        hints = {
+                            rangeVariableTypes = true,
+                            parameterNames = true,
+                            constantValues = true,
+                            assignVariableTypes = true,
+                            compositeLiteralFields = true,
+                            compositeLiteralTypes = true,
+                            functionTypeParameters = true,
+                        },
                     },
                 },
             })
+
+            -- rust-analyzer (just works without any additional configuration)
         end,
     },
 }

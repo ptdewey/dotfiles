@@ -386,9 +386,9 @@ clientkeys = gears.table.join(
         c.floating = not c.floating
         c:raise()
     end, { description = "toggle floating", group = "client" }),
-    awful.key({ mod }, "m", function(c)
-        c.minimized = true
-    end, { description = "minimize", group = "client" }),
+    -- awful.key({ mod }, "m", function(c)
+    --     c.minimized = true
+    -- end, { description = "minimize", group = "client" }),
     awful.key({ mod }, "g", function(c)
         c.maximized = not c.maximized
         c:raise()

@@ -156,18 +156,10 @@ ls.add_snippets("go", {
     -- struct typedef
     s("typ", fmt("type {} struct {{\n\t{}\n}}{}", { i(1), i(2), i(0) })),
 
-    -- error check
-    s(
-        "if err",
-        fmt(
-            "if {} != nil {{\n\treturn {}\n}}\n{}",
-            { i(1, "err"), d(2, go_ret_vals, { 1 }), i(0) }
-        )
-    ),
-    -- non-dynamic version
-    -- s("if err", fmt("if err != nil {{\n\treturn err\n}}\n{}",
-    --     { i(0) })),
+    -- append
+    s("app", fmt("{} = append({}, {}){}", { i(1), rep(1), i(2), i(0) })),
 
+    -- error check
     s(
         "err",
         fmt(

@@ -149,6 +149,9 @@ alias sch="cd ~/school"
 # alias notes="cd ~/Documents/notes"
 alias notes='cd $(fd . ~/notes --type d | fzf)'
 
+# Tmux
+alias ta="tmux attach"
+alias tl="tmux ls"
 tmux-sessionizer() {
     "$HOME/dotfiles/scripts/tmux-sessionizer.sh"
 }

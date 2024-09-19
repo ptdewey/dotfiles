@@ -1,4 +1,4 @@
--- TODO: load based on filetypes instead of all at once
+-- TODO: load based on filetypes instead of all at once (autocmd)
 local function load_snippets()
     local snippet_files = {
         "all",

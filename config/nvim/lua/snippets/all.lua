@@ -28,6 +28,7 @@ local prefix, suffix = split_commentstring()
 ls.add_snippets("all", {
     -- current date
     s("today", fmt("{}{}", { os.date("%D"), i(0) })),
+    s("date", fmt("{}{}", { os.date("%D"), i(0) })),
 
     -- todo comment
     --  TODO: check if comment string is already preceding on current line?
