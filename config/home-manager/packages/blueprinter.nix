@@ -7,8 +7,8 @@ pkgs.buildGoModule rec {
   src = pkgs.fetchFromGitHub {
     owner = "ptdewey";
     repo = "blueprinter";
-    rev = "5d77d58e44a9dbbaa1b242338760c7dcc74c036a";
-    sha256 = "0sk34gbf6f6va2xnvl766v5m7khjgi7fx0s6css7drrw0dj9li8k";
+    rev = "6656c54ecacf02ed439bca5616081782570b30ce";
+    sha256 = "0z7ga70yzqppgwj0ss3pk750m15m1n9s2hy2zzvgwny48fkl4x6l";
   };
 
   vendorHash = null;

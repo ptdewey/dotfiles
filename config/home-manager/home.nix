@@ -41,6 +41,7 @@
     plantuml
     zathura
     hugo
+    vhs
 
     ## neovim stuff
     neovim
@@ -100,7 +101,7 @@
 
     tidal-hifi
 
-    blueprinter
+    # blueprinter
   ];
 
   # Manage dotfiles
