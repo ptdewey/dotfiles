@@ -66,6 +66,7 @@ source_if_exists "$dots/git-clone-bare.sh"
 alias knitr="$dots/knitr.sh"
 alias hm-switch="$shell $dots/hm-switch.sh"
 alias hm-update="$shell $dots/hm-update.sh"
+alias nixos-switch="bash ${dots}/nixos-rebuild.sh"
 alias tplnew="create_file_template"
 alias tpladd="add_template"
 

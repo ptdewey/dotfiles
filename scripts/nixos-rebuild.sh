@@ -6,6 +6,7 @@ echo -ne "\033[?1049l"
 
 pushd "${HOME}/nixos/" > /dev/null
 shopt -s globstar
+clear
 
 
 # Update host
@@ -30,13 +31,13 @@ fi
 ## Update flake file
 if [ "${HOST_SHELL}" != "${HOST_FLAKE}" ]; then
 	echo "Updating flake... (${HOST_FLAKE:---}) -> ($HOST_SHELL)"
-	sudo sed -i "s/\(_hostname = \).*/\1\"${HOST_SHELL}\";/" ./flake.nix
+	sed -i "s/\(_hostname = \).*/\1\"${HOST_SHELL}\";/" ./flake.nix
 fi
 
 
 # Check differences
 echo -ne "Analysing changes..."
-if git diff --quiet -- ..; then  # -- ./**/*.nix
+if git diff --quiet -- .; then  # -- ./**/*.nix
 	echo -e " \033[31mNot found\033[0m"
 	had_changes=false
 else
@@ -45,10 +46,11 @@ else
 
 	read -p 'Open diff? (y/N): ' diff_confirm
 	if [[ "${diff_confirm}" == [yY] ]] || [[ "${diff_confirm}" == [yY][eE][sS] ]]; then
-		git diff --word-diff=porcelain -U0 -- ..
+		git diff --word-diff=porcelain -U0 -- .
 	fi
 
-	sudo git add ..
+	# sudo git add .
+	git add .
 fi
 
 
@@ -75,7 +77,7 @@ if [[ "${exit_code}" == 0 ]]; then
 	if $had_changes; then
 		generation=$(sudo nix-env -p /nix/var/nix/profiles/system --list-generations | grep current | awk '{print $1}')
 		message="NixOS build ${HOST_SHELL}#${generation}"
-		sudo git commit -m "${message}"
+        GIT_COMMITTER_NAME="ptdewey" GIT_COMMITTER_EMAIL="noreply" git commit -m "${message}" --author="ptdewey <noreply>"
 		echo -e "\n\n\033[32mCommitted as ${message}\033[0m"
 	fi
 
@@ -86,7 +88,7 @@ else
 
 	grep --color -F "error" .nixos-switch.log
 	if $had_changes; then
-		sudo git restore --staged ..
+		git restore --staged .
 	fi
 
 	echo -ne "\n"
@@ -99,3 +101,4 @@ fi
 
 shopt -u globstar
 popd > /dev/null
+
