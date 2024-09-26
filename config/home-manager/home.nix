@@ -36,20 +36,19 @@
     pandoc
     neofetch
     htop
-    tmux
+    # tmux
     lsd
     plantuml
     zathura
     hugo
     vhs
+    quarto
+    feh
 
     ## neovim stuff
-    neovim
-    xclip
+    # neovim
+    # xclip
     tree-sitter
-
-    ## shell stuff
-    # zsh
 
     ## languages and related utils
     stylua
@@ -61,58 +60,54 @@
     prettierd
     openssl
     rustup
-    quarto
-    python312Packages.jupytext
-    # nodePackages.autoprefixer
-    # nodePackages.postcss-cli
-
-    ## wallpaper and aesthetics utils
-    feh
-    pywal
+    # brightnessctl
 
     ## window manager config
     # awesome
-    bspwm
-    dunst
-    polybar
-    picom
+    # bspwm
+    # dunst
+    # polybar
+    # picom
     # rofi
-    sxhkd
+    # sxhkd
 
     ## other gui applications
     # discord
     # spotify
-
-    ## awesomewm stuff
-    # roboto
-    # maim
-    brightnessctl
-    # noto-fonts
-    # noto-fonts-cjk-sans
-    # noto-fonts-cjk-serif
-    # noto-fonts-lgc-plus
-    # noto-fonts-color-emoji
-    # papirus-icon-theme
-    # cbatticon
-    # cinnamon.nemo
-    # blueman
-    # xdg-user-dirs
-    # xsettingsd
-
     tidal-hifi
-
-    # blueprinter
   ];
-
-  # Manage dotfiles
-  home.file = {
-    # TODO: figure out correct location for fonts on different systems
-    # ".fonts".source = ~/dotfiles/fonts;
-    # ".local/share/fonts".source = ~/dotfiles/fonts;
-  };
 
   # Manage environment variables
   home.sessionVariables = {
     EDITOR = "nvim";
+  };
+
+  # GTK theming
+  gtk = {
+    enable = true;
+    font = {
+      name = "IosevkaPatrick Nerd Font";
+      size = 16;
+    };
+
+    cursorTheme = {
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Classic";
+    };
+
+    iconTheme = {
+      package = pkgs.gruvbox-plus-icons;
+      name  = "Gruvbox-Plus-Dark";
+    };
+
+    theme = {
+      package = pkgs.gruvbox-dark-gtk;
+      name = "gruvbox-dark";
+    };
+  };
+
+  # Manage dotfiles
+  home.file = {
+    ".local/share/icons/bibata".source = "${pkgs.bibata-cursors}/share/icons/Bibata-Modern-Classic";
   };
 }

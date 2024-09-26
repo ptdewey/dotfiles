@@ -7,7 +7,7 @@ set -e
 # set working directory
 pushd ~/dotfiles/config/home-manager
 
-./scripts/fetch-blueprinter-rev.sh &> hm-switch.log
+# ./scripts/fetch-blueprinter-rev.sh &> hm-switch.log
 
 # shows your changes
 git diff -U0 *.nix
