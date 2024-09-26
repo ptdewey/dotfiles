@@ -112,7 +112,10 @@ alias dn="cd ~/Downloads"
 alias notes='cd $(fd . ~/notes --type d | fzf)'
 
 # Tmux
-source "${dots}/tmux-sessionizer.sh"
+# source "${dots}/tmux-sessionizer.sh"
+tmux-sessionizer() {
+    "${dots}/tmux-sessionizer.sh" "$@"
+}
 alias ta="tmux attach"
 alias tl="tmux ls"
 alias proj="tmux-sessionizer ${HOME}/projects"
@@ -120,7 +123,7 @@ alias sch="tmux-sessionizer ${HOME}/school"
 
 # keymaps
 if [ "$shell" = "bash" ]; then
-    bind -x '"\C-f":tmux-sessionizer \n'
+    bind -x '"\C-f":tmux-sessionizer'
     bind -x '"\C-g":sd \n'
 elif [ "$shell" = "zsh" ]; then
     bindkey -s ^f 'tmux-sessionizer\n'
