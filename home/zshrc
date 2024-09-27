@@ -25,6 +25,12 @@ if [ -d "$HOME/.local/share/zsh-autosuggestions" ]; then
     # source ~/.repos/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 fi
 
+
+# disable ctrl-s control flow breaks
+if [[ -t 0 && $- = *i* ]]; then
+    stty -ixon
+fi
+
 HISTFILE=~/.histfile
 HISTSIZE=50000
 SAVEHIST=50000
