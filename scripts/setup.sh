@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 dots="$HOME/dotfiles"
 olddir="$HOME/Documents/dotfiles_old"
