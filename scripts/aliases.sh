@@ -99,9 +99,9 @@ pdfz() {
 
 # docker
 alias dps="docker ps"
-alias dc="docker-compose"
-alias dcu="docker-compose up -d"
-alias dcd="docker-compose down"
+alias dc="docker compose"
+alias dcu="docker compose up -d"
+alias dcd="docker compose down"
 dex() { docker exec -it "$1" "${2:-bash}"; }
 
 # nix

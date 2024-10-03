@@ -1,3 +1,16 @@
+@define-color dark-brown #24211E;
+/* @define-color brown #59524b; */
+@define-color brown #443e39;
+@define-color light-brown #645c53;
+@define-color tan #D7C484;
+@define-color green #77824A;
+@define-color dark-green #444A2B;
+@define-color orange #BB7844;
+@define-color dark-orange #B36B42;
+@define-color teal #5F865F;
+@define-color yellow #C9A654;
+@define-color red #B3664D;
+
 * {
     border: none;
     border-radius: 4px;
@@ -13,7 +26,7 @@
 window#waybar {
     background-color: rgba(0, 0, 0, 0.9);
     /* border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
-    color: #ffffff;
+    color: @tan;
     /* transition-property: background-color; */
     /* transition-duration: .5s; */
     /* border-radius: 0; */
@@ -44,7 +57,7 @@ window#waybar.chromium {
 #workspaces button {
     /* padding: 0 0.4em; */
     /* background-color: transparent; */
-    color: #ffffff;
+    color: @tan;
     /* Use box-shadow instead of border so the text isn't offset */
     box-shadow: inset 0 -3px transparent;
 }
@@ -52,30 +65,34 @@ window#waybar.chromium {
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 #workspaces button:hover {
     background: rgba(0, 0, 0, 0.9);
-    box-shadow: inset 0 -3px #ffffff;
+    box-shadow: inset 0 -3px @tan;
 }
 
 #workspaces button.empty {
-    color: #64727D;
+    color: @brown;
+    /* color: #64727D; */
 }
 
 #workspaces button.active {
-    color: #eb4d4b;
+    /* color: #eb4d4b; */
+    color: @teal;
 }
 
 
 #workspaces button.focused {
-    background-color: #64727D;
-    /* box-shadow: inset 0 -3px #ffffff; */
+    /* background-color: #64727D; */
+    color: @light-brown;
+    /* box-shadow: inset 0 -3px @tan; */
 }
 
 #workspaces button.urgent {
-    background-color: #eb4d4b;
+    /* background-color: #eb4d4b; */
+    color: @red;
 }
 
 #mode {
     background-color: #64727D;
-    /* border-bottom: 3px solid #ffffff; */
+    /* border-bottom: 3px solid @tan; */
 }
 
 #clock,
@@ -113,29 +130,29 @@ window#waybar.chromium {
 
 #clock {
     background-color: #000000;
-    color: white;
+    color: @tan;
 }
 
 #battery {
     background-color: #000000;
-    color: white;
+    color: @tan;
 }
 
 #battery.charging {
-    color: #ffffff;
+    color: @tan;
     background-color: #000000;
 }
 
 @keyframes blink {
     to {
-        background-color: #ffffff;
+        background-color: @tan;
         color: #000000;
     }
 }
 
 #battery.critical:not(.charging) {
     background-color: #f53c3c;
-    color: #ffffff;
+    color: @tan;
     /* animation-name: blink; */
     /* animation-duration: 0.5s; */
     /* animation-timing-function: linear; */
@@ -149,37 +166,37 @@ label:focus {
 
 #cpu {
     background-color: #000000;
-    color: #ffffff;
+    color: @tan;
 }
 
 #memory {
     background-color: #000000;
-    color: white;
+    color: @tan;
 }
 
 #backlight {
     background-color: #000000;
-    color: white;
+    color: @tan;
 }
 
 #network {
     background-color: #000000;
-    color: white;
+    color: @tan;
 
 }
 
 #network.disconnected {
-    background-color: #f53c3c;
+    background-color: @red;
 }
 
 #pulseaudio {
     background-color: #000000;
-    color: #ffffff;
+    color: @tan;
 }
 
 #pulseaudio.muted {
     background-color: #000000;
-    color: #ffffff;
+    color: @tan;
 }
 
 #custom-media {

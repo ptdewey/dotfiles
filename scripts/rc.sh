@@ -2,8 +2,8 @@
 # This is a file meant to be shared between my bashrc and zshrc configurations
 # it aggregates path extensions and imports aliases
 
-# set custom color scheme
-if [ -f "$HOME/dotfiles/scripts/base16-darkearth.sh" ]; then
+# set custom color scheme (if not in tty)
+if [ -f "$HOME/dotfiles/scripts/base16-darkearth.sh" ] && [ -n "$DISPLAY" ]; then
     source "$HOME/dotfiles/scripts/base16-darkearth.sh"
 fi
 
