@@ -3,4 +3,6 @@ scripts/git-prompt.sh linguist-vendored
 p10k.zsh linguist-generated
 config/nvim/syntax/plantuml.vim linguist-vendored
 
-templates/* linguist-generated
+config/nvim/queries/plantuml/highlights.scm linguist-vendored
+
+templates linguist-generated
