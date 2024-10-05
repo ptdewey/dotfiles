@@ -266,3 +266,11 @@ vim.keymap.set(
     "<cmd>silent !tmux neww ~/dotfiles/scripts/tmux-sessionizer.sh<CR>",
     { desc = "Open tmux sessionizer" }
 )
+
+-- treesitter inspect
+vim.keymap.set(
+    "n",
+    "<leader>i",
+    "<cmd>Inspect<CR>",
+    { desc = "Treesitter [I]nspect", noremap = true }
+)
