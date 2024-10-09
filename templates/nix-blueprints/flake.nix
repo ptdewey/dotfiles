@@ -1,7 +1,7 @@
 {
   description = "Dev Shells Flake";
   inputs = {
-      nixpkgs.url = "github:NixOS/nixpkgs-unstable";
+      nixpkgs.url = "nixpkgs/nixpkgs-unstable";
   };
   outputs = { nixpkgs, ... }: let
     forAllSystems = function:
