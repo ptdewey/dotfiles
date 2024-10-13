@@ -40,6 +40,14 @@ return {
                 },
             })
 
+            require("lspconfig").ts_ls.setup({
+                settings = {
+                    implicitProjectConfiguration = {
+                        checkJs = true,
+                    },
+                },
+            })
+
             -- rust-analyzer (just works without any additional configuration)
         end,
     },

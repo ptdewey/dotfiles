@@ -7,7 +7,7 @@ return {
     },
     {
         "windwp/nvim-ts-autotag",
-        ft = { "tsx", "html" },
+        ft = { "markdown", "javascript", "jsx", "tsx", "html" },
         config = function()
             require("nvim-ts-autotag").setup({})
         end,
