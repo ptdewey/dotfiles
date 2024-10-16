@@ -14,7 +14,7 @@ return {
                     typescriptreact = { "prettierd" },
                     go = { "gofmt", "goimports" },
                     rust = { "rustfmt" },
-                    python = { "blue", "isort" },
+                    -- python = { "ruff", "isort" },
                     ["_"] = { "trim_whitespace" },
                 },
                 format_on_save = {
