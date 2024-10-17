@@ -7,10 +7,10 @@ if tmux list-windows -F "#{window_name}" | grep -q "^todo$"; then
 else
     tmux rename-window "todo"
 
-    if [[ -e "TODO.md" ]]; then
-        nvim "TODO.md"
-    elif [[ -e "${session_path}/TODO.md" ]]; then
-        nvim "${session_path}/TODO.md"
+    if [[ -e "todo.md" ]]; then
+        nvim "todo.md"
+    elif [[ -e "${session_path}/todo.md" ]]; then
+        nvim "${session_path}/todo.md"
     else
         nvim "${HOME}/notes/todo.md"
     fi
