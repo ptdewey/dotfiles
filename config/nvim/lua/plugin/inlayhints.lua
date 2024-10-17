@@ -40,13 +40,17 @@ return {
                 },
             })
 
+            -- js and ts
             require("lspconfig").ts_ls.setup({
+                -- filetypes = { "typescript", "javascript", "html" },
                 settings = {
                     implicitProjectConfiguration = {
                         checkJs = true,
                     },
                 },
             })
+
+            -- require("lspconfig").eslint_lsp.setup({ filetypes = { "html" } })
 
             -- rust-analyzer (just works without any additional configuration)
         end,

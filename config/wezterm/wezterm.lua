@@ -12,7 +12,7 @@ local config = {
     -- dpi = 144, -- commenting this out fixes the weird tiling wm scaling issue
 
     -- set rendering device
-    enable_wayland = true,
+    enable_wayland = false,
     front_end = "OpenGL",
     -- front_end = "WebGpu",
     -- webgpu_power_preference = "HighPerformance",
@@ -101,5 +101,7 @@ if package.config:sub(1, 1) == "\\" then
 else
     -- unix
 end
+
+config.enable_wayland = true
 
 return config
