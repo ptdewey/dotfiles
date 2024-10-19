@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Define repository details and file to update
 REPO_OWNER="ptdewey"

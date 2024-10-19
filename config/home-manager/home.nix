@@ -48,7 +48,6 @@
     ## neovim stuff
     neovim
     # xclip
-    xclip
     tree-sitter
 
     ## languages and related utils
@@ -75,7 +74,8 @@
     ## other gui applications
     # discord
     # spotify
-    # tidal-hifi
+    tidal-hifi
+    yt-dlp
   ];
 
   # Manage environment variables

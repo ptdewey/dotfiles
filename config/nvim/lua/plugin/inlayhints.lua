@@ -40,7 +40,9 @@ return {
                 },
             })
 
+            -- js and ts
             require("lspconfig").ts_ls.setup({
+                -- filetypes = { "typescript", "javascript", "html" },
                 settings = {
                     implicitProjectConfiguration = {
                         checkJs = true,
