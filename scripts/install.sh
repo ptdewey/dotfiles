@@ -3,11 +3,15 @@
 # run
 # curl "https://raw.githubusercontent.com/ptdewey/dotfiles/main/scripts/install.sh" >> install.sh
 # chmod +x install.sh && ./install.sh
+if ! command -v curl &> /dev/null; then
+    echo "curl not found, installing..."
+    sudo apt update
+    sudo apt install curl -y
+fi
 
 # install git
 if ! command -v git &> /dev/null; then
     echo "git not found, installing..."
-    sudo apt update
     sudo apt install git -y
     echo "Installed git."
 else
@@ -18,7 +22,8 @@ git --version
 # fetch dotfiles
 # TODO: ssh clone would be preferable but that requires additional prior setup
 echo "Fetching dotfiles..."
-git clone "https://github.com/ptdewey/dotfiles" "$HOME/"
+# git clone "https://github.com/ptdewey/dotfiles.git" "$HOME/dotfiles"
+git clone "https://github.com/ptdewey/dotfiles.git"
 
 # run dotfiles setup
 echo "Running setup script..."
@@ -66,16 +71,16 @@ git clone https://github.com/zsh-users/zsh-autosuggestions.git
 popd
 
 # create desktop entry for bspwm (important if installing from nix)
-sudo bash -c 'cat > /usr/share/xsessions/bspwm.desktop <<EOF
-[Desktop Entry]
-Name=bspwm
-Comment=Binary space partitioning window manager
-Exec=bspwm
-Type=Application
-EOF'
+# sudo bash -c 'cat > /usr/share/xsessions/bspwm.desktop <<EOF
+# [Desktop Entry]
+# Name=bspwm
+# Comment=Binary space partitioning window manager
+# Exec=bspwm
+# Type=Application
+# EOF'
 
 # install terminal and any other graphical packages nix can't handle
-sudo apt install kitty
+# sudo apt install kitty -y
 
 # TODO: any other installation/setup tasks (other packages)
 # - wezterm (requires ppa)

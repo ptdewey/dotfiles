@@ -49,11 +49,11 @@ return {
             })
 
             require("lspconfig").ruff.setup({
-                init_options = {
-                    settings = {
-                        -- Ruff language server settings go here
-                    },
-                },
+                -- init_options = {
+                --     settings = {
+                --         -- Ruff language server settings go here
+                --     },
+                -- },
             })
 
             -- rust-analyzer (just works without any additional configuration)

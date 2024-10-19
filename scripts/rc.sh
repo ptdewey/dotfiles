@@ -50,6 +50,11 @@ if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
   . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
 fi
 
+if [ -e "$HOME/.nix-profile/share" ]; then
+    export XDG_DATA_DIRS="/home/your_user/.nix-profile/share:$XDG_DATA_DIRS"
+fi
+
+
 if command -v "direnv" &> /dev/null; then
     eval "$(direnv hook `ps -p \$\$ -o 'comm='`)"
 fi
