@@ -19,12 +19,12 @@ return {
                     vim.lsp.buf.rename,
                     { desc = "[R]e[n]ame" }
                 )
-                vim.keymap.set(
-                    "n",
-                    "<leader>ca",
-                    vim.lsp.buf.code_action,
-                    { desc = "[C]ode [A]ction" }
-                )
+                -- vim.keymap.set(
+                --     "n",
+                --     "<leader>ca",
+                --     vim.lsp.buf.code_action,
+                --     { desc = "[C]ode [A]ction" }
+                -- )
                 vim.keymap.set("n", "K", function()
                     vim.lsp.buf.hover()
                 end, { desc = "Hover Documentation" })

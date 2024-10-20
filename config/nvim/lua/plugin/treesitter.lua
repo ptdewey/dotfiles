@@ -26,21 +26,21 @@ vim.defer_fn(function()
             },
         },
     })
-    local parser_config =
-        require("nvim-treesitter.parsers").get_parser_configs()
-    parser_config.plantuml = {
-        install_info = {
-            url = "https://github.com/ptdewey/tree-sitter-plantuml.git",
-            -- url = "/home/patrick/projects/tree-sitter-plantuml.git/main",
-            -- location = "plantuml.so",
-            files = { "src/parser.c" },
-            branch = "main",
-        },
-        filetype = "plantuml",
-        highlight = {
-            enable = true,
-        },
-    }
+    -- local parser_config =
+    --     require("nvim-treesitter.parsers").get_parser_configs()
+    -- parser_config.plantuml = {
+    --     install_info = {
+    --         url = "https://github.com/ptdewey/tree-sitter-plantuml.git",
+    --         -- url = "/home/patrick/projects/tree-sitter-plantuml.git/main",
+    --         -- location = "plantuml.so",
+    --         files = { "src/parser.c" },
+    --         branch = "main",
+    --     },
+    --     filetype = "plantuml",
+    --     highlight = {
+    --         enable = true,
+    --     },
+    -- }
 end, 0)
 
 return M
