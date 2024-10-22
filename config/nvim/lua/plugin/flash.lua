@@ -4,12 +4,7 @@ return {
         "folke/flash.nvim",
 
         -- keybinds (mode 'o' is operator-pending)
-        keys = {
-            { "s", mode = { "n", "x", "o" } },
-            { "S", mode = { "n", "x", "o" } },
-            { "r", mode = "o" },
-            { "R", mode = { "o", "x" } },
-        },
+        event = "BufReadPost",
 
         config = function()
             require("flash").setup({
