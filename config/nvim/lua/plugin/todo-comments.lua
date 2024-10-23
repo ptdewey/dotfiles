@@ -7,12 +7,15 @@ return {
         "nvim-telescope/telescope.nvim",
     },
 
+    -- TODO: replace plugin with vanilla variant + custom telescope keybind
+    -- https://www.reddit.com/r/neovim/comments/1cmgp9k/comment/l33co7r/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+
     config = function()
         require("todo-comments").setup({
             signs = false,
             keywords = {
                 DOC = {
-                    alt = { "DOCS", "DOCUMENT", "DOCUMENTATION" },
+                    alt = { "DOCS" },
                 },
                 REFACTOR = {
                     color = "warning",
@@ -21,6 +24,9 @@ return {
                 CHANGE = {
                     color = "warning",
                 },
+            },
+            colors = {
+                default = { "Operator" },
             },
             -- TODO: change colors to better work with darkearth (or change darkearth)
         })
