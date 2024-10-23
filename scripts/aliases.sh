@@ -110,7 +110,8 @@ alias ncg="nix-collect-garbage"
 
 # Directories
 alias dn="cd ~/Downloads"
-alias notes='cd $(fd . ~/notes --type d | fzf)'
+# alias notes='cd $(fd . ~/notes --type d | fzf)'
+alias notes='cd ~/notes'
 
 # Tmux
 # source "${dots}/tmux-sessionizer.sh"

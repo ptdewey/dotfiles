@@ -25,9 +25,9 @@ return {
                     color = "warning",
                 },
             },
-            colors = {
-                default = { "Operator" },
-            },
+            -- colors = {
+            --     default = { "Operator" },
+            -- },
             -- TODO: change colors to better work with darkearth (or change darkearth)
         })
         -- navigation

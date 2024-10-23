@@ -1,4 +1,4 @@
--- javascript filetype specific options
+-- tsx filetype specific options
 local options = {
     tabstop = 2,
     shiftwidth = 2,
