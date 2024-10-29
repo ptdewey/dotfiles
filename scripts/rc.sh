@@ -7,6 +7,10 @@ if [ -f "$HOME/dotfiles/scripts/base16-darkearth.sh" ] && [ -n "$DISPLAY" ]; the
     source "$HOME/dotfiles/scripts/base16-darkearth.sh"
 fi
 
+# nicer prompt
+# TODO: wrap with conditional (use git-prompt.sh otherwise)
+eval "$(starship init zsh)"
+
 export PATH="$PATH:./"
 
 # add dotfiles/scripts to path

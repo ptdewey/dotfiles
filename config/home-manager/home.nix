@@ -44,10 +44,11 @@
     vhs
     quarto
     feh
+    starship
 
     ## neovim stuff
     neovim
-    # xclip
+    xclip
     tree-sitter
 
     ## languages and related utils
@@ -74,8 +75,7 @@
     ## other gui applications
     # discord
     # spotify
-    tidal-hifi
-    yt-dlp
+    # tidal-hifi
   ];
 
   # Manage environment variables
@@ -84,28 +84,28 @@
   };
 
   # GTK theming
-  # gtk = {
-  #   enable = true;
-  #   font = {
-  #     name = "IosevkaPatrick Nerd Font";
-  #     size = 16;
-  #   };
-  #
-  #   cursorTheme = {
-  #     package = pkgs.bibata-cursors;
-  #     name = "Bibata-Modern-Classic";
-  #   };
-  #
-  #   iconTheme = {
-  #     package = pkgs.gruvbox-plus-icons;
-  #     name  = "Gruvbox-Plus-Dark";
-  #   };
-  #
-  #   theme = {
-  #     package = pkgs.gruvbox-dark-gtk;
-  #     name = "gruvbox-dark";
-  #   };
-  # };
+  gtk = {
+    enable = true;
+    font = {
+      name = "IosevkaPatrick Nerd Font";
+      size = 16;
+    };
+
+    cursorTheme = {
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Classic";
+    };
+
+    iconTheme = {
+      package = pkgs.gruvbox-plus-icons;
+      name  = "Gruvbox-Plus-Dark";
+    };
+
+    theme = {
+      package = pkgs.gruvbox-dark-gtk;
+      name = "gruvbox-dark";
+    };
+  };
 
   # Manage dotfiles
   home.file = {
