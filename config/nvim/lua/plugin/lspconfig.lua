@@ -21,24 +21,51 @@ return {
                 prefix = "",
             },
         }),
+
+        config = function()
+            local lspconfig = require("lspconfig")
+            -- lua_ls
+            lspconfig.lua_ls.setup({
+                settings = {
+                    Lua = {
+                        hint = {
+                            enable = true, -- necessary
+                        },
+                        -- workspace = { checkThirdParty = false },
+                        telemetry = { enable = false },
+                        globals = { "vim" },
+                    },
+                },
+            })
+            -- gopls
+            lspconfig.gopls.setup({
+                settings = {
+                    gopls = {
+                        hints = {
+                            rangeVariableTypes = true,
+                            parameterNames = true,
+                            constantValues = true,
+                            assignVariableTypes = true,
+                            compositeLiteralFields = true,
+                            compositeLiteralTypes = true,
+                            functionTypeParameters = true,
+                        },
+                    },
+                },
+            })
+            -- js and ts
+            lspconfig.ts_ls.setup({
+                -- filetypes = { "typescript", "javascript", "html" },
+                settings = {
+                    implicitProjectConfiguration = {
+                        checkJs = true,
+                    },
+                },
+            })
+            -- ruff for python
+            lspconfig.ruff.setup({})
+        end,
     },
-    {
-        "folke/neodev.nvim",
-        ft = "lua",
-        opts = {},
-    },
-    -- { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
-    -- {
-    --     -- neovim api completion
-    --     "folke/lazydev.nvim",
-    --     ft = "lua",
-    --     opts = {
-    --         library = {
-    --             { path = "luvit-meta/library", words = { "vim%.uv" } },
-    --             "lazy.nvim",
-    --         },
-    --     },
-    -- },
     {
         -- useful status updates for LSP
         "j-hui/fidget.nvim",
@@ -61,6 +88,17 @@ return {
                 handler_opts = {
                     border = "rounded",
                 },
+            })
+        end,
+    },
+    {
+        "MysticalDevil/inlay-hints.nvim",
+        event = "LspAttach",
+        dependencies = { "neovim/nvim-lspconfig" },
+        config = function()
+            require("inlay-hints").setup({
+                commands = { enable = true },
+                autocmd = { enable = true },
             })
         end,
     },
