@@ -10,9 +10,12 @@ return {
         ft = {
             "markdown",
             "javascript",
+            "typescript",
             "javascriptreact",
             "typescriptreact",
             "html",
+            "vue",
+            "svelte",
         },
         config = function()
             require("nvim-ts-autotag").setup({})

@@ -5,7 +5,7 @@ return {
         "tpope/vim-fugitive",
         keys = {
             {
-                "<leader>gd",
+                "<leader>gv",
                 "<cmd>Gdiff<CR>",
                 silent = true,
                 desc = "View Git diff",
@@ -79,24 +79,19 @@ return {
                     end,
                     { expr = true, buffer = bufnr, desc = "Jump to next hunk" }
                 )
-                vim.keymap.set(
-                    { "n", "v" },
-                    "[c",
-                    function()
-                        if vim.wo.diff then
-                            return "[c"
-                        end
-                        vim.schedule(function()
-                            gs.prev_hunk()
-                        end)
-                        return "<Ignore>"
-                    end,
-                    {
-                        expr = true,
-                        buffer = bufnr,
-                        desc = "Jump to previous hunk",
-                    }
-                )
+                vim.keymap.set({ "n", "v" }, "[c", function()
+                    if vim.wo.diff then
+                        return "[c"
+                    end
+                    vim.schedule(function()
+                        gs.prev_hunk()
+                    end)
+                    return "<Ignore>"
+                end, {
+                    expr = true,
+                    buffer = bufnr,
+                    desc = "Jump to previous hunk",
+                })
             end,
         },
     },

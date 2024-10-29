@@ -6,11 +6,11 @@ return {
         -- load plugin on keybinds
         keys = {
             {
-                "<leader>dg",
+                "<leader>gd",
                 function()
                     require("neogen").generate({})
                 end,
-                desc = "[D]ocumentation [G]enerate",
+                desc = "[G]enerate [D]ocumentation",
                 silent = true,
                 noremap = true,
             },
