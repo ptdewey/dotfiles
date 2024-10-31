@@ -7,22 +7,23 @@ if [ -f "$HOME/dotfiles/scripts/base16-darkearth.sh" ] && [ -n "$DISPLAY" ]; the
     source "$HOME/dotfiles/scripts/base16-darkearth.sh"
 fi
 
+# tmux worktree stuff
+if [[ -n "$TMUX" ]] && [[ -z "$(tmux show-environment -s TMUX_SESSION_INIT 2>/dev/null)" ]]; then
+    if [[ -d "./worktrees" ]] && [[ -f "./FETCH_HEAD" ]]; then
+        last_worktree=$(find "./worktrees" -type d -printf '%T+ %p\n' | sort -r | head -n 1 | cut -d '/' -f 3)
+        if [[ -n $last_worktree ]]; then
+            cd "$last_worktree" || exit 1
+        fi
+    fi
+    tmux set-environment TMUX_SESSION_INIT 1
+fi
 
 export PATH="$PATH:./"
-
-# add dotfiles/scripts to path
-# export PATH="$PATH:$HOME/dotfiles/scripts"
-
-if [ -d "$HOME/.local/bin" ]; then
-    export PATH=$PATH:"$HOME/.local/bin"
-fi
+export PATH=$PATH:"$HOME/.local/bin"
 
 if [ -f "$HOME/.cargo/env" ]; then
-    source "$HOME/.cargo/env"
-fi
-
-if [ -d "$HOME/.cargo/bin" ]; then
     export PATH=$PATH:"$HOME/.cargo/bin"
+    source "$HOME/.cargo/env"
 fi
 
 # add go to path
@@ -48,7 +49,7 @@ fi
 
 # nix daemon
 if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
-  . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+    . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
 fi
 
 if [ -e "$HOME/.nix-profile/share" ]; then
