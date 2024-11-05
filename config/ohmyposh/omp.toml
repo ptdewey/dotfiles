@@ -26,7 +26,7 @@ console_title_template = "{{ .HostName }}"
     style = "plain"
     foreground = "p:tan"
     background = "transparent"
-    template = "<p:green>[{{ .RepoName }}]</> <p:teal>({{ if .IsBare }}bare:{{ end }}{{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }})</> {{ if .Merge }}<p:red>|MERGE|</> {{ else if .Rebase }}<p:red>|REBASE|</> {{ end }}"
+    template = "<p:green>[{{ .RepoName }}]</> <p:teal>({{ if .IsBare }}bare:{{ end }}{{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }}{{ if gt .StashCount 0 }}<p:teal>$</>{{ end }})</> {{ if .Merge }}<p:red>|MERGE|</> {{ else if .Rebase }}<p:red>|REBASE|</> {{ end }}"
 
     [blocks.segments.properties]
       branch_icon = ""
