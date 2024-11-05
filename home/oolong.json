@@ -1,0 +1,20 @@
+{
+    "ngramRange": [
+        1,
+        2,
+        3
+    ],
+    "noteDirectories": [
+        "~/notes",
+        "~/school/cs5704"
+    ],
+    "allowedExtensions": [
+        ".md",
+        ".mdx",
+        ".tex",
+        ".typ"
+    ],
+    "pluginPaths": [
+        "./scripts/daily_note.lua"
+    ]
+}

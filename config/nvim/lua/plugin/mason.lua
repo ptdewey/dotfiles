@@ -12,13 +12,19 @@ return {
 
         config = function()
             -- Configure LSP
+            vim.keymap.set(
+                "n",
+                "<leader>rn",
+                vim.lsp.buf.rename,
+                { desc = "[R]e[n]ame" }
+            )
             local on_attach = function(_, bufnr)
-                vim.keymap.set(
-                    "n",
-                    "<leader>rn",
-                    vim.lsp.buf.rename,
-                    { desc = "[R]e[n]ame" }
-                )
+                -- vim.keymap.set(
+                --     "n",
+                --     "<leader>rn",
+                --     vim.lsp.buf.rename,
+                --     { desc = "[R]e[n]ame" }
+                -- )
                 -- vim.keymap.set(
                 --     "n",
                 --     "<leader>ca",
