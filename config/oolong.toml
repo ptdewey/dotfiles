@@ -1,0 +1,29 @@
+# Range of NGram sizes to use for keyword linking
+ngram_range = [ 1, 2, 3 ]
+
+# List of directories to read into Oolong
+note_directories = [
+    "~/notes",
+    "~/school/cs5704",
+    "~/projects/oolong.git/patrick-dev/examples/data",
+]
+
+# Subdirectory patterns to exclude from the file watcher
+ignored_directories = [
+        ".git",
+        ".templates",
+        "target",
+]
+
+# Whitelist of file extensions to use in linking
+allowed_extensions = [
+    ".md",
+    ".mdx",
+    ".tex",
+    ".typ",
+]
+
+# List of plugins (lua files) to load
+plugin_paths = [
+    "./scripts/daily_note.lua",
+]

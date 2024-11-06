@@ -93,7 +93,8 @@ return {
     },
     {
         "MysticalDevil/inlay-hints.nvim",
-        event = "LspAttach",
+        -- event = "LspAttach",
+        event = "BufReadPost",
         dependencies = { "neovim/nvim-lspconfig" },
         config = function()
             require("inlay-hints").setup({
