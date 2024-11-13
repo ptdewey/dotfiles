@@ -55,7 +55,7 @@ return {
             })
             -- js and ts
             lspconfig.ts_ls.setup({
-                -- filetypes = { "typescript", "javascript", "html" },
+                filetypes = { "typescript", "javascript", "html", "svelte" },
                 settings = {
                     implicitProjectConfiguration = {
                         checkJs = true,

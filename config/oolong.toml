@@ -5,7 +5,7 @@ ngram_range = [ 1, 2, 3 ]
 note_directories = [
     "~/notes",
     "~/school/cs5704",
-    "~/projects/oolong.git/patrick-dev/examples/data",
+    # "~/projects/oolong.git/patrick-dev/examples/data",
 ]
 
 # Subdirectory patterns to exclude from the file watcher
@@ -26,4 +26,9 @@ allowed_extensions = [
 # List of plugins (lua files) to load
 plugin_paths = [
     "./scripts/daily_note.lua",
+]
+
+stop_words = [
+    "patrick",
+    "dewey",
 ]
