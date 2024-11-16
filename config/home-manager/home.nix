@@ -78,6 +78,7 @@
     # discord
     # spotify
     # tidal-hifi
+    xsv
     yt-dlp
   ];
 
