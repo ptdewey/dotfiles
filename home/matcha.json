@@ -1,8 +1,0 @@
-{
-    "noteSources": [
-        "~/notes"
-    ],
-    "defaultExt": ".md",
-    "useTemplate": true,
-    "templateDir": "~/notes/.templates"
-}
