@@ -8,7 +8,7 @@ vim.api.nvim_create_autocmd("FileType", {
         local config = {
             name = "plantuml_lsp",
             cmd = {
-                "/home/patrick/projects/plantuml-lsp.git/dev/plantuml_lsp",
+                "/home/patrick/projects/plantuml-lsp/plantuml_lsp",
                 "--stdlib-path=/home/patrick/projects/plantuml-stdlib",
             },
             root_dir = vim.fs.root(args.buf, ".git")
@@ -217,6 +217,8 @@ local function setup()
     vim.keymap.set("n", "<leader>cb", function()
         vim.cmd("PlantumlViewAll")
     end, { desc = "View all PlantUML file outputs" })
+
+    vim.cmd("doautocmd FileType plantuml")
 end
 
 setup()
