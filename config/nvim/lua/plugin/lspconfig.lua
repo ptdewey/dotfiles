@@ -62,8 +62,16 @@ return {
                     },
                 },
             })
-            -- ruff for python
-            lspconfig.ruff.setup({})
+
+            -- ruff for python (also use pyright for completions)
+            lspconfig.ruff.setup({
+                settings = {},
+            })
+
+            -- typst lsp
+            lspconfig.tinymist.setup({
+                settings = {},
+            })
         end,
     },
     {
