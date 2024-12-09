@@ -1,0 +1,47 @@
+# Range of NGram sizes to use for keyword linking
+ngram_range = [ 1, 2, 3 ]
+
+# List of directories to read into Oolong
+note_directories = [
+    "~/notes",
+    "~/school/cs5704",
+]
+
+# Command to run when open endpoint it called (a note node is clicked on the graph)
+# TODO: run script instead to handle tmux not being open
+open_command = ["tmux", "neww", "-c", "shell", "nvim"]
+# open_command = ["codium"]
+
+# Subdirectory patterns to exclude from the file watcher
+ignored_directories = [
+    ".git",
+    ".templates",
+    "target",
+    "node_modules",
+]
+
+# Whitelist of file extensions to use in linking
+allowed_extensions = [
+    ".md",
+    ".mdx",
+    ".tex",
+    ".typ",
+]
+
+# Stop words
+stop_words = [
+    "patrick",
+    "dewey",
+]
+
+# List of plugins (lua files) to load
+[plugins]
+plugin_paths = [
+    "./scripts/daily_note.lua",
+]
+
+[graph]
+min_node_weight = 8.0
+max_node_weight = 12.0
+min_link_weight = 0.2
+default_mode = "3d"
