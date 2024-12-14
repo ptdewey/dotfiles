@@ -1,5 +1,4 @@
-{ config, pkgs, ... }:
-
+{ pkgs, inputs, ... }:
 {
   # Enable home-manager and channel version
   programs.home-manager.enable = true;
@@ -9,14 +8,22 @@
   home.username = "patrick";
   home.homeDirectory = "/home/patrick";
 
-  programs = {
-    direnv = {
-      enable = true;
-      enableBashIntegration = true;
-      enableZshIntegration = true;
-      nix-direnv.enable = true;
-    };
+  # Imports
+  imports = [ inputs.ags.homeManagerModules.default ];
+
+  # AGS
+  programs.ags = {
+    enable = true;
   };
+
+  # Direnv
+  programs.direnv = {
+    enable = true;
+    enableBashIntegration = true;
+    enableZshIntegration = true;
+    nix-direnv.enable = true;
+  };
+
 
   # Install nix packages into environment
   home.packages = with pkgs; [
@@ -47,7 +54,7 @@
     oh-my-posh
 
     ## neovim stuff
-    # neovim
+    neovim
     # xclip
     typst
 

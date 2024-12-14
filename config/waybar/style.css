@@ -13,7 +13,7 @@
 
 * {
     border: none;
-    border-radius: 4px;
+    /* border-radius: 4px; */
     /* `ttf-font-awesome` is required to be installed for icons */
     font-family: "Iosevka Patrick", Helvetica, Arial, sans-serif;
 
@@ -129,18 +129,15 @@ window#waybar.chromium {
 }
 
 #clock {
-    background-color: #000000;
     color: @tan;
 }
 
 #battery {
-    background-color: #000000;
     color: @tan;
 }
 
 #battery.charging {
     color: @tan;
-    background-color: #000000;
 }
 
 @keyframes blink {
@@ -165,22 +162,18 @@ label:focus {
 }
 
 #cpu {
-    background-color: #000000;
     color: @tan;
 }
 
 #memory {
-    background-color: #000000;
     color: @tan;
 }
 
 #backlight {
-    background-color: #000000;
     color: @tan;
 }
 
 #network {
-    background-color: #000000;
     color: @tan;
 
 }
@@ -190,12 +183,10 @@ label:focus {
 }
 
 #pulseaudio {
-    background-color: #000000;
     color: @tan;
 }
 
 #pulseaudio.muted {
-    background-color: #000000;
     color: @tan;
 }
 

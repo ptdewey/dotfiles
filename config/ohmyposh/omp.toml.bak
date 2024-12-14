@@ -1,0 +1,81 @@
+version = 2
+final_space = true
+console_title_template = "{{ .HostName }}"
+
+[[blocks]]
+  type = "prompt"
+  alignment = "left"
+
+  [[blocks.segments]]
+    type = "path"
+    style = "plain"
+    background = "transparent"
+    foreground = "p:orange"
+    template = " {{ .Path }} "
+
+    [blocks.segments.properties]
+      style = "full"
+      home_icon = "~/"
+      # style = "unique"
+      # max_depth = "5"
+      # max_width = "80"
+      # hide_root_location = true
+
+  [[blocks.segments]]
+    type = "git"
+    style = "plain"
+    foreground = "p:tan"
+    background = "transparent"
+    template = "<p:green>[{{ .RepoName }}]</> <p:teal>({{ if .IsBare }}bare:{{ end }}{{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }}{{ if gt .StashCount 0 }}<p:teal>$</>{{ end }})</> {{ if .Merge }}<p:red>|MERGE|</> {{ else if .Rebase }}<p:red>|REBASE|</> {{ end }}"
+
+    [blocks.segments.properties]
+      branch_icon = ""
+      commit_icon = "@"
+      fetch_bare_info = true
+      fetch_status = true
+
+[[blocks]]
+  type = "rprompt"
+  # alignment = "right"
+  overflow = "hidden"
+
+[[blocks]]
+  type = "prompt"
+  alignment = "left"
+  newline = true
+
+  # [[blocks.segments]]
+  #   type = "time"
+  #   style = "plain"
+  #   foreground = "p:grey"
+  #
+  #   [blocks.segments.properties]
+  #     time_format = "3:04pm"
+
+  [[blocks.segments]]
+    type = "text"
+    style = "plain"
+    background = "transparent"
+    foreground = "p:darkgreen"
+    template = " {{ .Shell }} <p:yellow>></>"
+
+
+[secondary_prompt]
+  foreground = "p:yellow"
+  background = "transparent"
+  template = ">> "
+
+[palette]
+grey = "#8A7A6B"
+lightblue = "#669977"
+teal = "#5F865F"
+green = "#77824A"
+darkgreen = "#444A2B"
+orange = "#BB7844"
+darkorange = "#B36B42"
+yellow = "#C9A654"
+red = "#B3664D"
+tan = "#D7C484"
+darktan = "#AC987D"
+darkbrown = "#24211E"
+brown = "#736659"

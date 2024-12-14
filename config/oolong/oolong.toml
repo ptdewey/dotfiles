@@ -1,16 +1,8 @@
-# Range of NGram sizes to use for keyword linking
-ngram_range = [ 1, 2, 3 ]
-
 # List of directories to read into Oolong
 note_directories = [
     "~/notes",
     "~/school/cs5704",
 ]
-
-# Command to run when open endpoint it called (a note node is clicked on the graph)
-# TODO: run script instead to handle tmux not being open
-open_command = ["tmux", "neww", "-c", "shell", "nvim"]
-# open_command = ["codium"]
 
 # Subdirectory patterns to exclude from the file watcher
 ignored_directories = [
@@ -28,16 +20,20 @@ allowed_extensions = [
     ".typ",
 ]
 
+# Command to run when open endpoint is called (a note node is clicked on the graph)
+# TODO: run script instead to handle tmux not being open
+open_command = ["tmux", "neww", "-c", "shell", "nvim"]
+# open_command = ["codium"]
+
+[linker]
+# Range of NGram sizes to use for keyword linking
+ngram_range = [ 1, 2, 3 ]
+
 # Stop words
 stop_words = [
     "patrick",
     "dewey",
-]
-
-# List of plugins (lua files) to load
-[plugins]
-plugin_paths = [
-    "./scripts/daily_note.lua",
+    "cs5774",
 ]
 
 [graph]
@@ -45,3 +41,15 @@ min_node_weight = 8.0
 max_node_weight = 12.0
 min_link_weight = 0.2
 default_mode = "3d"
+
+# List of plugins (lua files) to load
+[plugins]
+plugin_paths = [
+    "./scripts/daily_note.lua",
+]
+
+[sync]
+host = "kelsier"
+user = "patrick"
+port = 22
+private_key_path = "/home/patrick/.ssh/id_ed25519"

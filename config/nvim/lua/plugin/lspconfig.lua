@@ -3,7 +3,7 @@ return {
     {
         -- lsp setup
         "neovim/nvim-lspconfig",
-        event = { "BufReadPost", "BufNewFile" },
+        event = { "BufReadPost", "BufNewFile", "FileType" },
 
         dependencies = {
             "williamboman/mason.nvim",
@@ -24,8 +24,13 @@ return {
 
         config = function()
             local lspconfig = require("lspconfig")
+
             -- lua_ls
             lspconfig.lua_ls.setup({
+                on_attach = function(client, bufnr)
+                    require("inlay-hints").on_attach(client, bufnr)
+                end,
+
                 settings = {
                     Lua = {
                         hint = {
@@ -39,6 +44,9 @@ return {
             })
             -- gopls
             lspconfig.gopls.setup({
+                on_attach = function(client, bufnr)
+                    require("inlay-hints").on_attach(client, bufnr)
+                end,
                 settings = {
                     gopls = {
                         hints = {
@@ -55,7 +63,7 @@ return {
             })
             -- js and ts
             lspconfig.ts_ls.setup({
-                filetypes = { "typescript", "javascript", "html", "svelte" },
+                filetypes = { "typescript", "javascript", "svelte" },
                 settings = {
                     implicitProjectConfiguration = {
                         checkJs = true,
@@ -68,9 +76,27 @@ return {
                 settings = {},
             })
 
+            lspconfig.rust_analyzer.setup({
+                on_attach = function(client, bufnr)
+                    require("inlay-hints").on_attach(client, bufnr)
+                end,
+            })
+
             -- typst lsp
             lspconfig.tinymist.setup({
-                settings = {},
+                settings = {
+                    -- format = "onSave",
+                    -- formatterMode = "typstfmt",
+                    exportPdf = "onSave",
+                    formatterMode = "typstyle",
+                    semanticTokens = "disable",
+                },
+            })
+
+            lspconfig.harper_ls.setup({
+                settings = {
+                    ["harper-ls"] = {},
+                },
             })
         end,
     },
@@ -101,15 +127,15 @@ return {
     },
     {
         "MysticalDevil/inlay-hints.nvim",
-        -- event = "LspAttach",
-        event = "BufReadPost",
+        event = "LspAttach",
+        -- event = "BufReadPost",
         dependencies = { "neovim/nvim-lspconfig" },
-        config = function()
-            require("inlay-hints").setup({
-                commands = { enable = true },
-                autocmd = { enable = true },
-            })
-        end,
+        -- config = function()
+        --     require("inlay-hints").setup({
+        --         commands = { enable = true },
+        --         autocmd = { enable = true },
+        --     })
+        -- end,
     },
     {
         "aznhe21/actions-preview.nvim",

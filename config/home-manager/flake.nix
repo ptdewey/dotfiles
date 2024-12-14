@@ -3,34 +3,44 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixpkgs-unstable";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+
+    ags.url = "github:aylur/ags";
   };
 
   # Define outputs
-  outputs = { nixpkgs, home-manager, self, ... }: {
-    defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
+  outputs = { home-manager, nixpkgs, ... }@inputs:
+    let
+      system = "x86_64-linux";
+      overlays = [
+        inputs.neovim-nightly-overlay.overlays.default
+      ];
+    in {
+      # defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
 
-    overlay = final: prev: {
-      blueprinter = import ./packages/blueprinter.nix { pkgs = prev; };
-    };
-
-    # Home directory configuration
-    homeConfigurations = {
-      "patrick" = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {
-          system = "x86_64-linux";
-          config = {
-            allowUnfree = true;
+      # Home directory configuration
+      homeConfigurations = {
+        "patrick" = home-manager.lib.homeManagerConfiguration {
+          pkgs = import nixpkgs {
+            inherit system;
+            config = {
+              allowUnfree = true;
+            };
           };
-          overlays = [ self.overlay ];
+
+          extraSpecialArgs = { inherit inputs; };
+
+          modules = [
+            {
+              nixpkgs.overlays = overlays;
+            }
+            ./home.nix
+          ];
         };
-        modules = [ ./home.nix ];
       };
     };
-
-    packages.x86_64-linux.blueprinter = import ./packages/blueprinter.nix {
-      pkgs = import nixpkgs { system = "x86_64-linux"; };
-    };
-  };
 }

@@ -22,6 +22,7 @@ alias la="ls -a"
 alias l="ls -F"
 alias ..="cd .."
 alias ...="cd ../.."
+alias ....="cd ../../.."
 
 # vim
 alias vim="nvim"
@@ -69,6 +70,7 @@ alias hm-update="$shell $dots/hm-update.sh"
 alias nixos-switch="bash ${dots}/nixos-rebuild.sh"
 alias tplnew="create_file_template"
 alias tpladd="add_template"
+source_if_exists "$dots/wg.sh"
 
 # git
 alias ga="git add"
@@ -108,12 +110,12 @@ dex() { docker exec -it "$1" "${2:-bash}"; }
 alias nd="nix develop"
 alias ncg="nix-collect-garbage"
 
-# Directories
+# directories
 alias dn="cd ~/Downloads"
 # alias notes='cd $(fd . ~/notes --type d | fzf)'
 alias notes='cd ~/notes'
 
-# Tmux
+# tmux
 # source "${dots}/tmux-sessionizer.sh"
 tmux-sessionizer() {
     "${dots}/tmux-sessionizer.sh" "$@"
@@ -122,6 +124,10 @@ alias ta="tmux attach"
 alias tl="tmux ls"
 alias proj="tmux-sessionizer ${HOME}/projects"
 alias sch="tmux-sessionizer ${HOME}/school"
+
+# waybar
+# alias waybar-restart="pkill waybar && waybar & disown"
+alias waybar-restart="pkill waybar && hyprctl dispatch exec waybar"
 
 # keymaps
 if [ "$shell" = "bash" ]; then
