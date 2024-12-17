@@ -61,6 +61,7 @@ return {
                     },
                 },
             })
+
             -- js and ts
             lspconfig.ts_ls.setup({
                 filetypes = { "typescript", "javascript", "svelte" },
