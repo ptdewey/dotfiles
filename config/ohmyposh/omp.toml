@@ -62,7 +62,7 @@ final_space = true
   newline = true
 
   [[blocks.segments]]
-    template = ' {{ .Shell }} <p:yellow>></>'
+    template = '<p:green> ({{ .HostName }})</> {{ .Shell }} <p:yellow>></>'
     foreground = 'p:darkgreen'
     background = 'transparent'
     type = 'text'
