@@ -29,7 +29,7 @@ else
     if command -v fd >/dev/null 2>&1; then
         selected=$(
             {
-                fd -L . ~/work ~/projects ~/school --type d --max-depth 1
+                fd -L . ~/projects ~/school --type d --max-depth 1
                 # whitelist
                 # fd -L . ~/Documents ~/notes ~/dotfiles ~/nixos --type d
                 # blacklist
@@ -39,7 +39,7 @@ else
     else
         selected=$(
             {
-                find ~/work ~/projects ~/school -mindepth 1 -maxdepth 1 -type d
+                find ~/projects ~/school -mindepth 1 -maxdepth 1 -type d
                 find ~/notes -mindepth 1 -maxdepth 2 -type d
                 # whitelist
                 # find ~/Documents ~/Downloads ~/dotfiles ~/nixos -mindepth 0 -maxdepth 1 -type d

@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 {
   # Enable home-manager and channel version
   programs.home-manager.enable = true;
@@ -9,12 +9,12 @@
   home.homeDirectory = "/home/patrick";
 
   # Imports
-  imports = [ inputs.ags.homeManagerModules.default ];
+  imports = [ ];
 
   # AGS
-  programs.ags = {
-    enable = true;
-  };
+  # programs.ags = {
+  #   enable = true;
+  # };
 
   # Direnv
   programs.direnv = {
@@ -31,45 +31,45 @@
     nix-prefetch-git
 
     ## misc command line utils
-    csvlens
-    fd
-    foliate
-    fx
-    fzf
-    ripgrep
-    tokei
-    shellcheck-minimal
-    jq
-    pandoc
-    neofetch
-    htop
-    tmux
-    lsd
-    plantuml
-    zathura
-    hugo
-    vhs
-    quarto
-    feh
-    oh-my-posh
+    # csvlens
+    # fd
+    # foliate
+    # fx
+    # fzf
+    # ripgrep
+    # tokei
+    # shellcheck-minimal
+    # jq
+    # pandoc
+    # neofetch
+    # htop
+    # tmux
+    # lsd
+    # plantuml
+    # zathura
+    # hugo
+    # vhs
+    # quarto
+    # feh
+    # oh-my-posh
 
     ## neovim stuff
-    neovim
+    # neovim
     # xclip
-    typst
+    # typst
 
-    tree-sitter
+    # tree-sitter
 
     ## languages and related utils
     stylua
     luajitPackages.jsregexp
     # luajitPackages.luacheck
-    go
+    # go
     glow
-    nodejs
-    prettierd
-    openssl
-    rustup
+    # nodejs
+    # prettierd
+    # openssl
+    # rustup
     # brightnessctl
 
     ## window manager config
@@ -85,8 +85,7 @@
     # discord
     # spotify
     # tidal-hifi
-    xsv
-    yt-dlp
+    # yt-dlp
   ];
 
   # Manage environment variables
@@ -95,28 +94,28 @@
   };
 
   # # GTK theming
-  gtk = {
-    enable = true;
-    font = {
-      name = "IosevkaPatrick Nerd Font";
-      size = 16;
-    };
-
-    cursorTheme = {
-      package = pkgs.bibata-cursors;
-      name = "Bibata-Modern-Classic";
-    };
-
-    iconTheme = {
-      package = pkgs.gruvbox-plus-icons;
-      name  = "Gruvbox-Plus-Dark";
-    };
-
-    theme = {
-      package = pkgs.gruvbox-dark-gtk;
-      name = "gruvbox-dark";
-    };
-  };
+  # gtk = {
+  #   enable = true;
+  #   font = {
+  #     name = "IosevkaPatrick Nerd Font";
+  #     size = 16;
+  #   };
+  #
+  #   cursorTheme = {
+  #     package = pkgs.bibata-cursors;
+  #     name = "Bibata-Modern-Classic";
+  #   };
+  #
+  #   iconTheme = {
+  #     package = pkgs.gruvbox-plus-icons;
+  #     name  = "Gruvbox-Plus-Dark";
+  #   };
+  #
+  #   theme = {
+  #     package = pkgs.gruvbox-dark-gtk;
+  #     name = "gruvbox-dark";
+  #   };
+  # };
 
   # Manage dotfiles
   home.file = {

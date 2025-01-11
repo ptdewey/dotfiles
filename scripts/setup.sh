@@ -42,7 +42,6 @@ ln -s "${dots}/fonts" "${HOME}/.local/share/fonts/custom"
 # make extra directories
 echo "Making common directories..."
 mkdir "$HOME/projects"
-mkdir "$HOME/work"
 mkdir "$HOME/school"
 
 # TODO: install go programs (and clone git directories)?

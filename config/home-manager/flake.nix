@@ -9,7 +9,7 @@
     };
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
-    ags.url = "github:aylur/ags";
+    # ags.url = "github:aylur/ags";
   };
 
   # Define outputs

@@ -30,8 +30,8 @@ return {
 
         config = function()
             -- band-aid solution for working with nix
-            -- vim.g.sqlite_clib_path =
-            --     "/run/current-system/sw/share/nix-ld/lib/libsqlite3.so"
+            vim.g.sqlite_clib_path =
+                "/run/current-system/sw/share/nix-ld/lib/libsqlite3.so"
 
             require("yankbank").setup({
                 sep = "------",

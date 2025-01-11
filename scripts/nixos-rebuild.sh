@@ -76,7 +76,7 @@ if [[ "${exit_code}" == 0 ]]; then
 	## Commit changes
 	if $had_changes; then
 		generation=$(sudo nix-env -p /nix/var/nix/profiles/system --list-generations | grep current | awk '{print $1}')
-		message="NixOS build ${HOST_SHELL}#${generation}"
+		message="$(hostname): NixOS build #${generation}"
         GIT_COMMITTER_NAME="ptdewey" GIT_COMMITTER_EMAIL="noreply" git commit -m "${message}" --author="ptdewey <noreply>"
 		echo -e "\n\n\033[32mCommitted as ${message}\033[0m"
 	fi

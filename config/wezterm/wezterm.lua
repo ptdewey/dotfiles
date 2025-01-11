@@ -13,8 +13,8 @@ local config = {
 
     -- set rendering device
     enable_wayland = false,
-    front_end = "OpenGL",
-    -- front_end = "WebGpu",
+    -- front_end = "OpenGL",
+    front_end = "WebGpu",
     -- webgpu_power_preference = "HighPerformance",
 
     -- hide tab bar
@@ -99,9 +99,7 @@ if package.config:sub(1, 1) == "\\" then
     local windows = require("windows")
     windows.apply_to_config(config)
 else
-    -- unix
+    -- TODO:
 end
-
-config.enable_wayland = true
 
 return config
