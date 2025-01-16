@@ -48,8 +48,8 @@ plugin_paths = [
     "./scripts/daily_note.lua",
 ]
 
-[sync]
-host = "kelsier"
-user = "patrick"
-port = 22
-private_key_path = "/home/patrick/.ssh/id_ed25519"
+# [sync]
+# host = "luna"
+# user = "patrick"
+# port = 22
+# private_key_path = "/home/patrick/.ssh/id_ed25519"

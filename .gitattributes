@@ -1,3 +1,4 @@
 # linguist overrides
 scripts/git-prompt.sh linguist-vendored
 config/nvim/syntax/plantuml.vim linguist-vendored
+config/tmux/tmux-statusline.sh linguist-vendored

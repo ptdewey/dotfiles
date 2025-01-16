@@ -1,7 +1,9 @@
+js
 NLP
 RPC
 Lua
 arg
+css
 todo
 nvim
 Typst
@@ -20,4 +22,5 @@ Oolong's
 natively
 hostname
 localhost
+centroids
 Customizable

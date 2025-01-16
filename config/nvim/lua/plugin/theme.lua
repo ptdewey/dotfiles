@@ -19,6 +19,16 @@ return {
     --     priority = 1000,
     -- },
 
+    -- {
+    --     "comfysage/evergarden",
+    --     priority = 1000, -- Colorscheme plugin is loaded first before any other plugins
+    --     opts = {
+    --         transparent_background = true,
+    --         variant = "medium", -- 'hard'|'medium'|'soft'
+    --         overrides = {}, -- add custom overrides
+    --     },
+    -- },
+
     -- highlight color codes
     {
         "brenoprata10/nvim-highlight-colors",

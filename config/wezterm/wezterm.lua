@@ -21,7 +21,7 @@ local config = {
     hide_tab_bar_if_only_one_tab = true,
 
     -- window_decorations = "RESIZE",
-    -- window_decorations = "INTEGRATED_BUTTONS|RESIZE",
+    window_decorations = "INTEGRATED_BUTTONS|RESIZE",
     window_close_confirmation = "NeverPrompt",
     adjust_window_size_when_changing_font_size = false,
     use_fancy_tab_bar = false,
