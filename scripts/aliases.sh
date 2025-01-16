@@ -129,6 +129,11 @@ alias sch="tmux-sessionizer ${HOME}/school"
 # alias waybar-restart="pkill waybar && waybar & disown"
 alias waybar-restart="pkill waybar && hyprctl dispatch exec waybar"
 
+# Wallpaper setter
+feh-fill() {
+    feh --bg-fill "$@"
+}
+
 # keymaps
 if [ "$shell" = "bash" ]; then
     bind -x '"\C-f":tmux-sessionizer'
