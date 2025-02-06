@@ -36,6 +36,12 @@ return {
         end,
     },
 
+    -- markdown
+    -- {
+    --     "OXY2DEV/markview.nvim",
+    --     lazy = false,
+    -- },
+
     -- jupyter notebooks
     -- {
     --     "GCBallesteros/jupytext.nvim",

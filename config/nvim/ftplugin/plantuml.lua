@@ -9,7 +9,8 @@ vim.api.nvim_create_autocmd("FileType", {
             name = "plantuml_lsp",
             cmd = {
                 "/home/patrick/projects/plantuml-lsp/plantuml_lsp",
-                "--stdlib-path=/home/patrick/projects/plantuml-stdlib",
+                "--stdlib-path=/home/patrick/Documents/stdlib",
+                -- "--exec-path=plantuml",
             },
             root_dir = vim.fs.root(args.buf, ".git")
                 or vim.fs.dirname(vim.api.nvim_buf_get_name(args.buf)),

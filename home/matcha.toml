@@ -1,6 +1,13 @@
 noteSources = [
     "~/notes",
 ]
-defaultExt = ".md"
+defaultExt = ".typ"
 useTemplate = true
 templateDir = "~/notes/.templates"
+noteExts = [
+    ".md",
+    ".mdx",
+    ".txt",
+    ".tex",
+    ".typ",
+]

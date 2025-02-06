@@ -7,6 +7,18 @@ return {
         priority = 1000,
     },
 
+    {
+        "thesimonho/kanagawa-paper.nvim",
+        lazy = false,
+        priority = 1000,
+        config = function()
+            require("kanagawa-paper").setup({
+                commentStyle = { italic = false },
+                undercurl = false,
+            })
+        end,
+    },
+
     -- gruvbox material
     -- {
     --     "sainnhe/gruvbox-material",
@@ -28,6 +40,14 @@ return {
     --         overrides = {}, -- add custom overrides
     --     },
     -- },
+    {
+        "vague2k/vague.nvim",
+        config = function()
+            require("vague").setup({
+                -- optional configuration here
+            })
+        end,
+    },
 
     -- highlight color codes
     {

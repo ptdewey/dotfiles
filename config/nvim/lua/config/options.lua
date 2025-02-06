@@ -41,6 +41,7 @@ local options = {
     breakindent = true,
 
     -- dictionary file
+    spell = true,
     spelllang = "en_us",
     spellfile = vim.fn.expand("$HOME/.config/nvim/spell/en.utf-8.add"),
 
