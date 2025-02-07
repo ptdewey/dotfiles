@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-fields
 -- theme plugins (set theme in options.lua)
 return {
     -- darkearth
@@ -20,16 +21,10 @@ return {
     },
 
     -- gruvbox material
-    -- {
-    --     "sainnhe/gruvbox-material",
-    --     priority = 1000,
-    -- },
+    -- { "sainnhe/gruvbox-material", priority = 1000 },
 
     -- everforest
-    -- {
-    --     "neanias/everforest-nvim",
-    --     priority = 1000,
-    -- },
+    -- { "neanias/everforest-nvim", priority = 1000 },
 
     -- {
     --     "comfysage/evergarden",
@@ -45,6 +40,19 @@ return {
         config = function()
             require("vague").setup({
                 -- optional configuration here
+            })
+        end,
+    },
+
+    {
+        "sho-87/kanagawa-paper.nvim",
+        priority = 1000,
+        config = function()
+            require("kanagawa-paper").setup({
+                undercurl = false,
+                commentStyle = { italic = false },
+                functionStyle = { italic = false },
+                keywordStyle = { italic = false },
             })
         end,
     },
