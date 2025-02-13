@@ -116,6 +116,7 @@ uri
 kNN
 Sigmoid
 hyperparameters
+<<<<<<< Updated upstream
 Navagant
 TODO
 structs
@@ -137,3 +138,5 @@ JWT
 float64
 unmarshal
 SQLite
+sqlite3
+NDA
