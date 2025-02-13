@@ -1,9 +1,9 @@
 -- time tracking plugin
 return {
     {
-        -- dir = "~/projects/pendulum-nvim.git/dev",
-        "ptdewey/pendulum-nvim",
-        branch = "main",
+        dir = "~/projects/pendulum-nvim.git/dev",
+        -- "ptdewey/pendulum-nvim",
+        -- branch = "main",
         -- branch = "dev",
         config = function()
             require("pendulum").setup({

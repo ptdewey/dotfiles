@@ -3,19 +3,30 @@ version = 3
 final_space = true
 
 [palette]
-  brown = '#736659'
-  darkbrown = '#24211E'
-  darkgreen = '#444A2B'
-  darkorange = '#B36B42'
-  darktan = '#AC987D'
-  green = '#77824A'
-  grey = '#8A7A6B'
-  lightblue = '#669977'
-  orange = '#BB7844'
-  red = '#B3664D'
-  tan = '#D7C484'
-  teal = '#5F865F'
-  yellow = '#C9A654'
+  # brown = '#736659'
+  # darkbrown = '#24211E'
+  # darkgreen = '#444A2B'
+  # darkorange = '#B36B42'
+  # darktan = '#AC987D'
+  # green = '#77824A'
+  # grey = '#8A7A6B'
+  # lightblue = '#669977'
+  # orange = '#BB7844'
+  # red = '#B3664D'
+  # tan = '#D7C484'
+  # teal = '#5F865F'
+  # yellow = '#C9A654'
+
+  # Vague
+  brown = '#333738'
+  darkbrown = '#141415'
+  darkgreen = '#7e96c8'
+  yellow = '#9ca67d'
+  red = '#ab9dbd'
+  orange = '#c48282'
+  tan = '#cdcdcd'
+  green = '#9bb4bc'
+  teal = '#e8b589'
 
 [secondary_prompt]
   template = '>> '

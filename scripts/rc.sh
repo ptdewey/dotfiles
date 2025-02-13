@@ -3,8 +3,14 @@
 # it aggregates path extensions and imports aliases
 
 # set custom color scheme (if not in tty)
-if [ -f "$HOME/dotfiles/scripts/base16-darkearth.sh" ] && [ -n "$DISPLAY" ]; then
-    source "$HOME/dotfiles/scripts/base16-darkearth.sh"
+# if [ -f "$HOME/dotfiles/scripts/base16-darkearth.sh" ] && [ -n "$DISPLAY" ]; then
+#     source "$HOME/dotfiles/scripts/base16-darkearth.sh"
+# fi
+# if [ -f "$HOME/dotfiles/scripts/base16-kanagawa-paper.sh" ] && [ -n "$DISPLAY" ]; then
+#     source "$HOME/dotfiles/scripts/base16-kanagawa-paper.sh"
+# fi
+if [ -f "$HOME/dotfiles/scripts/base16-vague.sh" ] && [ -n "$DISPLAY" ]; then
+    source "$HOME/dotfiles/scripts/base16-vague.sh"
 fi
 
 # tmux worktree stuff

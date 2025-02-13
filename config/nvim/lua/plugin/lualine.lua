@@ -3,7 +3,6 @@ return {
     -- harpoon status plugin
     {
         "letieu/harpoon-lualine",
-        -- event = "VeryLazy",
         lazy = true,
         dependencies = {
             "ThePrimeagen/harpoon",
@@ -12,7 +11,6 @@ return {
     },
     {
         -- nice statusline
-        -- "nvim-lualine/lualine.nvim",
         "ptdewey/lualine.nvim",
         event = "VeryLazy",
         dependencies = {
@@ -37,7 +35,7 @@ return {
                     {
                         "harpoon2",
                         icon = "",
-                        padding = { left = 1, right = 0 },
+                        padding = { left = 1, right = 1 },
                         indicators = { "h", "j", "k", "l" },
                         active_indicators = { "H", "J", "K", "L" },
                         no_harpoon = "Harpoon not loaded",

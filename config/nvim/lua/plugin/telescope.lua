@@ -144,18 +144,6 @@ return {
                 require("telescope.builtin").lsp_implementations,
                 { desc = "[G]oto [I]mplementation" }
             )
-            -- vim.keymap.set(
-            --     "n",
-            --     "<leader>D",
-            --     require("telescope.builtin").lsp_type_definitions,
-            --     { desc = "Type [D]efinition" }
-            -- )
-            -- vim.keymap.set(
-            --     "n",
-            --     "<leader>ds",
-            --     require("telescope.builtin").lsp_document_symbols,
-            --     { desc = "[D]ocument [S]ymbols" }
-            -- )
             vim.keymap.set(
                 "n",
                 "<leader>ws",

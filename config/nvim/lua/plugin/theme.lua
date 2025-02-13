@@ -8,18 +8,6 @@ return {
         priority = 1000,
     },
 
-    {
-        "thesimonho/kanagawa-paper.nvim",
-        lazy = false,
-        priority = 1000,
-        config = function()
-            require("kanagawa-paper").setup({
-                commentStyle = { italic = false },
-                undercurl = false,
-            })
-        end,
-    },
-
     -- gruvbox material
     -- { "sainnhe/gruvbox-material", priority = 1000 },
 
@@ -39,7 +27,32 @@ return {
         "vague2k/vague.nvim",
         config = function()
             require("vague").setup({
-                -- optional configuration here
+                style = {
+                    boolean = "none",
+                    number = "none",
+                    float = "none",
+                    error = "none",
+                    comments = "none",
+                    conditionals = "none",
+                    functions = "none",
+                    headings = "none",
+                    operators = "none",
+                    strings = "none",
+                    variables = "none",
+
+                    -- keywords
+                    keywords = "none",
+                    keyword_return = "none",
+                    keywords_loop = "none",
+                    keywords_label = "none",
+                    keywords_exception = "none",
+
+                    -- builtin
+                    builtin_constants = "none",
+                    builtin_functions = "none",
+                    builtin_types = "none",
+                    builtin_variables = "none",
+                },
             })
         end,
     },

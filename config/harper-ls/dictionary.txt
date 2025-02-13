@@ -1,3 +1,4 @@
+s
 js
 VC
 NLP
@@ -8,6 +9,8 @@ css
 MLE
 SVM
 pdf
+CSV
+JWT
 todo
 nvim
 IRBs
@@ -21,15 +24,16 @@ stderr
 stdout
 keymap
 w.r.t.
-Oolongd
-Theming
-oolongd
-ATProto
 Matcha
 Oolongd
 Theming
 oolongd
+ATProto
+Oolongd
+Theming
+oolongd
 BlueSky
+structs
 Oolong's
 natively
 hostname
@@ -43,6 +47,8 @@ Firehose
 localhost
 centroids
 Posteriori
+NavagantAI
+Coresignal
 Overfitting
 overfitting
 Customizable
