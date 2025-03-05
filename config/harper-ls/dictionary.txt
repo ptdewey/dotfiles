@@ -34,6 +34,8 @@ Theming
 oolongd
 BlueSky
 structs
+Bluesky
+ChatGPT
 Oolong's
 natively
 hostname
@@ -44,8 +46,10 @@ renderer
 Kohlberg
 Navagant
 Firehose
+erroring
 localhost
 centroids
+Goroutine
 Posteriori
 NavagantAI
 Coresignal

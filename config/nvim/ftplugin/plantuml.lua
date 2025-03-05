@@ -6,11 +6,11 @@ vim.api.nvim_create_autocmd("FileType", {
     callback = function(args)
         -- set up lsp configuration
         local config = {
-            name = "plantuml_lsp",
+            name = "plantuml-lsp",
             cmd = {
-                "/home/patrick/projects/plantuml-lsp/plantuml_lsp",
+                "/home/patrick/projects/plantuml-lsp/plantuml-lsp",
                 "--stdlib-path=/home/patrick/projects/plantuml-stdlib",
-                -- "--exec-path=plantuml", -- TODO: test this works with the java-jar syntax
+                "--exec-path=plantuml", -- TODO: test this works with the java-jar syntax
                 -- "--jar-path=/home/patrick/Downloads/plantuml-mit-1.2025.0.jar", -- TODO: test this works with the java-jar syntax
             },
             root_dir = vim.fs.root(args.buf, ".git")

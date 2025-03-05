@@ -67,8 +67,8 @@ local vars = {
 }
 
 -- theme options
--- vim.cmd.colorscheme("darkearth")
-vim.cmd.colorscheme("vague")
+vim.cmd.colorscheme("darkearth")
+-- vim.cmd.colorscheme("vague")
 -- vim.cmd.colorscheme("kanagawa-paper")
 
 -- apply options
