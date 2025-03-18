@@ -1,0 +1,17 @@
+output_name = "main.typ"
+# ignore = "document.typ"
+
+[[template_config]]
+target_template = "conference.typ"
+populate_template = true
+extra_templates = ["document.typ"]
+
+[template_config.template_vars]
+author = "Patrick Dewey"
+
+[[template_config]]
+target_template = "document.typ"
+populate_template = true
+
+[template_config.template_vars]
+author = "Patrick Dewey"

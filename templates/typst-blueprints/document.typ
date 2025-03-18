@@ -1,9 +1,10 @@
 #align(center, text(17pt)[
   *Title* \
-  Author
+  {{ .author }}
 ])
 
 #set heading(numbering: "1.")
 
 = Heading
+
 
