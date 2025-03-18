@@ -7,7 +7,7 @@
   aspect-ratio: "16-9",
   config-info(
     title: [Title],
-    author: [Author], // TODO: change
+    author: [{{ .author }}], // TODO: change
   )
 )
 

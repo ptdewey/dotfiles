@@ -1,0 +1,6 @@
+template_sources = ["~/dotfiles/templates"]
+
+populate_templates = true
+
+[template_vars]
+author = "Patrick Dewey"
