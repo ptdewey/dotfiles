@@ -1,6 +1,6 @@
 ---
 title: "TEMPLATE"
-author: "AUTHOR"
+author: "{{ .author }}"
 date: "`r Sys.Date()`"
 ---
 
