@@ -57,6 +57,10 @@ local function setup()
 
         vim.api.nvim_set_current_line(new_line)
     end, { desc = "Wrap word under cursor with $" })
+
+    -- vim.keymap.set("n", "<leader>op", function()
+    --     local f = vim.fn.expand("%:p")
+    -- end, {})
 end
 
 setup()

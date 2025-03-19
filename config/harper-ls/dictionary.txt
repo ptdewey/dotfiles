@@ -11,6 +11,9 @@ SVM
 pdf
 CSV
 JWT
+DRM
+PLC
+CRM
 todo
 nvim
 IRBs
@@ -32,10 +35,10 @@ ATProto
 Oolongd
 Theming
 oolongd
-BlueSky
 structs
 Bluesky
 ChatGPT
+typedef
 Oolong's
 natively
 hostname
@@ -50,6 +53,7 @@ erroring
 localhost
 centroids
 Goroutine
+Equifax
 Posteriori
 NavagantAI
 Coresignal

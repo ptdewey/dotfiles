@@ -66,8 +66,6 @@ codeblocks
 userbase
 Oolong
 Oolong
-<<<<<<< Updated upstream
-using
 using
 analytics
 analytics
@@ -86,7 +84,6 @@ integrations
 Kohlberg
 CS5024
 CS5806
-next
 next
 Misclassification
 overfitting
@@ -116,7 +113,6 @@ uri
 kNN
 Sigmoid
 hyperparameters
-<<<<<<< Updated upstream
 Navagant
 TODO
 structs
@@ -138,15 +134,23 @@ JWT
 float64
 unmarshal
 SQLite
-<<<<<<< Updated upstream
 sqlite3
 NDA
-=======
 Goroutine
-Goroutine
->>>>>>> Stashed changes
 Bluesky
 ATProto
 Jetstream
 ChatGPT
 erroring
+overfit
+Akaike
+2D
+bool
+Equifax
+Equifax's
+typedef
+minima
+outliers
+WordPress
+PLC
+iff

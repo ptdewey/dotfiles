@@ -23,52 +23,52 @@ return {
     --         overrides = {}, -- add custom overrides
     --     },
     -- },
-    {
-        "vague2k/vague.nvim",
-        config = function()
-            require("vague").setup({
-                style = {
-                    boolean = "none",
-                    number = "none",
-                    float = "none",
-                    error = "none",
-                    comments = "none",
-                    conditionals = "none",
-                    functions = "none",
-                    headings = "none",
-                    operators = "none",
-                    strings = "none",
-                    variables = "none",
+    -- {
+    --     "vague2k/vague.nvim",
+    --     config = function()
+    --         require("vague").setup({
+    --             style = {
+    --                 boolean = "none",
+    --                 number = "none",
+    --                 float = "none",
+    --                 error = "none",
+    --                 comments = "none",
+    --                 conditionals = "none",
+    --                 functions = "none",
+    --                 headings = "none",
+    --                 operators = "none",
+    --                 strings = "none",
+    --                 variables = "none",
+    --
+    --                 -- keywords
+    --                 keywords = "none",
+    --                 keyword_return = "none",
+    --                 keywords_loop = "none",
+    --                 keywords_label = "none",
+    --                 keywords_exception = "none",
+    --
+    --                 -- builtin
+    --                 builtin_constants = "none",
+    --                 builtin_functions = "none",
+    --                 builtin_types = "none",
+    --                 builtin_variables = "none",
+    --             },
+    --         })
+    --     end,
+    -- },
 
-                    -- keywords
-                    keywords = "none",
-                    keyword_return = "none",
-                    keywords_loop = "none",
-                    keywords_label = "none",
-                    keywords_exception = "none",
-
-                    -- builtin
-                    builtin_constants = "none",
-                    builtin_functions = "none",
-                    builtin_types = "none",
-                    builtin_variables = "none",
-                },
-            })
-        end,
-    },
-
-    {
-        "sho-87/kanagawa-paper.nvim",
-        priority = 1000,
-        config = function()
-            require("kanagawa-paper").setup({
-                undercurl = false,
-                commentStyle = { italic = false },
-                functionStyle = { italic = false },
-                keywordStyle = { italic = false },
-            })
-        end,
-    },
+    -- {
+    --     "sho-87/kanagawa-paper.nvim",
+    --     priority = 1000,
+    --     config = function()
+    --         require("kanagawa-paper").setup({
+    --             undercurl = false,
+    --             commentStyle = { italic = false },
+    --             functionStyle = { italic = false },
+    --             keywordStyle = { italic = false },
+    --         })
+    --     end,
+    -- },
 
     -- highlight color codes
     {
