@@ -6,9 +6,11 @@
 if [ -f "$HOME/dotfiles/scripts/base16-darkearth.sh" ] && [ -n "$DISPLAY" ]; then
     source "$HOME/dotfiles/scripts/base16-darkearth.sh"
 fi
-# if [ -f "$HOME/dotfiles/scripts/base16-vague.sh" ] && [ -n "$DISPLAY" ]; then
-#     source "$HOME/dotfiles/scripts/base16-vague.sh"
-# fi
+
+export VISUAL=nvim
+export FZF_DEFAULT_COMMAND='rg --files'
+# export FZF_DEFAULT_OPTS='-m --border --height 60% --preview "cat {}"'
+export FZF_DEFAULT_OPTS='-m --border --preview "cat {}"'
 
 # tmux worktree stuff
 if [[ -n "$TMUX" ]] && [[ -z "$(tmux show-environment -s TMUX_SESSION_INIT 2>/dev/null)" ]]; then

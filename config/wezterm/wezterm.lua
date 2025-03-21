@@ -8,7 +8,7 @@ local config = {
     -- font settings
     font = wezterm.font("IosevkaPatrick"),
     -- font_size = 13.0,
-    font_size = 22,
+    font_size = 18,
     -- dpi = 144, -- commenting this out fixes the weird tiling wm scaling issue
 
     -- set rendering device

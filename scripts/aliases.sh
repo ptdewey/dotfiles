@@ -55,9 +55,8 @@ gm() {
     fi
 }
 
-alias vd='vim $(fd . --type f | fzf)'
-alias vdh='vim $(fd . ~/ --type f | fzf)'
-alias vh='vim $(fd . ~/ --type f | fzf)'
+alias vdh='vim $(fd . ~/ --type f | fzf --preview "cat {}")'
+alias vd='vim -o $(fzf --preview "cat {}")'
 
 # scripts
 source_if_exists "$dots/ssh.sh"

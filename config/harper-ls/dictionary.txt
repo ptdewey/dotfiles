@@ -14,6 +14,7 @@ JWT
 DRM
 PLC
 CRM
+LLM
 todo
 nvim
 IRBs
@@ -21,6 +22,7 @@ Typst
 NGram
 param
 ngram
+mutex
 Oolong
 oolong
 stderr
@@ -28,6 +30,7 @@ stdout
 keymap
 w.r.t.
 Matcha
+repost
 Oolongd
 Theming
 oolongd
@@ -39,6 +42,8 @@ structs
 Bluesky
 ChatGPT
 typedef
+reposts
+Equifax
 Oolong's
 natively
 hostname
@@ -50,15 +55,19 @@ Kohlberg
 Navagant
 Firehose
 erroring
+InfluxDB
+copyable
+PlantUML
 localhost
 centroids
 Goroutine
-Equifax
+gitignore
 Posteriori
 NavagantAI
 Coresignal
 Overfitting
 overfitting
+Blueprinter
 Customizable
 integrations
 unrealizable

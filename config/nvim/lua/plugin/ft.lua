@@ -1,5 +1,22 @@
 -- various filetype specific plugins
 return {
+    {
+        "windwp/nvim-ts-autotag",
+        ft = {
+            "markdown",
+            "javascript",
+            "typescript",
+            "javascriptreact",
+            "typescriptreact",
+            "html",
+            "vue",
+            "svelte",
+        },
+        config = function()
+            require("nvim-ts-autotag").setup({})
+        end,
+    },
+
     -- knit r files
     {
         "ptdewey/knitr-nvim",
@@ -19,51 +36,26 @@ return {
         end,
     },
 
-    -- markdown previewer
+    -- jupyter notebooks
     {
-        "ellisonleao/glow.nvim",
-        ft = { "markdown" },
+        "GCBallesteros/jupytext.nvim",
+        -- doesn't seem to work with any kind of lazy loading
+        -- ft = { "jupyter", "python" },
         config = function()
-            require("glow").setup({
-                install_path = "~/.nix-profile/bin/glow",
-            })
-            vim.keymap.set(
-                "n",
-                "<F6>",
-                ":Glow<CR>",
-                { desc = "Open Glow Preview" }
-            )
+            require("jupytext").setup({})
         end,
     },
-
-    -- markdown
-    -- {
-    --     "OXY2DEV/markview.nvim",
-    --     lazy = false,
-    -- },
-
-    -- jupyter notebooks
-    -- {
-    --     "GCBallesteros/jupytext.nvim",
-    --     -- doesn't seem to work with any kind of lazy loading
-    --     -- ft = { "jupyter", "python" },
-    --     config = function()
-    --         require("jupytext").setup({})
-    --     end,
-    -- },
     -- {
     --     "benlubas/molten-nvim",
     --     ft = { "python" },
     --     version = "^1.0.0",
     --     build = ":UpdateRemotePlugins",
     --     init = function()
-    --         -- this is an example, not a default. Please see the readme for more configuration options
     --         vim.g.molten_output_win_max_height = 12
     --
     --         vim.keymap.set("n", "<leader>ip", function()
     --             local venv = os.getenv("VIRTUAL_ENV")
     --             if venv ~= nil then
-    --                 -- in the form of /home/benlubas/.virtualenvs/VENV_NAME
     --                 venv = string.match(venv, "/.+/(.+)")
     --                 vim.cmd(("MoltenInit %s"):format(venv))
     --             else

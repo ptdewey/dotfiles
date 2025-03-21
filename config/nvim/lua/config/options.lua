@@ -66,6 +66,22 @@ local vars = {
     python3_host_prog = vim.fn.expand("~/.virtualenvs/neovim/bin/python3"),
 }
 
+-- TODO: replace todo-comments for this
+-- vim.fn.matchadd("DiagnosticInfo", "\\(TODO:\\)")
+-- vim.fn.matchadd("DiagnosticWarn", "\\(HACK:\\)")
+-- vim.fn.matchadd("DiagnosticWarn", "\\(WARN:\\)")
+-- vim.fn.matchadd("DiagnosticWarn", "\\(WARNING:\\)")
+-- vim.fn.matchadd("DiagnosticWarn", "\\(XXX:\\)")
+-- vim.fn.matchadd("Identifier", "\\(PERF:\\)")
+-- vim.fn.matchadd("Identifier", "\\(PERFORMANCE:\\)")
+-- vim.fn.matchadd("Identifier", "\\(OPTIM:\\)")
+-- vim.fn.matchadd("Identifier", "\\(OPTIMIZE:\\)")
+-- vim.fn.matchadd("DiagnosticHint", "\\(NOTE:\\)")
+-- vim.fn.matchadd("Identifier", "\\(TEST:\\)")
+-- vim.fn.matchadd("Identifier", "\\(TESTING:\\)")
+-- vim.fn.matchadd("Identifier", "\\(PASSED:\\)")
+-- vim.fn.matchadd("Identifier", "\\(FAILED:\\)")
+
 -- theme options
 vim.cmd.colorscheme("darkearth")
 -- vim.cmd.colorscheme("vague")

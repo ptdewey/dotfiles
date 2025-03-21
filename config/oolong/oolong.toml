@@ -37,9 +37,9 @@ stop_words = [
 ]
 
 [graph]
-min_node_weight = 10.0
-max_node_weight = 15.0
-min_link_weight = 10.0
+min_node_weight = 15.0
+max_node_weight = 12.0
+min_link_weight = 15.0
 default_mode = "3d"
 
 # List of plugins (lua files) to load

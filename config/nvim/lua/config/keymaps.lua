@@ -274,3 +274,17 @@ vim.keymap.set(
     "<cmd>Inspect<CR>",
     { desc = "Treesitter [I]nspect", noremap = true }
 )
+
+vim.keymap.set(
+    "n",
+    "<leader>/",
+    "gcc",
+    { desc = "Toggle Comment", remap = true }
+)
+
+vim.keymap.set(
+    "x",
+    "<leader>/",
+    "gc",
+    { desc = "Toggle Comment", remap = true }
+)
