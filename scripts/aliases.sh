@@ -34,7 +34,6 @@ if command -v fdfind >/dev/null 2>&1; then
     alias fd="fdfind"
 fi
 
-# better cd
 sd() { cd ./$(fd -L . --type d | fzf --preview='tree -LF 2 {}'); }
 sdh() { cd $(fd -L . ~/ --type d | fzf --preview='tree -LF 2 {}'); }
 gm() {
@@ -57,6 +56,8 @@ gm() {
 
 alias vdh='vim $(fd . ~/ --type f | fzf --preview "cat {}")'
 alias vd='vim -o $(fzf --preview "cat {}")'
+
+alias ytdl='youtube-dl -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio" --write-sub --retries 10'
 
 # scripts
 source_if_exists "$dots/ssh.sh"
@@ -132,6 +133,7 @@ alias waybar-restart="pkill waybar && hyprctl dispatch exec waybar"
 feh-fill() {
     feh --bg-fill "$@"
 }
+
 
 # keymaps
 if [ "$shell" = "bash" ]; then

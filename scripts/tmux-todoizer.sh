@@ -12,6 +12,6 @@ else
     elif [[ -e "${session_path}/todo.md" ]]; then
         nvim "${session_path}/todo.md"
     else
-        nvim "${HOME}/notes/todo.md"
+        nvim "${HOME}/notes/notes/todo.md"
     fi
 fi

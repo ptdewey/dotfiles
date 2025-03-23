@@ -1,6 +1,0 @@
----
-title: "TEMPLATE"
-author: "AUTHOR"
----
-
-## HEADER

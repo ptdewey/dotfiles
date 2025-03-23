@@ -1,0 +1,154 @@
+local rename = require("extras.rename").rename_file
+
+local M = {
+    picker = {
+        fzf = nil,
+    },
+}
+
+---@param opts table?
+function M.auto_rename(opts)
+    -- TODO: rename based on note title
+    -- - Probably use a cli tool
+end
+
+function M.insert_link()
+    local mode = vim.fn.mode()
+    if mode == "n" then
+        local word = vim.fn.expand("<cword>")
+        -- TODO: decide on link syntax (custom vs obsidian)
+        vim.cmd("normal! ciW(#: " .. word .. ")")
+    elseif mode == "v" then
+        vim.api.nvim_feedkeys(
+            vim.api.nvim_replace_termcodes('c(#: <C-r>")', true, false, true),
+            "n",
+            false
+        )
+    end
+end
+
+function M.follow_link()
+    local line = vim.api.nvim_get_current_line()
+    -- TODO: decide on link syntax (custom vs obsidian)
+    local link = line:match("%(%#: ([^%)]+)%)")
+    if not link then
+        print("No valid link found under the cursor.")
+        return
+    end
+
+    local search_pattern = vim.fn.shellescape(link)
+
+    local cmd = "fd -t f -E '*.pdf' " .. search_pattern .. " ~/notes"
+    local handle = io.popen(cmd)
+
+    if not handle then
+        print("Error running fd")
+        return
+    end
+
+    local result = handle:read("*a")
+    handle:close()
+
+    local files = {}
+    for l in result:gmatch("[^\r\n]+") do
+        table.insert(files, l)
+    end
+
+    if #files == 0 then
+        print("No matching files found for: " .. link)
+    elseif #files == 1 then
+        vim.cmd("edit " .. vim.fn.fnameescape(files[1]))
+    else
+        M.fzf.fzf_exec(files, {
+            prompt = "Select file: ",
+            cwd = "~/notes",
+            previewer = "builtin",
+            actions = {
+                ["default"] = function(selected)
+                    vim.cmd("edit " .. vim.fn.fnameescape(selected[1]))
+                end,
+            },
+        })
+    end
+end
+
+function M.browse_links()
+    -- TODO: pull out the contents of the link, show only that in the picker
+    -- (show preview of actual file contents)
+    M.fzf.grep_project({ filter = "rg '\\(#: .*\\)'" })
+end
+
+---@param opts table?
+function M.create_note_blueprinter(opts)
+    opts = opts or {}
+    local fname = "note" .. (opts.ext or ".md")
+    -- TODO: decide if `-f` flag should be used (i.e. if auto-renaming on first save)
+    local output = vim.fn.system(
+        "blueprinter -v -f -i " .. fname .. " -o ~/notes/inbox/" .. fname
+    )
+    if output:find("^Error") then
+        print(vim.fn.trim(output))
+        return
+    end
+    vim.cmd("e " .. output)
+    -- TODO: add buffer autocmd to cause file rename on pre-save?
+end
+
+function M.create_file_blueprinter()
+    -- REFACTOR: use files in same directory structure as Blueprinter
+    -- (either add custom parsing logic or add Blueprinter command for dumping list)
+    M.fzf.files({
+        prompt = "Select template: ",
+        cwd = "~/dotfiles/templates",
+        hidden = false,
+        actions = {
+            ["default"] = function(selected)
+                local output = vim.fn.system(
+                    "blueprinter -v -i "
+                        .. vim.fn.shellescape(selected[1]:match("^[^\t]+"))
+                )
+                -- TODO: open resulting file (difficult with renaming that happens)
+                vim.cmd("edit " .. output)
+            end,
+        },
+    })
+end
+
+---@param opts table?
+function M.init(opts)
+    M.fzf = require("fzf-lua")
+
+    vim.keymap.set("n", "<leader>ns", function()
+        M.browse_links()
+    end, { desc = "Browse Links" })
+
+    vim.keymap.set(
+        { "n", "x" },
+        "<leader>nl",
+        M.insert_link,
+        { desc = "Insert [N]ote [L]ink" }
+    )
+
+    vim.keymap.set(
+        "n",
+        "<leader>lf",
+        M.follow_link,
+        { desc = "[F]ollow [L]ink" }
+    )
+
+    vim.api.nvim_create_user_command(
+        "Blueprinter",
+        M.create_file_blueprinter,
+        { desc = "Create file with Blueprinter" }
+    )
+
+    vim.api.nvim_create_user_command(
+        "Note",
+        M.create_note_blueprinter,
+        { desc = "Create note with Blueprinter" }
+    )
+end
+
+M.init()
+
+return M
