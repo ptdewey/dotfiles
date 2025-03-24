@@ -80,23 +80,36 @@ end
 
 ---@param opts table?
 function M.create_note_blueprinter(opts)
-    opts = opts or {}
-    local fname = "note" .. (opts.ext or ".md")
-    -- TODO: decide if `-f` flag should be used (i.e. if auto-renaming on first save)
+    opts = vim.tbl_deep_extend("force", {
+        fname = "note.md",
+        template = "note.md",
+        path = "~/notes/inbox/",
+    }, opts)
+
+    local outFile = opts.path .. opts.fname
+
     local output = vim.fn.system(
-        "blueprinter -v -f -i " .. fname .. " -o ~/notes/inbox/" .. fname
+        "blueprinter -v -i " .. opts.template .. " -o " .. outFile
     )
     if output:find("^Error") then
-        print(vim.fn.trim(output))
+        print(outFile .. " already exists")
+        vim.cmd("e " .. opts.path .. opts.fname)
         return
     end
     vim.cmd("e " .. output)
     -- TODO: add buffer autocmd to cause file rename on pre-save?
 end
 
+function M.create_daily_note()
+    local date = os.date("%Y-%m-%d")
+    M.create_note_blueprinter({
+        fname = date .. ".md",
+        template = "daily.md",
+        path = "~/notes/notes/daily/",
+    })
+end
+
 function M.create_file_blueprinter()
-    -- REFACTOR: use files in same directory structure as Blueprinter
-    -- (either add custom parsing logic or add Blueprinter command for dumping list)
     M.fzf.files({
         prompt = "Select template: ",
         cwd = "~/dotfiles/templates",
@@ -107,7 +120,11 @@ function M.create_file_blueprinter()
                     "blueprinter -v -i "
                         .. vim.fn.shellescape(selected[1]:match("^[^\t]+"))
                 )
-                -- TODO: open resulting file (difficult with renaming that happens)
+                if output:find("^Error") then
+                    print(vim.fn.trim(output))
+                    output = selected[1]:match("^[^\t]+")
+                    -- return
+                end
                 vim.cmd("edit " .. output)
             end,
         },
@@ -146,6 +163,12 @@ function M.init(opts)
         "Note",
         M.create_note_blueprinter,
         { desc = "Create note with Blueprinter" }
+    )
+
+    vim.api.nvim_create_user_command(
+        "DailyNote",
+        M.create_daily_note,
+        { desc = "Create daily note with Blueprinter" }
     )
 end
 

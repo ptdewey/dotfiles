@@ -18,6 +18,8 @@ LLM
 todo
 nvim
 IRBs
+CCAM
+LLMs
 Typst
 NGram
 param
@@ -44,6 +46,8 @@ ChatGPT
 typedef
 reposts
 Equifax
+autocmd
+writeup
 Oolong's
 natively
 hostname
@@ -65,6 +69,7 @@ gitignore
 Posteriori
 NavagantAI
 Coresignal
+embeddings
 Overfitting
 overfitting
 Blueprinter
