@@ -142,7 +142,6 @@ ATProto
 Jetstream
 ChatGPT
 erroring
-<<<<<<< Updated upstream
 overfit
 Akaike
 2D
@@ -174,3 +173,8 @@ embeddings
 CCAM
 writeup
 LLMs
+Gaussians
+Multinomial
+covariant
+TODO
+PlantUML

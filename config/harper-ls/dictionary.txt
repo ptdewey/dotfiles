@@ -66,6 +66,7 @@ localhost
 centroids
 Goroutine
 gitignore
+Gaussians
 Posteriori
 NavagantAI
 Coresignal
@@ -73,6 +74,7 @@ embeddings
 Overfitting
 overfitting
 Blueprinter
+Multinomial
 Customizable
 integrations
 unrealizable
