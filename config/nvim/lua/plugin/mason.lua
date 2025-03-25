@@ -43,6 +43,7 @@ return {
                     vim.lsp.buf.add_workspace_folder,
                     { desc = "[W]orkspace [A]dd Folder" }
                 )
+
                 vim.keymap.set(
                     "n",
                     "<leader>wr",
@@ -81,10 +82,8 @@ return {
                 },
             }
 
-            -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
             local capabilities = vim.lsp.protocol.make_client_capabilities()
-            capabilities =
-                require("cmp_nvim_lsp").default_capabilities(capabilities)
+            capabilities = require("blink.cmp").get_lsp_capabilities()
 
             -- Ensure the servers above are installed
             local mason_lspconfig = require("mason-lspconfig")

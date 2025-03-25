@@ -8,6 +8,7 @@ return {
         dependencies = {
             "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
+            "saghen/blink.cmp",
         },
 
         vim.diagnostic.config({
@@ -22,83 +23,87 @@ return {
             },
         }),
 
-        config = function()
+        opts = {
+            servers = {
+                lua_ls = {
+                    on_attach = function(client, bufnr)
+                        require("inlay-hints").on_attach(client, bufnr)
+                    end,
+                    settings = {
+                        Lua = {
+                            hint = {
+                                enable = true,
+                            },
+                            -- workspace = { checkThirdParty = false },
+                            telemetry = { enable = false },
+                            globals = { "vim" },
+                        },
+                    },
+                },
+
+                gopls = {
+                    on_attach = function(client, bufnr)
+                        require("inlay-hints").on_attach(client, bufnr)
+                    end,
+                    settings = {
+                        gopls = {
+                            hints = {
+                                rangeVariableTypes = true,
+                                parameterNames = true,
+                                constantValues = true,
+                                assignVariableTypes = true,
+                                compositeLiteralFields = true,
+                                compositeLiteralTypes = true,
+                                functionTypeParameters = true,
+                            },
+                        },
+                    },
+                },
+
+                ts_ls = {
+                    filetypes = { "typescript", "javascript", "svelte" },
+                    settings = {
+                        implicitProjectConfiguration = {
+                            checkJs = true,
+                        },
+                    },
+                },
+
+                ruff = {
+                    settings = {},
+                },
+
+                tinymist = {
+                    settings = {
+                        exportPdf = "onSave",
+                        formatterMode = "typstyle",
+                        semanticTokens = "disable",
+                    },
+                },
+
+                harper_ls = {
+                    settings = {
+                        ["harper-ls"] = {},
+                    },
+                },
+
+                rust_analyzer = {
+                    on_attach = function(client, bufnr)
+                        require("inlay-hints").on_attach(client, bufnr)
+                    end,
+                },
+            },
+        },
+
+        config = function(_, opts)
             local lspconfig = require("lspconfig")
 
-            -- lua_ls
-            lspconfig.lua_ls.setup({
-                on_attach = function(client, bufnr)
-                    require("inlay-hints").on_attach(client, bufnr)
-                end,
-
-                settings = {
-                    Lua = {
-                        hint = {
-                            enable = true, -- necessary
-                        },
-                        -- workspace = { checkThirdParty = false },
-                        telemetry = { enable = false },
-                        globals = { "vim" },
-                    },
-                },
-            })
-            -- gopls
-            lspconfig.gopls.setup({
-                on_attach = function(client, bufnr)
-                    require("inlay-hints").on_attach(client, bufnr)
-                end,
-                settings = {
-                    gopls = {
-                        hints = {
-                            rangeVariableTypes = true,
-                            parameterNames = true,
-                            constantValues = true,
-                            assignVariableTypes = true,
-                            compositeLiteralFields = true,
-                            compositeLiteralTypes = true,
-                            functionTypeParameters = true,
-                        },
-                    },
-                },
-            })
-
-            -- js and ts
-            lspconfig.ts_ls.setup({
-                filetypes = { "typescript", "javascript", "svelte" },
-                settings = {
-                    implicitProjectConfiguration = {
-                        checkJs = true,
-                    },
-                },
-            })
-
-            -- ruff for python (also use pyright for completions)
-            lspconfig.ruff.setup({
-                settings = {},
-            })
-
-            lspconfig.rust_analyzer.setup({
-                on_attach = function(client, bufnr)
-                    require("inlay-hints").on_attach(client, bufnr)
-                end,
-            })
-
-            -- typst lsp
-            lspconfig.tinymist.setup({
-                settings = {
-                    -- format = "onSave",
-                    -- formatterMode = "typstfmt",
-                    exportPdf = "onSave",
-                    formatterMode = "typstyle",
-                    semanticTokens = "disable",
-                },
-            })
-
-            lspconfig.harper_ls.setup({
-                settings = {
-                    ["harper-ls"] = {},
-                },
-            })
+            for server, config in pairs(opts.servers) do
+                config.capabilities = require("blink.cmp").get_lsp_capabilities(
+                    config.capabilities
+                )
+                lspconfig[server].setup(config)
+            end
         end,
     },
     {
