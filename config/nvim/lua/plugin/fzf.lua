@@ -101,11 +101,11 @@ return {
                 fzf.lsp_references()
             end, { desc = "[G]oto [R]eferences" })
 
-            vim.keymap.set("n", "hf", function()
+            vim.keymap.set("n", "<leader>hf", function()
                 fzf.files({ cwd = "~/", hidden = false })
             end, { desc = "[H]ome [F]iles" })
 
-            vim.keymap.set("n", "hg", function()
+            vim.keymap.set("n", "<leader>hg", function()
                 fzf.grep_project({ cwd = "~/", hidden = false })
             end, { desc = "[H]ome [G]rep" })
         end,
