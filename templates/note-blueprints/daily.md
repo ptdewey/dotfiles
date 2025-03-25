@@ -1,6 +1,6 @@
 ---
 id: {{ .id }}
 date: {{ .date }}
-tags: [{{ .dir }}]
+tags: [{{ .tags }}]
 ---
 # {{ .date }}

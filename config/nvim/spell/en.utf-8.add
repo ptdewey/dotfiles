@@ -185,3 +185,9 @@ AUC
 ROC
 Debiasing
 curation
+Softmax
+softmax
+Argmax
+sigmoid
+posteriori
+hyperplane
