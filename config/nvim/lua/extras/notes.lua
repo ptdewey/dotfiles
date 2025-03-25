@@ -102,11 +102,22 @@ end
 
 function M.create_daily_note()
     local date = os.date("%Y-%m-%d")
-    M.create_note_blueprinter({
-        fname = date .. ".md",
-        template = "daily.md",
-        path = "~/notes/notes/daily/",
-    })
+    local out_file = "~/notes/notes/daily/" .. date .. ".md"
+
+    local output = vim.fn.system(
+        "blueprinter -v -t daily -i daily.md -o "
+            .. out_file
+            .. " -id '\"Daily Note: "
+            .. date
+            .. "\"'"
+    )
+    if output:find("^Error") then
+        print(out_file .. " already exists")
+        vim.cmd("e " .. out_file)
+        return
+    end
+
+    vim.cmd("e " .. output)
 end
 
 function M.create_file_blueprinter()
