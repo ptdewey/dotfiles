@@ -7,8 +7,8 @@
   aspect-ratio: "16-9",
   config-info(
     title: [Title],
-    author: [{{ .author }}], // TODO: change
-  )
+    author: [{{ .author }}],
+  ),
 )
 
 #title-slide()

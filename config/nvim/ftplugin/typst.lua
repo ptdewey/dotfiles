@@ -1,6 +1,7 @@
 local options = {
     tabstop = 2,
     shiftwidth = 2,
+    commentstring = "// %s",
 }
 
 for k, v in pairs(options) do
