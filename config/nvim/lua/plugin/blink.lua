@@ -3,10 +3,10 @@ return {
     {
         "saghen/blink.cmp",
         dependencies = {
-            {
-                "Kaiser-Yang/blink-cmp-dictionary",
-                dependencies = { "nvim-lua/plenary.nvim" },
-            },
+            -- {
+            --     "Kaiser-Yang/blink-cmp-dictionary",
+            --     dependencies = { "nvim-lua/plenary.nvim" },
+            -- },
             { "L3MON4D3/LuaSnip", version = "v2.*" },
             "mikavilpas/blink-ripgrep.nvim",
         },
@@ -69,6 +69,7 @@ return {
                             { "kind", "source_name", gap = 1 },
                             -- { "label_description" },
                         },
+
                         components = {
                             label = {
                                 text = function(ctx)
@@ -109,13 +110,14 @@ return {
 
                 providers = {
                     lsp = { score_offset = 45 },
-                    snippets = { score_offset = 51 },
+                    snippets = { score_offset = 46 },
+                    path = { score_offset = 10 },
                     buffer = { score_offset = 15 },
                     lazydev = {
                         name = "LazyDev",
                         module = "lazydev.integrations.blink",
                         -- make lazydev completions top priority (see `:h blink.cmp`)
-                        score_offset = 50,
+                        score_offset = 46,
                     },
                     ripgrep = {
                         module = "blink-ripgrep",
@@ -123,18 +125,21 @@ return {
                         opts = {
                             max_filesize = "200K",
                         },
-                        score_offset = 10,
+                        score_offset = 1,
                     },
                     -- dictionary = {
                     --     module = "blink-cmp-dictionary",
                     --     name = "Dict",
                     --     min_keyword_length = 3,
                     --     opts = {
-                    --         -- options for blink-cmp-dictionary
-                    --         -- only enable on keymap?
-                    --         --
-                    --         -- FIX: need dict file
-                    --         -- PERF: this one (without a file) slows down completion a lot?
+                    --         dictionary_files = function()
+                    --             local types = { "markdown", "typst", "latex" }
+                    --             if vim.tbl_contains(types, vim.bo.filetype) then
+                    --                 return {
+                    --                     vim.fn.expand("~/Downloads/words.txt"),
+                    --                 }
+                    --             end
+                    --         end,
                     --     },
                     -- },
                 },

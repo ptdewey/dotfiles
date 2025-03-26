@@ -176,6 +176,8 @@ ls.add_snippets("go", {
     --     )
     -- ),
 
+    s("lerr", fmt("log.Println(err){}", { i(0) })),
+
     s(
         "efi",
         fmta(
