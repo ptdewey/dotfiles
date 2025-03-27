@@ -110,7 +110,7 @@ return {
 
                 providers = {
                     lsp = { score_offset = 45 },
-                    snippets = { score_offset = 46 },
+                    snippets = { score_offset = 55 },
                     path = { score_offset = 10 },
                     buffer = { score_offset = 15 },
                     lazydev = {
