@@ -17,10 +17,10 @@ function M.insert_link()
     if mode == "n" then
         local word = vim.fn.expand("<cword>")
         -- TODO: decide on link syntax (custom vs obsidian)
-        vim.cmd("normal! ciW(#: " .. word .. ")")
+        vim.cmd("normal! ciW[[" .. word .. "]]")
     elseif mode == "v" then
         vim.api.nvim_feedkeys(
-            vim.api.nvim_replace_termcodes('c(#: <C-r>")', true, false, true),
+            vim.api.nvim_replace_termcodes('c[[<C-r>"]]', true, false, true),
             "n",
             false
         )
@@ -30,7 +30,7 @@ end
 function M.follow_link()
     local line = vim.api.nvim_get_current_line()
     -- TODO: decide on link syntax (custom vs obsidian)
-    local link = line:match("%(%#: ([^%)]+)%)")
+    local link = line:match("%[%[([^%)]+)%]%]")
     if not link then
         print("No valid link found under the cursor.")
         return
@@ -75,7 +75,7 @@ end
 function M.browse_links()
     -- TODO: pull out the contents of the link, show only that in the picker
     -- (show preview of actual file contents)
-    M.fzf.grep_project({ filter = "rg '\\(#: .*\\)'" })
+    M.fzf.grep_project({ cwd = "~/notes", filter = "rg '\\[\\[.*\\]\\]'" })
 end
 
 ---@param opts table?

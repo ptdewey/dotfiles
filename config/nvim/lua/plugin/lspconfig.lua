@@ -12,6 +12,8 @@ return {
         },
 
         vim.diagnostic.config({
+            -- virtual_lines = true
+            virtual_text = true,
             -- update_in_insert = true,
             float = {
                 focusable = false,
@@ -81,11 +83,11 @@ return {
                     },
                 },
 
-                harper_ls = {
-                    settings = {
-                        ["harper-ls"] = {},
-                    },
-                },
+                -- harper_ls = {
+                --     settings = {
+                --         ["harper-ls"] = {},
+                --     },
+                -- },
 
                 rust_analyzer = {
                     on_attach = function(client, bufnr)
@@ -134,13 +136,6 @@ return {
     {
         "MysticalDevil/inlay-hints.nvim",
         event = "LspAttach",
-        -- event = "BufReadPost",
         dependencies = { "neovim/nvim-lspconfig" },
-        -- config = function()
-        --     require("inlay-hints").setup({
-        --         commands = { enable = true },
-        --         autocmd = { enable = true },
-        --     })
-        -- end,
     },
 }

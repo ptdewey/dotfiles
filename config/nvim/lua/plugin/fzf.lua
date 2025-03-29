@@ -108,6 +108,33 @@ return {
             vim.keymap.set("n", "<leader>hg", function()
                 fzf.grep_project({ cwd = "~/", hidden = false })
             end, { desc = "[H]ome [G]rep" })
+
+            -- TODO: move to namu when workspace symbols search is added
+            vim.keymap.set("n", "<leader>sw", function()
+                fzf.lsp_workspace_symbols()
+            end, { desc = "[H]ome [W]orkspace symbols" })
+
+            vim.keymap.set("n", "<leader>sd", function()
+                fzf.lsp_document_symbols()
+            end, { desc = "[H]ome [W]orkspace symbols" })
+        end,
+    },
+
+    {
+        "bassamsdata/namu.nvim",
+        event = "LspAttach",
+        config = function()
+            require("namu").setup({
+                namu_symbols = {
+                    enable = true,
+                    options = {},
+                },
+            })
+
+            vim.keymap.set("n", "<leader>ss", "<cmd>Namu symbols<cr>", {
+                desc = "Jump to LSP symbol",
+                silent = true,
+            })
         end,
     },
 }
