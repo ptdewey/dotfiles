@@ -1,12 +1,12 @@
 -- key bindings
 
 -- general keybindings
-vim.keymap.set(
-    "n",
-    ";",
-    ":",
-    { noremap = true, desc = "semicolon to colon in normal mode" }
-)
+-- vim.keymap.set(
+--     "n",
+--     ";",
+--     ":",
+--     { noremap = true, desc = "semicolon to colon in normal mode" }
+-- )
 
 -- buffer switching
 vim.keymap.set(

@@ -74,7 +74,7 @@ return {
             end, { desc = "Browse [B]uffers" })
 
             vim.keymap.set("n", "<leader>tt", function()
-                fzf.live_grep_native({
+                fzf.grep_project({
                     search = "TODO|PERF|NOTE|FIX|DOC|REFACTOR|BUG",
                     no_esc = true,
                     winopts = {
@@ -112,7 +112,7 @@ return {
             -- TODO: move to namu when workspace symbols search is added
             vim.keymap.set("n", "<leader>sw", function()
                 fzf.lsp_workspace_symbols()
-            end, { desc = "[H]ome [W]orkspace symbols" })
+            end, { desc = "[W]orkspace symbols" })
 
             vim.keymap.set("n", "<leader>sd", function()
                 fzf.lsp_document_symbols()
