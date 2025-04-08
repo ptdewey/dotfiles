@@ -83,11 +83,15 @@ return {
                     },
                 },
 
-                -- harper_ls = {
-                --     settings = {
-                --         ["harper-ls"] = {},
-                --     },
-                -- },
+                harper_ls = {
+                    settings = {
+                        ["harper-ls"] = {
+                            linters = {
+                                ToDoHyphen = false,
+                            },
+                        },
+                    },
+                },
 
                 rust_analyzer = {
                     on_attach = function(client, bufnr)

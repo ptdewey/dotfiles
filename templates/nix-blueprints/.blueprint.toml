@@ -1,1 +1,6 @@
 output_name = "flake.nix"
+ignore = ["flake.lock"]
+
+[[template_config]]
+target_template=""
+extra_templates=["flake.lock"]
