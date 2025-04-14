@@ -133,7 +133,7 @@ vim.keymap.set(
 )
 
 -- LSP settings
-vim.keymap.set("n", "gd", function()
+vim.keymap.set("n", "gd", function() -- TODO: override this in fzf_lua config
     vim.lsp.buf.definition()
     vim.cmd("normal! zz")
 end, { desc = "LSP jump to definition" })
@@ -275,16 +275,16 @@ vim.keymap.set(
     { desc = "Treesitter [I]nspect", noremap = true }
 )
 
-vim.keymap.set(
-    "n",
-    "<leader>/",
-    "gcc",
-    { desc = "Toggle Comment", remap = true }
-)
-
-vim.keymap.set(
-    "x",
-    "<leader>/",
-    "gc",
-    { desc = "Toggle Comment", remap = true }
-)
+-- vim.keymap.set(
+--     "n",
+--     "<leader>/",
+--     "gcc",
+--     { desc = "Toggle Comment", remap = true }
+-- )
+--
+-- vim.keymap.set(
+--     "x",
+--     "<leader>/",
+--     "gc",
+--     { desc = "Toggle Comment", remap = true }
+-- )

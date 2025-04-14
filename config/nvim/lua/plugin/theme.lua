@@ -5,6 +5,13 @@ return {
     {
         "ptdewey/darkearth-nvim",
         -- dir = "~/projects/darkearth-nvim",
+        -- dev = true,
+        priority = 1000,
+    },
+
+    {
+        -- "ptdewey/monalisa-nvim",
+        dir = "~/projects/monalisa-nvim/",
         priority = 1000,
     },
 
@@ -56,6 +63,7 @@ return {
     --         })
     --     end,
     -- },
+    --
 
     -- {
     --     "sho-87/kanagawa-paper.nvim",

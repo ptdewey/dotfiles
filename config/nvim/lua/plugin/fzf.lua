@@ -1,6 +1,7 @@
 return {
     {
         "ibhagwan/fzf-lua",
+        event = "VeryLazy",
         config = function()
             local fzf = require("fzf-lua")
             fzf.setup({
@@ -73,17 +74,17 @@ return {
                 fzf.buffers()
             end, { desc = "Browse [B]uffers" })
 
-            vim.keymap.set("n", "<leader>tt", function()
-                fzf.grep_project({
-                    search = "TODO|PERF|NOTE|FIX|DOC|REFACTOR|BUG",
-                    no_esc = true,
-                    winopts = {
-                        preview = {
-                            horizontal = "right:40%",
-                        },
-                    },
-                })
-            end, { desc = "Search [T]odo", noremap = true })
+            -- vim.keymap.set("n", "<leader>tt", function()
+            --     fzf.grep_project({
+            --         search = "TODO|PERF|NOTE|FIX|DOC|REFACTOR|BUG",
+            --         no_esc = true,
+            --         winopts = {
+            --             preview = {
+            --                 horizontal = "right:40%",
+            --             },
+            --         },
+            --     })
+            -- end, { desc = "Search [T]odo", noremap = true })
 
             vim.keymap.set("n", "<leader>ca", function()
                 fzf.lsp_code_actions()
@@ -117,6 +118,14 @@ return {
             vim.keymap.set("n", "<leader>sd", function()
                 fzf.lsp_document_symbols()
             end, { desc = "[H]ome [W]orkspace symbols" })
+
+            vim.keymap.set("n", "<leader>gr", function()
+                fzf.lsp_references()
+            end, { noremap = true, desc = "[G]oto [R]eferences" })
+
+            vim.keymap.set("n", "<leader>gd", function()
+                fzf.lsp_definitions()
+            end, { noremap = true, desc = "[G]oto [D]efinition" })
         end,
     },
 

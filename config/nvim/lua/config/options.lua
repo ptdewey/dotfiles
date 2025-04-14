@@ -83,7 +83,8 @@ local vars = {
 -- vim.fn.matchadd("Identifier", "\\(FAILED:\\)")
 
 -- theme options
-vim.cmd.colorscheme("darkearth")
+-- vim.cmd.colorscheme("darkearth")
+vim.cmd.colorscheme("monalisa")
 -- vim.cmd.colorscheme("vague")
 -- vim.cmd.colorscheme("kanagawa-paper")
 
