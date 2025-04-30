@@ -11,6 +11,7 @@ local function load_snippets()
         "cuda",
         "markdown",
         "rust",
+        "sh",
     }
 
     for _, file in ipairs(snippet_files) do

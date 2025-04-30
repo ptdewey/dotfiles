@@ -10,7 +10,8 @@ vim.api.nvim_create_autocmd("FileType", {
             cmd = {
                 "/home/patrick/projects/plantuml-lsp/plantuml-lsp",
                 -- "/home/patrick/.local/share/nvim/mason/bin/plantuml-lsp",
-                "--stdlib-path=/home/patrick/projects/plantuml-stdlib",
+                -- "--stdlib-path=/home/patrick/Documents/plantuml-stdlib",
+                "--stdlib-path=~/Documents/plantuml-stdlib",
                 "--exec-path=plantuml", -- TODO: test this works with the java-jar syntax
                 -- "--jar-path=/home/patrick/Downloads/plantuml-mit-1.2025.0.jar", -- TODO: test this works with the java-jar syntax
             },

@@ -71,4 +71,7 @@ end
 vim.keymap.set("n", "<leader>co", open_pdf, { desc = "Open PDF Preview" })
 vim.api.nvim_create_user_command("OpenPdf", open_pdf, {})
 
+-- NOTE: Mason is still being used
+-- vim.lsp.enable("tinymist")
+
 setup()

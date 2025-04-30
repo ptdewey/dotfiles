@@ -124,6 +124,9 @@ return {
                         name = "Ripgrep",
                         opts = {
                             max_filesize = "200K",
+                            future_features = {
+                                issue185_workaround = true,
+                            },
                         },
                         score_offset = 1,
                     },

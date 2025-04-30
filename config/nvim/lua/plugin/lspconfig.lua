@@ -81,6 +81,39 @@ return {
                         formatterMode = "typstyle",
                         semanticTokens = "disable",
                     },
+                    on_attach = function(client, bufnr)
+                        vim.keymap.set("n", "<leader>tp", function()
+                            client:exec_cmd({
+                                title = "pin",
+                                command = "tinymist.pinMain",
+                                arguments = { vim.api.nvim_buf_get_name(0) },
+                            }, {
+                                bufnr = bufnr,
+                            })
+
+                            vim.print(
+                                "Updated pinned main to "
+                                    .. vim.api.nvim_buf_get_name(0)
+                            )
+                        end, {
+                            desc = "tinymist: Pin buffer as main",
+                            noremap = true,
+                        })
+
+                        vim.keymap.set("n", "<leader>tu", function()
+                            client:exec_cmd({
+                                title = "unpin",
+                                command = "tinymist.pinMain",
+                                arguments = { vim.v.null },
+                            }, { bufnr = bufnr })
+                            vim.print(
+                                "Unpinned: " .. vim.api.nvim_buf_get_name(0)
+                            )
+                        end, {
+                            desc = "[T]ypst [U]npin",
+                            noremap = true,
+                        })
+                    end,
                 },
 
                 harper_ls = {
@@ -88,6 +121,8 @@ return {
                         ["harper-ls"] = {
                             linters = {
                                 ToDoHyphen = false,
+                                Dashes = false,
+                                LongSentences = false,
                             },
                         },
                     },

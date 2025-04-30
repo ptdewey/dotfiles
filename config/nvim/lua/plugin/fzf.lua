@@ -119,7 +119,7 @@ return {
                 fzf.lsp_document_symbols()
             end, { desc = "[H]ome [W]orkspace symbols" })
 
-            vim.keymap.set("n", "<leader>gr", function()
+            vim.keymap.set("n", "gr", function()
                 fzf.lsp_references()
             end, { noremap = true, desc = "[G]oto [R]eferences" })
 
