@@ -123,8 +123,9 @@ return {
                 fzf.lsp_references()
             end, { noremap = true, desc = "[G]oto [R]eferences" })
 
-            vim.keymap.set("n", "<leader>gd", function()
+            vim.keymap.set("n", "gd", function()
                 fzf.lsp_definitions()
+                vim.cmd("normal! zz")
             end, { noremap = true, desc = "[G]oto [D]efinition" })
         end,
     },

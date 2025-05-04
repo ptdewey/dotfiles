@@ -10,8 +10,8 @@ return {
     },
 
     {
-        -- "ptdewey/monalisa-nvim",
-        dir = "~/projects/monalisa-nvim/",
+        "ptdewey/monalisa-nvim",
+        -- dir = "~/projects/monalisa-nvim/",
         priority = 1000,
     },
 

@@ -19,6 +19,7 @@ return {
                     -- zsh = { "beautysh" },
                     -- sh = { "beautysh" },
                     python = { "ruff" },
+                    typst = { "typstfmt" },
                     ["_"] = { "trim_whitespace" },
                 },
                 format_on_save = function(bufnr)
