@@ -11,11 +11,6 @@
   # Imports
   imports = [ ];
 
-  # AGS
-  # programs.ags = {
-  #   enable = true;
-  # };
-
   # Direnv
   programs.direnv = {
     enable = true;
@@ -24,67 +19,56 @@
     nix-direnv.enable = true;
   };
 
-
   # Install nix packages into environment
   home.packages = with pkgs; [
     ## nix extras
     nix-prefetch-git
 
     ## misc command line utils
-    # csvlens
-    # fd
-    # foliate
-    # fx
-    # fzf
-    # ripgrep
-    # tokei
-    # shellcheck-minimal
-    # jq
-    # pandoc
-    # neofetch
-    # htop
-    # tmux
-    # lsd
-    # plantuml
-    # zathura
-    # hugo
-    # vhs
-    # quarto
-    # feh
-    # oh-my-posh
+    csvlens
+    fd
+    foliate
+    fx
+    fzf
+    ripgrep
+    tokei
+    shellcheck-minimal
+    jq
+    pandoc
+    neofetch
+    htop
+    tmux
+    lsd
+    plantuml
+    zathura
+    vhs
+    feh
+    oh-my-posh
 
     ## neovim stuff
-    # neovim
-    # xclip
-    # typst
-
-    # tree-sitter
+    neovim
+    xclip
+    typst
+    tree-sitter
 
     ## languages and related utils
     stylua
     luajitPackages.jsregexp
-    # luajitPackages.luacheck
-    # go
+    luajitPackages.luacheck
+    go
     glow
     # nodejs
-    # prettierd
-    # openssl
+    prettierd
+    openssl
     # rustup
-    # brightnessctl
+    brightnessctl
 
     ## window manager config
-    # awesome
-    # bspwm
     # dunst
-    # polybar
-    # picom
-    # rofi
-    # sxhkd
 
     ## other gui applications
     # discord
     # spotify
-    # tidal-hifi
     # yt-dlp
   ];
 
@@ -100,20 +84,9 @@
   #     name = "IosevkaPatrick Nerd Font";
   #     size = 16;
   #   };
-  #
   #   cursorTheme = {
   #     package = pkgs.bibata-cursors;
   #     name = "Bibata-Modern-Classic";
-  #   };
-  #
-  #   iconTheme = {
-  #     package = pkgs.gruvbox-plus-icons;
-  #     name  = "Gruvbox-Plus-Dark";
-  #   };
-  #
-  #   theme = {
-  #     package = pkgs.gruvbox-dark-gtk;
-  #     name = "gruvbox-dark";
   #   };
   # };
 
