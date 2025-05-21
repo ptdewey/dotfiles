@@ -62,14 +62,14 @@ return {
     },
 
     -- jupyter notebooks
-    {
-        "GCBallesteros/jupytext.nvim",
-        -- doesn't seem to work with any kind of lazy loading
-        -- ft = { "jupyter", "python" },
-        config = function()
-            require("jupytext").setup({})
-        end,
-    },
+    -- {
+    --     "GCBallesteros/jupytext.nvim",
+    --     -- doesn't seem to work with any kind of lazy loading
+    --     -- ft = { "jupyter", "python" },
+    --     config = function()
+    --         require("jupytext").setup({})
+    --     end,
+    -- },
     -- {
     --     "benlubas/molten-nvim",
     --     ft = { "python" },
