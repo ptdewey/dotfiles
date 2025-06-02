@@ -14,7 +14,6 @@ CSV
 CVE
 ChatGPT
 Coresignal
-Cron
 Customizable
 DRM
 Debiasing
@@ -51,7 +50,6 @@ Nonlinearly
 Oolong's
 OpenMP
 PLC
-PlantUML
 ROC
 RPC
 SVM
@@ -71,12 +69,14 @@ benchmarking
 centroids
 cli
 copyable
+cron
 css
 curation
 deserialization
 dimensionality
 embeddings
 erroring
+fzf
 gitignore
 hostname
 iCloud
@@ -98,6 +98,7 @@ oolongd
 overfitting
 param
 pdf
+plantuml
 posteriori
 prem
 quickstart
@@ -109,7 +110,9 @@ reposts
 s
 sigmoid
 softmax
+sqlite
 stderr
+stdlib
 stdout
 stereotypically
 structs
