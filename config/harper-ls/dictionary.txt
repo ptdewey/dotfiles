@@ -102,6 +102,7 @@ pdf
 plantuml
 posteriori
 prem
+pywal
 quickstart
 radiographs
 relu

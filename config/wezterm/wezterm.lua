@@ -8,12 +8,12 @@ local config = {
     -- font settings
     font = wezterm.font("IosevkaPatrick"),
     -- font_size = 13.0,
-    -- font_size = 18,
-    font_size = 21,
+    font_size = 18,
+    -- font_size = 21,
     -- dpi = 144, -- commenting this out fixes the weird tiling wm scaling issue
 
     -- set rendering device
-    enable_wayland = false,
+    enable_wayland = true,
     -- front_end = "OpenGL",
     front_end = "WebGpu",
     -- webgpu_power_preference = "HighPerformance",
@@ -22,12 +22,15 @@ local config = {
     hide_tab_bar_if_only_one_tab = true,
 
     -- window_decorations = "RESIZE",
-    window_decorations = "INTEGRATED_BUTTONS|RESIZE",
+    -- window_decorations = "INTEGRATED_BUTTONS|RESIZE",
+    window_decorations = "NONE",
     window_close_confirmation = "NeverPrompt",
     adjust_window_size_when_changing_font_size = false,
     use_fancy_tab_bar = false,
     -- window_background_opacity = 0.98,
     set_environment_variables = {},
+
+    warn_about_missing_glyphs = false,
 
     -- colors
     colors = {
