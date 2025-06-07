@@ -126,8 +126,8 @@ alias proj="tmux-sessionizer ${HOME}/projects"
 alias sch="tmux-sessionizer ${HOME}/school"
 
 # waybar
-# alias waybar-restart="pkill waybar && waybar & disown"
-alias waybar-restart="pkill waybar && hyprctl dispatch exec waybar"
+alias waybar-restart="pkill waybar && waybar & disown %"
+# alias waybar-restart="pkill waybar && hyprctl dispatch exec waybar"
 
 # Wallpaper setter
 feh-fill() {

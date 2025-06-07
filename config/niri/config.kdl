@@ -268,7 +268,7 @@ layout {
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "waybar"
 
-// spawn-at-startup "swaybg" "-i ~/Pictures/wallpapers/evergarden.png -m fill"
+// spawn-at-startup "swaybg" "-i" "~/Pictures/wallpapers/evergarden.png" "-m" "fill"
 spawn-at-startup "xwayland-satellite"
 
 environment {
@@ -327,7 +327,7 @@ window-rule {
     // This regular expression is intentionally made as specific as possible,
     // since this is the default config, and we want no false positives.
     // You can get away with just app-id="wezterm" if you want.
-    match app-id=r#"^org\.wezfurlong\.wezterm$"#
+    match app-id=r#"^org\.wezfurlong\.wezterm$"# app-id="wezterm"
     default-column-width { proportion 0.5; }
 }
 
@@ -349,7 +349,7 @@ window-rule {
 
 // Open Spotify and Discord on separate workspaces
 window-rule {
-    match app-id="Spotify"
+    match app-id="Spotify" app-id="spotify"
     open-on-workspace "music"
     default-column-width { proportion 1.0; }
     // default-column-width { proportion 0.66667; }
@@ -362,12 +362,11 @@ window-rule {
 }
 
 // Game rules
-window-rule {
-    match title="Hearthstone"
-    match app-id="Steam"
-    default-column-width { proportion 1.0; }
-}
-
+// window-rule {
+//     match title="Hearthstone"
+//     // match app-id="Steam" app-id="steam"
+//     default-column-width { proportion 1.0; }
+// }
 
 // Example: block out two password managers from screen capture.
 // (This example rule is commented out with a "/-" in front.)
@@ -405,7 +404,7 @@ binds {
 
     Mod+T hotkey-overlay-title="Open a Terminal: alacritty" { spawn "wezterm"; }
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
-    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
+    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock" "-i" "~/Pictures/wallpapers/darkstars.png"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.

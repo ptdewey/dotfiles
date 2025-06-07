@@ -31,8 +31,8 @@ return {
     --     },
     -- },
     -- { "savq/melange-nvim", priority = 1000 },
-    { "ramojus/mellifluous.nvim", priority = 1000 },
-    -- { "ficcdaf/ashen.nvim", priority = 1000 },
+    -- { "ramojus/mellifluous.nvim", priority = 1000 },
+    { "ficcdaf/ashen.nvim", priority = 1000 },
     {
         "vague2k/vague.nvim",
         config = function()
@@ -68,18 +68,18 @@ return {
     },
     --
 
-    -- {
-    --     "sho-87/kanagawa-paper.nvim",
-    --     priority = 1000,
-    --     config = function()
-    --         require("kanagawa-paper").setup({
-    --             undercurl = false,
-    --             commentStyle = { italic = false },
-    --             functionStyle = { italic = false },
-    --             keywordStyle = { italic = false },
-    --         })
-    --     end,
-    -- },
+    {
+        "sho-87/kanagawa-paper.nvim",
+        priority = 1000,
+        config = function()
+            require("kanagawa-paper").setup({
+                undercurl = false,
+                commentStyle = { italic = false },
+                functionStyle = { italic = false },
+                keywordStyle = { italic = false },
+            })
+        end,
+    },
 
     -- highlight color codes
     {
