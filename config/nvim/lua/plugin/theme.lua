@@ -1,4 +1,3 @@
----@diagnostic disable: missing-fields
 -- theme plugins (set theme in options.lua)
 return {
     -- darkearth

@@ -6,7 +6,6 @@ local function render(args)
     local cmd = { "quarto", "render" }
     if args then
         if args.file and args.file ~= "%" then
-            -- TODO: check if passed in file is a quarto file or not
             table.insert(cmd, args.file)
         else
             table.insert(cmd, vim.fn.expand("%:p"))
@@ -41,15 +40,3 @@ vim.keymap.set("n", "<leader>cq", function()
     end
     render({})
 end, { desc = "Run Quarto Render", noremap = true })
-
-vim.keymap.set("n", "<leader>cz", function()
-    if vim.bo.filetype ~= "quarto" then
-        print("Current file is not a quarto file.")
-        return
-    end
-    local filepath = vim.fn.expand("%:p")
-    local filename = vim.fn.fnamemodify(filepath, ":t")
-    local html_filename = vim.fn.fnamemodify(filename, ":r") .. ".html"
-
-    vim.system({ "firefox", html_filename }, {})
-end, { desc = "Open quarto html presentation", noremap = true })

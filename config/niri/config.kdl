@@ -267,7 +267,7 @@ layout {
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "waybar"
-spawn-at-startup "copyq --start-server"
+// spawn-at-startup "copyq" "--start-server"
 spawn-at-startup "xwayland-satellite"
 spawn-at-startup "spotify" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"
 spawn-at-startup "Discord" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"
@@ -396,6 +396,7 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     Mod+T hotkey-overlay-title="Open a Terminal: wezterm" { spawn "wezterm"; }
+    Mod+Return hotkey-overlay-title="Open a Terminal: wezterm" { spawn "wezterm"; }
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock" "-i" "~/Pictures/wallpapers/darkstars.png"; }
 
@@ -649,8 +650,10 @@ binds {
     Mod+S { focus-workspace "music"; }
     Mod+W { focus-workspace "web"; }
     Mod+A { focus-workspace "main"; }
-    Mod+M { focus-workspace "video"; }
-    Mod+Semicolon { focus-workspace "chat"; }
+    Mod+G { focus-workspace "main"; }
+    Mod+M { focus-workspace "main"; }
+    Mod+Z { focus-workspace "video"; }
+    Mod+X { focus-workspace "chat"; }
 }
 
 layer-rule {

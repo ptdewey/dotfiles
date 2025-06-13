@@ -1,0 +1,6 @@
+import Quickshell
+
+ShellRoot {
+  Bar {}
+}
+
