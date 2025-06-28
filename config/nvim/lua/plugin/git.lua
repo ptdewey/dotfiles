@@ -1,5 +1,10 @@
 -- Git-related plugins
 return {
+    {
+        "ptdewey/gitbrowse-nvim",
+        opts = {},
+    },
+
     -- git integration
     {
         "tpope/vim-fugitive",
@@ -22,23 +27,7 @@ return {
                 silent = true,
                 desc = "View Git commit log",
             },
-            {
-                "<leader>gb",
-                "<cmd>GBrowse<CR>",
-                silent = true,
-                desc = "View Current Repository in Browser",
-            },
         },
-        dependencies = {
-            -- also load vim-rhubarb when lazy loading
-            "tpope/vim-rhubarb",
-        },
-    },
-
-    -- github integration
-    {
-        "tpope/vim-rhubarb",
-        lazy = true,
     },
 
     -- add git signs to gutter
