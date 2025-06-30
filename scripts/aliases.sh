@@ -120,6 +120,7 @@ alias notes='cd ~/notes'
 tmux-sessionizer() {
     "${dots}/tmux-sessionizer.sh" "$@"
 }
+alias ts="tmux-sessionizer"
 alias ta="tmux attach"
 alias tl="tmux ls"
 alias proj="tmux-sessionizer ${HOME}/projects"
@@ -139,8 +140,8 @@ feh-fill() {
 if [ "$shell" = "bash" ]; then
     bind -x '"\C-f":tmux-sessionizer'
     bind -x '"\C-g":sd \n'
-elif [ "$shell" = "zsh" ]; then
-    bindkey -s ^f 'tmux-sessionizer\n'
-    bindkey -s ^g 'sd\n'
+elif [ "$shell" = "zsh" ] || [ "$shell" = "-zsh" ]; then
+    bindkey -s ^F 'tmux-sessionizer\n'
+    bindkey -s ^G 'sd\n'
 fi
 

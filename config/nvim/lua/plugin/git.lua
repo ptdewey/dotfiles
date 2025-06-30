@@ -2,7 +2,19 @@
 return {
     {
         "ptdewey/gitbrowse-nvim",
-        opts = {},
+        config = function()
+            require("gitbrowse").setup({})
+
+            -- Keymap
+            vim.keymap.set("n", "<leader>gb", function()
+                require("gitbrowse").open()
+            end, { desc = "Open current Git repository in browser" })
+
+            -- Command
+            vim.api.nvim_create_user_command("GitBrowse", function()
+                require("gitbrowse").open()
+            end, { desc = "Open current Git repository in browser" })
+        end
     },
 
     -- git integration

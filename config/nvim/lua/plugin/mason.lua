@@ -6,9 +6,9 @@ return {
         event = { "BufReadPost", "BufNewFile" },
 
         cmd = { "Mason" },
-        dependencies = {
-            "williamboman/mason-lspconfig.nvim",
-        },
+        -- dependencies = {
+        --     "williamboman/mason-lspconfig.nvim",
+        -- },
 
         config = function()
             -- Configure LSP
@@ -68,17 +68,19 @@ return {
             -- mason-lspconfig requires that these setup functions are called in this order
             -- before setting up the servers.
             require("mason").setup({})
-            require("mason-lspconfig").setup()
+            -- require("mason-lspconfig").setup()
 
             -- language servers to automatically install
             local servers = {
                 gopls = {},
                 lua_ls = {
-                    Lua = {
-                        workspace = { checkThirdParty = false },
-                        telemetry = { enable = false },
-                        globals = { "vim" },
-                    },
+                    -- settings = {
+                    --     Lua = {
+                    --         workspace = { checkThirdParty = false },
+                    --         telemetry = { enable = false },
+                    --         globals = { "vim" },
+                    --     },
+                    -- }
                 },
             }
 
@@ -86,24 +88,31 @@ return {
             capabilities = require("blink.cmp").get_lsp_capabilities()
 
             -- Ensure the servers above are installed
-            local mason_lspconfig = require("mason-lspconfig")
-
-            mason_lspconfig.setup({
-                ensure_installed = vim.tbl_keys(servers),
-                function(server_name)
-                    require("lspconfig")[server_name].setup({
-                        capabilities = capabilities,
-                        on_attach = on_attach,
-                        settings = servers[server_name],
-                        filetypes = (servers[server_name] or {}).filetypes,
-                    })
-                end,
-            })
+            -- local mason_lspconfig = require("mason-lspconfig")
+            --
+            -- mason_lspconfig.setup({
+            --     ensure_installed = vim.tbl_keys(servers),
+            --     function(server_name)
+            --         require("lspconfig")[server_name].setup({
+            --             capabilities = capabilities,
+            --             on_attach = on_attach,
+            --             settings = servers[server_name],
+            --             filetypes = (servers[server_name] or {}).filetypes,
+            --         })
+            --     end,
+            --     automatic_enable = {
+            --         exclude = {
+            --             "gopls",
+            --             "lua_ls",
+            --             "ruff",
+            --         }
+            --     }
+            -- })
         end,
     },
-    {
-        -- link mason and lspconfig
-        "williamboman/mason-lspconfig.nvim",
-        lazy = true,
-    },
+    -- {
+    --     -- link mason and lspconfig
+    --     "williamboman/mason-lspconfig.nvim",
+    --     lazy = true,
+    -- },
 }

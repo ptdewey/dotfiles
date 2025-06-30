@@ -29,22 +29,22 @@ else
     if command -v fd >/dev/null 2>&1; then
         selected=$(
             {
-                fd -L . ~/projects ~/school --type d --max-depth 1
+                fd -L . ~/projects ~/workspace --type d --max-depth 1
                 # whitelist
                 # fd -L . ~/Documents ~/notes ~/dotfiles ~/nixos --type d
                 # blacklist
-                fd -L . ~/ --type d --max-depth 1 --exclude 'go' --exclude 'Downloads' --exclude 'Desktop' --exclude templates
+                fd -L . ~/ --type d --max-depth 1 --exclude 'go' --exclude 'Downloads' --exclude 'Desktop' --exclude templates --exclude "Applications"
             } | fzf --preview='tree -LF 2 {}'
         )
     else
         selected=$(
             {
-                find ~/projects ~/school -mindepth 1 -maxdepth 1 -type d
+                find ~/projects ~/workspace -mindepth 1 -maxdepth 1 -type d
                 find ~/notes -mindepth 1 -maxdepth 2 -type d
                 # whitelist
                 # find ~/Documents ~/Downloads ~/dotfiles ~/nixos -mindepth 0 -maxdepth 1 -type d
                 # blacklist
-                find ~ -mindepth 1 -maxdepth 1 -type d ! -name 'Downloads' ! -name 'Desktop' ! -name 'go' ! -name 'templates'
+                find ~ -mindepth 1 -maxdepth 1 -type d ! -name 'Downloads' ! -name 'Desktop' ! -name 'go' ! -name 'templates' ! -name 'Applications'
             } | fzf --preview='tree -LF 2 {}'
         )
     fi

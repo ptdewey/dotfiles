@@ -38,7 +38,13 @@ return {
                             },
                             -- workspace = { checkThirdParty = false },
                             telemetry = { enable = false },
-                            globals = { "vim" },
+                            globals = { "vim", "hs" },
+                            workspace = {
+                                library = {
+                                    vim.fn.expand("~/dotfiles/home/hammerspoon/Spoons/EmmyLua.spoon/annotations")
+                                },
+                                checkThirdParty = false,
+                            }
                         },
                     },
                 },
@@ -93,7 +99,7 @@ return {
 
                             vim.print(
                                 "Updated pinned main to "
-                                    .. vim.api.nvim_buf_get_name(0)
+                                .. vim.api.nvim_buf_get_name(0)
                             )
                         end, {
                             desc = "tinymist: Pin buffer as main",
