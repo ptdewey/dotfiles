@@ -1,20 +1,14 @@
 -- Mouse follows focus
+hs.loadSpoon("EmmyLua")
 hs.loadSpoon("MouseFollowsFocus")
 spoon.MouseFollowsFocus:start()
 
 -- Hot reloading of config
-local _ = hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", function()
-    local doReload = false
-    for _, file in pairs(files) do
-        if file:sub(-4) == ".lua" then
-            doReload = true
-        end
-    end
-    if doReload then
-        hs.reload()
-        hs.alert.show("Config reloaded")
-    end
-end):start()
+hs.hotkey.bind({ "cmd", "ctrl" }, "R", function()
+    hs.reload()
+    hs.alert.show("Config loaded")
+end)
+
 
 
 -- local function focusAppByTitle(windowTitle)
@@ -47,6 +41,7 @@ hs.hotkey.bind({ "ctrl" }, "T", function() focusApp("WezTerm") end)
 hs.hotkey.bind({ "ctrl" }, "B", function() focusApp("Zen") end) -- NOTE: switch this key to open zen
 hs.hotkey.bind({ "ctrl" }, "X", function() focusApp("Slack") end)
 hs.hotkey.bind({ "ctrl", "cmd" }, "e", function() focusApp("Outlook") end)
+hs.hotkey.bind({ "ctrl", "cmd" }, "d", function() focusApp("Finder") end)
 
 -- "Workspace" navigation
 -- TODO:

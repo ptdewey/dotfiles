@@ -2,3 +2,5 @@
 scripts/git-prompt.sh linguist-vendored
 config/nvim/syntax/plantuml.vim linguist-vendored
 config/tmux/tmux-statusline.sh linguist-vendored
+home/hammerspoon/Spoons/* linguist-vendored
+home/hammerspoon/Spoons/EmmyLua.spoon/annotations/ linguist-generated

@@ -1,4 +1,3 @@
 {
-    "workspace.library": ["/Users/patrick.dewey/dotfiles/home/hammerspoon/Spoons/EmmyLua.spoon/annotations"],
-    "runtime.version": "Lua 5.3",
+    "workspace.library": ["~/dotfiles/home/hammerspoon/Spoons/EmmyLua.spoon/annotations"]
 }

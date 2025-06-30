@@ -6,3 +6,4 @@ scripts/ssh.sh
 *.uuid
 *log*
 *.DS_Store
+home/hammerspoon/Spoons/EmmyLua.spoon/annotations

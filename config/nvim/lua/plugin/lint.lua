@@ -1,9 +1,11 @@
 return {
     {
         "mfussenegger/nvim-lint",
+        event = { "BufWritePre" },
         config = function()
             require("lint").linters_by_ft = {
                 go = { "golangcilint" },
+                sh = { "shellcheck" },
             }
 
             vim.api.nvim_create_autocmd({ "BufWritePost" }, {

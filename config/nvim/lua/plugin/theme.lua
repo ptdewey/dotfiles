@@ -14,6 +14,11 @@ return {
         priority = 1000,
     },
 
+    {
+        "ptdewey/witchesbrew.nvim",
+        priority = 1000,
+    },
+
     -- gruvbox material
     -- { "sainnhe/gruvbox-material", priority = 1000 },
 
@@ -65,11 +70,6 @@ return {
     --         })
     --     end,
     -- },
-
-    {
-        "ptdewey/witchesbrew.nvim",
-        priority = 1000,
-    },
 
     -- {
     --     "sho-87/kanagawa-paper.nvim",
