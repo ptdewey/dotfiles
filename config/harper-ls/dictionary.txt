@@ -62,6 +62,7 @@ U.K.
 U.S.
 Underdiagnosis
 VC
+Wezterm
 Word2Vec
 api
 arg
@@ -86,6 +87,7 @@ iff
 integrations
 interpretable
 js
+keybinds
 keymap
 localhost
 misclassification

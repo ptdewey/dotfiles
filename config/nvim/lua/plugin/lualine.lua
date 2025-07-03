@@ -2,10 +2,7 @@ return {
     {
         "ptdewey/lualine.nvim",
         event = "VeryLazy",
-        dependencies = {
-            "letieu/harpoon-lualine",
-            -- "nvim-tree/nvim-web-devicons",
-        },
+        -- dependencies = { "nvim-tree/nvim-web-devicons" },
         opts = {
             options = {
                 icons_enabled = false,
@@ -21,14 +18,7 @@ return {
             },
             sections = {
                 lualine_b = {
-                    {
-                        "harpoon2",
-                        icon = "",
-                        padding = { left = 1, right = 1 },
-                        indicators = { "j", "k", "l" },
-                        active_indicators = { "J", "K", "L" },
-                        no_harpoon = "Harpoon not loaded",
-                    },
+                    { "grapple" },
                 },
                 lualine_c = {
                     { "filename", path = 5, padding = 1 },
@@ -36,14 +26,6 @@ return {
                 lualine_x = { "diagnostics", "diff" },
                 lualine_y = { "branch" },
             },
-        },
-    },
-    {
-        "letieu/harpoon-lualine",
-        lazy = true,
-        dependencies = {
-            "ThePrimeagen/harpoon",
-            branch = "harpoon2",
         },
     },
 }
