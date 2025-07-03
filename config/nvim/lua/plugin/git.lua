@@ -3,7 +3,7 @@ return {
     {
         "ptdewey/gitbrowse-nvim",
         keys = { "<leader>gb", desc = "[G]it [B]rowse" },
-        command = { "GitBrowse" },
+        cmd = { "GitBrowse" },
         config = function()
             require("gitbrowse").setup({})
 
@@ -22,7 +22,7 @@ return {
     -- git integration
     {
         "tpope/vim-fugitive",
-        command = { "Git" },
+        cmd = { "Git" },
         keys = {
             {
                 "<leader>gv",

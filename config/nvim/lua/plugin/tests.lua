@@ -2,7 +2,7 @@ return {
     {
         "andythigpen/nvim-coverage",
         -- TODO: load on custom event where cover.out file exists (or on "Coverage" command)
-        command = {
+        cmd = {
             "Coverage",
             "CoverageLoad",
             "CoverageToggle",
@@ -23,7 +23,7 @@ return {
     },
     {
         "nvim-neotest/neotest",
-        command = { "Neotest" },
+        cmd = { "Neotest" },
         keys = {
             { "<leader>tr", desc = "[T]est [R]un" },
             { "<leader>ts", desc = "[T]est [S]etup" },
