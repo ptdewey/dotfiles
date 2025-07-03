@@ -1,19 +1,14 @@
--- snippets
 return {
     {
         "L3MON4D3/LuaSnip",
         event = "InsertEnter",
-
         config = function()
             local ls = require("luasnip")
 
-            -- plugin setup
             ls.setup({
-                -- load snippets defined for other languages
                 -- TODO: fix this
                 load_ft_func = require("luasnip.extras.filetype_functions").extend_load_ft({
-                    markdown = { "c", "cuda", "tex" },
-                    rmd = { "r", "tex" },
+                    markdown = { "c", "tex" },
                     cuda = { "c" },
                 }),
             })

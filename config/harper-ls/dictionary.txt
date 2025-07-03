@@ -56,6 +56,7 @@ SVM
 SageMaker
 Subpopulation
 Theming
+Treesitter
 Typst
 U.K.
 U.S.

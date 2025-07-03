@@ -17,7 +17,6 @@ Text {
 
     Process {
         id: playerProc
-        // command: ["playerctl", "status"]
         command: ["playerctl", "metadata", "xesam:title"]
         stdout: SplitParser {
             onRead: data => root.status = data

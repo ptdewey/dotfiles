@@ -1,16 +1,15 @@
--- treesitter
+---@diagnostic disable: missing-fields
 local M = {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     priority = 999,
 }
 
--- Defer Treesitter setup after first render to improve startup time of 'nvim {filename}'
+-- Defer Treesitter setup after first render to improve start-up time of 'nvim {filename}'
 vim.defer_fn(function()
     require("nvim-treesitter.configs").setup({
-        ensure_installed = { "markdown", "html", "lua", "yaml", "go" },
+        -- ensure_installed = { "markdown", "lua", "go" },
         auto_install = true,
-
         highlight = { enable = true },
         indent = { enable = true },
         incremental_selection = {

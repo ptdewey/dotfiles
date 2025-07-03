@@ -1,16 +1,22 @@
 -- language server configuration plugins
+
+-- TODO: replace inlay hints plugin with autocmd:
+-- Something like the following may work (needs to be autocmd instead of keymap though)
+-- ```
+--   if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
+--     map('<leader>th', function()
+--       vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
+--     end, '[T]oggle Inlay [H]ints')
+--   end
+-- ```
 return {
     {
-        -- lsp setup
         "neovim/nvim-lspconfig",
         event = { "BufReadPost", "BufNewFile", "FileType" },
-
         dependencies = {
             "williamboman/mason.nvim",
-            "williamboman/mason-lspconfig.nvim",
             "saghen/blink.cmp",
         },
-
         vim.diagnostic.config({
             -- virtual_lines = true
             virtual_text = true,
@@ -36,15 +42,16 @@ return {
                             hint = {
                                 enable = true,
                             },
-                            -- workspace = { checkThirdParty = false },
                             telemetry = { enable = false },
                             globals = { "vim", "hs" },
                             workspace = {
                                 library = {
-                                    vim.fn.expand("~/dotfiles/home/hammerspoon/Spoons/EmmyLua.spoon/annotations")
+                                    vim.fn.expand(
+                                        "~/dotfiles/home/hammerspoon/Spoons/EmmyLua.spoon/annotations"
+                                    ),
                                 },
                                 checkThirdParty = false,
-                            }
+                            },
                         },
                     },
                 },
@@ -99,7 +106,7 @@ return {
 
                             vim.print(
                                 "Updated pinned main to "
-                                .. vim.api.nvim_buf_get_name(0)
+                                    .. vim.api.nvim_buf_get_name(0)
                             )
                         end, {
                             desc = "tinymist: Pin buffer as main",
@@ -129,6 +136,7 @@ return {
                                 ToDoHyphen = false,
                                 Dashes = false,
                                 LongSentences = false,
+                                SentenceCapitalization = false,
                             },
                         },
                     },
@@ -144,7 +152,6 @@ return {
 
         config = function(_, opts)
             local lspconfig = require("lspconfig")
-
             for server, config in pairs(opts.servers) do
                 config.capabilities = require("blink.cmp").get_lsp_capabilities(
                     config.capabilities

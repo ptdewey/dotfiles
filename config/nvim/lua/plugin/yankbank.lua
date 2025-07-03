@@ -22,10 +22,10 @@ return {
             { "v" },
             { "V" },
             { "<leader>p", desc = "Open YankBank" },
+            { "<leader>y", desc = "Paste from YankBank by index" },
         },
 
         cmd = { "YankBank" },
-
         event = { "FocusGained" },
 
         config = function()
@@ -42,6 +42,7 @@ return {
                 keymaps = {},
                 persist_type = "sqlite",
                 debug = true,
+                bind_indices = "<leader>y",
             })
 
             -- set popup keymap

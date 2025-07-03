@@ -2,8 +2,6 @@ import Quickshell
 import Quickshell.Io
 import QtQuick
 
-// import "niri-state.mjs" as NiriState
-
 Item {
     property string accumulatedText: ""
 

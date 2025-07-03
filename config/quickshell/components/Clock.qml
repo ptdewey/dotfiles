@@ -1,12 +1,11 @@
 import QtQuick
 
-import "./config"
+import "root:/config"
+import "root:/widgets"
 
 Text {
     text: Time.time
-
     color: "white"
-    // anchors.centerIn: parent
     font.pointSize: Appearance.font.size.normal
     font.family: Appearance.font.family.mono
 }

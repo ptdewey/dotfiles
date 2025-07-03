@@ -2,16 +2,22 @@ return {
     {
         "andythigpen/nvim-coverage",
         -- TODO: load on custom event where cover.out file exists (or on "Coverage" command)
-        command = { "Coverage", "CoverageLoad", "CoverageToggle", "CoverageShow", "CoverageSummary" },
+        command = {
+            "Coverage",
+            "CoverageLoad",
+            "CoverageToggle",
+            "CoverageShow",
+            "CoverageSummary",
+        },
         config = function()
             require("coverage").setup({
                 auto_reload = true,
                 commands = true,
                 lang = {
                     go = {
-                        coverage_file = "cover.out"
-                    }
-                }
+                        coverage_file = "cover.out",
+                    },
+                },
             })
         end,
     },
@@ -33,7 +39,7 @@ return {
             {
                 "fredrikaverpil/neotest-golang",
                 dependencies = {
-                    "andythigpen/nvim-coverage"
+                    "andythigpen/nvim-coverage",
                 },
             },
         },
@@ -67,28 +73,37 @@ return {
                 vim.api.nvim_set_current_win(win)
             end
 
-            vim.api.nvim_create_user_command("TestsSetup", function() setup_tests() end,
-                { desc = "Open the testing summary and start show coverage" })
-            vim.api.nvim_create_user_command("TestsRunFile",
-                function() require("neotest").run.run(vim.fn.expand("%")) end,
-                { desc = "Run all tests in the current file with neotest" })
+            vim.api.nvim_create_user_command("TestsSetup", function()
+                setup_tests()
+            end, {
+                desc = "Open the testing summary and start show coverage",
+            })
+            vim.api.nvim_create_user_command("TestsRunFile", function()
+                require("neotest").run.run(vim.fn.expand("%"))
+            end, {
+                desc = "Run all tests in the current file with neotest",
+            })
 
             vim.keymap.set("n", "<leader>th", function()
-                    require("neotest").run.run()
-                end,
-                { desc = "[T]est [H]ere" })
+                require("neotest").run.run()
+            end, { desc = "[T]est [H]ere" })
             -- TODO: make this run alternate file tests as well (i.e. in foo.go run foo_test.go, otherwise do nothing)
             vim.keymap.set("n", "<leader>tr", function()
-                    require("neotest").run.run(vim.fn.expand("%"))
-                    -- run_file_tests()
-                end,
-                { desc = "[T]est [R]un", silent = true })
-            vim.keymap.set("n", "<leader>ta", function() require("neotest").run.run({ suite = true }) end,
-                { desc = "[T]est [A]ll" })
-            vim.keymap.set("n", "<leader>ts", setup_tests,
-                { desc = "[T]ests [S]etup", silent = true })
-            vim.keymap.set("n", "<leader>tc", function() require("coverage").toggle() end,
-                { desc = "[T]oggle [C]overage" })
+                require("neotest").run.run(vim.fn.expand("%"))
+                -- run_file_tests()
+            end, { desc = "[T]est [R]un", silent = true })
+            vim.keymap.set("n", "<leader>ta", function()
+                require("neotest").run.run({ suite = true })
+            end, { desc = "[T]est [A]ll" })
+            vim.keymap.set(
+                "n",
+                "<leader>ts",
+                setup_tests,
+                { desc = "[T]ests [S]etup", silent = true }
+            )
+            vim.keymap.set("n", "<leader>tc", function()
+                require("coverage").toggle()
+            end, { desc = "[T]oggle [C]overage" })
 
             -- TODO: "<leader>tf" for jumping to paired test file (like that one plugin does, shouldn't be too hard for go)
         end,

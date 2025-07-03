@@ -1,4 +1,3 @@
--- Autocompletion
 return {
     {
         "saghen/blink.cmp",
@@ -162,6 +161,7 @@ return {
         "xzbdmw/colorful-menu.nvim",
         lazy = true,
         config = function()
+            ---@diagnostic disable-next-line: missing-fields
             require("colorful-menu").setup({})
         end,
     },

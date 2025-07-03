@@ -51,6 +51,8 @@
             "zen-beta": "Zen Browser",
             "discord": "Discord",
             "spotify": "Spotify",
+            "org.gnome.Nautilus": "Nautilus",
+            "vlc": "VLC",
         }
     },
     "idle_inhibitor": {

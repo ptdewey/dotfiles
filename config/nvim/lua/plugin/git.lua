@@ -2,6 +2,8 @@
 return {
     {
         "ptdewey/gitbrowse-nvim",
+        keys = { "<leader>gb", desc = "[G]it [B]rowse" },
+        command = { "GitBrowse" },
         config = function()
             require("gitbrowse").setup({})
 
@@ -14,12 +16,13 @@ return {
             vim.api.nvim_create_user_command("GitBrowse", function()
                 require("gitbrowse").open()
             end, { desc = "Open current Git repository in browser" })
-        end
+        end,
     },
 
     -- git integration
     {
         "tpope/vim-fugitive",
+        command = { "Git" },
         keys = {
             {
                 "<leader>gv",

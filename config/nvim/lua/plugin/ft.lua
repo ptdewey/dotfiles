@@ -1,4 +1,4 @@
--- various filetype specific plugins
+---@diagnostic disable: missing-fields
 return {
     {
         "fredrikaverpil/godoc.nvim",
@@ -39,25 +39,6 @@ return {
         },
         config = function()
             require("nvim-ts-autotag").setup({})
-        end,
-    },
-
-    -- knit r files
-    {
-        "ptdewey/knitr-nvim",
-        -- branch = "dev",
-        branch = "main",
-
-        -- load for correct file types only
-        ft = { "r", "rmd" },
-
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-        },
-
-        config = function()
-            require("knitr").setup()
-            vim.keymap.set("n", "<F6>", ":KnitRpdf<CR>", { noremap = true })
         end,
     },
 

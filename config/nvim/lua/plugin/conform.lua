@@ -1,9 +1,7 @@
 return {
     {
         "stevearc/conform.nvim",
-
         event = "BufWritePre",
-
         config = function()
             require("conform").setup({
                 formatters_by_ft = {
@@ -12,6 +10,7 @@ return {
                     typescript = { "prettierd" },
                     javascriptreact = { "prettierd" },
                     typescriptreact = { "prettierd" },
+                    html = { "prettierd" },
                     svelte = { "svelte" },
                     go = { "gofmt", "goimports" },
                     rust = { "rustfmt" },
