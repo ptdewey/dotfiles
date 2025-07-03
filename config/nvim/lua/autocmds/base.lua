@@ -1,5 +1,3 @@
--- autocmds for base nvim
-
 -- fix netrw navigation for split keyboard (numpad '-' key)
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "netrw",

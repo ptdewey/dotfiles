@@ -1,4 +1,3 @@
--- Custom options
 local options = {
     number = true,
     rnu = true,

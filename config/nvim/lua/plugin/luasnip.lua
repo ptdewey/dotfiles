@@ -4,13 +4,9 @@ return {
         event = "InsertEnter",
         config = function()
             local ls = require("luasnip")
-
-            ls.setup({
-                -- TODO: fix this
-                load_ft_func = require("luasnip.extras.filetype_functions").extend_load_ft({
-                    markdown = { "c", "tex" },
-                    cuda = { "c" },
-                }),
+            ls.setup({})
+            require("luasnip.loaders.from_lua").load({
+                paths = { "~/dotfiles/config/nvim/lua/snippets" },
             })
 
             -- keymaps for navigating editable regions
