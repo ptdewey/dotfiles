@@ -157,13 +157,6 @@ function M.init(opts)
         { desc = "Insert [N]ote [L]ink" }
     )
 
-    vim.keymap.set(
-        "n",
-        "<leader>lf",
-        M.follow_link,
-        { desc = "[F]ollow [L]ink" }
-    )
-
     vim.api.nvim_create_user_command(
         "Blueprinter",
         M.create_file_blueprinter,

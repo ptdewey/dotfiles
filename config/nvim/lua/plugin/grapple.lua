@@ -36,16 +36,16 @@ return {
             },
 
             -- FIX: cycling keybinds don't work with Wezterm
-            {
-                "<C-S-n>",
-                "<cmd>Grapple cycle_tags next<cr>",
-                desc = "Go to next tag",
-            },
-            {
-                "<C-S-p>",
-                "<cmd>Grapple cycle_tags prev<cr>",
-                desc = "Go to previous tag",
-            },
+            -- {
+            --     "<leader>h",
+            --     "<cmd>Grapple cycle_tags next<cr>",
+            --     desc = "Go to next tag",
+            -- },
+            -- {
+            --     "<leader>j",
+            --     "<cmd>Grapple cycle_tags prev<cr>",
+            --     desc = "Go to previous tag",
+            -- },
         },
     },
 }

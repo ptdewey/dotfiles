@@ -160,6 +160,16 @@ return {
             end
         end,
     },
+
+    {
+        "williamboman/mason.nvim",
+        cmd = { "Mason" },
+        config = function()
+            ---@diagnostic disable-next-line: missing-fields
+            require("mason").setup({})
+        end,
+    },
+
     {
         -- useful status updates for LSP
         "j-hui/fidget.nvim",
@@ -169,6 +179,7 @@ return {
             require("fidget").setup({})
         end,
     },
+
     {
         -- floating signature help
         "ray-x/lsp_signature.nvim",

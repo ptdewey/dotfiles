@@ -1,8 +1,7 @@
--- Git-related plugins
 return {
     {
         "ptdewey/gitbrowse-nvim",
-        keys = { "<leader>gb", desc = "[G]it [B]rowse" },
+        keys = { { "<leader>gb", desc = "[G]it [B]rowse" } },
         cmd = { "GitBrowse" },
         config = function()
             require("gitbrowse").setup({})
@@ -19,10 +18,9 @@ return {
         end,
     },
 
-    -- git integration
     {
         "tpope/vim-fugitive",
-        cmd = { "Git" },
+        -- cmd = { "Git" },
         keys = {
             {
                 "<leader>gv",
@@ -30,12 +28,12 @@ return {
                 silent = true,
                 desc = "View Git diff",
             },
-            {
-                "<leader>gs",
-                "<cmd>Git<CR>",
-                silent = true,
-                desc = "View Git status",
-            },
+            -- {
+            --     "<leader>gs",
+            --     "<cmd>Git<CR>",
+            --     silent = true,
+            --     desc = "View Git status",
+            -- },
             {
                 "<leader>gl",
                 "<cmd>Gclog<CR>",
@@ -45,7 +43,6 @@ return {
         },
     },
 
-    -- add git signs to gutter
     {
         "lewis6991/gitsigns.nvim",
         event = { "BufReadPost" },

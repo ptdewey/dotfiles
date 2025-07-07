@@ -61,6 +61,9 @@ return {
             vim.keymap.set("n", "<leader>sh", function()
                 fzf.help_tags({
                     winopts = { preview = { horizontal = "right:60%" } },
+                    actions = {
+                        ["default"] = fzf.actions.buf_tabedit,
+                    },
                 })
             end, { desc = "[S]earch [H]elp tags" })
 
@@ -113,14 +116,6 @@ return {
                 fzf.lsp_references()
             end, { desc = "[G]oto [R]eferences" })
 
-            vim.keymap.set("n", "<leader>hf", function()
-                fzf.files({ cwd = "~/", hidden = false })
-            end, { desc = "[H]ome [F]iles" })
-
-            vim.keymap.set("n", "<leader>hg", function()
-                fzf.grep_project({ cwd = "~/", hidden = false })
-            end, { desc = "[H]ome [G]rep" })
-
             -- TODO: move to namu when workspace symbols search is added
             vim.keymap.set("n", "<leader>sw", function()
                 fzf.lsp_workspace_symbols()
@@ -138,6 +133,10 @@ return {
                 fzf.lsp_definitions()
                 vim.cmd("normal! zz")
             end, { noremap = true, desc = "[G]oto [D]efinition" })
+
+            vim.keymap.set("n", "<leader>gs", function()
+                fzf.git_status()
+            end, { noremap = true, desc = "[G]it [S]tatus" })
         end,
     },
 
