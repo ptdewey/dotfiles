@@ -4,18 +4,14 @@
 *material-design-icons*
 *go/pkg*
 *R/x86*
-*AUR*
-*crates*
 *eclipse*
 *fontawesome*
-*.repos*
 .git
 Downloads/*/
 *frc-scouting-db/output/
 *node_modules*
 *.settings*
 *Pictures*
-*NVIDIA Nsight*
 *Downloads
 *Music
 *qmk_firmware*
