@@ -4,7 +4,7 @@ return {
         opts = {
             scope = "git", -- TODO: try "git_branch" (and figure out cwd based scope as well?)
             icons = false,
-            status = false,
+            statusline = { include_icon = false },
         },
         keys = {
             { "<leader>a", "<cmd>Grapple toggle<cr>", desc = "Tag a file" },

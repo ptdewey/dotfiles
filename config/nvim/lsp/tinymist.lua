@@ -1,7 +1,13 @@
 vim.lsp.config["tinymist"] = {
-    cmd = { "tinymist" },
+    -- NOTE: as long as lspconfig is being used, cmd is likely not necesary
+    -- cmd = { "tinymist" },
+
     filetypes = { "typst" },
-    -- settings = {},
+    settings = {
+        exportPdf = "onSave",
+        formatterMode = "typstyle",
+        semanticTokens = "disable",
+    },
     on_attach = function(client, bufnr)
         vim.keymap.set("n", "<leader>tp", function()
             client:exec_cmd({

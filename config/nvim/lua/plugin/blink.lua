@@ -2,11 +2,8 @@ return {
     {
         "saghen/blink.cmp",
         dependencies = {
-            -- {
-            --     "Kaiser-Yang/blink-cmp-dictionary",
-            --     dependencies = { "nvim-lua/plenary.nvim" },
-            -- },
             { "L3MON4D3/LuaSnip", version = "v2.*" },
+            "fang2hou/blink-copilot",
             "mikavilpas/blink-ripgrep.nvim",
         },
 
@@ -40,15 +37,7 @@ return {
                 ["<C-p>"] = { "select_prev", "fallback_to_mappings" },
                 ["<C-j>"] = { "select_next", "fallback_to_mappings" },
                 ["<C-k>"] = { "select_prev", "fallback_to_mappings" },
-                -- ["<Tab>"] = { "select_next", "fallback_to_mappings" },
-                -- ["<S-Tab>"] = { "select_prev", "fallback_to_mappings" },
                 ["<C-l>"] = { "show_signature", "hide_signature", "fallback" },
-                -- ["<C-g>"] = {
-                --     function()
-                --         -- invoke manually, requires blink >v0.8.0
-                --         require("blink-cmp").show({ providers = { "ripgrep" } })
-                --     end,
-                -- },
             },
 
             appearance = {
@@ -59,7 +48,7 @@ return {
 
             completion = {
                 -- (Default) Only show the documentation popup when manually triggered
-                documentation = { auto_show = false },
+                documentation = { auto_show = true },
                 menu = {
                     draw = {
                         align_to = "cursor",
@@ -97,6 +86,7 @@ return {
             -- Default list of enabled providers defined so that you can extend it
             -- elsewhere in your config, without redefining it, due to `opts_extend`
             sources = {
+
                 default = {
                     "lazydev",
                     "lsp",
@@ -104,6 +94,7 @@ return {
                     "snippets",
                     "buffer",
                     "ripgrep",
+                    "copilot",
                     -- "dictionary",
                 },
 
@@ -112,38 +103,23 @@ return {
                     snippets = { score_offset = 55 },
                     path = { score_offset = 10 },
                     buffer = { score_offset = 15 },
-                    lazydev = {
-                        name = "LazyDev",
-                        module = "lazydev.integrations.blink",
-                        -- make lazydev completions top priority (see `:h blink.cmp`)
-                        score_offset = 46,
-                    },
+                    lazydev = { name = "LazyDev", module = "lazydev.integrations.blink", score_offset = 46 },
                     ripgrep = {
                         module = "blink-ripgrep",
                         name = "Ripgrep",
                         opts = {
                             max_filesize = "200K",
-                            future_features = {
-                                issue185_workaround = true,
-                            },
+                            future_features = {},
                         },
                         score_offset = 1,
                     },
-                    -- dictionary = {
-                    --     module = "blink-cmp-dictionary",
-                    --     name = "Dict",
-                    --     min_keyword_length = 3,
-                    --     opts = {
-                    --         dictionary_files = function()
-                    --             local types = { "markdown", "typst", "latex" }
-                    --             if vim.tbl_contains(types, vim.bo.filetype) then
-                    --                 return {
-                    --                     vim.fn.expand("~/Downloads/words.txt"),
-                    --                 }
-                    --             end
-                    --         end,
-                    --     },
-                    -- },
+                    copilot = {
+                        name = "copilot",
+                        module = "blink-copilot",
+                        score_offset = 100,
+                        async = true,
+                    },
+
                 },
             },
 

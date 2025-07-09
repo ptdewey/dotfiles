@@ -81,12 +81,25 @@ local vars = {
 -- vim.fn.matchadd("Identifier", "\\(PASSED:\\)")
 -- vim.fn.matchadd("Identifier", "\\(FAILED:\\)")
 
+-- LSP diagnostic config
+vim.diagnostic.config({
+    -- virtual_lines = true
+    virtual_text = true,
+    -- update_in_insert = true,
+    float = {
+        focusable = false,
+        style = "minimal",
+        border = "rounded",
+        source = true,
+        header = "",
+        prefix = "",
+    },
+})
+
 -- theme options
 -- vim.cmd.colorscheme("darkearth")
 -- vim.cmd.colorscheme("witchesbrew")
 vim.cmd.colorscheme("monalisa")
--- vim.cmd.colorscheme("vague")
--- vim.cmd.colorscheme("kanagawa-paper")
 
 -- apply options
 for k, v in pairs(options) do

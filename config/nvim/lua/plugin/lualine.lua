@@ -3,9 +3,10 @@ return {
         "ptdewey/lualine.nvim",
         event = "VeryLazy",
         -- dependencies = { "nvim-tree/nvim-web-devicons" },
+        dependencies = { "echasnovski/mini.icons" },
         opts = {
             options = {
-                icons_enabled = false,
+                icons_enabled = true,
                 theme = "auto",
                 component_separators = "|",
                 section_separators = "",

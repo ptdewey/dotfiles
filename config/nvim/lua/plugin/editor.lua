@@ -4,18 +4,27 @@ return {
         "echasnovski/mini.ai",
         version = false,
         event = "VeryLazy",
-        config = function()
-            require("mini.ai").setup({})
-        end,
+        config = function() require("mini.ai").setup({}) end,
     },
 
     {
         "echasnovski/mini.jump",
         version = false,
         event = "VeryLazy",
-        config = function()
-            require("mini.jump").setup({})
-        end,
+        config = function() require("mini.jump").setup({}) end,
+    },
+
+    {
+        "jechasnovski/mini.icons",
+        opts = {},
+    },
+
+    {
+        "echasnovski/mini.tabline",
+        -- dependencies = { "nvim-tree/nvim-web-devicons" },
+        dependencies = { "echasnovski/mini.icons" },
+        version = false,
+        config = function() require("mini.tabline").setup({}) end
     },
 
     {

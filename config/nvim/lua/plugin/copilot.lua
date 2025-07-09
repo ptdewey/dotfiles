@@ -3,12 +3,11 @@ return {
         "zbirenbaum/copilot.lua",
         cmd = "Copilot",
         keys = { { "<leader>ce", desc = "[C]opilot [E]nable" } },
-
-        -- event = "InsertEnter", -- TODO: change to event to key/cmd (not enabled by default)
         config = function()
             require("copilot").setup({
                 panel = { enabled = false },
                 suggestion = {
+                    enabled = false,
                     auto_trigger = true,
                     keymap = {
                         accept = "<M-h>",
@@ -18,7 +17,7 @@ return {
                         dismiss = "<C-/>",
                     },
                 },
-                filetypes = { markdown = true, typst = true },
+                filetypes = { markdown = true, typst = true, help = true },
             })
 
             vim.keymap.set(

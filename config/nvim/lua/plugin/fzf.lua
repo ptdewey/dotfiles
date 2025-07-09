@@ -22,7 +22,7 @@ return {
                 },
                 files = {
                     git_icons = false,
-                    file_icons = false,
+                    file_icons = true,
                     formatter = "path.filename_first",
                 },
                 grep = {
@@ -54,7 +54,13 @@ return {
             vim.keymap.set("n", "<leader>sg", function()
                 fzf.grep_project({
                     fzf_opts = { ["--nth"] = "2.." },
-                    winopts = { preview = { horizontal = "right:40%" } },
+                    winopts = {
+                        preview = {
+                            -- horizontal = "right:40%"
+                            vertical = "down:40%",
+                            layout = "vertical",
+                        }
+                    },
                 })
             end, { desc = "[S]earch [G]rep" })
 

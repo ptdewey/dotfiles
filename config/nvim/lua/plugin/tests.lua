@@ -47,6 +47,10 @@ return {
         config = function()
             ---@diagnostic disable-next-line: missing-fields
             require("neotest").setup({
+                ---@diagnostic disable-next-line: missing-fields
+                summary = {
+                    open = "botright vsplit | vertical resize 35",
+                },
                 adapters = {
                     require("neotest-golang")({
                         runner = "go",

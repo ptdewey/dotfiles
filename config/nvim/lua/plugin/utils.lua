@@ -1,7 +1,6 @@
 return {
     {
-        -- "ptdewey/deez-nvim",
-        dir = "~/projects/deez-nvim",
+        "ptdewey/deez-nvim",
         keys = {
             { "<leader>gb", desc = "[G]it [B]rowse" },
             { "<leader>tf", desc = "Open Al[T]ernate [F]ile" },

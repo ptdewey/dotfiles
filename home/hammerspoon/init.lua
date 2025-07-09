@@ -43,11 +43,9 @@ end
 -- Focus hotkeys
 hs.hotkey.bind({ "ctrl" }, "t", function() focusApp("WezTerm", { open = true }) end)
 hs.hotkey.bind({ "ctrl" }, "b", function() focusApp("Zen", { open = true }) end)
-hs.hotkey.bind({ "ctrl" }, "s", function() focusApp("Slack", { open = true }) end)
 hs.hotkey.bind({ "ctrl", "shift" }, "x", function() focusApp("Slack", { open = true }) end)
-hs.hotkey.bind({ "ctrl", "cmd" }, "x", function() focusApp("Slack", { open = true }) end)
-hs.hotkey.bind({ "ctrl", "cmd" }, "e", function() focusApp("Outlook", { open = true }) end)
-hs.hotkey.bind({ "ctrl", "cmd" }, "d", function() focusApp("Finder", { open = true }) end)
+hs.hotkey.bind({ "ctrl", "shift" }, "e", function() focusApp("Outlook", { open = true }) end)
+hs.hotkey.bind({ "ctrl", "shift" }, "d", function() focusApp("Finder", { open = true }) end)
 
 -- "Workspace" navigation
 -- TODO:
