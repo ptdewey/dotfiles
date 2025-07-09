@@ -1,5 +1,15 @@
 return {
     {
+        -- TODO: also look into treesitter-textobjects https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+        "echasnovski/mini.ai",
+        version = false,
+        event = "VeryLazy",
+        config = function()
+            require("mini.ai").setup({})
+        end,
+    },
+
+    {
         "folke/todo-comments.nvim",
         dependencies = { "ibhagwan/fzf-lua" },
         event = { "BufReadPost", "BufNewFile" },
