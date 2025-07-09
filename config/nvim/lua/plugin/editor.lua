@@ -10,6 +10,15 @@ return {
     },
 
     {
+        "echasnovski/mini.jump",
+        version = false,
+        event = "VeryLazy",
+        config = function()
+            require("mini.jump").setup({})
+        end,
+    },
+
+    {
         "folke/todo-comments.nvim",
         dependencies = { "ibhagwan/fzf-lua" },
         event = { "BufReadPost", "BufNewFile" },
