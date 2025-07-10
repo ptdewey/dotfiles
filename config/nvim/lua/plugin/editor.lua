@@ -1,58 +1,19 @@
 return {
     {
-        -- TODO: also look into treesitter-textobjects https://github.com/nvim-treesitter/nvim-treesitter-textobjects
-        "echasnovski/mini.ai",
-        version = false,
-        event = "VeryLazy",
-        config = function() require("mini.ai").setup({}) end,
-    },
-
-    {
-        "echasnovski/mini.jump",
-        version = false,
-        event = "VeryLazy",
-        config = function() require("mini.jump").setup({}) end,
-    },
-
-    {
-        "jechasnovski/mini.icons",
-        opts = {},
-    },
-
-    {
-        "echasnovski/mini.tabline",
-        -- dependencies = { "nvim-tree/nvim-web-devicons" },
-        dependencies = { "echasnovski/mini.icons" },
-        version = false,
-        config = function() require("mini.tabline").setup({}) end
-    },
-
-    {
         "folke/todo-comments.nvim",
         dependencies = { "ibhagwan/fzf-lua" },
         event = { "BufReadPost", "BufNewFile" },
-        keys = { "<leader>tt" },
-
-        -- TODO: replace plugin with vanilla variant + custom telescope keybind
-        -- https://www.reddit.com/r/neovim/comments/1cmgp9k/comment/l33co7r/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
 
         config = function()
             require("todo-comments").setup({
                 signs = false,
                 keywords = {
-                    DOC = {
-                        alt = { "DOCS" },
-                    },
-                    REFACTOR = {
-                        color = "warning",
-                        alt = { "REFAC" },
-                    },
-                    CHANGE = {
-                        color = "warning",
-                    },
+                    DOC = { alt = { "DOCS" } },
+                    REFACTOR = { color = "warning" },
+                    CHANGE = { color = "warning" },
                 },
             })
-            -- navigation
+
             vim.keymap.set("n", "]t", function()
                 require("todo-comments").jump_next()
                 vim.cmd("normal! zz")
@@ -62,10 +23,6 @@ return {
                 require("todo-comments").jump_prev()
                 vim.cmd("normal! zz")
             end, { desc = "Previous todo comment" })
-
-            vim.keymap.set("n", "<leader>tt", function()
-                vim.cmd("TodoFzfLua")
-            end, { desc = "[T]odo [T]elescope", silent = true })
         end,
     },
 
@@ -78,14 +35,6 @@ return {
                 desc = "[U]ndoTree [T]oggle",
             },
         },
-    },
-
-    {
-        "windwp/nvim-autopairs",
-        event = "InsertEnter",
-        config = function()
-            require("nvim-autopairs").setup({})
-        end,
     },
 
     {
@@ -102,24 +51,25 @@ return {
         end,
     },
 
-    {
-        "numToStr/Comment.nvim",
-        config = function()
-            require("Comment").setup()
-
-            vim.keymap.set(
-                "n",
-                "<leader>/",
-                "gcc",
-                { desc = "Toggle Comment", remap = true }
-            )
-
-            vim.keymap.set(
-                "x",
-                "<leader>/",
-                "gc",
-                { desc = "Toggle Comment", remap = true }
-            )
-        end,
-    },
+    -- {
+    --     "numToStr/Comment.nvim",
+    --     event = "VeryLazy",
+    --     config = function()
+    --         require("Comment").setup()
+    --
+    --         vim.keymap.set(
+    --             "n",
+    --             "<leader>/",
+    --             "gcc",
+    --             { desc = "Toggle Comment", remap = true }
+    --         )
+    --
+    --         vim.keymap.set(
+    --             "x",
+    --             "<leader>/",
+    --             "gc",
+    --             { desc = "Toggle Comment", remap = true }
+    --         )
+    --     end,
+    -- },
 }

@@ -1,13 +1,3 @@
--- key bindings
-
--- general keybindings
--- vim.keymap.set(
---     "n",
---     ";",
---     ":",
---     { noremap = true, desc = "semicolon to colon in normal mode" }
--- )
-
 -- buffer switching
 vim.keymap.set(
     "n",
@@ -98,7 +88,7 @@ vim.keymap.set(
     "<C-\\><C-n>",
     { nowait = true, desc = "Exit terminal insert mode" }
 )
--- vim.keymap.set({"n", "x"}, "<Space>", "<Nop>", { silent = true })
+
 vim.keymap.set(
     "n",
     "<Esc>",
@@ -107,24 +97,23 @@ vim.keymap.set(
 )
 
 -- diagnostics
-vim.keymap.set(
-    "n",
-    "[d",
-    vim.diagnostic.goto_prev,
-    { desc = "Go to previous diagnostic message" }
-)
-vim.keymap.set(
-    "n",
-    "]d",
-    vim.diagnostic.goto_next,
-    { desc = "Go to next diagnostic message" }
-)
+vim.keymap.set("n", "[d", function()
+    vim.diagnostic.jump({ diagnostic = vim.diagnostic.get_prev() })
+    vim.cmd("normal! zz")
+end, { desc = "Go to previous diagnostic message" })
+
+vim.keymap.set("n", "]d", function()
+    vim.diagnostic.jump({ diagnostic = vim.diagnostic.get_next() })
+    vim.cmd("normal! zz")
+end, { desc = "Go to next diagnostic message" })
+
 vim.keymap.set(
     "n",
     "<leader>e",
     vim.diagnostic.open_float,
     { desc = "Open floating diagnostic msg" }
 )
+
 vim.keymap.set(
     "n",
     "<leader>q",
@@ -315,16 +304,16 @@ end, { desc = "[W]orkspace [L]ist Folders" })
 --     vim.lsp.buf.format()
 -- end, { desc = "Format current buffer with LSP" })
 
--- vim.keymap.set(
---     "n",
---     "<leader>/",
---     "gcc",
---     { desc = "Toggle Comment", remap = true }
--- )
---
--- vim.keymap.set(
---     "x",
---     "<leader>/",
---     "gc",
---     { desc = "Toggle Comment", remap = true }
--- )
+vim.keymap.set(
+    "n",
+    "<leader>/",
+    "gcc",
+    { desc = "Toggle Comment", remap = true }
+)
+
+vim.keymap.set(
+    "x",
+    "<leader>/",
+    "gc",
+    { desc = "Toggle Comment", remap = true }
+)

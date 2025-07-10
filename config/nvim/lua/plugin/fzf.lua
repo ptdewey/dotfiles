@@ -56,10 +56,9 @@ return {
                     fzf_opts = { ["--nth"] = "2.." },
                     winopts = {
                         preview = {
-                            -- horizontal = "right:40%"
                             vertical = "down:40%",
                             layout = "vertical",
-                        }
+                        },
                     },
                 })
             end, { desc = "[S]earch [G]rep" })
@@ -94,17 +93,18 @@ return {
                 fzf.buffers()
             end, { desc = "Browse [B]uffers" })
 
-            -- vim.keymap.set("n", "<leader>tt", function()
-            --     fzf.grep_project({
-            --         search = "TODO|PERF|NOTE|FIX|DOC|REFACTOR|BUG",
-            --         no_esc = true,
-            --         winopts = {
-            --             preview = {
-            --                 horizontal = "right:40%",
-            --             },
-            --         },
-            --     })
-            -- end, { desc = "Search [T]odo", noremap = true })
+            vim.keymap.set("n", "<leader>tt", function()
+                fzf.grep_project({
+                    search = [[\b(TODO|PERF|NOTE|FIX|DOC|REFACTOR|BUG):]],
+                    no_esc = true,
+                    winopts = {
+                        preview = {
+                            vertical = "down:35%",
+                            layout = "vertical",
+                        },
+                    },
+                })
+            end, { desc = "Search [T]odo", noremap = true })
 
             vim.keymap.set("n", "<leader>ca", function()
                 fzf.lsp_code_actions()
@@ -163,4 +163,27 @@ return {
             })
         end,
     },
+
+    -- TODO: experiment more with this one
+    -- {
+    --     "otavioschwanck/fzf-lua-explorer.nvim",
+    --     dependencies = { "ibhagwan/fzf-lua" },
+    --     keys = {
+    --         {
+    --             "<leader>.",
+    --             function()
+    --                 require("fzf-lua-explorer").explorer()
+    --             end,
+    --             desc = "Explorer",
+    --         },
+    --     },
+    --     config = function()
+    --         require("fzf-lua-explorer").setup({
+    --             show_icons = false,
+    --             keybindings = {
+    --                 -- create_file = "%",
+    --             },
+    --         })
+    --     end,
+    -- },
 }
