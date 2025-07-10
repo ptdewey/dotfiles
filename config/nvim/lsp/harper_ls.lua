@@ -6,6 +6,7 @@ vim.lsp.config["harper_ls"] = {
                 Dashes = false,
                 LongSentences = false,
                 SentenceCapitalization = false,
+                ExpandDependencies = false,
             },
         },
     },

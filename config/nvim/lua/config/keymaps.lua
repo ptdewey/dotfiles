@@ -98,13 +98,19 @@ vim.keymap.set(
 
 -- diagnostics
 vim.keymap.set("n", "[d", function()
-    vim.diagnostic.jump({ diagnostic = vim.diagnostic.get_prev() })
-    vim.cmd("normal! zz")
+    local d = vim.diagnostic.get_prev()
+    if d then
+        vim.diagnostic.jump({ diagnostic = d })
+        vim.cmd("normal! zz")
+    end
 end, { desc = "Go to previous diagnostic message" })
 
 vim.keymap.set("n", "]d", function()
-    vim.diagnostic.jump({ diagnostic = vim.diagnostic.get_next() })
-    vim.cmd("normal! zz")
+    local d = vim.diagnostic.get_next()
+    if d then
+        vim.diagnostic.jump({ diagnostic = d })
+        vim.cmd("normal! zz")
+    end
 end, { desc = "Go to next diagnostic message" })
 
 vim.keymap.set(

@@ -65,14 +65,13 @@ return {
                 },
             })
 
-            local coverage_loaded = false
+            -- FIX: find way to automatically show coverage when switching files
+            -- - Maybe have local "loaded" var and use autocmd to apply on switching buffers?
+
             local setup_tests = function()
                 local win = vim.api.nvim_get_current_win()
-                if not coverage_loaded then
-                    require("coverage").load(false)
-                    coverage_loaded = true
-                end
-                require("coverage").toggle()
+                -- require("coverage").load(true)
+                vim.cmd("Coverage")
                 require("neotest").summary.toggle()
                 vim.api.nvim_set_current_win(win)
             end
@@ -108,8 +107,6 @@ return {
             vim.keymap.set("n", "<leader>tc", function()
                 require("coverage").toggle()
             end, { desc = "[T]oggle [C]overage" })
-
-            -- TODO: "<leader>tf" for jumping to paired test file (like that one plugin does, shouldn't be too hard for go)
         end,
     },
 }
