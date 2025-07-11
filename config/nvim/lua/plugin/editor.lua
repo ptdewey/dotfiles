@@ -50,26 +50,4 @@ return {
             })
         end,
     },
-
-    -- {
-    --     "numToStr/Comment.nvim",
-    --     event = "VeryLazy",
-    --     config = function()
-    --         require("Comment").setup()
-    --
-    --         vim.keymap.set(
-    --             "n",
-    --             "<leader>/",
-    --             "gcc",
-    --             { desc = "Toggle Comment", remap = true }
-    --         )
-    --
-    --         vim.keymap.set(
-    --             "x",
-    --             "<leader>/",
-    --             "gc",
-    --             { desc = "Toggle Comment", remap = true }
-    --         )
-    --     end,
-    -- },
 }

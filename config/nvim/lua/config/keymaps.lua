@@ -188,48 +188,6 @@ vim.keymap.set(
     [[:s/\%V\(.*\)\%V/`\1`/ <CR>]],
     { desc = "[S]urround selection with ``" }
 )
-vim.keymap.set(
-    "n",
-    '<leader>s"',
-    [[:s/\<<C-r><C-w>\>/"<C-r><C-w>\"/ <CR>]],
-    { desc = '[S]urround word with ""' }
-)
-vim.keymap.set(
-    "n",
-    "<leader>s'",
-    [[:s/\<<C-r><C-w>\>/'<C-r><C-w>\'/ <CR>]],
-    { desc = "[S]urround word with ''" }
-)
-vim.keymap.set(
-    "n",
-    "<leader>s(",
-    [[:s/\<<C-r><C-w>\>/(<C-r><C-w>)/ <CR>]],
-    { desc = "[S]urround word with ()" }
-)
-vim.keymap.set(
-    "n",
-    "<leader>s[",
-    [[:s/\<<C-r><C-w>\>/[<C-r><C-w>]/ <CR>]],
-    { desc = "[S]urround word with []" }
-)
-vim.keymap.set(
-    "n",
-    "<leader>s{",
-    [[:s/\<<C-r><C-w>\>/{<C-r><C-w>}/ <CR>]],
-    { desc = "[S]urround word with {}" }
-)
-vim.keymap.set(
-    "n",
-    "<leader>s<",
-    [[:s/\<<C-r><C-w>\>/<<C-r><C-w>>/ <CR>]],
-    { desc = "[S]urround word with <>" }
-)
-vim.keymap.set(
-    "n",
-    "<leader>s`",
-    [[:s/\<<C-r><C-w>\>/`<C-r><C-w>`/ <CR>]],
-    { desc = "[S]urround word with ``" }
-)
 
 -- Toggle Netrw
 vim.keymap.set("n", "<C-n>", function()
@@ -310,16 +268,15 @@ end, { desc = "[W]orkspace [L]ist Folders" })
 --     vim.lsp.buf.format()
 -- end, { desc = "Format current buffer with LSP" })
 
-vim.keymap.set(
-    "n",
-    "<leader>/",
-    "gcc",
-    { desc = "Toggle Comment", remap = true }
-)
+-- Commenting
+vim.keymap.set("n", "<leader>/", function()
+    local pos = vim.api.nvim_win_get_cursor(0)
+    vim.cmd("normal gcc")
+    vim.api.nvim_win_set_cursor(0, pos)
+end, { desc = "Toggle Comment", remap = true })
 
-vim.keymap.set(
-    "x",
-    "<leader>/",
-    "gc",
-    { desc = "Toggle Comment", remap = true }
-)
+vim.keymap.set("x", "<leader>/", function()
+    local pos = vim.api.nvim_win_get_cursor(0)
+    vim.cmd("normal gc")
+    vim.api.nvim_win_set_cursor(0, pos)
+end, { desc = "Toggle Comment", remap = true })
