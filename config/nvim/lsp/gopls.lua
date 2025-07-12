@@ -12,8 +12,4 @@ vim.lsp.config["gopls"] = {
             },
         },
     },
-
-    on_attach = function(client, bufnr)
-        require("inlay-hints").on_attach(client, bufnr)
-    end,
 }

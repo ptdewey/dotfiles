@@ -1,14 +1,3 @@
--- language server configuration plugins
-
--- TODO: replace inlay hints plugin with autocmd:
--- Something like the following may work (needs to be autocmd instead of keymap though)
--- ```
---   if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
---     map('<leader>th', function()
---       vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
---     end, '[T]oggle Inlay [H]ints')
---   end
--- ```
 return {
     {
         "neovim/nvim-lspconfig",
@@ -28,6 +17,7 @@ return {
                 tinymist = vim.lsp.config["tinymist"],
                 harper_ls = vim.lsp.config["harper_ls"],
                 rust_analyzer = vim.lsp.config["rust_analyzer"],
+                svelte = {},
             },
         },
 
@@ -73,11 +63,5 @@ return {
                 handler_opts = { border = "rounded" },
             })
         end,
-    },
-
-    {
-        "MysticalDevil/inlay-hints.nvim",
-        event = "LspAttach",
-        dependencies = { "neovim/nvim-lspconfig" },
     },
 }

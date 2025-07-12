@@ -16,8 +16,4 @@ vim.lsp.config["lua_ls"] = {
             },
         },
     },
-
-    on_attach = function(client, bufnr)
-        require("inlay-hints").on_attach(client, bufnr)
-    end,
 }
