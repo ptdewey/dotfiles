@@ -1,5 +1,7 @@
 # dotfiles
 
+[Neovim config](https://github.com/ptdewey/dotfiles/tree/main/config/nvim)
+
 This repo contains all of my Neovim, tmux, shell scripts, window manager, and terminal configuration files.
 My NixOS configuration can be found at [https://github.com/ptdewey/nixos](https://github.com/ptdewey/nixos).
 
