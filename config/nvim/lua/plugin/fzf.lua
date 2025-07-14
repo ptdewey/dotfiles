@@ -163,27 +163,4 @@ return {
             })
         end,
     },
-
-    -- TODO: experiment more with this one
-    -- {
-    --     "otavioschwanck/fzf-lua-explorer.nvim",
-    --     dependencies = { "ibhagwan/fzf-lua" },
-    --     keys = {
-    --         {
-    --             "<leader>.",
-    --             function()
-    --                 require("fzf-lua-explorer").explorer()
-    --             end,
-    --             desc = "Explorer",
-    --         },
-    --     },
-    --     config = function()
-    --         require("fzf-lua-explorer").setup({
-    --             show_icons = false,
-    --             keybindings = {
-    --                 -- create_file = "%",
-    --             },
-    --         })
-    --     end,
-    -- },
 }

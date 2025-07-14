@@ -1,5 +1,3 @@
-local rename = require("extras.rename").rename_file
-
 local M = {
     picker = {
         fzf = nil,
