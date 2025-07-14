@@ -2,7 +2,7 @@ return {
     {
         "saghen/blink.cmp",
         dependencies = {
-            { "L3MON4D3/LuaSnip", version = "v2.*" },
+            "L3MON4D3/LuaSnip",
             "fang2hou/blink-copilot",
             "mikavilpas/blink-ripgrep.nvim",
         },
@@ -30,13 +30,10 @@ return {
                     "hide_documentation",
                 },
                 ["<C-e>"] = { "hide" },
-
                 ["<Up>"] = { "select_prev", "fallback" },
                 ["<Down>"] = { "select_next", "fallback" },
                 ["<C-n>"] = { "select_next", "fallback_to_mappings" },
                 ["<C-p>"] = { "select_prev", "fallback_to_mappings" },
-                ["<C-j>"] = { "select_next", "fallback_to_mappings" },
-                ["<C-k>"] = { "select_prev", "fallback_to_mappings" },
                 ["<C-l>"] = { "show_signature", "hide_signature", "fallback" },
             },
 

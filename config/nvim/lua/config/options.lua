@@ -55,14 +55,15 @@ local options = {
 -- custom variables
 local vars = {
     -- netrw settings
-    netrw_banner = 0,
-    netrw_bufsettings = "noma nomod nu nobl nowrap ro",
+    -- netrw_banner = 0,
+    -- netrw_bufsettings = "noma nomod nu nobl nowrap ro",
+    -- netrw_list_hide = [[\(^\|\s\s\)\zs\.\S\+]],
     -- netrw_list_hide = [[\(^|\s\s\)\zs\.\S\+]], -- TODO: this doesnt seem to work right
-    netrw_hide = 1,
-    have_nerd_font = true,
+    -- netrw_hide = 1,
+    -- have_nerd_font = true,
 
     -- TODO: probably check if this exists
-    python3_host_prog = vim.fn.expand("~/.virtualenvs/neovim/bin/python3"),
+    -- python3_host_prog = vim.fn.expand("~/.virtualenvs/neovim/bin/python3"),
 }
 
 -- TODO: replace todo-comments for this
@@ -97,8 +98,8 @@ vim.diagnostic.config({
 })
 
 -- theme options
--- vim.cmd.colorscheme("darkearth")
 -- vim.cmd.colorscheme("witchesbrew")
+-- vim.cmd.colorscheme("darkearth")
 vim.cmd.colorscheme("monalisa")
 
 -- apply options

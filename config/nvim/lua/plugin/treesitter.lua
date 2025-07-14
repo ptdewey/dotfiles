@@ -3,7 +3,7 @@ return {
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
-        priority = 999,
+        lazy = false,
         config = function()
             ---@diagnostic disable: missing-fields
             require("nvim-treesitter.configs").setup({

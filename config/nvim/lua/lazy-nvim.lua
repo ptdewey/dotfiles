@@ -23,6 +23,9 @@ require("lazy").setup({ { import = "plugin" } }, {
                 "tohtml",
                 "zipPlugin",
                 "tutor",
+                "man",
+                "rplugin",
+                "netrwPlugin"
             },
         },
     },

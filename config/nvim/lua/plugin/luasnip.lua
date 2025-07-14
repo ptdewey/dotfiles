@@ -5,7 +5,8 @@ return {
         config = function()
             local ls = require("luasnip")
             ls.setup({})
-            require("luasnip.loaders.from_lua").load({
+            require("luasnip.loaders.from_lua").lazy_load({
+                include = nil,
                 paths = { "~/dotfiles/config/nvim/lua/snippets" },
             })
 

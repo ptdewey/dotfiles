@@ -3,7 +3,6 @@ return {
         "folke/todo-comments.nvim",
         dependencies = { "ibhagwan/fzf-lua" },
         event = { "BufReadPost", "BufNewFile" },
-        keys = { "<leader>tt" },
 
         -- TODO: replace plugin with vanilla variant + custom telescope keybind
         -- https://www.reddit.com/r/neovim/comments/1cmgp9k/comment/l33co7r/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
@@ -27,10 +26,6 @@ return {
                 require("todo-comments").jump_prev()
                 vim.cmd("normal! zz")
             end, { desc = "Previous todo comment" })
-
-            vim.keymap.set("n", "<leader>tt", function()
-                vim.cmd("TodoFzfLua")
-            end, { desc = "[T]odo [T]elescope", silent = true })
         end,
     },
 

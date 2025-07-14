@@ -49,4 +49,19 @@ return {
             require("fidget").setup({})
         end,
     },
+
+    {
+        -- floating signature help
+        "ray-x/lsp_signature.nvim",
+        event = "LspAttach",
+        config = function()
+            require("lsp_signature").setup({
+                doc_lines = 0,
+                hi_parameter = "IncSearch",
+                -- hint_inline = function() return true end,
+                hint_prefix = "",
+                handler_opts = { border = "rounded" },
+            })
+        end,
+    },
 }

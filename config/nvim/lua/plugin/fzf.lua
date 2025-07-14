@@ -6,8 +6,8 @@ return {
             local fzf = require("fzf-lua")
             fzf.setup({
                 winopts = {
-                    height = 0.95,
-                    width = 0.95,
+                    height = 0.85,
+                    width = 0.85,
                     preview = {
                         horizontal = "right:50%",
                     },
@@ -17,7 +17,6 @@ return {
                     ["--info"] = "hidden",
                     ["--header"] = " ",
                     -- ["--layout"] = "default",
-                    -- ["--layout"] = "reverse",
                     ["--layout"] = "reverse-list",
                 },
                 files = {
@@ -25,11 +24,7 @@ return {
                     file_icons = true,
                     formatter = "path.filename_first",
                 },
-                grep = {
-                    --     rg_opts = "--sort-files --hidden --column --line-number --no-heading "
-                    --         .. "--color=always --smart-case -g '!{.git,node_modules}/*'",
-                    formatter = "path.filename_first",
-                },
+                grep = { formatter = "path.filename_first" },
                 file_ignore_patterns = { "%.pdf$" },
             })
 
@@ -41,7 +36,7 @@ return {
                 elseif h > max_h then
                     h = max_h
                 end
-                return { winopts = { height = h, width = 0.60, row = 0.40 } }
+                return { winopts = { height = h, width = 0.50, row = 0.40 } }
             end)
 
             vim.keymap.set("n", "<leader>sr", function()
@@ -62,6 +57,18 @@ return {
                     },
                 })
             end, { desc = "[S]earch [G]rep" })
+
+            vim.keymap.set("n", "<leader>sb", function()
+                fzf.grep_curbuf({
+                    winopts = {
+                        height = 0.6,
+                        width = 0.5,
+                        preview = {
+                            hidden = true,
+                        },
+                    },
+                })
+            end, { desc = "[S]earch [B]uffer" })
 
             vim.keymap.set("n", "<leader>sh", function()
                 fzf.help_tags({
@@ -118,21 +125,19 @@ return {
                 fzf.grep_project({ cwd = "~/notes", hidden = false })
             end, { desc = "[G]rep [N]otes" })
 
-            vim.keymap.set("n", "gr", function()
-                fzf.lsp_references()
-            end, { desc = "[G]oto [R]eferences" })
-
-            -- TODO: move to namu when workspace symbols search is added
-            vim.keymap.set("n", "<leader>sw", function()
-                fzf.lsp_workspace_symbols()
-            end, { desc = "[W]orkspace symbols" })
-
             vim.keymap.set("n", "<leader>sd", function()
                 fzf.lsp_document_symbols()
             end, { desc = "[H]ome [W]orkspace symbols" })
 
             vim.keymap.set("n", "gr", function()
-                fzf.lsp_references()
+                fzf.lsp_references({
+                    winopts = {
+                        preview = {
+                            vertical = "down:60%",
+                            layout = "vertical",
+                        },
+                    },
+                })
             end, { noremap = true, desc = "[G]oto [R]eferences" })
 
             vim.keymap.set("n", "gd", function()
@@ -148,17 +153,29 @@ return {
 
     {
         "bassamsdata/namu.nvim",
-        event = "LspAttach",
+        cmd = { "Namu" },
+        keys = {
+            { "<leader>ss", desc = "[S]earch [S]ymbols" },
+            { "<leader>sw", desc = "[S]ymbols [W]orkspace" }
+        },
         config = function()
             require("namu").setup({
-                namu_symbols = {
-                    enable = true,
-                    options = {},
-                },
+                namu_symbols = { enable = true, options = {} },
+                namu_ctags = { enable = true, options = {} },
             })
 
             vim.keymap.set("n", "<leader>ss", "<cmd>Namu symbols<cr>", {
-                desc = "Jump to LSP symbol",
+                desc = "[S]earch [S]ymbols",
+                silent = true,
+            })
+
+            vim.keymap.set("n", "<leader>sw", "<cmd>Namu workspace<cr>", {
+                desc = "[S]ymbols [W]orkspace",
+                silent = true,
+            })
+
+            vim.keymap.set("n", "<leader>so", "<cmd>Namu watchtower<cr>", {
+                desc = "[S]earch [O]pen symbols",
                 silent = true,
             })
         end,
