@@ -190,13 +190,13 @@ vim.keymap.set(
 )
 
 -- Toggle Netrw
--- vim.keymap.set("n", "<C-n>", function()
---     if vim.bo.filetype == "netrw" then
---         vim.cmd("bd")
---     else
---         vim.cmd("Explore")
---     end
--- end, { desc = "Toggle netrw" })
+vim.keymap.set("n", "<C-n>", function()
+    if vim.bo.filetype == "netrw" then
+        vim.cmd("bd")
+    else
+        vim.cmd("Explore")
+    end
+end, { desc = "Toggle netrw" })
 
 -- Make current file executable
 vim.keymap.set(

@@ -1,11 +1,11 @@
 -- fix netrw navigation for split keyboard (numpad '-' key)
--- vim.api.nvim_create_autocmd("FileType", {
---     pattern = "netrw",
---     callback = function()
---         vim.cmd([[nnoremap <buffer> <kMinus> <Plug>NetrwBrowseUpDir]])
---         vim.cmd([[nnoremap <buffer> <kPlus> <Plug>NetrwLocalBrowseCheck]])
---     end,
--- })
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "netrw",
+    callback = function()
+        vim.cmd([[nnoremap <buffer> <kMinus> <Plug>NetrwBrowseUpDir]])
+        vim.cmd([[nnoremap <buffer> <kPlus> <Plug>NetrwLocalBrowseCheck]])
+    end,
+})
 
 -- highlight on yank
 local highlight_group =
@@ -45,10 +45,26 @@ vim.api.nvim_create_autocmd("BufLeave", {
 })
 
 -- remove trailing whitespace upon save
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-    pattern = { "*" },
-    command = [[%s/\s\+$//e]],
-})
+local trim_whitespace_group = vim.api.nvim_create_augroup("TrimTrailingWhitespace", { clear = true })
+
+local function enable_trim_whitespace()
+    vim.api.nvim_create_autocmd("BufWritePre", {
+        group = trim_whitespace_group,
+        pattern = "*",
+        callback = function()
+            vim.cmd([[silent! %s/\s\+$//e]])
+        end,
+    })
+    print("Trim trailing whitespace on save: ENABLED")
+end
+
+local function disable_trim_whitespace()
+    vim.api.nvim_clear_autocmds({ group = trim_whitespace_group })
+    print("Trim trailing whitespace on save: DISABLED")
+end
+
+vim.api.nvim_create_user_command("EnableTrimWhitespace", enable_trim_whitespace, {})
+vim.api.nvim_create_user_command("DisableTrimWhitespace", disable_trim_whitespace, {})
 
 vim.api.nvim_create_autocmd({ "TermOpen" }, {
     callback = function()

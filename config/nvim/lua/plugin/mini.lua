@@ -59,6 +59,8 @@ return {
                     { filter = "pin" }
                 )
             end, {})
+
+            vim.keymap.set("n", "<leader>vr", require("mini.visits").select_path, {})
         end,
     },
 }

@@ -25,7 +25,6 @@ require("lazy").setup({ { import = "plugin" } }, {
                 "tutor",
                 "man",
                 "rplugin",
-                "netrwPlugin"
             },
         },
     },

@@ -1,3 +1,9 @@
+-- theme options
+-- vim.cmd.colorscheme("witchesbrew")
+-- vim.cmd.colorscheme("darkearth")
+vim.cmd.colorscheme("monalisa")
+-- vim.cmd.colorscheme("lackluster-hack")
+
 local options = {
     number = true,
     rnu = true,
@@ -55,11 +61,11 @@ local options = {
 -- custom variables
 local vars = {
     -- netrw settings
-    -- netrw_banner = 0,
-    -- netrw_bufsettings = "noma nomod nu nobl nowrap ro",
-    -- netrw_list_hide = [[\(^\|\s\s\)\zs\.\S\+]],
+    netrw_banner = 0,
+    netrw_bufsettings = "noma nomod nu nobl nowrap ro",
+    netrw_list_hide = [[\(^\|\s\s\)\zs\.\S\+]],
     -- netrw_list_hide = [[\(^|\s\s\)\zs\.\S\+]], -- TODO: this doesnt seem to work right
-    -- netrw_hide = 1,
+    netrw_hide = 1,
     -- have_nerd_font = true,
 
     -- TODO: probably check if this exists
@@ -96,11 +102,6 @@ vim.diagnostic.config({
         prefix = "",
     },
 })
-
--- theme options
--- vim.cmd.colorscheme("witchesbrew")
--- vim.cmd.colorscheme("darkearth")
-vim.cmd.colorscheme("monalisa")
 
 -- apply options
 for k, v in pairs(options) do
