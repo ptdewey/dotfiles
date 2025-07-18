@@ -79,6 +79,7 @@ deserialization
 dimensionality
 embeddings
 erroring
+filepath
 fzf
 gitignore
 hostname
