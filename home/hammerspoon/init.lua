@@ -1,15 +1,13 @@
 -- Mouse follows focus
 hs.loadSpoon("EmmyLua")
-hs.loadSpoon("MouseFollowsFocus")
-spoon.MouseFollowsFocus:start()
+-- hs.loadSpoon("MouseFollowsFocus")
+-- spoon.MouseFollowsFocus:start()
 
 -- Hot reloading of config
 hs.hotkey.bind({ "cmd", "ctrl" }, "R", function()
     hs.reload()
     hs.alert.show("Config loaded")
 end)
-
-
 
 -- local function focusAppByTitle(windowTitle)
 --     local allWindows = hs.window.allWindows()
@@ -22,6 +20,25 @@ end)
 --     hs.alert.show("Window not found: " .. targetWindowName)
 -- end
 
+-- TODO: add mute icon to bar
+local function toggleMute()
+    ---@type hs.audiodevice?
+    local mic = hs.audiodevice.defaultInputDevice()
+    local zoom = hs.application("Zoom")
+    if not mic then
+        return
+    end
+
+    if mic:muted() then
+        mic:setInputMuted(false)
+    else
+        mic:setInputMuted(true)
+    end
+end
+
+hs.hotkey.bind({ "ctrl", "shift" }, "m", function()
+    toggleMute()
+end)
 
 --
 -- Navigation
@@ -41,11 +58,31 @@ local function focusApp(appName, opts)
 end
 
 -- Focus hotkeys
-hs.hotkey.bind({ "ctrl" }, "t", function() focusApp("WezTerm", { open = true }) end)
-hs.hotkey.bind({ "ctrl" }, "b", function() focusApp("Zen", { open = true }) end)
-hs.hotkey.bind({ "ctrl", "shift" }, "x", function() focusApp("Slack", { open = true }) end)
-hs.hotkey.bind({ "ctrl", "shift" }, "e", function() focusApp("Outlook", { open = true }) end)
-hs.hotkey.bind({ "ctrl", "shift" }, "d", function() focusApp("Finder", { open = true }) end)
+hs.hotkey.bind({ "ctrl" }, "t", function()
+    focusApp("WezTerm", { open = true })
+end)
+hs.hotkey.bind({ "ctrl" }, "b", function()
+    focusApp("Firefox", { open = true })
+end)
+hs.hotkey.bind({ "ctrl", "shift" }, "b", function()
+    -- focusApp("Zen", { open = true })
+    focusApp("Firefox", { open = true })
+end)
+hs.hotkey.bind({ "ctrl", "shift" }, "x", function()
+    focusApp("Slack", { open = true })
+end)
+hs.hotkey.bind({ "ctrl", "shift" }, "e", function()
+    focusApp("Outlook", { open = true })
+end)
+hs.hotkey.bind({ "ctrl", "shift" }, "d", function()
+    focusApp("Finder", { open = true })
+end)
+hs.hotkey.bind({ "ctrl", "shift" }, "z", function()
+    focusApp("Zoom", { open = true }) -- FIX: figure out how to target specific open window (currently always focuses video overlay)
+end)
+hs.hotkey.bind({ "ctrl", "shift" }, "c", function()
+    focusApp("Claude", { open = true })
+end)
 
 -- "Workspace" navigation
 -- TODO:
