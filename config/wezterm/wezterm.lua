@@ -58,7 +58,7 @@ wezterm.on("window-resized", function(window, _)
     local h = window_dims.pixel_height
 
     local font_size
-    if h >= 1440 then
+    if h >= 1380 then
         font_size = 23
         -- font_size = 22
         -- font_size = 20
