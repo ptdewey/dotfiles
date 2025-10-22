@@ -13,16 +13,17 @@ export FZF_DEFAULT_COMMAND='rg --files'
 export FZF_DEFAULT_OPTS='-m --border --preview "cat {}"'
 
 # tmux worktree stuff
-if [[ -n "$TMUX" ]] && [[ -z "$(tmux show-environment -s TMUX_SESSION_INIT 2>/dev/null)" ]]; then
-    if [[ -d "./worktrees" ]] && [[ -f "./FETCH_HEAD" ]]; then
-        # last_worktree=$(find "./worktrees" -type d -printf '%T+ %p\n' | sort -r | head -n 1 | cut -d '/' -f 3)
-        last_worktree=$(fd -t d . ./worktrees -x ls -ld {} | sort -k6,7 -r | head -n 1 | awk '{print $NF}' | cut -d '/' -f 3)
-        if [[ -n $last_worktree ]]; then
-            cd "$last_worktree" || exit 1
-        fi
-    fi
-    tmux set-environment TMUX_SESSION_INIT 1
-fi
+# if [[ -n "$TMUX" ]] && [[ -z "$(tmux show-environment -s TMUX_SESSION_INIT 2>/dev/null)" ]]; then
+#     if [[ -d "./worktrees" ]] && [[ -f "./FETCH_HEAD" ]]; then
+#         # last_worktree=$(find "./worktrees" -type d -printf '%T+ %p\n' | sort -r | head -n 1 | cut -d '/' -f 3)
+#         # last_worktree=$(fd -t d . ./worktrees -x ls -ld {} | sort -k6,7 -r | head -n 1 | awk '{print $NF}' | cut -d '/' -f 3)
+#         last_worktree=$(fd -t d . ./worktrees -x ls -ld {} | sort -k6,7 -r | head -n 1 | awk '{print $NF}' | sed 's|^\./worktrees/||')
+#         if [[ -n $last_worktree ]]; then
+#             cd "$last_worktree" || exit 1
+#         fi
+#     fi
+#     tmux set-environment TMUX_SESSION_INIT 1
+# fi
 
 export PATH="$PATH:./"
 export PATH=$PATH:"$HOME/.local/bin"
@@ -71,6 +72,8 @@ fi
 if [ -f "$HOME/dotfiles/scripts/aliases.sh" ]; then
     source "$HOME/dotfiles/scripts/aliases.sh"
 fi
+
+source "$HOME/dotfiles/scripts/s3-copy.sh"
 
 # machine specific aliases
 if [ -f "$HOME/.aliases.sh" ]; then

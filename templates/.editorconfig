@@ -1,0 +1,9 @@
+root = true
+
+[*.{yaml,yml,json,md}]
+indent_style = space
+indent_size = 2
+quote_type = double
+
+[Makefile]
+indent_style = tab

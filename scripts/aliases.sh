@@ -106,8 +106,15 @@ alias dcu="docker compose up"
 alias dcd="docker compose down"
 dex() { docker exec -it "$1" "${2:-bash}"; }
 
+# kubernetes
+kns() {
+    pushd "${HOME}/workspace/" || return
+    k9s --logoless "$@"
+    popd || return
+}
+alias kpf="kubectl port-forward"
+
 # nix
-alias nd="nix develop"
 alias ncg="nix-collect-garbage"
 
 # directories
@@ -123,8 +130,6 @@ tmux-sessionizer() {
 alias ts="tmux-sessionizer"
 alias ta="tmux attach"
 alias tl="tmux ls"
-alias proj="tmux-sessionizer ${HOME}/projects"
-alias sch="tmux-sessionizer ${HOME}/school"
 
 # waybar
 alias waybar-restart="pkill waybar && waybar & disown %"
@@ -134,7 +139,6 @@ alias waybar-restart="pkill waybar && waybar & disown %"
 feh-fill() {
     feh --bg-fill "$@"
 }
-
 
 # keymaps
 if [ "$shell" = "bash" ]; then
