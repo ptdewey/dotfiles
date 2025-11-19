@@ -1,0 +1,22 @@
+[user]
+name = "Patrick Dewey"
+email = "57921252+ptdewey@users.noreply.github.com"
+
+[[--scope]]
+--when.repositories = ["~/workspace"]
+[--scope.user]
+name = "patrick.dewey"
+email = "todo"
+
+[signing]
+behavior = "own"
+backend = "ssh"
+key = "~/.ssh/id_ed25519.pub"
+
+[git]
+# Prevent pushing work in progress or anything explicitly labeled "private"
+# private-commits = "description(glob:'wip:*') | description(glob:'private:*')"
+
+[ui]
+paginate = "never"
+default-command = "log"
