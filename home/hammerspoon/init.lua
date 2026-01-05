@@ -48,28 +48,28 @@ hs.hotkey.bind(
     "b",
     function() focusApp("Firefox", { open = true }) end
 )
-hs.hotkey.bind({ "ctrl", "shift" }, "b", function()
-    -- focusApp("Zen", { open = true })
-    focusApp("Firefox", { open = true })
-end)
-hs.hotkey.bind(
-    { "ctrl", "shift" },
-    "x",
-    function() focusApp("Slack", { open = true }) end
-)
-hs.hotkey.bind(
-    { "ctrl", "shift" },
-    "e",
-    function() focusApp("Outlook", { open = true }) end
-)
-hs.hotkey.bind({ "ctrl", "shift" }, "z", function()
-    focusApp("Zoom", { open = true }) -- FIX: figure out how to target specific open window (currently always focuses video overlay)
-end)
-hs.hotkey.bind(
-    { "ctrl", "shift" },
-    "c",
-    function() focusApp("Claude", { open = true }) end
-)
+-- hs.hotkey.bind({ "ctrl", "shift" }, "b", function()
+--     -- focusApp("Zen", { open = true })
+--     focusApp("Firefox", { open = true })
+-- end)
+-- hs.hotkey.bind(
+--     { "ctrl", "shift" },
+--     "x",
+--     function() focusApp("Slack", { open = true }) end
+-- )
+-- hs.hotkey.bind(
+--     { "ctrl", "shift" },
+--     "e",
+--     function() focusApp("Outlook", { open = true }) end
+-- )
+-- hs.hotkey.bind({ "ctrl", "shift" }, "z", function()
+--     focusApp("Zoom", { open = true }) -- FIX: figure out how to target specific open window (currently always focuses video overlay)
+-- end)
+-- hs.hotkey.bind(
+--     { "ctrl", "shift" },
+--     "c",
+--     function() focusApp("Claude", { open = true }) end
+-- )
 
 -- "Workspace" navigation
 -- TODO:
