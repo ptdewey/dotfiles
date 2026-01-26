@@ -1,0 +1,6 @@
+output_name = "AGENTS.md"
+ignore = ["CLAUDE.md"]
+
+[[template_config]]
+target_template=""
+extra_templates=["CLAUDE.md"]

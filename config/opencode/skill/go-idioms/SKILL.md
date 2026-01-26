@@ -46,6 +46,7 @@ These proverbs from Rob Pike capture Go's design philosophy:
 ### Make Zero Values Useful
 
 Design types so the zero value is immediately usable:
+
 - `sync.Mutex{}` is ready to use (unlocked)
 - `bytes.Buffer{}` is ready to use (empty buffer)
 - Slices: `nil` slice works with `append`, `len`, `range`
@@ -91,13 +92,13 @@ project/
 
 ### Naming Conventions
 
-| Element | Convention | Example |
-|---------|------------|---------|
-| Packages | Short, lowercase, singular | `user`, `http`, `json` |
-| Interfaces | `-er` suffix for single-method | `Reader`, `Stringer`, `Handler` |
-| Getters | No `Get` prefix | `user.Name()` not `user.GetName()` |
-| Acronyms | All caps or all lower | `URL`, `ID`, `xmlHTTPRequest` |
-| Unexported | Lowercase first letter | `parseConfig`, `userCache` |
+| Element    | Convention                     | Example                            |
+| ---------- | ------------------------------ | ---------------------------------- |
+| Packages   | Short, lowercase, singular     | `user`, `http`, `json`             |
+| Interfaces | `-er` suffix for single-method | `Reader`, `Stringer`, `Handler`    |
+| Getters    | No `Get` prefix                | `user.Name()` not `user.GetName()` |
+| Acronyms   | All caps or all lower          | `URL`, `ID`, `xmlHTTPRequest`      |
+| Unexported | Lowercase first letter         | `parseConfig`, `userCache`         |
 
 ### Interface Guidelines
 
@@ -113,20 +114,21 @@ Detailed patterns and anti-patterns:
 - **[Common Mistakes](references/mistakes.md)**: Frequently encountered bugs and anti-patterns
 - **[Idiomatic Patterns](references/patterns.md)**: Standard solutions for common problems
 - **[Performance](references/performance.md)**: Optimization guidelines and pitfalls
+- **[Tooling](references/tooling.md)**: Go tooling usage best practices
 
 ## Quick Smell Tests
 
 Signs code may not be idiomatic:
 
-| Smell | Likely Issue |
-|-------|--------------|
+| Smell                                 | Likely Issue                                         |
+| ------------------------------------- | ---------------------------------------------------- |
 | Many small interfaces in same package | Over-engineering; interfaces should emerge from need |
-| Getter/setter pairs for all fields | Java-style; expose fields or rethink design |
-| `interface{}` in public API | Weak contract; find a better abstraction |
-| Package named `util` or `common` | Lacks cohesion; split by actual purpose |
-| Deep package nesting | Over-organization; flatten where possible |
-| Lots of type assertions | Interface may be too broad |
-| `init()` functions with side effects | Hidden dependencies; prefer explicit initialization |
-| Global mutable state | Testing nightmare; use dependency injection |
-| Panics for recoverable errors | Use error returns; panic is for bugs |
-| Commented-out code | Delete it; version control remembers |
+| Getter/setter pairs for all fields    | Java-style; expose fields or rethink design          |
+| `interface{}` in public API           | Weak contract; find a better abstraction             |
+| Package named `util` or `common`      | Lacks cohesion; split by actual purpose              |
+| Deep package nesting                  | Over-organization; flatten where possible            |
+| Lots of type assertions               | Interface may be too broad                           |
+| `init()` functions with side effects  | Hidden dependencies; prefer explicit initialization  |
+| Global mutable state                  | Testing nightmare; use dependency injection          |
+| Panics for recoverable errors         | Use error returns; panic is for bugs                 |
+| Commented-out code                    | Delete it; version control remembers                 |
