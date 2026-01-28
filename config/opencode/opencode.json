@@ -47,7 +47,9 @@
       "kubectl": "deny",
       "docker*": "deny",
       "docker logs*": "allow",
-      "mkdir": "allow"
+      "mkdir": "allow",
+      "npm run*": "allow"
     }
-  }
+  },
+  "plugin": ["opencode-anthropic-auth@latest"]
 }
