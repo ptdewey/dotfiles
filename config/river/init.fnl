@@ -33,6 +33,16 @@
 (nmap :Super+Shift :K :swap :up)
 (nmap :Super+Shift :L :swap :right)
 
+;; Key repeat rate (keys/sec) and delay (ms)
+(rc :keyboard-repeat-rate 50)
+(rc :keyboard-repeat-delay 300)
+
+;; Rebind caps to escape via XKB options
+(rc :keyboard-layout :-options "caps:escape" :us)
+
+;; Set cursor theme
+(rc :xcursor-theme :Bibata-Modern-Classic :24)
+
 ;; tags
 (for [i 1 9]
   (let [tags (tag-mask i)]
@@ -50,8 +60,8 @@
 (rc :attach-mode :bottom)
 
 ;; autostart
-; (execute "rivertile -view-padding 2 -outer-padding 2 &")
-; (execute "waybar &")
+(os.execute "rivertile -view-padding 2 -outer-padding 2 &")
+(os.execute "waybar &")
 ;; kill existing instances before (re)spawning
-(os.execute "pkill waybar; waybar &")
-(os.execute "pkill rivertile; rivertile -view-padding 2 -outer-padding 2 &")
+; (os.execute "pkill waybar; waybar &")
+; (os.execute "pkill rivertile; rivertile -view-padding 2 -outer-padding 2 &")

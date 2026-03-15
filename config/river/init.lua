@@ -18,6 +18,10 @@ rc("map", "normal", "Super+Shift", "H", "swap", "left")
 rc("map", "normal", "Super+Shift", "J", "swap", "down")
 rc("map", "normal", "Super+Shift", "K", "swap", "up")
 rc("map", "normal", "Super+Shift", "L", "swap", "right")
+rc("keyboard-repeat-rate", 50)
+rc("keyboard-repeat-delay", 300)
+rc("keyboard-layout", "-options", "caps:escape", "us")
+rc("xcursor-theme", "Bibata-Modern-Classic", "24")
 for i = 1, 9 do
   local tags
   do
@@ -37,5 +41,5 @@ end
 assign_tag("zen-beta", 2)
 rc("default-layout", "rivertile")
 rc("attach-mode", "bottom")
-os.execute("pkill waybar; waybar &")
-return os.execute("pkill rivertile; rivertile -view-padding 2 -outer-padding 2 &")
+os.execute("rivertile -view-padding 2 -outer-padding 2 &")
+return os.execute("waybar &")
