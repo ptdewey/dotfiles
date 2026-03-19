@@ -3,8 +3,10 @@
   "permission": {
     "bash": {
       "*": "ask",
-      "rm": "deny",
       "cd": "ask",
+      "rm*": "ask",
+      "cd*": "allow",
+      "diff*": "allow",
       "git*": "ask",
       "git add*": "deny",
       "git pull*": "deny",
@@ -34,7 +36,11 @@
       "go build*": "allow",
       "go run*": "allow",
       "echo*": "ask",
-      "curl*": "deny",
+      "go get*": "allow",
+      "go mod*": "allow",
+      "go version*": "allow",
+      "go tool*": "allow",
+      "curl*": "ask",
       "wget*": "deny",
       "ping*": "deny",
       "jj *": "deny",
@@ -47,7 +53,7 @@
       "kubectl": "deny",
       "docker*": "deny",
       "docker logs*": "allow",
-      "mkdir": "allow",
+      "mkdir*": "allow",
       "npm run*": "allow"
     }
   },

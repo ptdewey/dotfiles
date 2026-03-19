@@ -4,3 +4,4 @@ config/nvim/syntax/plantuml.vim linguist-vendored
 config/tmux/tmux-statusline.sh linguist-vendored
 home/hammerspoon/Spoons/* linguist-vendored
 home/hammerspoon/Spoons/EmmyLua.spoon/annotations/ linguist-generated
+config/opencode/skill/* linguist-vendored
