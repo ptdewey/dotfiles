@@ -1,4 +1,3 @@
-# directories
 .git
 .env
 .cache
@@ -7,3 +6,4 @@ scripts/ssh.sh
 *log*
 *.DS_Store
 home/hammerspoon/Spoons/EmmyLua.spoon/annotations
+config/jj/repos/**/*

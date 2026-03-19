@@ -1,0 +1,6 @@
+#!/bin/bash
+
+ exec nvim \
+    -c "packadd nvim.difftool" \
+    -c "lua require('difftool').open('$1', '$2')" \
+    </dev/tty >/dev/tty 2>&1

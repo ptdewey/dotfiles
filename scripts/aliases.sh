@@ -29,6 +29,27 @@ alias vim="nvim"
 alias v="vim"
 alias vi="vim"
 
+hist() {
+    local cmd
+    cmd="$(history 25000 | sed 's/^ *[0-9]* *//' | fzf)"
+    if [[ -n $cmd ]]; then
+        echo "$cmd"
+        eval "$cmd"
+    fi
+}
+
+alias vdh='vim $(fd . ~/ --type f | fzf --preview "cat {}")'
+alias vd='vim -o $(fzf --preview "cat {}")'
+
+alias ytdl='youtube-dl -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio" --write-sub --retries 10'
+
+# scripts
+source_if_exists "$dots/ssh.sh"
+source_if_exists "$dots/server-aliases.sh"
+
+# jj 
+jdn() { jj diff "${@}" --tool nvim-difftool; }
+
 # Alias fdfind (ubuntu package) to fd
 if command -v fdfind >/dev/null 2>&1; then
     alias fd="fdfind"
@@ -54,23 +75,6 @@ gm() {
     fi
 }
 
-alias vdh='vim $(fd . ~/ --type f | fzf --preview "cat {}")'
-alias vd='vim -o $(fzf --preview "cat {}")'
-
-alias ytdl='youtube-dl -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio" --write-sub --retries 10'
-
-# scripts
-source_if_exists "$dots/ssh.sh"
-source_if_exists "$dots/server-aliases.sh"
-source_if_exists "$dots/wal-fill.sh"
-source_if_exists "$dots/git-clone-bare.sh"
-alias knitr="$dots/knitr.sh"
-alias hm-switch="$shell $dots/hm-switch.sh"
-alias hm-update="$shell $dots/hm-update.sh"
-alias nixos-switch="bash ${dots}/nixos-rebuild.sh"
-alias tplnew="create_file_template"
-alias tpladd="add_template"
-source_if_exists "$dots/wg.sh"
 
 # git
 alias ga="git add"
@@ -128,6 +132,10 @@ tmux-sessionizer() {
     "${dots}/tmux-sessionizer.sh" "$@"
 }
 alias ts="tmux-sessionizer"
+tmux-pick() {
+    "${dots}/tmux-pick-session.sh"
+}
+alias tp="tmux-pick"
 alias ta="tmux attach"
 alias tl="tmux ls"
 

@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "env": {},
+  "effortLevel": "medium",
+  "model": "opus",
+  "includeCoAuthoredBy": true,
+  "permissions": {
+    "allow": [
+      "Read",
+      "Glob",
+      "Grep",
+      "WebSearch",
+      "Bash(git add:*)",
+      "Bash(git diff:*)",
+      "Bash(git status:*)",
+      "Bash(diff:*)",
+      "Bash(ls:*)",
+      "Bash(cd:*)",
+      "Bash(pwd:*)",
+      "Bash(cat:*)",
+      "Bash(echo:*)",
+      "Bash(grep:*)",
+      "Bash(find:*)",
+      "Bash(which:*)",
+      "Bash(mkdir:*)",
+      "Bash(cp:*)",
+      "Bash(mv:*)",
+      "Bash(tail:*)",
+      "Bash(head:*)",
+      "Bash(sort:*)",
+      "Bash(bash:*)",
+      "Bash(xargs:*)",
+      "Bash(go:*)",
+      "Bash(python3:*)",
+      "Bash(node:*)"
+    ],
+    "ask": [
+      "Bash(gh pr create:*)",
+      "Bash(git commit:*)",
+      "Bash(curl:*)",
+      "Bash(rm:*)"
+    ],
+    "deny": ["Read(.env)", "Read(env.sh)"],
+    "defaultMode": "default"
+  }
+}

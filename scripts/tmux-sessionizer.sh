@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# Inspired by ThePrimeagen
 
 switch_to() {
     if [[ -z $TMUX ]]; then

@@ -10,7 +10,7 @@ fi
 export VISUAL=nvim
 export FZF_DEFAULT_COMMAND='rg --files'
 # export FZF_DEFAULT_OPTS='-m --border --height 60% --preview "cat {}"'
-export FZF_DEFAULT_OPTS='-m --border --preview "cat {}"'
+export FZF_DEFAULT_OPTS='-m --border'
 
 # tmux worktree stuff
 # if [[ -n "$TMUX" ]] && [[ -z "$(tmux show-environment -s TMUX_SESSION_INIT 2>/dev/null)" ]]; then
@@ -25,15 +25,15 @@ export FZF_DEFAULT_OPTS='-m --border --preview "cat {}"'
 #     tmux set-environment TMUX_SESSION_INIT 1
 # fi
 
-export PATH="$PATH:./"
-export PATH=$PATH:"$HOME/.local/bin"
+export PATH="$PATH:$HOME/.local/bin:$HOME/dotfiles/scripts/bin:./"
 
+# Add cargo install dir to path
 if [ -f "$HOME/.cargo/env" ]; then
     export PATH=$PATH:"$HOME/.cargo/bin"
     source "$HOME/.cargo/env"
 fi
 
-# add go to path
+# add go install dir to path
 if [ -d "/usr/local/go/bin" ]; then
     export PATH=$PATH:/usr/local/go/bin
 fi
@@ -79,3 +79,4 @@ source "$HOME/dotfiles/scripts/s3-copy.sh"
 if [ -f "$HOME/.aliases.sh" ]; then
     source "$HOME/.aliases.sh"
 fi
+
