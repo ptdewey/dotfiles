@@ -16,7 +16,7 @@ ShellRoot {
     property string compositor: "niri"
 
     FontLoader {
-        source: "file:///home/patrick/.local/share/fonts/custom/patricks-iosevka-patched/IosevkaPatrickNerdFont-Regular.ttf"
+        source: "file:///home/patrick/.local/share/fonts/custom/patricks-iosevka-patched/IosevkaNerdFont-Regular.ttf"
     }
 
     // Compositor IPC services - only the active one runs

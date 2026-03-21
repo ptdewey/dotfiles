@@ -16,7 +16,7 @@ QtObject {
     readonly property color green:      "#5F865F"
     readonly property color cyan:       "#669977"
     // Sizing
-    readonly property real   fontSize:   18
+    readonly property real   fontSize:   17
     readonly property real   pillHeight: fontSize + 8
     readonly property string fontFamily: "Iosevka Patrick"
     // State

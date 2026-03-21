@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
  exec nvim \
     -c "packadd nvim.difftool" \

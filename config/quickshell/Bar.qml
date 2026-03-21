@@ -10,7 +10,7 @@ PanelWindow {
     id: bar
 
     anchors { top: true; left: true; right: true }
-    implicitHeight: theme.pillHeight + 14
+    implicitHeight: theme.pillHeight + 10
     color: "transparent"
 
     Rectangle {
