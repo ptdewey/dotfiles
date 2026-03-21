@@ -61,7 +61,7 @@
 
 ;; autostart
 (os.execute "rivertile -view-padding 2 -outer-padding 2 &")
-(os.execute "waybar &")
+(os.execute "quickshell &")
 ;; kill existing instances before (re)spawning
 ; (os.execute "pkill waybar; waybar &")
 ; (os.execute "pkill rivertile; rivertile -view-padding 2 -outer-padding 2 &")

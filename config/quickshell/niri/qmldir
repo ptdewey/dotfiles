@@ -1,0 +1,4 @@
+module niri
+NiriService 1.0 NiriService.qml
+NiriWorkspaces 1.0 NiriWorkspaces.qml
+WorkspaceButton 1.0 WorkspaceButton.qml

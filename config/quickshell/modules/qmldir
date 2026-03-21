@@ -1,0 +1,6 @@
+module modules
+Clock   1.0 Clock.qml
+Volume  1.0 Volume.qml
+Network 1.0 Network.qml
+Tray        1.0 Tray.qml
+MediaPlayer 1.0 MediaPlayer.qml
