@@ -46,7 +46,8 @@ hs.hotkey.bind(
 hs.hotkey.bind(
     { "ctrl" },
     "b",
-    function() focusApp("Firefox", { open = true }) end
+    -- function() focusApp("Firefox", { open = true }) end
+    function() focusApp("Zen", { open = true }) end
 )
 -- hs.hotkey.bind({ "ctrl", "shift" }, "b", function()
 --     -- focusApp("Zen", { open = true })

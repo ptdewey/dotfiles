@@ -32,13 +32,20 @@
       "Bash(xargs:*)",
       "Bash(go:*)",
       "Bash(python3:*)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Read(~/go/pkg/mod/**)",
+      "Bash(jj st:*)",
+      "Bash(jj log:*)",
+      "Bash(jj diff:*)",
+      "Bash(jj op log:*)"
     ],
     "ask": [
       "Bash(gh pr create:*)",
       "Bash(git commit:*)",
       "Bash(curl:*)",
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "Bash(go install:*)",
+      "Bash(go mod vendor:*)"
     ],
     "deny": ["Read(.env)", "Read(env.sh)"],
     "defaultMode": "default"

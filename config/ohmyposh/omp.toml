@@ -2,7 +2,11 @@ console_title_template = '{{ .HostName }}'
 version = 3
 final_space = true
 
+
+# Note: ANSI colors can be referenced here (i.e. "green", "cyan", etc.) 
+# to inherit from the terminal color scheme
 [palette]
+  # Darkearth 
   brown = '#736659'
   darkbrown = '#24211E'
   darkgreen = '#444A2B'
