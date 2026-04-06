@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+target="$1"
+file="${TMPDIR:-/tmp}/claude-prompt-$$.md"
+: > "$file"
+nvim "$file"
+[ -s "$file" ] || { rm -f "$file"; exit 0; }
+tmux load-buffer "$file"
+tmux paste-buffer -t "$target" -d
+rm -f "$file"

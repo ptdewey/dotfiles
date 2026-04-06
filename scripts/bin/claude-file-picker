@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+target="$1"
+sel=$(fd -t f | fzf --multi --preview 'bat --color=always {}') || exit 0
+[ -z "$sel" ] && exit 0
+printf '@%s ' $sel | tmux load-buffer -
+tmux paste-buffer -t "$target" -d
