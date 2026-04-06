@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 target="$1"
-file="${TMPDIR:-/tmp}/claude-prompt-$$.md"
+file="${TMPDIR:-/tmp}/temp-$$.md"
 : > "$file"
 nvim "$file"
 [ -s "$file" ] || { rm -f "$file"; exit 0; }

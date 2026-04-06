@@ -1,6 +1,6 @@
 [user]
 name = "Patrick Dewey"
-email = "57921252+ptdewey@users.noreply.github.com"
+email = "p@pdewey.com"
 
 # TODO: maybe add extra scoping around hostnames
 [[--scope]]
@@ -18,7 +18,51 @@ key = "~/.ssh/id_ed25519.pub"
 # Prevent pushing work in progress or anything explicitly labeled "private"
 # private-commits = "description(glob:'wip:*') | description(glob:'private:*')"
 private-commits = "description(glob:'private:*')"
+write-change-id-header = true
 
 [ui]
 # paginate = "never"
-default-command = ["log", "--no-pager", "--limit=20"]
+default-command = ["log", "--no-pager", "--limit=24"]
+# default-command = ["log"]
+
+[templates]
+log = 'log_oneline_custom(self)'
+
+[template-aliases]
+'log_oneline_custom(commit)' = '''
+if(commit.root(),
+  format_root_commit(commit),
+  label(
+    separate(" ",
+      if(commit.current_working_copy(), "working_copy"),
+      if(commit.immutable(), "immutable", "mutable"),
+      if(commit.conflict(), "conflicted"),
+    ),
+    separate(" ",
+      label("commit_id", format_short_commit_id(commit.commit_id())),
+      if(commit.description(),
+        label("description", commit.description().first_line()),
+        label(if(commit.empty(), "empty"), description_placeholder),
+      ),
+      label("separator", "|"),
+      label("author", commit.author().email()),
+      label("time", commit_timestamp(commit).local().format("%Y-%m-%d")),
+      commit.bookmarks(),
+      format_short_change_id_with_change_offset(commit),
+      format_commit_labels(commit),
+      if(commit.empty(), empty_commit_marker),
+    ) ++ "\n",
+  )
+)
+'''
+
+[revset-aliases]
+'nearest_bookmark()' = 'heads(::@- & bookmarks())'
+'stack()' = 'reachable(@, mutable())'
+'wip()' = 'mutable() & mine() & description(exact:"")'
+
+[aliases]
+tug = ["bookmark", "move", "--from", "nearest_bookmark()", "--to", "@"]
+land = ["bookmark", "move", "main", "--to", "@"]  # doesn't push, but moves main
+stack = ["log", "-r", "stack()"]
+wip = ["log", "-r", "wip()"]
