@@ -5,8 +5,13 @@
     // "width": 1280, // Waybar width
     // Choose the order of the modules
     // "modules-left": ["hyprland/workspaces"],
-    "modules-left": ["niri/workspaces", "niri/window"],
-    "modules-center": [ "custom/media", ],
+    "modules-left": [
+        "niri/workspaces",
+        "niri/window"
+    ],
+    "modules-center": [
+        "custom/media",
+    ],
     "modules-right": [
         "wireplumber",
         // "pulseaudio",
@@ -28,7 +33,7 @@
             "default": ""
         },
         "persistent-workspaces": {
-             "*": 6,
+            "*": 6,
         },
     },
     "niri/workspaces": {
@@ -84,12 +89,19 @@
         "critical-threshold": 80,
         // "format-critical": "{temperatureC}°C {icon}",
         "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
+        "format-icons": [
+            "",
+            "",
+            ""
+        ]
     },
     "backlight": {
         // "device": "acpi_video1",
         "format": "{percent}% ",
-        "format-icons": ["", ""]
+        "format-icons": [
+            "",
+            ""
+        ]
     },
     "battery": {
         "states": {
@@ -101,7 +113,13 @@
         "format-charging": "{capacity}%",
         "format-plugged": "{capacity}%",
         "format-alt": "{time} ",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
@@ -119,7 +137,6 @@
         "format-muted": " MUTED",
         "on-click": "helvum",
         "max-volume": 120,
-
         // "scroll-step": 0.2
     },
     "pulseaudio": {
@@ -147,10 +164,10 @@
         "format": "{}",
         "return-type": "json",
         "max-length": 50,
-        "on-click": "playerctl play-pause",
-        "on-click-right": "playerctl next",
+        "on-click": "mediaplayer play-pause",
+        "on-click-right": "mediaplayer next",
+        "on-click-middle": "mediaplayer previous",
         "escape": true,
-        "exec": "mediaplayer 2> /dev/null" // Script packaged in nix derivation
-        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+        "exec": "mediaplayer 2> /dev/null" // Go MPRIS watcher (nixos/modules/desktops/extras/waybar-mediaplayer)
     },
 }

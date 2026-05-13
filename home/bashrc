@@ -111,5 +111,4 @@ if [ -f "$HOME/dotfiles/scripts/rc.sh" ]; then
 fi
 
 # nicer prompt
-# eval "$(starship init bash)"
 eval "$(oh-my-posh init bash --config ~/dotfiles/config/ohmyposh/omp.toml)"

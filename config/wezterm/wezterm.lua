@@ -33,6 +33,15 @@ config.colors = {
     cursor_bg = "silver",
 }
 
+-- keymaps
+config.keys = {
+    {
+        key = "n",
+        mods = "CTRL|SHIFT",
+        action = wezterm.action.DisableDefaultAssignment,
+    },
+}
+
 -- window padding
 config.window_padding = {
     left = 5,
@@ -50,29 +59,8 @@ config.tiling_desktop_environments = {
     "Wayland niri",
 }
 
-config.color_scheme = "MonaLisa"
-
--- Font size overrides
-wezterm.on("window-resized", function(window, _)
-    local window_dims = window:get_dimensions()
-    local h = window_dims.pixel_height
-
-    local font_size
-    if h >= 1380 then
-        font_size = 23
-        -- font_size = 22
-        -- font_size = 20
-    elseif h >= 1080 then
-        font_size = 18
-    else
-        font_size = 16
-    end
-
-    local overrides = window:get_config_overrides() or {}
-    overrides.font_size = font_size
-    config.font_size = font_size
-    window:set_config_overrides(overrides)
-end)
+config.color_scheme = "DarkEarth"
+-- config.color_scheme = "LightEarth"
 
 -- This function returns the suggested title for a tab.
 -- It prefers the title that was set via `tab:set_title()`

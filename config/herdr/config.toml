@@ -1,0 +1,13 @@
+onboarding = false
+
+[keys]
+prefix = "ctrl+a"
+
+[theme]
+name = "gruvbox"
+
+[ui]
+agent_panel_sort = "spaces"
+
+[ui.toast]
+delivery = "system"

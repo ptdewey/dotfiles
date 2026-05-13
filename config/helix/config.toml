@@ -1,0 +1,6 @@
+# theme = "darkearth"
+
+[editor]
+line-number = "relative"
+mouse = true
+

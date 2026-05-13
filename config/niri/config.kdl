@@ -8,14 +8,14 @@
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Input
 input {
     keyboard {
-        xkb {
+        // xkb {
             // You can set rules, model, layout, variant and options.
             // For more information, see xkeyboard-config(7).
 
             // For example:
             // layout "us,ru"
             // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
-        }
+        // }
 
         // Enable numlock on startup, omitting this setting disables it.
         // numlock
@@ -78,7 +78,21 @@ gestures {
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
 // Remember to uncomment the node by removing "/-"!
-/-output "eDP-1" {
+output "DP-1" {
+    position x=0 y=100
+}
+
+// Main monitor
+output "DP-2" {
+    position x=1920 y=0
+}
+
+output "DP-3" {
+    transform "270" // make vertical
+    // position x=4480 y=0 // config for 1440p main monitor 
+}
+
+/-output{
     // Uncomment this line to disable this output.
     // off
 
@@ -114,7 +128,7 @@ gestures {
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
 layout {
     // Set gaps around windows in logical pixels.
-    gaps 5
+    gaps 3
 
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -267,15 +281,10 @@ layout {
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "waybar"
+// spawn-at-startup "qs"
 // spawn-at-startup "copyq" "--start-server"
-spawn-at-startup "xwayland-satellite"
 spawn-at-startup "spotify" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"
 spawn-at-startup "Discord" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"
-// spawn-at-startup "swaybg" "-i" "~/Pictures/wallpapers/evergarden.png" "-m" "fill" // NOTE: requires systemd service?
-
-environment {
-    DISPLAY ":0"
-}
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.
@@ -343,6 +352,12 @@ window-rule {
 // Open Zen windows with full screen size
 window-rule {
     match app-id=r#"zen-beta$"# title="Zen Browser" app-id="zen"
+    open-on-workspace "web"
+    default-column-width { proportion 1.0; }
+}
+
+window-rule {
+    match app-id=r#"glide-browser$"# title="Glide" app-id="glide"
     open-on-workspace "web"
     default-column-width { proportion 1.0; }
 }
@@ -474,14 +489,14 @@ binds {
     // Mod+Shift+Ctrl+Left  { move-workspace-to-monitor-left; }
     // ...
 
-    Mod+Page_Down      { focus-workspace-down; }
-    Mod+Page_Up        { focus-workspace-up; }
-    Mod+U              { focus-workspace-down; }
-    Mod+I              { focus-workspace-up; }
-    Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
-    Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
-    Mod+Ctrl+U         { move-column-to-workspace-down; }
-    Mod+Ctrl+I         { move-column-to-workspace-up; }
+    // Mod+Page_Down      { focus-workspace-down; }
+    // Mod+Page_Up        { focus-workspace-up; }
+    // Mod+U              { focus-workspace-down; }
+    // Mod+I              { focus-workspace-up; }
+    // Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
+    // Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
+    // Mod+Ctrl+U         { move-column-to-workspace-down; }
+    // Mod+Ctrl+I         { move-column-to-workspace-up; }
 
     // Alternatively, there are commands to move just a single window:
     // Mod+Ctrl+Page_Down { move-window-to-workspace-down; }
@@ -633,7 +648,7 @@ binds {
     //
     // The allow-inhibiting=false property can be applied to other binds as well,
     // which ensures niri always processes them, even when an inhibitor is active.
-    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+    // Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
     // The quit action will show a confirmation dialog to avoid accidental exits.
     Mod+Shift+E { quit; }
@@ -644,7 +659,7 @@ binds {
     Mod+Shift+P { power-off-monitors; }
 
     // Custom keybinds
-    Mod+B { spawn "zen"; }
+    Mod+B { spawn "glide"; }
 
     // Workspace jumps
     Mod+S { focus-workspace "music"; }

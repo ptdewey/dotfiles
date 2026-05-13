@@ -55,27 +55,6 @@ if command -v fdfind >/dev/null 2>&1; then
     alias fd="fdfind"
 fi
 
-sd() { cd ./$(fd -L . --type d | fzf --preview='tree -LF 2 {}'); }
-sdh() { cd $(fd -L . ~/ --type d | fzf --preview='tree -LF 2 {}'); }
-gm() {
-    branch=$(basename "$(git rev-parse --show-toplevel)")
-    toplevel=$(git rev-parse --show-toplevel)
-    if pushd "${toplevel}/../${1}"; then
-        if git merge "${branch}"; then
-            git push
-        else
-            echo "Merge failed"
-            popd
-            return 1
-        fi
-        popd
-    else
-        echo "Failed to change directory to ${toplevel}/../${1}"
-        return 1
-    fi
-}
-
-
 # git
 alias ga="git add"
 alias gd="git diff -U0"
@@ -90,10 +69,6 @@ alias gw="git worktree"
 # python
 alias p="python"
 
-# latex
-alias ltc="latexmk -pdf"
-alias ltclean="latexmk -c"
-
 # pdf viewing
 pdfz() {
     if [ $# -eq 0 ]; then
@@ -104,6 +79,7 @@ pdfz() {
 }
 
 # docker
+# TODO: check if podman exists first
 alias dps="docker ps"
 alias dc="docker compose"
 alias dcu="docker compose up"
@@ -127,7 +103,6 @@ alias dn="cd ~/Downloads"
 alias notes='cd ~/notes'
 
 # tmux
-# source "${dots}/tmux-sessionizer.sh"
 tmux-sessionizer() {
     "${dots}/tmux-sessionizer.sh" "$@"
 }
@@ -139,15 +114,6 @@ alias tp="tmux-pick"
 alias ta="tmux attach"
 alias tl="tmux ls"
 
-# waybar
-alias waybar-restart="pkill waybar && waybar & disown %"
-# alias waybar-restart="pkill waybar && hyprctl dispatch exec waybar"
-
-# Wallpaper setter
-feh-fill() {
-    feh --bg-fill "$@"
-}
-
 # keymaps
 if [ "$shell" = "bash" ]; then
     bind -x '"\C-f":tmux-sessionizer'
@@ -155,9 +121,4 @@ if [ "$shell" = "bash" ]; then
 elif [ "$shell" = "zsh" ] || [ "$shell" = "-zsh" ]; then
     bindkey -s ^F 'tmux-sessionizer\n'
     bindkey -s ^G 'sd\n'
-fi
-
-# Workmux
-if command -v workmux >/dev/null 2>&1; then
-    alias wm=workmux
 fi
