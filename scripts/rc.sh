@@ -12,25 +12,12 @@ export FZF_DEFAULT_COMMAND='rg --files'
 # export FZF_DEFAULT_OPTS='-m --border --height 60% --preview "cat {}"'
 export FZF_DEFAULT_OPTS='-m --border'
 
-# tmux worktree stuff
-# if [[ -n "$TMUX" ]] && [[ -z "$(tmux show-environment -s TMUX_SESSION_INIT 2>/dev/null)" ]]; then
-#     if [[ -d "./worktrees" ]] && [[ -f "./FETCH_HEAD" ]]; then
-#         # last_worktree=$(find "./worktrees" -type d -printf '%T+ %p\n' | sort -r | head -n 1 | cut -d '/' -f 3)
-#         # last_worktree=$(fd -t d . ./worktrees -x ls -ld {} | sort -k6,7 -r | head -n 1 | awk '{print $NF}' | cut -d '/' -f 3)
-#         last_worktree=$(fd -t d . ./worktrees -x ls -ld {} | sort -k6,7 -r | head -n 1 | awk '{print $NF}' | sed 's|^\./worktrees/||')
-#         if [[ -n $last_worktree ]]; then
-#             cd "$last_worktree" || exit 1
-#         fi
-#     fi
-#     tmux set-environment TMUX_SESSION_INIT 1
-# fi
-
 export PATH="$PATH:$HOME/.local/bin:$HOME/dotfiles/scripts/bin:./"
 
 # Add cargo install dir to path
-if [ -f "$HOME/.cargo/env" ]; then
+if [ -d "$HOME/.cargo" ]; then
     export PATH=$PATH:"$HOME/.cargo/bin"
-    source "$HOME/.cargo/env"
+    # source "$HOME/.cargo/env"
 fi
 
 # add go install dir to path
@@ -80,3 +67,4 @@ if [ -f "$HOME/.aliases.sh" ]; then
     source "$HOME/.aliases.sh"
 fi
 
+export PATH=$HOME/.npm-global/bin:$PATH

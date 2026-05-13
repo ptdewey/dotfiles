@@ -157,3 +157,7 @@ elif [ "$shell" = "zsh" ] || [ "$shell" = "-zsh" ]; then
     bindkey -s ^G 'sd\n'
 fi
 
+# Workmux
+if command -v workmux >/dev/null 2>&1; then
+    alias wm=workmux
+fi
