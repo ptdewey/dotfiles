@@ -9,3 +9,4 @@ home/hammerspoon/Spoons/EmmyLua.spoon/annotations
 config/jj/repos/**/*
 config/herdr/session.json
 config/herdr/release-notes.json
+*.backup

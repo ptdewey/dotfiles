@@ -5,7 +5,7 @@ Home Manager configuration for Patrick's machines.
 The root flake owns the Home Manager configuration for `patrick@europa`.
 Static files that cannot use native Home Manager options live under
 `dotfiles/home/` and `dotfiles/xdg/` and are mapped individually by
-`nix/modules/patrick/files.nix`.
+the concern modules under `nix/modules/patrick/`.
 
 Build without activating:
 

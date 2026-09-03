@@ -8,8 +8,9 @@ and macOS.
 - Keep host composition explicit under `nix/hosts/<platform>/<host>/`; do not
   add recursive auto-imports.
 - A home-directory target has exactly one owner.
-- Prefer native Home Manager options, then explicit individual file mappings.
-  Do not manage writable application directories wholesale.
+- Prefer native Home Manager options, then explicit individual file mappings
+  in the concern module that owns each target. Do not manage writable
+  application directories wholesale.
 - Keep private runtime overrides outside the flake under
   `~/.config/dotfiles-local/`.
 - Never add secrets, sessions, memories, logs, caches, sockets, or generated
