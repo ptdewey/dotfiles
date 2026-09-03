@@ -1,17 +1,23 @@
 {
   description = "Dev Shells Flake";
   inputs = {
-      nixpkgs.url = "nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "nixpkgs/nixpkgs-unstable";
   };
-  outputs = { nixpkgs, ... }: let
-    forAllSystems = function:
-      nixpkgs.lib.genAttrs [
-        "x86_64-linux"
-        "aarch64-linux"
-      ] (system:
-        ## comment for custom nixpkgs config
-        function nixpkgs.legacyPackages.${system}
-      );
+  outputs =
+    { nixpkgs, ... }:
+    let
+      forAllSystems =
+        function:
+        nixpkgs.lib.genAttrs
+          [
+            "x86_64-linux"
+            "aarch64-linux"
+          ]
+          (
+            system:
+            ## comment for custom nixpkgs config
+            function nixpkgs.legacyPackages.${system}
+          );
       ## uncomment for custom nixpkgs config
       #   function (import nixpkgs {
       #   inherit system;
@@ -19,17 +25,18 @@
       #   overlays = [ ];
       # }));
 
-  in {
-    devShells = forAllSystems(pkgs: {
-      default = pkgs.mkShell {
-        packages = with pkgs; [
-          # neovim
-        ];
+    in
+    {
+      devShells = forAllSystems (pkgs: {
+        default = pkgs.mkShell {
+          packages = with pkgs; [
+            # neovim
+          ];
 
-        shellHook = ''
-          # export EDITOR="nvim"
-        '';
-      };
-    });
-  };
+          shellHook = ''
+            # export EDITOR="nvim"
+          '';
+        };
+      });
+    };
 }

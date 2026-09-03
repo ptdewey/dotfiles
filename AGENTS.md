@@ -17,11 +17,10 @@ and macOS.
 - Agent skills are self-contained directories under `nix/modules/patrick/skills/`:
   `SKILL.md` plus optional `references/`, `scripts/`, `assets/`, `evals/`, and a
   self-registering `default.nix`. Subagent definitions live in
-  `nix/modules/patrick/subagents/`. Both skill and subagent target directories
-  are configured per client in `nix/modules/patrick/agents.nix`. Client directories
-  contain only deployed copies; edit the canonical asset here.
-- Build before switching. Do not remove the legacy setup path until a migrated
-  host no longer depends on it.
+  `nix/modules/patrick/subagents/`. Client target directories are fixed in the
+  skill helper and subagent module. Client directories contain only deployed
+  copies; edit the canonical asset here.
+- Build before switching. The root flake is the sole configuration owner.
 
 ## Checks
 
@@ -30,7 +29,7 @@ Run these from the repository root:
 ```sh
 nix fmt -- --check .
 nix flake check
-shellcheck scripts/setup.sh scripts/bin/*
+shellcheck scripts/bin/*
 ```
 
 Build the tracer host without activating it:

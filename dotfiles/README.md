@@ -1,11 +1,10 @@
 # Static dotfiles
 
-Use this directory only for stable files that cannot be expressed clearly with
+Use this directory for stable files that cannot be expressed clearly with
 native Home Manager options.
 
-- `home/` contains files mapped explicitly beneath the home directory.
-- `xdg/` contains files mapped explicitly beneath the XDG configuration root.
+- `home/` contains files mapped beneath `$HOME`.
+- `xdg/` contains files mapped beneath `$XDG_CONFIG_HOME`.
 
-Do not deploy these directories wholesale. Each destination must have one
-explicit owner. Application state and writable generated configuration remain
-outside the repository.
+Files are mapped individually. Do not deploy these directories wholesale;
+application state and generated configuration remain outside the repository.

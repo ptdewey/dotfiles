@@ -4,7 +4,7 @@
 # Exit alt-buff
 echo -ne "\033[?1049l"
 
-pushd "${HOME}/nixos/" > /dev/null
+pushd "${HOME}/nixos/" > /dev/null || exit
 shopt -s globstar
 clear
 
@@ -12,7 +12,8 @@ clear
 # Update host
 if [ -f "./flake.nix" ]; then
 	HOST_FLAKE=$(awk '/_hostname = / {print $3}' ./flake.nix)
-	HOST_FLAKE=$(echo "${HOST_FLAKE}" | sed 's/"\(.*\)";/\1/')
+	HOST_FLAKE="${HOST_FLAKE//\"/}"
+	HOST_FLAKE="${HOST_FLAKE%;}"
 else
 	HOST_FLAKE=""
 fi
@@ -44,7 +45,7 @@ else
 	echo " Found"
 	had_changes=true
 
-	read -p 'Open diff? (y/N): ' diff_confirm
+	read -r -p 'Open diff? (y/N): ' diff_confirm
 	if [[ "${diff_confirm}" == [yY] ]] || [[ "${diff_confirm}" == [yY][eE][sS] ]]; then
 		git diff --word-diff=porcelain -U0 -- .
 	fi
@@ -93,12 +94,12 @@ else
 
 	echo -ne "\n"
 
-	read -p 'Open log? (y/N): ' log_confirm
+	read -r -p 'Open log? (y/N): ' log_confirm
 	if [[ "${log_confirm}" == [yY] ]] || [[ "${log_confirm}" == [yY][eE][sS] ]]; then
 		vim -R .nixos-switch.log
 	fi
 fi
 
 shopt -u globstar
-popd > /dev/null
+popd > /dev/null || exit
 

@@ -1,15 +1,9 @@
 # Home Manager hosts
 
-Hosts are organized by platform, mirroring Hoenn: `nix/hosts/nixos/<host>/`,
-`nix/hosts/darwin/<host>/`, and later `nix/hosts/system-manager/<host>/` if
-needed. Each host directory is an explicit composition root that imports
-`nix/modules/patrick` and records only harmless, public exceptions.
+Hosts are organized by platform under `nix/hosts/<platform>/<host>/`. Each
+host directory is an explicit composition root that imports the shared Patrick
+Home Manager module.
 
-Username and home directory are per-host facts declared in `flake.nix`
-(`mkHome { ... }`), so machines with different account names share the same
-`modules/patrick` tree. Add a matching `homeConfigurations."<user>@<host>"`
-entry in `flake.nix` for each new host.
-
-Keep private values out of these modules. Runtime-local configuration belongs
-below `~/.config/dotfiles-local/`; private NixOS configuration remains in the
-private system flake.
+Host-specific public exceptions belong in the host module. Private runtime
+configuration stays outside the flake, and private NixOS configuration remains
+in the separate system flake.

@@ -1,5 +1,5 @@
 {
-  description = "Patrick's Home Manager configurations and agent tooling";
+  description = "Patrick's Home Manager configuration";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -11,136 +11,40 @@
   };
 
   outputs =
-    inputs@{
-      self,
-      nixpkgs,
-      home-manager,
-      ...
-    }:
+    { nixpkgs, home-manager, ... }:
     let
-      supportedSystems = [
-        "x86_64-linux"
-        "aarch64-linux"
-        "x86_64-darwin"
-        "aarch64-darwin"
-      ];
-      forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
-      pkgsFor = system: import nixpkgs { inherit system; };
-
-      # Build a standalone Home Manager configuration for one host.
-      # Username and home directory are host facts, passed here per host —
-      # never assumed inside nix/modules/patrick.
-      mkHome =
-        {
-          system,
-          username,
-          homeDirectory,
-          stateVersion,
-          modules ? [ ],
-        }:
-        home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs {
-            inherit system;
-            config.allowUnfree = true;
-          };
-
-          extraSpecialArgs = {
-            inherit inputs username;
-          };
-
-          modules = [
-            {
-              programs.home-manager.enable = true;
-
-              home = {
-                inherit
-                  homeDirectory
-                  stateVersion
-                  username
-                  ;
-              };
-            }
-          ]
-          ++ modules;
-        };
-    in
-    {
-      # Reusable user modules. A NixOS or nix-darwin flake can import
-      # homeModules.patrick into its own Home Manager setup later.
-      homeModules = {
-        patrick = import ./nix/modules/patrick;
-        default = self.homeModules.patrick;
+      system = "x86_64-linux";
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
       };
-
-      homeConfigurations."patrick@europa" = mkHome {
-        system = "x86_64-linux";
-        username = "patrick";
-        homeDirectory = "/home/patrick";
-        stateVersion = "24.05";
+      europa = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
         modules = [ ./nix/hosts/nixos/europa/home.nix ];
       };
+      homeManagerApp = {
+        type = "app";
+        program = "${home-manager.packages.${system}.home-manager}/bin/home-manager";
+      };
+    in
+    {
+      homeConfigurations."patrick@europa" = europa;
 
-      checks.x86_64-linux = {
-        europa-home = self.homeConfigurations."patrick@europa".activationPackage;
+      checks.${system}.europa-home = europa.activationPackage;
 
-        # Full asset deployment: every skill and subagent across every
-        # enabled client, so target collisions fail at build time.
-        agents-module =
-          (mkHome {
-            system = "x86_64-linux";
-            username = "patrick";
-            homeDirectory = "/home/patrick";
-            stateVersion = "24.05";
-            modules = [
-              ./nix/modules/patrick
-              {
-                dotfiles = {
-                  enable = true;
-                  agents = {
-                    enable = true;
-                    clients = {
-                      claude.enable = true;
-                      codex.enable = true;
-                      pi.enable = true;
-                      prime.enable = true;
-                    };
-                  };
-                };
-              }
-            ];
-          }).activationPackage;
+      apps.${system} = {
+        default = homeManagerApp;
+        home-manager = homeManagerApp;
       };
 
-      apps = forAllSystems (
-        system:
-        let
-          homeManager = home-manager.packages.${system}.home-manager;
-        in
-        {
-          default = {
-            type = "app";
-            program = "${homeManager}/bin/home-manager";
-          };
-          home-manager = self.apps.${system}.default;
-        }
-      );
+      devShells.${system}.default = pkgs.mkShell {
+        packages = [
+          home-manager.packages.${system}.home-manager
+          pkgs.nixfmt
+          pkgs.shellcheck
+        ];
+      };
 
-      devShells = forAllSystems (
-        system:
-        let
-          pkgs = pkgsFor system;
-        in
-        {
-          default = pkgs.mkShell {
-            packages = [
-              home-manager.packages.${system}.home-manager
-              pkgs.nixfmt-rfc-style
-              pkgs.shellcheck
-            ];
-          };
-        }
-      );
-
-      formatter = forAllSystems (system: (pkgsFor system).nixfmt-rfc-style);
+      formatter.${system} = pkgs.nixfmt;
     };
 }
