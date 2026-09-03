@@ -2,7 +2,7 @@
   imports = [
     ./architect/default.nix
     ./code-review/default.nix
-    ./finger-guns/default.nix
+    ./fingerguns/default.nix
     ./go-idioms/default.nix
     ./grill-me/default.nix
     ./grill-with-docs/default.nix
@@ -11,7 +11,7 @@
     ./jj-workflow/default.nix
     ./learning-opportunities/default.nix
     ./shared/default.nix
-    ./skill-deslop/default.nix
+    ./deslop/default.nix
     ./tdd/default.nix
     ./thermo-nuclear-code-quality-review/default.nix
     ./to-issues/default.nix

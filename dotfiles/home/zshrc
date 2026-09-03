@@ -84,7 +84,7 @@ fi
 
 # nicer prompt
 # eval "$(starship init zsh)"
-eval "$(oh-my-posh init zsh --config ~/dotfiles/config/ohmyposh/omp.toml)"
+eval "$(oh-my-posh init zsh --config "${XDG_CONFIG_HOME:-$HOME/.config}/ohmyposh/omp.toml")"
 
 # Add ~/neovim/ to path
 export PATH="${HOME}/neovim/bin:${PATH}"
