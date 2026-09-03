@@ -1,20 +1,3 @@
-{
-  imports = [
-    ./architect/default.nix
-    ./code-review/default.nix
-    ./fingerguns/default.nix
-    ./go-idioms/default.nix
-    ./grill-me/default.nix
-    ./grill-with-docs/default.nix
-    ./handoff/default.nix
-    ./improve-codebase-architecture/default.nix
-    ./jj-workflow/default.nix
-    ./learning-opportunities/default.nix
-    ./shared/default.nix
-    ./deslop/default.nix
-    ./tdd/default.nix
-    ./thermo-nuclear-code-quality-review/default.nix
-    ./to-issues/default.nix
-    ./to-prd/default.nix
-  ];
+_: {
+  # Child modules in this directory self-register with the Patrick profile.
 }

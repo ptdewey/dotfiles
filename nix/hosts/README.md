@@ -1,8 +1,11 @@
 # Home Manager hosts
 
-Hosts are organized by platform under `nix/hosts/<platform>/<host>/`. Each
-host directory is an explicit composition root that imports the shared Patrick
-Home Manager module.
+The repository currently exports reusable Home Manager modules. Host-specific
+composition lives in the consuming system flake: Europa is embedded by `~/nixos`,
+while a future Darwin host will be added here once its machine facts are known.
+
+The eventual host layout will use explicit composition roots under
+`nix/hosts/<platform>/<host>/`.
 
 Host-specific public exceptions belong in the host module. Private runtime
 configuration stays outside the flake, and private NixOS configuration remains

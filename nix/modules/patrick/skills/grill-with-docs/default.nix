@@ -1,2 +1,5 @@
-{ lib, ... }:
-import ../_lib.nix { inherit lib; } "grill-with-docs" ./.
+_: {
+  flake.homeModules.patrick =
+    { lib, ... }:
+    import ../_lib.nix { inherit lib; } "grill-with-docs" ./.;
+}

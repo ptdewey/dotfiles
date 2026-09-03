@@ -1,2 +1,5 @@
-{ lib, ... }:
-import ../_lib.nix { inherit lib; } "thermo-nuclear-code-quality-review" ./.
+_: {
+  flake.homeModules.patrick =
+    { lib, ... }:
+    import ../_lib.nix { inherit lib; } "thermo-nuclear-code-quality-review" ./.;
+}

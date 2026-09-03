@@ -1,13 +1,3 @@
-{
-  imports = [
-    ./desktop.nix
-    ./editors.nix
-    ./fonts.nix
-    ./packages.nix
-    ./shell.nix
-    ./skills/default.nix
-    ./subagents/default.nix
-    ./terminal.nix
-    ./tools.nix
-  ];
+_: {
+  # Child modules in this directory self-register with the Patrick profile.
 }
