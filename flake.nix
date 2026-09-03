@@ -28,6 +28,8 @@
       };
     in
     {
+      homeModules.patrick = import ./nix/modules/patrick;
+
       homeConfigurations."patrick@europa" = europa;
 
       checks.${system}.europa-home = europa.activationPackage;
