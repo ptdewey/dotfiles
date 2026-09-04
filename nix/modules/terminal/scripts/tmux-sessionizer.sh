@@ -30,7 +30,7 @@ else
             {
                 fd -L . ~/projects ~/workspace --type d --max-depth 1
                 # whitelist
-                # fd -L . ~/Documents ~/notes ~/dotfiles ~/nixos --type d
+                # fd -L . ~/Documents ~/notes ~/nixos --type d
                 # blacklist
                 fd -L . ~/ --type d --max-depth 1 --exclude 'go' --exclude 'Downloads' --exclude 'Desktop' --exclude templates --exclude "Applications"
             } | fzf --preview='tree -LF 2 {}'
@@ -41,7 +41,7 @@ else
                 find ~/projects ~/workspace -mindepth 1 -maxdepth 1 -type d
                 find ~/notes -mindepth 1 -maxdepth 2 -type d
                 # whitelist
-                # find ~/Documents ~/Downloads ~/dotfiles ~/nixos -mindepth 0 -maxdepth 1 -type d
+                # find ~/Documents ~/Downloads ~/nixos -mindepth 0 -maxdepth 1 -type d
                 # blacklist
                 find ~ -mindepth 1 -maxdepth 1 -type d ! -name 'Downloads' ! -name 'Desktop' ! -name 'go' ! -name 'templates' ! -name 'Applications'
             } | fzf --preview='tree -LF 2 {}'

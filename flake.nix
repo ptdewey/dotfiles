@@ -23,7 +23,7 @@
         "x86_64-linux"
       ];
       imports = [
-        (inputs.import-tree ./nix/modules)
+        (inputs.import-tree.matchNot ".*/assets/.*" ./nix/modules)
         home-manager.flakeModules.home-manager
       ];
       perSystem =

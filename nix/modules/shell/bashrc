@@ -52,8 +52,8 @@ else
     PS1=' ${debian_chroot:+($debian_chroot)}\u@\h:\w'
 fi
 
-if [ -f "$HOME/dotfiles/scripts/git-prompt.sh" ]; then
-    source "$HOME/dotfiles/scripts/git-prompt.sh"
+if [ -f "$HOME/.config/dotfiles/shell/scripts/git-prompt.sh" ]; then
+    source "$HOME/.config/dotfiles/shell/scripts/git-prompt.sh"
     GIT_PS1_SHOWDIRTYSTATE=true
     GIT_PS1_SHOWCONFLICTSTATE="yes"
     GIT_PS1_SHOWSTASHSTATE=true
@@ -106,8 +106,8 @@ fi
 
 # Fetch path additions and aliases
 # rc.sh is shared with zshrc
-if [ -f "$HOME/dotfiles/scripts/rc.sh" ]; then
-    source "$HOME/dotfiles/scripts/rc.sh"
+if [ -f "$HOME/.config/dotfiles/shell/scripts/rc.sh" ]; then
+    source "$HOME/.config/dotfiles/shell/scripts/rc.sh"
 fi
 
 # nicer prompt

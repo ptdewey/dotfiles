@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-dots="$HOME/dotfiles/scripts"
+dots="$HOME/.local/bin"
 shell=$(ps -p $$ -o 'comm=')
 
 # custom sourcing function
@@ -104,11 +104,11 @@ alias notes='cd ~/notes'
 
 # tmux
 tmux-sessionizer() {
-    "${dots}/tmux-sessionizer.sh" "$@"
+    tmux-sessionizer "$@"
 }
 alias ts="tmux-sessionizer"
 tmux-pick() {
-    "${dots}/tmux-pick-session.sh"
+    tmux-pick-session
 }
 alias tp="tmux-pick"
 alias ta="tmux attach"

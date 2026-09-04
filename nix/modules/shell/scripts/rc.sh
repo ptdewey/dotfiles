@@ -3,8 +3,8 @@
 # it aggregates path extensions and imports aliases
 
 # set custom color scheme (if not in tty)
-# if [ -f "$HOME/dotfiles/scripts/base16-darkearth.sh" ] && [ -n "$DISPLAY" ]; then
-#     source "$HOME/dotfiles/scripts/base16-darkearth.sh"
+# if [ -f "$HOME/.config/dotfiles/shell/scripts/base16-darkearth.sh" ] && [ -n "$DISPLAY" ]; then
+#     source "$HOME/.config/dotfiles/shell/scripts/base16-darkearth.sh"
 # fi
 
 export VISUAL=nvim
@@ -12,7 +12,7 @@ export FZF_DEFAULT_COMMAND='rg --files'
 # export FZF_DEFAULT_OPTS='-m --border --height 60% --preview "cat {}"'
 export FZF_DEFAULT_OPTS='-m --border'
 
-export PATH="$PATH:$HOME/.local/bin:$HOME/dotfiles/scripts/bin:./"
+export PATH="$PATH:$HOME/.config/dotfiles/shell/scripts/bin:./"
 
 # Add cargo install dir to path
 if [ -d "$HOME/.cargo" ]; then
@@ -56,11 +56,11 @@ if command -v "direnv" &> /dev/null; then
 fi
 
 # Fetch aliases
-if [ -f "$HOME/dotfiles/scripts/aliases.sh" ]; then
-    source "$HOME/dotfiles/scripts/aliases.sh"
+if [ -f "$HOME/.config/dotfiles/shell/scripts/aliases.sh" ]; then
+    source "$HOME/.config/dotfiles/shell/scripts/aliases.sh"
 fi
 
-source "$HOME/dotfiles/scripts/s3-copy.sh"
+source "$HOME/.config/dotfiles/shell/scripts/s3-copy.sh"
 
 # machine specific aliases
 if [ -f "$HOME/.aliases.sh" ]; then

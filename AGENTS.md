@@ -15,10 +15,10 @@ and macOS.
   `~/.config/dotfiles-local/`.
 - Never add secrets, sessions, memories, logs, caches, sockets, or generated
   agent state.
-- Agent skills are self-contained directories under `nix/_home-modules/patrick/skills/`:
+- Agent skills are self-contained directories under `nix/modules/skills/`:
   `SKILL.md` plus optional `references/`, `scripts/`, `assets/`, `evals/`, and a
   self-registering `default.nix`. Subagent definitions live in
-  `nix/_home-modules/patrick/subagents/`. Client target directories are fixed in the
+  `nix/modules/subagents/`. Client target directories are fixed in the
   skill helper and subagent module. Client directories contain only deployed
   copies; edit the canonical asset here.
 - Build before switching. The root flake is the sole configuration owner.

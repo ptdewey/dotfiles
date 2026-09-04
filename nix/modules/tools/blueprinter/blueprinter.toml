@@ -1,4 +1,4 @@
-template_sources = ["~/dotfiles/templates"]
+template_sources = ["~/.config/dotfiles/blueprinter/templates"]
 
 populate_templates = true
 

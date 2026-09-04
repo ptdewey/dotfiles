@@ -4,8 +4,8 @@ Home Manager configuration for Patrick's machines.
 
 The root flake exports reusable Home Manager modules for the system flake and owns the nix-darwin configuration.
 Static files that cannot use native Home Manager options live under
-`dotfiles/home/` and `dotfiles/xdg/` and are mapped individually by
-the concern modules under `nix/_home-modules/patrick/`.
+the concern-owned assets under `nix/modules/` and are mapped individually by
+the concern modules under `nix/modules/`.
 
 Build the Home Manager module through the NixOS consumer without activating:
 
