@@ -56,11 +56,11 @@ if command -v "direnv" &> /dev/null; then
 fi
 
 # Fetch aliases
-if [ -f "$HOME/.config/dotfiles/shell/scripts/aliases.sh" ]; then
-    source "$HOME/.config/dotfiles/shell/scripts/aliases.sh"
+if [ -f "$HOME/.config/dotfiles/aliases.sh" ]; then
+    source "$HOME/.config/dotfiles/aliases.sh"
 fi
 
-source "$HOME/.config/dotfiles/shell/scripts/s3-copy.sh"
+source "$HOME/.config/dotfiles/s3-copy.sh"
 
 # machine specific aliases
 if [ -f "$HOME/.aliases.sh" ]; then

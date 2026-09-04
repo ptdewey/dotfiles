@@ -78,8 +78,8 @@ export TERMINFO=/usr/share/terminfo
 
 # Fetch path additions and aliases
 # rc.sh is shared with bashrc
-if [ -f "$HOME/.config/dotfiles/shell/scripts/rc.sh" ]; then
-    source "$HOME/.config/dotfiles/shell/scripts/rc.sh"
+if [ -f "$HOME/.config/dotfiles/rc.sh" ]; then
+    source "$HOME/.config/dotfiles/rc.sh"
 fi
 
 # nicer prompt
