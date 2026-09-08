@@ -12,7 +12,7 @@ export FZF_DEFAULT_COMMAND='rg --files'
 # export FZF_DEFAULT_OPTS='-m --border --height 60% --preview "cat {}"'
 export FZF_DEFAULT_OPTS='-m --border'
 
-export PATH="$PATH:$HOME/.config/dotfiles/shell/scripts/bin:./"
+export PATH="$HOME/.local/bin:$PATH:./"
 
 # Add cargo install dir to path
 if [ -d "$HOME/.cargo" ]; then

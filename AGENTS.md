@@ -30,7 +30,7 @@ Run these from the repository root:
 ```sh
 nix fmt -- --check .
 nix flake check
-shellcheck scripts/bin/*
+shellcheck nix/modules/shell/scripts/bin/*
 ```
 
 Build the tracer host without activating it:
