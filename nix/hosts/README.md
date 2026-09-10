@@ -1,12 +1,16 @@
-# Home Manager hosts
+# Host configurations
 
-The repository currently exports reusable Home Manager modules. Host-specific
-composition lives in the consuming system flake: Europa is embedded by `~/nixos`,
-while a future Darwin host will be added here once its machine facts are known.
+This repository owns reusable Home Manager modules and the explicit composition
+roots for each machine.
 
-The eventual host layout will use explicit composition roots under
-`nix/hosts/<platform>/<host>/`.
+NixOS hosts live under `nix/hosts/nixos/<host>/`. Their shared system modules
+live under `nix/system/`, outside the recursively discovered flake-parts module
+tree.
+
+The NixOS configurations were imported as a snapshot from
+[`ptdewey/nixos`](https://github.com/ptdewey/nixos) at commit
+`e2666e090fed03a14483029a9bae89f471e4426a`. The original repository retains its
+full history.
 
 Host-specific public exceptions belong in the host module. Private runtime
-configuration stays outside the flake, and private NixOS configuration remains
-in the separate system flake.
+configuration stays outside the flake under `~/.config/dotfiles-local/`.

@@ -55,7 +55,6 @@ config.tiling_desktop_environments = {
     "X11 i3",
     "X11 awesome",
     "Wayland sway",
-    "Wayland hyprland",
     "Wayland niri",
 }
 

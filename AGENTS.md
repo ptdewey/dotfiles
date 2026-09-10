@@ -30,13 +30,13 @@ Run these from the repository root:
 ```sh
 nix fmt -- --check .
 nix flake check
-shellcheck nix/modules/shell/scripts/bin/*
+shellcheck nixos-switch.sh nix/modules/shell/scripts/bin/*
 ```
 
 Build the tracer host without activating it:
 
 ```sh
-nix build --no-link ~/nixos#nixosConfigurations.europa.config.system.build.toplevel --override-input dotfiles path:/home/patrick/dotfiles
+nix build --no-link .#nixosConfigurations.europa.config.system.build.toplevel
 ```
 
 Do not push repository changes or activate a machine configuration unless the
