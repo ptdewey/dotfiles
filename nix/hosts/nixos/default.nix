@@ -47,21 +47,6 @@
         ];
       };
 
-      luna = inputs.nixpkgs-stable.lib.nixosSystem {
-        specialArgs = {
-          inherit inputs;
-          nixpkgs = inputs.nixpkgs-stable;
-        };
-        modules = [
-          # Don't include common modules on Luna.
-          ./luna/configuration.nix
-          ../../system/utilities/jellyfin.nix
-          ../../system/utilities/forgejo.nix
-
-          { nixpkgs.hostPlatform = "x86_64-linux"; }
-        ];
-      };
-
       calypso = inputs.nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [

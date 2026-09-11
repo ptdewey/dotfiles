@@ -59,7 +59,7 @@ in
 
     extraHosts = ''
       192.168.4.71 luna
-      167.172.231.73 arabica-systems-pds
+      51.81.86.67 arabica-systems-vps
     '';
   };
 
