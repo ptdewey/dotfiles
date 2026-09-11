@@ -10,7 +10,6 @@ _: {
 
         # These directories also contain runtime state, so only manage their
         # declarative files.
-        "herdr/.plugins.lock".source = ./herdr/.plugins.lock;
         "herdr/config.toml".source = ./herdr/config.toml;
         "jj/config.toml".source = ./jj/config.toml;
       };

@@ -45,6 +45,7 @@
         "x86_64-linux"
       ];
       imports = [
+        ./nix/hosts/darwin
         ./nix/hosts/nixos
         (inputs.import-tree.matchNot ".*/assets/.*" ./nix/modules)
         home-manager.flakeModules.home-manager

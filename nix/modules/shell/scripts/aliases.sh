@@ -103,9 +103,6 @@ alias dn="cd ~/Downloads"
 alias notes='cd ~/notes'
 
 # tmux
-tmux-sessionizer() {
-    tmux-sessionizer "$@"
-}
 alias ts="tmux-sessionizer"
 tmux-pick() {
     tmux-pick-session

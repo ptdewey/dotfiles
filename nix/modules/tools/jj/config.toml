@@ -2,13 +2,6 @@
 name = "Patrick Dewey"
 email = "p@pdewey.com"
 
-# TODO: maybe add extra scoping around hostnames
-[[--scope]]
---when.repositories = ["~/workspace"]
-[--scope.user]
-name = "Patrick Dewey"
-email = ""
-
 [signing]
 behavior = "own"
 backend = "ssh"

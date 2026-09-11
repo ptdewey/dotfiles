@@ -4,8 +4,6 @@ _: {
     {
       home.file = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {
         ".aerospace.toml".source = ./aerospace.toml;
-        ".claude/CLAUDE.md".source = ./claude/CLAUDE.md;
-        ".claude/settings.json".source = ./claude/settings.json;
         ".hammerspoon".source = ./hammerspoon;
       };
 
