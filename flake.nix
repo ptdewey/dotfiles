@@ -47,7 +47,8 @@
       imports = [
         ./nix/hosts/darwin
         ./nix/hosts/nixos
-        (inputs.import-tree.matchNot ".*/assets/.*" ./nix/modules)
+        (inputs.import-tree.matchNot ".*/assets/.*" ./nix/config)
+        (inputs.import-tree.matchNot ".*/assets/.*" ./nix/agent)
         home-manager.flakeModules.home-manager
       ];
       perSystem =

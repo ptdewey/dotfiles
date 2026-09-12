@@ -43,7 +43,6 @@
     zip
     ast-grep
     nmap
-    # libreoffice
     yaru-theme
     bibata-cursors
     typst
@@ -54,7 +53,6 @@
     stylua
     luajitPackages.luacheck
     just
-    go-mockery
     inotify-tools
     luajit
     luajitPackages.luarocks
@@ -72,13 +70,11 @@
     rust-analyzer
     rustfmt
     lld
-    nh
     feishin
     atproto-goat
     pnpm
     dig
     host
-    thunderbird
     templ
     codex
     herdr

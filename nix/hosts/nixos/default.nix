@@ -3,8 +3,8 @@
   flake.nixosConfigurations =
     let
       commonModules = [
-        ../../system/common.nix
-        ../../system/services/local-observability.nix
+        ../../modules/common.nix
+        ../../services/local-observability.nix
         {
           # Keep the flake's nixpkgs available through the registry and NIX_PATH.
           nix.registry.nixpkgs.flake = inputs.nixpkgs;
@@ -19,12 +19,12 @@
         modules = commonModules ++ [
           ./europa/configuration.nix
           ./europa/home.nix
-          ../../system/desktops/gnome.nix
-          ../../system/desktops/niri.nix
-          ../../system/games/minecraft.nix
-          ../../system/games/steam.nix
-          # ../../system/games/lutris.nix
-          ../../system/apps/discord.nix
+          ../../modules/gnome.nix
+          ../../modules/niri.nix
+          ../../modules/minecraft.nix
+          ../../modules/steam.nix
+          # ../../modules/lutris.nix
+          ../../modules/discord.nix
 
           { nixpkgs.hostPlatform = "x86_64-linux"; }
         ];
@@ -34,11 +34,11 @@
         specialArgs = { inherit inputs; };
         modules = commonModules ++ [
           ./callisto/configuration.nix
-          # ../../system/desktops/gdm.nix
-          ../../system/desktops/tuigreet.nix
-          ../../system/desktops/niri.nix
-          ../../system/apps/discord.nix
-          ../../system/desktops/river.nix
+          # ../../modules/gdm.nix
+          ../../modules/tuigreet.nix
+          ../../modules/niri.nix
+          ../../modules/discord.nix
+          ../../modules/river.nix
 
           {
             nixpkgs.overlays = [ ];
