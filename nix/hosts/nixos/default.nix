@@ -51,6 +51,7 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./calypso/configuration.nix
+          ./calypso/home.nix
           inputs.sops-nix.nixosModules.sops
 
           {

@@ -145,9 +145,11 @@ in
     nil
     sops
     gleam
-    erlang
+    beam28Packages.erlang
     beam28Packages.rebar
     beam28Packages.elixir
+    pnpm
+    templ
 
     # Load rocm packages
     rocmEnv
