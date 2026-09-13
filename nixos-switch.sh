@@ -1,55 +1,105 @@
 #!/usr/bin/env bash
+# sourced from https://github.com/JustCoderdev/dotfiles
 
-set -Eeuo pipefail
+# Exit alt-buff
+echo -ne "\033[?1049l"
 
-if (( $# > 1 )); then
-  printf 'Usage: %s [host]\n' "$0" >&2
-  exit 2
+pushd "${HOME}/dotfiles/" > /dev/null || exit
+shopt -s globstar
+clear
+
+
+# Update host
+if [ -f "./flake.nix" ]; then
+	HOST_FLAKE=$(awk '/_hostname = / {print $3}' ./flake.nix)
+	HOST_FLAKE="${HOST_FLAKE//\"/}"
+	HOST_FLAKE="${HOST_FLAKE%;}"
+else
+	HOST_FLAKE=""
 fi
 
-repo_root="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
-local_host="$(hostname --short)"
-host="${1:-${local_host}}"
-log_file="${repo_root}/.nixos-switch.log"
-flake="${repo_root}#${host}"
-lock_flags=(--no-update-lock-file --no-write-lock-file)
+HOST_SHELL="${HOST:-}"
+HOST_INPUT="${1:-}"
 
-if [[ "${host}" != "${local_host}" ]]; then
-  printf 'Refusing to switch %s using the configuration for %s.\n' "${local_host}" "${host}" >&2
-  exit 1
+## Check for input
+if [ -z "${HOST_INPUT}" ]; then
+	echo -e "Hostname not passed, defaulting to \033[32m#${HOST_SHELL}\033[0m"
+else
+	echo -e "Requested rebuild for \033[32m\"${HOST_INPUT}\"\033[0m"
+	HOST_SHELL="${HOST_INPUT}"
 fi
 
-cd -- "${repo_root}"
-
-if ! declared_host="$(
-  nix eval \
-    "${lock_flags[@]}" \
-    --raw \
-    ".#nixosConfigurations.${host}.config.networking.hostName"
-)"; then
-  printf 'Unknown or invalid NixOS host: %s\n' "${host}" >&2
-  exit 1
+## Update flake file
+if [ "${HOST_SHELL}" != "${HOST_FLAKE}" ]; then
+	echo "Updating flake... (${HOST_FLAKE:---}) -> ($HOST_SHELL)"
+	sed -i "s/\(_hostname = \).*/\1\"${HOST_SHELL}\";/" ./flake.nix
 fi
 
-if [[ "${declared_host}" != "${local_host}" ]]; then
-  printf 'Configuration %s declares hostname %s; expected %s.\n' \
-    "${host}" \
-    "${declared_host}" \
-    "${local_host}" >&2
-  exit 1
+
+# Check differences
+echo -ne "Analysing changes..."
+if git diff --quiet -- .; then  # -- ./**/*.nix
+	echo -e " \033[31mNot found\033[0m"
+	had_changes=false
+else
+	echo " Found"
+	had_changes=true
+
+	read -r -p 'Open diff? (y/N): ' diff_confirm
+	if [[ "${diff_confirm}" == [yY] ]] || [[ "${diff_confirm}" == [yY][eE][sS] ]]; then
+		git diff --word-diff=porcelain -U0 -- .
+	fi
+
+	# sudo git add .
+	git add .
 fi
 
-printf 'Building NixOS configuration for %s...\n' "${host}"
-nix build \
-  "${lock_flags[@]}" \
-  --no-link \
-  --show-trace \
-  ".#nixosConfigurations.${host}.config.system.build.toplevel" \
-  2>&1 | tee "${log_file}"
 
-printf 'Switching NixOS configuration for %s...\n' "${host}"
-sudo nixos-rebuild switch \
-  "${lock_flags[@]}" \
-  --show-trace \
-  --flake "${flake}" \
-  2>&1 | tee -a "${log_file}"
+# Rebuild system
+echo -n "Rebuilding NixOS... "
+echo -ne "\033[?1049h\033[H" # enter alt-buff and clear
+echo "Rebuilding NixOS..."
+
+set +o pipefail # Disable pipafail since we check ourselves
+sudo nixos-rebuild switch --show-trace --flake ".#${HOST_SHELL}" 2>&1 | tee .nixos-switch.log
+exit_code="${PIPESTATUS[0]}"
+set -o pipefail # Re-enable pipefail
+
+echo  -e "\n\033[34mNixOS rebuild completed\033[0m (code: $exit_code)"
+echo -ne "\rExit in 3" && sleep 1
+echo -ne "\rExit in 2" && sleep 1
+echo -ne "\rExit in 1" && sleep 1
+echo -ne "\033[?1049l" # exit alt-buff
+
+if [[ "${exit_code}" == 0 ]]; then
+	echo -e "Done\n"
+
+	## Commit changes
+	if $had_changes; then
+		generation=$(sudo nix-env -p /nix/var/nix/profiles/system --list-generations | grep current | awk '{print $1}')
+		message="$(hostname): NixOS build #${generation}"
+        GIT_COMMITTER_NAME="ptdewey" GIT_COMMITTER_EMAIL="noreply" git commit -m "${message}" --author="ptdewey <noreply>"
+		echo -e "\n\n\033[32mCommitted as ${message}\033[0m"
+	fi
+
+	echo -e "\033[34mNixOS Rebuild Completed!\033[0m\n"
+
+else
+	echo -e "\033[31mFailed\033[0m\n"
+
+	grep --color -F "error" .nixos-switch.log
+	if $had_changes; then
+		git restore --staged .
+	fi
+
+	echo -ne "\n"
+
+	read -r -p 'Open log? (y/N): ' log_confirm
+	if [[ "${log_confirm}" == [yY] ]] || [[ "${log_confirm}" == [yY][eE][sS] ]]; then
+		vim -R .nixos-switch.log
+	fi
+fi
+
+shopt -u globstar
+popd > /dev/null || exit
+
