@@ -3,7 +3,7 @@
 .cache
 scripts/ssh.sh
 *.uuid
-*log*
+.nixos-switch.log
 *.DS_Store
 home/hammerspoon/Spoons/EmmyLua.spoon/annotations
 config/jj/repos/**/*
