@@ -8,6 +8,12 @@ pushd "${HOME}/dotfiles/" > /dev/null || exit
 shopt -s globstar
 clear
 
+if [[ -d .jj ]]; then
+	VCS="jj"
+else
+	VCS="git"
+fi
+
 
 # Update host
 if [ -f "./flake.nix" ]; then
@@ -38,20 +44,34 @@ fi
 
 # Check differences
 echo -ne "Analysing changes..."
-if git diff --quiet -- .; then  # -- ./**/*.nix
+if [[ "${VCS}" == "jj" ]]; then
+	change_summary=$(jj diff --summary -- .) || exit
+	has_changes=$([[ -n "${change_summary}" ]] && echo true || echo false)
+else
+	if git diff --quiet -- .; then  # -- ./**/*.nix
+		has_changes=false
+	else
+		has_changes=true
+	fi
+fi
+
+if ! ${has_changes}; then
 	echo -e " \033[31mNot found\033[0m"
-	had_changes=false
 else
 	echo " Found"
-	had_changes=true
 
 	read -r -p 'Open diff? (y/N): ' diff_confirm
 	if [[ "${diff_confirm}" == [yY] ]] || [[ "${diff_confirm}" == [yY][eE][sS] ]]; then
-		git diff --word-diff=porcelain -U0 -- .
+		if [[ "${VCS}" == "jj" ]]; then
+			jj diff --color-words --context 0 -- .
+		else
+			git diff --word-diff=porcelain -U0 -- .
+		fi
 	fi
 
-	# sudo git add .
-	git add .
+	if [[ "${VCS}" == "git" ]]; then
+		git add .
+	fi
 fi
 
 
@@ -75,10 +95,14 @@ if [[ "${exit_code}" == 0 ]]; then
 	echo -e "Done\n"
 
 	## Commit changes
-	if $had_changes; then
+	if ${has_changes}; then
 		generation=$(sudo nix-env -p /nix/var/nix/profiles/system --list-generations | grep current | awk '{print $1}')
 		message="$(hostname): NixOS build #${generation}"
-        GIT_COMMITTER_NAME="ptdewey" GIT_COMMITTER_EMAIL="noreply" git commit -m "${message}" --author="ptdewey <noreply>"
+		if [[ "${VCS}" == "jj" ]]; then
+			jj commit -m "${message}"
+		else
+			GIT_COMMITTER_NAME="ptdewey" GIT_COMMITTER_EMAIL="noreply" git commit -m "${message}" --author="ptdewey <noreply>"
+		fi
 		echo -e "\n\n\033[32mCommitted as ${message}\033[0m"
 	fi
 
@@ -88,7 +112,7 @@ else
 	echo -e "\033[31mFailed\033[0m\n"
 
 	grep --color -F "error" .nixos-switch.log
-	if $had_changes; then
+	if ${has_changes} && [[ "${VCS}" == "git" ]]; then
 		git restore --staged .
 	fi
 
@@ -102,4 +126,3 @@ fi
 
 shopt -u globstar
 popd > /dev/null || exit
-

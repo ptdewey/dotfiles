@@ -13,16 +13,6 @@
   ];
 
   systemd.user.services = {
-    swaybg = {
-      description = "Wallpaper Service";
-      after = [ "niri.service" ];
-      wantedBy = [ "graphical-session.target" ];
-      serviceConfig = {
-        ExecStart = "${pkgs.swaybg}/bin/swaybg -m fill -i %h/Pictures/wallpapers/ghibli-city.jpeg";
-        Restart = "on-failure";
-      };
-    };
-
     # swww-daemon = {
     #   description = "Animated Wallpaper Daemon";
     #   after = [ "niri.service" ];

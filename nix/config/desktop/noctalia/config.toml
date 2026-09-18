@@ -1,0 +1,71 @@
+[accessibility]
+ui_scale = 1.15
+
+[shell]
+font_family = "IosevkaPatrick Nerd Font"
+settings_show_advanced = true
+
+[wallpaper]
+enabled = true
+fill_mode = "crop"
+fill_color = "#17130b"
+directory = "/home/patrick/Pictures/wallpapers"
+transition_on_startup = false
+
+[wallpaper.default]
+path = "/home/patrick/Pictures/wallpapers/ghibli-city.jpeg"
+
+[theme]
+mode = "dark"
+source = "wallpaper"
+wallpaper_scheme = "m3-content"
+
+# The base configuration is the full bar on the center/main display. Noctalia
+# creates one bar surface per output; the side-display overrides keep those
+# instances intentionally sparse.
+[bar.main]
+position = "left"
+thickness = 44
+background_opacity = 1.0
+radius = 0
+margin_ends = 0
+margin_edge = 0
+padding = 8
+widget_spacing = 6
+reserve_space = true
+capsule = true
+start = ["launcher", "wallpaper", "workspaces"]
+center = ["clock"]
+end = [
+  "media",
+  "tray",
+  "notifications",
+  "clipboard",
+  "network",
+  "bluetooth",
+  "volume",
+  "brightness",
+  "control-center",
+  "session",
+]
+
+[bar.main.monitor.dp1]
+match = "DP-1"
+thickness = 36
+padding = 6
+widget_spacing = 4
+start = ["workspaces"]
+center = ["clock"]
+end = ["control-center"]
+
+[bar.main.monitor.dp2]
+match = "DP-2"
+
+[bar.main.monitor.dp3]
+match = "DP-3"
+thickness = 36
+padding = 6
+widget_spacing = 4
+start = ["workspaces"]
+center = ["clock"]
+end = ["control-center"]

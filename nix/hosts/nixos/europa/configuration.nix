@@ -163,7 +163,6 @@ in
     inkscape
     inputs.glide.packages.${pkgs.system}.default
     onefetch
-    # openmw # FIX: build is failing?
     # kdePackages.kdenlive # FIX: build is failing (01/28/26)
     gleam
     beam28Packages.erlang
@@ -174,6 +173,7 @@ in
     inputs.hunk.packages.${pkgs.stdenv.hostPlatform.system}.hunk
     inputs.qbz.packages.${pkgs.system}.default
     helix
+    penpot-desktop
   ];
 
   # TODO: I don't think I actually use these

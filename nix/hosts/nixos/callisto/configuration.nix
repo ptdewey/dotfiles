@@ -80,7 +80,6 @@
     spotify
     tinymist
     wezterm
-    inputs.noctalia.packages.${system}.default
     inputs.glide.packages.${pkgs.system}.default
 
     gleam
