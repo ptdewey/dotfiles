@@ -9,7 +9,6 @@
         pkgs.winetricks
       ];
     })
-    # wineWowPackages.waylandFull
-    # wowup-cf
+    wineWow64Packages.waylandFull
   ];
 }

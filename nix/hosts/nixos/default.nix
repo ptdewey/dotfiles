@@ -23,7 +23,7 @@
           ../../modules/niri.nix
           ../../modules/minecraft.nix
           ../../modules/steam.nix
-          # ../../modules/lutris.nix
+          ../../modules/lutris.nix
           ../../modules/discord.nix
 
           { nixpkgs.hostPlatform = "x86_64-linux"; }

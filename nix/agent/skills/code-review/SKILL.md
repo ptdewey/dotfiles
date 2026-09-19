@@ -1,6 +1,6 @@
 ---
 name: code-review
-description: Review a change (a merge/pull request, or the current branch/jj change) with TWO parallel reviewer subagents — a standard reviewer and an adversarial reviewer. Merge their findings only after both return; always deliver an in-chat summary, and post to the MR/PR only with consent. When reviewing your own work, iterate on the feedback and re-invoke until no findings remain.
+description: Review a change (a merge/pull request, or the current branch/jj change) with TWO parallel reviewer subagents — a standard reviewer and an adversarial reviewer. Use when the user requests a code review, or at most once as a final quality check after the agent changes code. Never repeat automatically; iterative fix-and-review cycles require an explicit user request.
 disable-model-invocation: false
 tags:
   - productivity
@@ -9,27 +9,33 @@ polytoken: true
 
 # Code Review
 
-Orchestrate a two-reviewer code review. The main agent does **not** review the diff itself — it dispatches two reviewer **subagents** that run concurrently, waits for **both** to return, merges their findings, and delivers a single review. When the main agent owns the work under review, it then fixes the findings and re-invokes this skill until the review comes back clean.
+Orchestrate a two-reviewer code review. The main agent does **not** review the diff itself — it dispatches two reviewer **subagents** that run concurrently, waits for **both** to return, merges their findings, and delivers a single review.
+
+**One pass is the default.** If this skill was selected automatically, run it no more than once for the user's task. Do not re-invoke it after fixes. Repeated fix-and-review cycles are allowed only when the user explicitly asks for iteration, such as "fix and re-review until clean."
 
 Host- and VCS-agnostic: works in **jj** and **git** repos, and against **GitLab**, **GitHub**, or no remote at all. The guaranteed deliverable is an **in-chat** review; posting to a remote MR/PR is optional and gated on consent.
 
 > **Subagents — non-negotiable.**
 > - The review reasoning runs **inside subagents, never in the main agent.** Dispatch **exactly two** subagents in a **single assistant turn** so they run in parallel.
 > - One is the **standard reviewer**, one is the **adversarial reviewer**. Both get the same context bundle.
-> - The main agent only orchestrates: gather context → dispatch the two → wait for both → merge → deliver → (authoring mode) fix + re-invoke.
+> - The main agent only orchestrates: gather context → dispatch the two → wait for both → merge → deliver → optionally act according to the policy below.
 > - Model is the harness default — no model pinning. Whatever subagent tool the harness provides (`Task`, `Agent`, `subagent`) is fine; dispatch both in one turn.
 
-## Modes — decide this first
+## Policy — decide this first
 
-- **Authoring mode** — *you wrote the changes under review.* After the review you **iterate**: fix the findings and re-invoke until clean.
-- **External mode** — *you're reviewing someone else's work.* **Read-only**: deliver feedback, never edit their code, never iterate on their behalf.
+Determine both ownership and repetition policy:
 
-If it's ambiguous who owns the changes, ask one clarifying question before reviewing.
+- **Authoring mode** — *you wrote the changes under review.* You may fix findings when the surrounding task already authorizes implementation, but the default remains one review pass.
+- **External mode** — *you're reviewing someone else's work.* **Read-only**: deliver feedback and never edit their code.
+- **Single-pass policy (default)** — applies to every automatic invocation and ordinary review request. Run one two-reviewer pass, deliver it, optionally fix findings when already authorized, and stop. **Never re-invoke the skill.**
+- **Iterative policy (explicit opt-in only)** — use only when the user clearly asks to fix and re-review repeatedly or to continue until clean. A request merely to "review" is not opt-in to iteration.
 
-## The Loop
+If ownership is ambiguous, ask one clarifying question before reviewing. If repetition policy is ambiguous, choose single-pass; do not ask merely to enable a loop.
+
+## The Flow
 
 ```
-identify target + mode (authoring | external)
+identify target + ownership + repetition policy
         │
         ▼
 detect VCS (jj vs git) + gather diff + context  (main agent)
@@ -47,24 +53,19 @@ merge + dedupe findings → one severity-ranked review
         ▼
 deliver: in-chat summary (always) + post only if open MR/PR & consent
         │
-   ┌────┴───────────────────────────────┐
-external mode                       authoring mode
-   │                                     │
-  done                          findings? ──no──► clean — done
-                                         │
-                                        yes → fix root cause + tests
-                                              │
-                                              ▼
-                                  RE-INVOKE this skill (fresh 2-reviewer pass)
-                                  until no new findings  (cap 5 cycles)
+        ▼
+external → done
+authoring + single-pass → optionally fix if authorized, then done
+authoring + explicit iterative policy → fix, test, and re-review (cap 5)
 ```
 
 ## Steps
 
-### 1. Identify the target and the mode
+### 1. Identify the target and policy
 
 - **Target:** an MR/PR the user named; otherwise the current work vs. the repo's base.
-- **Mode:** *authoring* if you wrote the changes (your working change/branch, or an MR/PR you authored); *external* if you didn't. If ownership is unclear, ask one question. The mode decides whether step 6 runs.
+- **Ownership:** *authoring* if you wrote the changes (your working change/branch, or an MR/PR you authored); *external* if you didn't. If ownership is unclear, ask one question.
+- **Repetition:** *single-pass* unless the user explicitly requested iterative fix-and-review cycles. Automatic invocation is always single-pass.
 
 ### 2. Detect the VCS and gather the diff + context (main agent)
 
@@ -133,17 +134,18 @@ Also call out **what's good**.
   - GitHub: `gh pr comment <id> --body "Claude: <verdict + severity table>"` (per-line via `gh api .../comments`).
   - Neither CLI available: **emit the fully-formatted note text in chat** for the user to paste. Do not invent a posting path.
 
-### 6. Authoring mode — iterate, then re-invoke (skip in external mode)
+### 6. After the review
 
-- **External mode:** stop after step 5. Never edit someone else's code; never loop.
-- **Authoring mode:** if the merged review has findings, fix them:
+- **External mode:** stop after step 5. Never edit someone else's code and never iterate on their behalf.
+- **Authoring + review-only request:** stop after step 5. A request to review does not itself authorize edits.
+- **Authoring + implementation already authorized:** if the merged review has findings, you may fix them once:
   1. Fix **root causes** — no workarounds, no disabling/skipping tests, no `--no-verify`.
   2. Add or adjust a test that **would have failed before** the fix, pinning the contract.
   3. Run the relevant test suite + lint; fix any breakage before continuing.
   4. In a jj repo, let jj snapshot the working copy — do **not** stage, and do **not** push (`jj git push` is the user's to run). Leave unrelated in-flight changes alone.
-  5. **Re-invoke this skill from step 2** — a fresh two-reviewer pass on the updated code.
-- Repeat until a cycle returns **no new findings** — that clean pass is "done".
-- **Guardrails:**
+  5. Under the **single-pass policy**, report the fixes and stop. Do not re-invoke this skill to check them.
+- Under the **iterative policy only**, re-invoke from step 2 after fixes and repeat until a cycle returns no new findings.
+- **Iterative-policy guardrails:**
   - Print `Code-review cycle N` at the top of each pass so progress is visible.
   - **Cap: 5 cycles.** If still not clean after 5, stop and hand back with the current findings.
   - **Same finding twice in a row = stop and ask** — the fix isn't fixing it; don't churn variations.
@@ -153,26 +155,28 @@ Also call out **what's good**.
 - **Reviewing happens in subagents, never the main agent.** Exactly two, dispatched in one turn so they run in parallel: standard + adversarial. Harness-default model; no model pinning.
 - **No feedback before both return.** Don't deliver, post, or start fixing until both subagents are terminal. No partial reviews.
 - **Merge, don't staple.** Dedupe, keep the higher severity, keep adversarial-only findings, tag sources.
-- **Mode gates iteration.** Authoring → fix + re-invoke until clean. External → read-only, deliver only, never touch their code.
+- **One pass by default.** Automatic invocation is always single-pass. Ordinary review requests are also single-pass. Only an explicit request for repeated fix-and-review cycles enables re-invocation.
+- **Ownership gates edits.** External → read-only. Authoring → fix only when the surrounding request authorizes implementation; a review-only request does not.
 - **Chat first; posting needs an open MR/PR + explicit consent.** Comment/note-only, `Claude: ` prefix, host CLI auto-detected. No CLI → emit the note text to paste. No open MR/PR → summary only.
 - **Respect the VCS.** jj repos: use jj, never `git add/commit/checkout/reset`; never push; never `jj restore`/`jj abandon` unless the user asks to revert.
-- **Fix root causes; tests gate every cycle.** Cap 5 cycles; same finding twice → stop and ask.
+- **Fix root causes; tests gate fixes.** When iteration was explicitly requested, cap it at 5 cycles; same finding twice → stop and ask.
 - **Ground every finding in code** (`path:line`); mark unverifiable downstream effects "unverified". Severity is your honest read — don't inflate nits or hedge a real blocker.
 
 ## Quick reference
 
 | Phase | Who | Output |
 |-------|-----|--------|
-| Identify + detect VCS + gather (1–2) | main agent | context bundle + mode |
+| Identify + detect VCS + gather (1–2) | main agent | context bundle + ownership/repetition policy |
 | Review (3) | **2 subagents, parallel** | two finding sets |
 | Wait + merge (4) | main agent | one severity-ranked review |
 | Deliver (5) | main agent | chat summary always; post if open MR/PR + consent |
-| Iterate (6, authoring only) | main agent | fixes + re-invoke until clean (cap 5) |
+| Act (6, authoring only) | main agent | optional fixes; re-review only on explicit opt-in (cap 5) |
 
 ## Notes for the operator
 
 - **Two reviewers, run together:** the adversarial pass catches what the balanced pass rationalizes away. Running them concurrently (not one after the other) keeps it fast and keeps the merge honest.
 - **Wait-for-both** exists so you never act on half a review — a blocker from the slower reviewer shouldn't be missed because the other finished first.
-- **The authoring loop re-invokes the whole skill**, so each cycle is a fresh, unbiased two-reviewer pass on the latest code. "No new findings" is then a real signal, not an agent rubber-stamping its own fix.
+- **Automatic means once.** A model-selected quality check must not turn one implementation request into an open-ended review loop.
+- **Iteration is user-controlled.** When explicitly requested, each cycle re-invokes the whole skill for a fresh, unbiased two-reviewer pass on the latest code.
 - **External mode is deliberately read-only** — reviewing someone else's work never edits their branch.
 - **Chat is the contract.** The remote MR/PR post is a convenience; the in-chat review is always produced, so the skill is useful even with no remote and no host CLI.
