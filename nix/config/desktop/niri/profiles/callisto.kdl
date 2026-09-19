@@ -1,0 +1,18 @@
+// Laptop touchpad scrolling and built-in display.
+input {
+    touchpad {
+        tap
+        dwt
+    }
+}
+
+output "eDP-1" {
+    scale 1.0
+    background-color "#17130b"
+}
+
+workspace "main" { open-on-output "eDP-1"; }
+workspace "web" { open-on-output "eDP-1"; }
+workspace "video" { open-on-output "eDP-1"; }
+workspace "music" { open-on-output "eDP-1"; }
+workspace "chat" { open-on-output "eDP-1"; }

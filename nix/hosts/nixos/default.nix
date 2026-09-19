@@ -34,6 +34,7 @@
         specialArgs = { inherit inputs; };
         modules = commonModules ++ [
           ./callisto/configuration.nix
+          ./callisto/home.nix
           # ../../modules/gdm.nix
           ../../modules/tuigreet.nix
           ../../modules/niri.nix

@@ -8,18 +8,18 @@
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Input
 input {
     keyboard {
-        // xkb {
+        xkb {
             // You can set rules, model, layout, variant and options.
             // For more information, see xkeyboard-config(7).
 
             // For example:
             // layout "us,ru"
             // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
-        // }
+            options "caps:escape"
+        }
 
         // Enable numlock on startup, omitting this setting disables it.
         // numlock
-
         repeat-rate 35
         repeat-delay 500
     }
@@ -33,7 +33,7 @@ input {
         // dwtp
         // drag false
         // drag-lock
-        natural-scroll
+        // natural-scroll
         // accel-speed 0.2
         // accel-profile "flat"
         // scroll-method "two-finger"
@@ -66,6 +66,9 @@ input {
     focus-follows-mouse max-scroll-amount="0%"
 }
 
+// Input, output, and workspace settings that differ between machines.
+include "host.kdl"
+
 gestures {
     hot-corners {
         off
@@ -78,23 +81,6 @@ gestures {
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
 // Remember to uncomment the node by removing "/-"!
-output "DP-1" {
-    position x=0 y=100
-    background-color "#17130b"
-}
-
-// Main monitor
-output "DP-2" {
-    position x=1920 y=0
-    background-color "#17130b"
-}
-
-output "DP-3" {
-    transform "270" // make vertical
-    position x=4480 y=0
-    background-color "#17130b"
-}
-
 /-output{
     // Uncomment this line to disable this output.
     // off
@@ -108,7 +94,7 @@ output "DP-3" {
     mode "1920x1080@120.030"
 
     // You can use integer or fractional scale, for example use 1.5 for 150% scale.
-    scale 2
+    scale 1
 
     // Transform allows to rotate the output counter-clockwise, valid values are:
     // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
@@ -320,13 +306,6 @@ animations {
 
     workspace-switch { off; }
 }
-
-// Named workspaces by monitor
-workspace "main" { open-on-output "DP-2"; }
-workspace "web" { open-on-output "DP-2"; }
-workspace "video" { open-on-output "DP-1"; }
-workspace "music" { open-on-output "DP-1"; }
-workspace "chat" { open-on-output "DP-1"; }
 
 // Window rules let you adjust behavior for individual windows.
 // Find more information on the wiki:
@@ -540,9 +519,7 @@ binds {
     // Similarly, you can bind touchpad scroll "ticks".
     // Touchpad scrolling is continuous, so for these binds it is split into
     // discrete intervals.
-    // These binds are also affected by touchpad's natural-scroll, so these
-    // example binds are "inverted", since we have natural-scroll enabled for
-    // touchpads by default.
+    // These binds are also affected by touchpad's natural-scroll setting.
     // Mod+TouchpadScrollDown { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02+"; }
     // Mod+TouchpadScrollUp   { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02-"; }
 

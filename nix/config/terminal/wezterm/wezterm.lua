@@ -6,7 +6,11 @@ local config = wezterm.config_builder()
 
 -- font settings
 config.font = wezterm.font("IosevkaPatrick Nerd Font")
-config.font_size = 18 -- (1080p) will be overridden later
+local font_sizes = {
+    callisto = 22,
+    europa = 18,
+}
+config.font_size = font_sizes[wezterm.hostname()] or 18
 
 -- set rendering device
 config.enable_wayland = true
@@ -58,8 +62,8 @@ config.tiling_desktop_environments = {
     "Wayland niri",
 }
 
-config.color_scheme = "DarkEarth"
--- config.color_scheme = "LightEarth"
+-- config.color_scheme = "DarkEarth"
+config.color_scheme = "LightEarth"
 
 -- This function returns the suggested title for a tab.
 -- It prefers the title that was set via `tab:set_title()`

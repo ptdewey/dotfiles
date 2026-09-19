@@ -69,8 +69,6 @@
     nautilus
     cacert
     firefox
-    # firefox-unwrapped
-    firefox-devedition
     kitty
     feh
     acpi

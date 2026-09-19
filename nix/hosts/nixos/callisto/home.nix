@@ -39,7 +39,7 @@ in
 
       imports = [ inputs.self.homeModules.patrick ];
 
-      dotfiles.desktop.niri.profile = "europa";
+      dotfiles.desktop.niri.profile = "callisto";
 
       programs.home-manager.enable = true;
     };
