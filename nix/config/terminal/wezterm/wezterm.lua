@@ -63,7 +63,8 @@ config.tiling_desktop_environments = {
 }
 
 -- config.color_scheme = "DarkEarth"
-config.color_scheme = "LightEarth"
+-- config.color_scheme = "LightEarth"
+config.color_scheme = "Catppuccin Mocha"
 
 -- This function returns the suggested title for a tab.
 -- It prefers the title that was set via `tab:set_title()`
