@@ -1,6 +1,6 @@
 _: {
   flake.homeModules.patrick =
-    { ... }:
+    { config, ... }:
     {
       home.file = {
         ".tmux.conf".source = ./tmux.conf;
@@ -12,7 +12,8 @@ _: {
 
       xdg.configFile = {
         "ohmyposh".source = ./ohmyposh;
-        "wezterm".source = ./wezterm;
+        "wezterm".source =
+          config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/nix/config/terminal/wezterm";
       };
     };
 }

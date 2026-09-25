@@ -6,6 +6,7 @@ prefix = "ctrl+a"
 [theme]
 name = "solarized-light"
 
+auto_switch = false
 [ui]
 agent_panel_sort = "spaces"
 
