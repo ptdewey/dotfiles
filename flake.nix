@@ -27,10 +27,6 @@
       url = "github:modem-dev/hunk";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
-    qbz = {
-      url = "github:vicrodh/qbz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
