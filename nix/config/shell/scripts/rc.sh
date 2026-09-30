@@ -8,6 +8,10 @@
 # fi
 
 export VISUAL=nvim
+# Pi's OTel extension sends OTLP/HTTP protobuf payloads (4318), with
+# separate signal-specific paths for metrics and traces.
+export PI_OTEL_METRICS_ENDPOINT="http://luna:4318/v1/metrics"
+export PI_OTEL_TRACES_ENDPOINT="http://luna:4318/v1/traces"
 export FZF_DEFAULT_COMMAND='rg --files'
 # export FZF_DEFAULT_OPTS='-m --border --height 60% --preview "cat {}"'
 export FZF_DEFAULT_OPTS='-m --border'
