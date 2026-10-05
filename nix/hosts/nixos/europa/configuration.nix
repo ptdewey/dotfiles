@@ -171,7 +171,6 @@ in
     qemu_kvm
     rusty-path-of-building
     inputs.hunk.packages.${pkgs.stdenv.hostPlatform.system}.hunk
-    inputs.qbz.packages.${pkgs.system}.default
     helix
     penpot-desktop
   ];

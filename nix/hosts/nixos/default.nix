@@ -9,7 +9,7 @@
           # Keep the flake's nixpkgs available through the registry and NIX_PATH.
           nix.registry.nixpkgs.flake = inputs.nixpkgs;
           environment.etc."nix/inputs/nixpkgs".source = "${inputs.nixpkgs}";
-          nix.settings.nix-path = inputs.nixpkgs.lib.mkForce "nixpkgs=/etc/nix/inputs/nixpkgs";
+          nix.settings.nix-path = inputs.nixpkgs.lib.mkForce [ "nixpkgs=/etc/nix/inputs/nixpkgs" ];
         }
       ];
     in

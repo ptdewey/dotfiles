@@ -46,7 +46,6 @@
     yaru-theme
     bibata-cursors
     typst
-    opencode
     caligula
     mpv
     mpd
@@ -63,7 +62,6 @@
     cmake
     ninja
     jujutsu
-    # nix-index
     ffmpeg
     rustc
     cargo
@@ -80,6 +78,7 @@
     herdr
     bazecor
     noctalia
+    zig
   ];
 
   # Add missing dynamic libs (do not include in environment.systemPackages)
