@@ -153,7 +153,7 @@ in
     beam28Packages.rebar
     beam28Packages.elixir
     pnpm
-    # herdr
+    herdr
 
     # Load rocm packages
     rocmEnv
