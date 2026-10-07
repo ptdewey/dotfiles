@@ -24,6 +24,10 @@ let
       rocm-toolchain
       rocm-device-libs
       rocm-comgr
+      # GPU profiling: rocprofv3 / rocprof / rocprof-trace-decoder (B1.1 spike).
+      rocprofiler-sdk
+      rocprofiler
+      rocprof-trace-decoder
     ];
   };
 in
