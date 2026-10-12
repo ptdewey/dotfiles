@@ -20,10 +20,31 @@ in
     after = [ "network-online.target" ];
     wants = [ "network-online.target" ];
 
-    path = [
-      pkgs.bun
-      pkgs.nodejs_24
-      pkgs.codex
+    path = with pkgs; [
+      bun
+      nodejs_24
+      codex
+      git
+      openssh
+      ripgrep
+      fd
+      jq
+      curl
+      coreutils
+      findutils
+      gnugrep
+      gnused
+      gawk
+      diffutils
+      patch
+      gnutar
+      gzip
+      unzip
+      zip
+      tree
+      gnumake
+      gcc
+      python3
     ];
 
     environment = {
@@ -50,7 +71,10 @@ in
       ProtectSystem = "strict";
       ProtectHome = true;
       InaccessiblePaths = [ "/data/models" ];
-      ReadWritePaths = [ "/var/lib/ferb" ];
+      ReadWritePaths = [
+        "/var/lib/ferb"
+        "/data/projects"
+      ];
     };
   };
 }
