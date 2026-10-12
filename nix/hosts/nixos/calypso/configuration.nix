@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ pkgs, inputs, ... }:
 
 let
   rocmEnv = pkgs.symlinkJoin {
@@ -163,6 +158,8 @@ in
     beam28Packages.elixir
     pnpm
     herdr
+    inputs.hunk.packages.${pkgs.stdenv.hostPlatform.system}.hunk
+    bun
 
     # Load rocm packages
     rocmEnv
@@ -224,6 +221,7 @@ in
   networking.firewall.allowedTCPPorts = [
     4000
     5173
+    7340
     8000
     8080
   ];

@@ -53,6 +53,7 @@
         modules = [
           ./calypso/configuration.nix
           ./calypso/home.nix
+          ../../services/connectome-ferb.nix
           inputs.sops-nix.nixosModules.sops
 
           {
