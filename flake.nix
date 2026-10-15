@@ -23,6 +23,12 @@
 
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     glide.url = "github:ptdewey/glide-browser-flake";
+
+    helium-browser = {
+      url = "github:amaanq/helium-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     hunk = {
       url = "github:modem-dev/hunk";
       inputs.nixpkgs.follows = "nixpkgs-stable";

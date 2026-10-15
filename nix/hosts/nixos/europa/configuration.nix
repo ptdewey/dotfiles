@@ -162,6 +162,7 @@ in
     tailwindcss
     inkscape
     inputs.glide.packages.${pkgs.system}.default
+    inputs.helium-browser.packages.${pkgs.system}.default
     onefetch
     # kdePackages.kdenlive # FIX: build is failing (01/28/26)
     gleam
