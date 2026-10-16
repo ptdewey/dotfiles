@@ -160,6 +160,10 @@ in
     herdr
     inputs.hunk.packages.${pkgs.stdenv.hostPlatform.system}.hunk
     bun
+    rustc
+    cargo
+    rustfmt
+    rust-analyzer
 
     # Load rocm packages
     rocmEnv
