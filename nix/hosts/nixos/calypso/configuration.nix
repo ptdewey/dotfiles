@@ -112,7 +112,6 @@ in
     go
     nodejs
     firefox
-    pi-coding-agent
     codex
     nvtopPackages.amd
     xclip
