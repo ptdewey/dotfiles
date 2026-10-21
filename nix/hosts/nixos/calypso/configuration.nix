@@ -175,6 +175,14 @@ in
     generateKey = true;
   };
 
+  # Mitigation for CVE-2026-111943 eMudhra incident
+  security.pki.caCertificateBlacklist = [
+    "Comodo AAA Services root"
+    "emSign ECC Root CA - G3"
+    "emSign Root CA - C1"
+    "emSign ECC Root CA - C3"
+  ];
+
   # ROCM stuff
   environment.variables = {
     ROCM_PATH = "${rocmEnv}";
