@@ -6,7 +6,7 @@
 }:
 
 let
-  defaultBrowser = "glide-browser.desktop";
+  defaultBrowser = "helium-browser.desktop";
 in
 {
   imports = [
@@ -148,7 +148,7 @@ in
     obs-studio
     obs-studio-plugins.obs-pipewire-audio-capture
     qmk
-    audacity
+    # audacity
     vulkan-tools
     obsidian
     love

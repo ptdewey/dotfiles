@@ -21,9 +21,9 @@
     awww
 
     # Go MPRIS media status/control binary for the waybar `custom/media` module.
-    (import ./waybar-mediaplayer/package.nix { pkgs = pkgs; })
+    # (import ./waybar-mediaplayer/package.nix { pkgs = pkgs; })
     quickshell
-    fnott
+    # fnott
   ];
 
   programs.dconf.profiles.user.databases = [

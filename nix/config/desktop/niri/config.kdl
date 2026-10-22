@@ -343,6 +343,12 @@ window-rule {
     default-column-width { proportion 1.0; }
 }
 
+window-rule {
+    match app-id=r#"helium-browser"# title="Helium" app-id="helium"
+    open-on-workspace "web"
+    default-column-width { proportion 1.0; }
+}
+
 // Open Spotify and Discord on separate workspaces
 window-rule {
     match app-id="Spotify" app-id="spotify"
@@ -638,7 +644,7 @@ binds {
     Mod+Shift+P { power-off-monitors; }
 
     // Custom keybinds
-    Mod+B { spawn "glide"; }
+    Mod+B { spawn "helium"; }
 
     // Workspace jumps
     Mod+S { focus-workspace "music"; }
