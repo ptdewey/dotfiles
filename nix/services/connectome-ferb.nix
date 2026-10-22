@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 let
-  host = "/data/connectome-ferb/releases/2026-10-12-host-0.9.0";
+  host = "/data-staging/connectome-ferb/releases/2026-10-12-host-0.9.0";
 in
 {
   users.groups.ferb = { };
@@ -16,7 +16,8 @@ in
   systemd.services.connectome-ferb = {
     description = "Ferb Connectome resident";
     wantedBy = [ "multi-user.target" ];
-    unitConfig.ConditionPathExists = "/data/connectome-ferb/recipe.json";
+    unitConfig.ConditionPathExists = "/data-staging/connectome-ferb/recipe.json";
+    unitConfig.RequiresMountsFor = [ "/data" ];
     after = [ "network-online.target" ];
     wants = [ "network-online.target" ];
 
@@ -59,7 +60,7 @@ in
       User = "ferb";
       Group = "ferb";
       WorkingDirectory = host;
-      ExecStart = "${pkgs.bun}/bin/bun ${host}/src/index.ts /data/connectome-ferb/recipe.json --headless";
+      ExecStart = "${pkgs.bun}/bin/bun ${host}/src/index.ts /data-staging/connectome-ferb/recipe.json --headless";
       StateDirectory = "ferb";
       StateDirectoryMode = "0700";
       EnvironmentFile = "/var/lib/ferb/webui.env";
@@ -70,9 +71,13 @@ in
       PrivateTmp = true;
       ProtectSystem = "strict";
       ProtectHome = true;
-      InaccessiblePaths = [ "/data/models" ];
+      InaccessiblePaths = [
+        "/data-staging/models"
+        "/data/models"
+      ];
       ReadWritePaths = [
         "/var/lib/ferb"
+        "/data-staging/projects"
         "/data/projects"
       ];
     };

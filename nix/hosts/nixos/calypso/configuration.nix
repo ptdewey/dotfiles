@@ -33,12 +33,9 @@ in
   ];
 
   fileSystems."/data" = {
-    device = "/dev/disk/by-uuid/2beeb5c7-6ab0-4f31-b0c0-a976e12ff2d9";
-    fsType = "ext4";
-    options = [
-      "nofail"
-      "x-systemd.device-timeout=5s"
-    ];
+    device = "/data-staging";
+    fsType = "none";
+    options = [ "bind" ];
   };
 
   nix.settings.experimental-features = [
