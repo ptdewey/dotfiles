@@ -6,7 +6,7 @@
 }:
 
 let
-  defaultBrowser = "helium-browser.desktop";
+  defaultBrowser = "helium.desktop";
 in
 {
   imports = [
