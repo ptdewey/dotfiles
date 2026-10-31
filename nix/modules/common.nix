@@ -54,7 +54,6 @@
     just
     inotify-tools
     luajit
-    luajitPackages.luarocks
     luajitPackages.jsregexp
     luaPackages.fennel
     fennel-ls

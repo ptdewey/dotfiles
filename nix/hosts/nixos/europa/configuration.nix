@@ -166,14 +166,14 @@ in
     onefetch
     # kdePackages.kdenlive # FIX: build is failing (01/28/26)
     gleam
-    beam28Packages.erlang
-    beam28Packages.elixir
-    beam28Packages.rebar3
+    beam29Packages.erlang
+    beam29Packages.elixir
+    beam29Packages.rebar3
     qemu_kvm
     rusty-path-of-building
     inputs.hunk.packages.${pkgs.stdenv.hostPlatform.system}.hunk
     helix
-    penpot-desktop
+    # penpot-desktop
   ];
 
   # TODO: I don't think I actually use these
