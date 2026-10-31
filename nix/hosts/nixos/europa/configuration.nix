@@ -1,13 +1,9 @@
 {
   inputs,
   pkgs,
-  lib,
   ...
 }:
 
-let
-  defaultBrowser = "helium.desktop";
-in
 {
   imports = [
     # Include the results of the hardware scan.
@@ -128,15 +124,6 @@ in
   programs.firefox.enable = true;
   nixpkgs.config.allowUnfree = true;
 
-  xdg.mime.defaultApplications = {
-    "text/html" = defaultBrowser;
-    "x-scheme-handler/http" = defaultBrowser;
-    "x-scheme-handler/https" = defaultBrowser;
-    "x-scheme-handler/about" = defaultBrowser;
-    "x-scheme-handler/unknown" = defaultBrowser;
-  };
-  environment.sessionVariables.BROWSER = lib.removeSuffix ".desktop" defaultBrowser;
-
   environment.systemPackages = with pkgs; [
     vim
     wezterm
@@ -162,7 +149,6 @@ in
     tailwindcss
     inkscape
     inputs.glide.packages.${pkgs.system}.default
-    inputs.helium-browser.packages.${pkgs.system}.default
     onefetch
     # kdePackages.kdenlive # FIX: build is failing (01/28/26)
     gleam

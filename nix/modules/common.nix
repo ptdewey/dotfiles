@@ -1,6 +1,24 @@
-{ inputs, pkgs, ... }:
-
 {
+  inputs,
+  pkgs,
+  lib,
+  ...
+}:
+
+let
+  defaultBrowser = "helium.desktop";
+in
+{
+  # Default browser shared by all desktop hosts
+  xdg.mime.defaultApplications = {
+    "text/html" = defaultBrowser;
+    "x-scheme-handler/http" = defaultBrowser;
+    "x-scheme-handler/https" = defaultBrowser;
+    "x-scheme-handler/about" = defaultBrowser;
+    "x-scheme-handler/unknown" = defaultBrowser;
+  };
+  environment.sessionVariables.BROWSER = lib.removeSuffix ".desktop" defaultBrowser;
+
   # Common package list
   environment.systemPackages = with pkgs; [
     git
@@ -37,6 +55,7 @@
     websocat
     pandoc
     inputs.zen-browser.packages."${system}".beta
+    inputs.helium-browser.packages.${pkgs.system}.default
     gimp
     gh
     alacritty
