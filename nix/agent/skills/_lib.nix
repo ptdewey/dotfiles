@@ -10,7 +10,8 @@ let
   skillDirectories = [
     ".codex/skills"
     ".prime/agent/skills"
-    ".pi/agent/skills"
+    # ".pi/agent/skills"
+    ".agents/skills"
   ];
 in
 {
