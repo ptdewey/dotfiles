@@ -162,29 +162,17 @@
     # penpot-desktop
   ];
 
-  # TODO: I don't think I actually use these
-  services.udev.packages = with pkgs; [
-    qmk
-    qmk-udev-rules
-    qmk_hid
-  ];
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+  };
 
   systemd.packages = with pkgs; [ lact ];
   systemd.services.lactd.wantedBy = [ "multi-user.target" ];
-
-  # TODO: pin a version of ollama to avoid long build times
-  # services.ollama = {
-  #   package = pkgs.ollama-rocm;
-  #   enable = true;
-  #   host = "0.0.0.0";
-  #   # rocmOverrideGfx = "11.0.0";
-  # };
 
   virtualisation.docker.rootless = {
     enable = true;
     setSocketVariable = true;
   };
-
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
 
