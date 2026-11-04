@@ -112,10 +112,8 @@ alias ta="tmux attach"
 alias tl="tmux ls"
 
 # keymaps
-if [ "$shell" = "bash" ]; then
-    bind -x '"\C-f":tmux-sessionizer'
-    bind -x '"\C-g":sd \n'
-elif [ "$shell" = "zsh" ] || [ "$shell" = "-zsh" ]; then
-    bindkey -s ^F 'tmux-sessionizer\n'
-    bindkey -s ^G 'sd\n'
-fi
+# if [ "$shell" = "bash" ]; then
+#     bind -x '"\C-f":tmux-sessionizer'
+# elif [ "$shell" = "zsh" ] || [ "$shell" = "-zsh" ]; then
+#     bindkey -s ^F 'tmux-sessionizer\n'
+# fi

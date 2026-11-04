@@ -19,16 +19,11 @@
     weather-icons
     wl-clipboard
     awww
-
-    # Go MPRIS media status/control binary for the waybar `custom/media` module.
-    # (import ./waybar-mediaplayer/package.nix { pkgs = pkgs; })
     quickshell
     # fnott
   ];
 
   programs.dconf.profiles.user.databases = [
-    {
-      settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
-    }
+    { settings."org/gnome/desktop/interface".color-scheme = "prefer-dark"; }
   ];
 }
