@@ -16,6 +16,13 @@ let
             endpoint: 127.0.0.1:4317
           http:
             endpoint: 0.0.0.0:4318
+      prometheus:
+        config:
+          scrape_configs:
+            - job_name: arabica
+              scrape_interval: 15s
+              static_configs:
+                - targets: ["${cfg.arabicaMetricsTarget}"]
 
     processors:
       batch: {}
@@ -23,31 +30,40 @@ let
         check_interval: 1s
         limit_percentage: 75
         spike_limit_percentage: 15
+      attributes/host:
+        actions:
+          - key: host.name
+            value: "${config.networking.hostName}"
+            action: upsert
 
     exporters:
-      prometheus:
-        endpoint: 127.0.0.1:9464
-      otlp/tempo:
-        endpoint: 127.0.0.1:4327
-        tls:
-          insecure: true
-      otlphttp/loki:
-        endpoint: http://127.0.0.1:3100/otlp
+      otlp_http/luna:
+        endpoint: http://luna.tailaf2ec2.ts.net:4318
+        timeout: 10s
+        retry_on_failure:
+          enabled: true
+          initial_interval: 1s
+          max_interval: 30s
+          max_elapsed_time: 5m
+        sending_queue:
+          enabled: true
+          num_consumers: 4
+          queue_size: 1000
 
     service:
       pipelines:
         metrics:
-          receivers: [otlp]
-          processors: [memory_limiter, batch]
-          exporters: [prometheus]
+          receivers: [otlp, prometheus]
+          processors: [memory_limiter, attributes/host, batch]
+          exporters: [otlp_http/luna]
         traces:
           receivers: [otlp]
           processors: [memory_limiter, batch]
-          exporters: [otlp/tempo]
+          exporters: [otlp_http/luna]
         logs:
           receivers: [otlp]
           processors: [memory_limiter, batch]
-          exporters: [otlphttp/loki]
+          exporters: [otlp_http/luna]
   '';
 in
 {
@@ -86,74 +102,6 @@ in
       configFile = otelConfig;
     };
 
-    services.tempo = {
-      enable = true;
-      settings = {
-        server.http_listen_port = 3200;
-        distributor.receivers.otlp.protocols.grpc.endpoint = "127.0.0.1:4327";
-        live_store = {
-          shutdown_marker_dir = "/var/lib/tempo/live-store/shutdown-marker";
-          wal.path = "/var/lib/tempo/live-store/traces";
-        };
-        backend_scheduler.local_work_path = "/var/lib/tempo/backend-scheduler";
-        block_builder.wal.path = "/var/lib/tempo/block-builder/traces";
-        storage.trace = {
-          backend = "local";
-          local.path = "/var/lib/tempo/traces";
-          wal.path = "/var/lib/tempo/wal";
-        };
-      };
-    };
-
-    services.loki = {
-      enable = true;
-      configuration = {
-        auth_enabled = false;
-        server = {
-          http_listen_port = 3100;
-          grpc_listen_address = "127.0.0.1";
-          grpc_listen_port = 9096;
-        };
-        common = {
-          ring = {
-            instance_addr = "127.0.0.1";
-            kvstore.store = "inmemory";
-          };
-          replication_factor = 1;
-          path_prefix = "/var/lib/loki";
-        };
-        schema_config.configs = [
-          {
-            from = "2020-10-24";
-            store = "tsdb";
-            object_store = "filesystem";
-            schema = "v13";
-            index = {
-              prefix = "index_";
-              period = "24h";
-            };
-          }
-        ];
-        storage_config.filesystem.directory = "/var/lib/loki/chunks";
-      };
-    };
-
-    services.prometheus = {
-      enable = true;
-      port = 9090;
-      globalConfig.scrape_interval = "15s";
-      scrapeConfigs = [
-        {
-          job_name = "otel-collector";
-          static_configs = [ { targets = [ "127.0.0.1:9464" ]; } ];
-        }
-        {
-          job_name = "arabica";
-          static_configs = [ { targets = [ cfg.arabicaMetricsTarget ]; } ];
-        }
-      ];
-    };
-
     services.grafana = {
       enable = true;
       settings = {
@@ -176,20 +124,20 @@ in
               name = "Prometheus";
               type = "prometheus";
               uid = "prometheus";
-              url = "http://127.0.0.1:9090";
+              url = "http://luna.tailaf2ec2.ts.net:9090";
               isDefault = true;
             }
             {
               name = "Loki";
               type = "loki";
               uid = "loki";
-              url = "http://127.0.0.1:3100";
+              url = "http://luna.tailaf2ec2.ts.net:3100";
             }
             {
               name = "Tempo";
               type = "tempo";
               uid = "tempo";
-              url = "http://127.0.0.1:3200";
+              url = "http://luna.tailaf2ec2.ts.net:3200";
               jsonData = {
                 tracesToLogsV2.datasourceUid = "loki";
                 serviceMap.datasourceUid = "prometheus";
