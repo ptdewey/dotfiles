@@ -8,6 +8,13 @@
 let
   cfg = config.services.local-observability;
 
+  isLocal = signal: cfg.routing.${signal} != "remote";
+  isRemote = signal: cfg.routing.${signal} != "local";
+  exportersFor =
+    signal: localExporter:
+    lib.optional (isLocal signal) localExporter ++ lib.optional (isRemote signal) "otlp_http/remote";
+  datasourceHost = signal: if isLocal signal then "127.0.0.1" else cfg.remoteHost;
+
   otelConfig = pkgs.writeText "otel-collector-config.yaml" ''
     receivers:
       otlp:
@@ -37,8 +44,16 @@ let
             action: upsert
 
     exporters:
-      otlp_http/luna:
-        endpoint: http://luna.tailaf2ec2.ts.net:4318
+      prometheus:
+        endpoint: 127.0.0.1:9464
+      otlp/tempo:
+        endpoint: 127.0.0.1:4327
+        tls:
+          insecure: true
+      otlp_http/loki:
+        endpoint: http://127.0.0.1:3100/otlp
+      otlp_http/remote:
+        endpoint: ${builtins.toJSON cfg.remoteCollectorEndpoint}
         timeout: 10s
         retry_on_failure:
           enabled: true
@@ -55,20 +70,45 @@ let
         metrics:
           receivers: [otlp, prometheus]
           processors: [memory_limiter, attributes/host, batch]
-          exporters: [otlp_http/luna]
+          exporters: ${builtins.toJSON (exportersFor "metrics" "prometheus")}
         traces:
           receivers: [otlp]
           processors: [memory_limiter, batch]
-          exporters: [otlp_http/luna]
+          exporters: ${builtins.toJSON (exportersFor "traces" "otlp/tempo")}
         logs:
           receivers: [otlp]
           processors: [memory_limiter, batch]
-          exporters: [otlp_http/luna]
+          exporters: ${builtins.toJSON (exportersFor "logs" "otlp_http/loki")}
   '';
 in
 {
   options.services.local-observability = {
     enable = lib.mkEnableOption "personal local development observability stack";
+
+    routing = lib.genAttrs [ "metrics" "traces" "logs" ] (
+      signal:
+      lib.mkOption {
+        type = lib.types.enum [
+          "local"
+          "remote"
+          "both"
+        ];
+        default = "local";
+        description = "Where to store ${signal}. Both keeps the local backend and also forwards to the remote collector. Grafana queries local storage when both is selected.";
+      }
+    );
+
+    remoteHost = lib.mkOption {
+      type = lib.types.str;
+      default = "luna.tailaf2ec2.ts.net";
+      description = "Remote backend hostname used by Grafana and the default remote collector endpoint.";
+    };
+
+    remoteCollectorEndpoint = lib.mkOption {
+      type = lib.types.str;
+      default = "http://${cfg.remoteHost}:4318";
+      description = "OTLP HTTP base URL for forwarding signals selected by routing.";
+    };
 
     arabicaMetricsTarget = lib.mkOption {
       type = lib.types.str;
@@ -102,6 +142,70 @@ in
       configFile = otelConfig;
     };
 
+    services.tempo = lib.mkIf (isLocal "traces") {
+      enable = true;
+      settings = {
+        server.http_listen_port = 3200;
+        distributor.receivers.otlp.protocols.grpc.endpoint = "127.0.0.1:4327";
+        live_store = {
+          shutdown_marker_dir = "/var/lib/tempo/live-store/shutdown-marker";
+          wal.path = "/var/lib/tempo/live-store/traces";
+        };
+        backend_scheduler.local_work_path = "/var/lib/tempo/backend-scheduler";
+        block_builder.wal.path = "/var/lib/tempo/block-builder/traces";
+        storage.trace = {
+          backend = "local";
+          local.path = "/var/lib/tempo/traces";
+          wal.path = "/var/lib/tempo/wal";
+        };
+      };
+    };
+
+    services.loki = lib.mkIf (isLocal "logs") {
+      enable = true;
+      configuration = {
+        auth_enabled = false;
+        server = {
+          http_listen_port = 3100;
+          grpc_listen_address = "127.0.0.1";
+          grpc_listen_port = 9096;
+        };
+        common = {
+          ring = {
+            instance_addr = "127.0.0.1";
+            kvstore.store = "inmemory";
+          };
+          replication_factor = 1;
+          path_prefix = "/var/lib/loki";
+        };
+        schema_config.configs = [
+          {
+            from = "2020-10-24";
+            store = "tsdb";
+            object_store = "filesystem";
+            schema = "v13";
+            index = {
+              prefix = "index_";
+              period = "24h";
+            };
+          }
+        ];
+        storage_config.filesystem.directory = "/var/lib/loki/chunks";
+      };
+    };
+
+    services.prometheus = lib.mkIf (isLocal "metrics") {
+      enable = true;
+      port = 9090;
+      globalConfig.scrape_interval = "15s";
+      scrapeConfigs = [
+        {
+          job_name = "otel-collector";
+          static_configs = [ { targets = [ "127.0.0.1:9464" ]; } ];
+        }
+      ];
+    };
+
     services.grafana = {
       enable = true;
       settings = {
@@ -124,20 +228,20 @@ in
               name = "Prometheus";
               type = "prometheus";
               uid = "prometheus";
-              url = "http://luna.tailaf2ec2.ts.net:9090";
+              url = "http://${datasourceHost "metrics"}:9090";
               isDefault = true;
             }
             {
               name = "Loki";
               type = "loki";
               uid = "loki";
-              url = "http://luna.tailaf2ec2.ts.net:3100";
+              url = "http://${datasourceHost "logs"}:3100";
             }
             {
               name = "Tempo";
               type = "tempo";
               uid = "tempo";
-              url = "http://luna.tailaf2ec2.ts.net:3200";
+              url = "http://${datasourceHost "traces"}:3200";
               jsonData = {
                 tracesToLogsV2.datasourceUid = "loki";
                 serviceMap.datasourceUid = "prometheus";

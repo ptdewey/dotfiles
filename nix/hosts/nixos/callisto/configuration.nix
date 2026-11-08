@@ -119,7 +119,14 @@
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
 
-  services.local-observability.enable = true;
+  services.local-observability = {
+    enable = true;
+    routing = {
+      metrics = "remote";
+      traces = "remote";
+      logs = "remote";
+    };
+  };
 
   # environment.variables = {
   #   LIBSQLITE = "${pkgs.sqlite.out}/lib/libsqlite3.so";

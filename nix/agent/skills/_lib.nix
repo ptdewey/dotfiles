@@ -8,6 +8,7 @@ let
   };
 
   skillDirectories = [
+    # ".claude/skills"
     ".codex/skills"
     ".prime/agent/skills"
     # ".pi/agent/skills"
