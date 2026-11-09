@@ -2,11 +2,6 @@
 # This is a file meant to be shared between my bashrc and zshrc configurations
 # it aggregates path extensions and imports aliases
 
-# set custom color scheme (if not in tty)
-# if [ -f "$HOME/.config/dotfiles/shell/scripts/base16-darkearth.sh" ] && [ -n "$DISPLAY" ]; then
-#     source "$HOME/.config/dotfiles/shell/scripts/base16-darkearth.sh"
-# fi
-
 export VISUAL=nvim
 # Pi's OTel extension sends OTLP/HTTP protobuf payloads (4318), with
 # separate signal-specific paths for metrics and traces.

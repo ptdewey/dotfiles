@@ -9,7 +9,6 @@ switch_to() {
 }
 
 has_session() {
-    # if ! tmux has-session -t="$selected_name" 2> /dev/null; then
     tmux list-sessions | grep -q "^$1:"
 }
 
@@ -24,7 +23,6 @@ hydrate() {
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    # use fd instead of find if it exists
     if command -v fd >/dev/null 2>&1; then
         selected=$(
             {
@@ -53,9 +51,7 @@ if [[ -z $selected ]]; then
     exit 0
 fi
 
-# selected_name=$(basename "$selected" | tr . _)
 selected_name=$(basename "$selected" | tr './:' '_')
-
 tmux_running=$(pgrep tmux)
 
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
@@ -64,7 +60,6 @@ if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
     exit 0
 fi
 
-# if ! tmux has-session -t="$selected_name" 2> /dev/null; then
 if ! has_session "$selected_name"; then
     tmux new-session -ds "$selected_name" -c "$selected"
     hydrate "$selected_name" "$selected"
