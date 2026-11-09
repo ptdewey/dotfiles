@@ -1,6 +1,7 @@
 ---
 name: hit-piece
-description: Adversarial code review as a hit piece: independent reviewers file findings, fresh sessions verify every claim, and unsubstantiated ones are dropped. Use after nontrivial changes, or when asked to review a diff, branch, jj revset, or GitHub PR/GitLab MR.
+description: Adversarial code review as a hit piece -- independent reviewers file findings, fresh sessions verify every claim, and unsubstantiated ones are dropped. Use after nontrivial changes, or when asked to review a diff, branch, jj revset, or GitHub PR/GitLab MR.
+disable-model-invocation: false
 ---
 
 # Hit Piece
@@ -14,6 +15,7 @@ reviewer --repo /path/to/repo --working-copy --json --progress off "Intent and r
 ```
 
 Omit `--repo` for cwd. Choose one scope:
+
 - `--working-copy`: tracked + nonignored untracked changes; not staged-only.
 - `--base origin/main --head HEAD`: branch diff from merge base.
 - `--revset '@-'`: jj revisions only.

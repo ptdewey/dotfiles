@@ -4,7 +4,6 @@ description: Review a change (a merge/pull request, or the current branch/jj cha
 disable-model-invocation: false
 tags:
   - productivity
-polytoken: true
 ---
 
 # Code Review
@@ -16,6 +15,7 @@ Orchestrate a two-reviewer code review. The main agent does **not** review the d
 Host- and VCS-agnostic: works in **jj** and **git** repos, and against **GitLab**, **GitHub**, or no remote at all. The guaranteed deliverable is an **in-chat** review; posting to a remote MR/PR is optional and gated on consent.
 
 > **Subagents — non-negotiable.**
+>
 > - The review reasoning runs **inside subagents, never in the main agent.** Dispatch **exactly two** subagents in a **single assistant turn** so they run in parallel.
 > - One is the **standard reviewer**, one is the **adversarial reviewer**. Both get the same context bundle.
 > - The main agent only orchestrates: gather context → dispatch the two → wait for both → merge → deliver → optionally act according to the policy below.
@@ -25,8 +25,8 @@ Host- and VCS-agnostic: works in **jj** and **git** repos, and against **GitLab*
 
 Determine both ownership and repetition policy:
 
-- **Authoring mode** — *you wrote the changes under review.* You may fix findings when the surrounding task already authorizes implementation, but the default remains one review pass.
-- **External mode** — *you're reviewing someone else's work.* **Read-only**: deliver feedback and never edit their code.
+- **Authoring mode** — _you wrote the changes under review._ You may fix findings when the surrounding task already authorizes implementation, but the default remains one review pass.
+- **External mode** — _you're reviewing someone else's work._ **Read-only**: deliver feedback and never edit their code.
 - **Single-pass policy (default)** — applies to every automatic invocation and ordinary review request. Run one two-reviewer pass, deliver it, optionally fix findings when already authorized, and stop. **Never re-invoke the skill.**
 - **Iterative policy (explicit opt-in only)** — use only when the user clearly asks to fix and re-review repeatedly or to continue until clean. A request merely to "review" is not opt-in to iteration.
 
@@ -64,8 +64,8 @@ authoring + explicit iterative policy → fix, test, and re-review (cap 5)
 ### 1. Identify the target and policy
 
 - **Target:** an MR/PR the user named; otherwise the current work vs. the repo's base.
-- **Ownership:** *authoring* if you wrote the changes (your working change/branch, or an MR/PR you authored); *external* if you didn't. If ownership is unclear, ask one question.
-- **Repetition:** *single-pass* unless the user explicitly requested iterative fix-and-review cycles. Automatic invocation is always single-pass.
+- **Ownership:** _authoring_ if you wrote the changes (your working change/branch, or an MR/PR you authored); _external_ if you didn't. If ownership is unclear, ask one question.
+- **Repetition:** _single-pass_ unless the user explicitly requested iterative fix-and-review cycles. Automatic invocation is always single-pass.
 
 ### 2. Detect the VCS and gather the diff + context (main agent)
 
@@ -105,6 +105,7 @@ Assemble a **context bundle** for both subagents: changed-files list, commit log
 In a **single assistant turn**, spawn **two** general-purpose subagents (harness default model). Hand each the full context bundle and tell it: **read-only on source** (it may read files / run `jj diff` or `git diff` to dig deeper, but must not modify code or repo state — no `jj restore`/`jj abandon`, no `git checkout`/`reset`); return findings as its result in the format below.
 
 **Reviewer A — Standard.** A balanced, thorough review across, in priority order:
+
 1. Correctness & logic (does it do what the change claims?)
 2. Edge cases & error handling
 3. Security (injection, authz/authn, secrets, unvalidated trust-boundary input)
@@ -113,9 +114,9 @@ In a **single assistant turn**, spawn **two** general-purpose subagents (harness
 6. API & compatibility (breaking signatures/schemas, migration safety)
 7. Tests (is the new behavior covered? tests that would fail before the change?)
 8. Readability & maintainability (nits, lowest priority)
-Also call out **what's good**.
+   Also call out **what's good**.
 
-**Reviewer B — Adversarial.** Assume the change is subtly broken and *try to break it.* Hunt the worst-case: the exploitable security hole, the race, the malformed/hostile input that isn't handled, the invariant the author assumed but didn't enforce, the edge case the happy-path tests skip. Be skeptical of the tests themselves — do they actually pin the contract, or do they pass vacuously? Prefer one real, well-argued blocker over ten nits.
+**Reviewer B — Adversarial.** Assume the change is subtly broken and _try to break it._ Hunt the worst-case: the exploitable security hole, the race, the malformed/hostile input that isn't handled, the invariant the author assumed but didn't enforce, the edge case the happy-path tests skip. Be skeptical of the tests themselves — do they actually pin the contract, or do they pass vacuously? Prefer one real, well-argued blocker over ten nits.
 
 **Finding format (both reviewers):** a one-line verdict, then each finding as `severity · path:line — problem → why it matters → fix direction`. Severity scale: `Blocker · High · Medium · Low · Nit`. Use the diff's new-side line numbers. No hypotheticals stated as fact — unverifiable downstream effects are marked "unverified".
 
@@ -164,13 +165,13 @@ Also call out **what's good**.
 
 ## Quick reference
 
-| Phase | Who | Output |
-|-------|-----|--------|
-| Identify + detect VCS + gather (1–2) | main agent | context bundle + ownership/repetition policy |
-| Review (3) | **2 subagents, parallel** | two finding sets |
-| Wait + merge (4) | main agent | one severity-ranked review |
-| Deliver (5) | main agent | chat summary always; post if open MR/PR + consent |
-| Act (6, authoring only) | main agent | optional fixes; re-review only on explicit opt-in (cap 5) |
+| Phase                                | Who                       | Output                                                    |
+| ------------------------------------ | ------------------------- | --------------------------------------------------------- |
+| Identify + detect VCS + gather (1–2) | main agent                | context bundle + ownership/repetition policy              |
+| Review (3)                           | **2 subagents, parallel** | two finding sets                                          |
+| Wait + merge (4)                     | main agent                | one severity-ranked review                                |
+| Deliver (5)                          | main agent                | chat summary always; post if open MR/PR + consent         |
+| Act (6, authoring only)              | main agent                | optional fixes; re-review only on explicit opt-in (cap 5) |
 
 ## Notes for the operator
 
